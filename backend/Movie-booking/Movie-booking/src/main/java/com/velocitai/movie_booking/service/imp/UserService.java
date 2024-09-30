@@ -37,7 +37,7 @@ public class UserService {
 //			u.setPhoto(file.getBytes());
 //			userRepository.save(u);
 			
-			String path=session.getServletContext().getRealPath("/")+"WEB-INF"+File.separator+"resources"+File.separator+"image"+File.separator+user.getName()+user.getEmail()+".jpeg";
+//			String path=session.getServletContext().getRealPath("/")+"WEB-INF"+File.separator+"resources"+File.separator+"image"+File.separator+user.getName()+user.getEmail()+".jpeg";
 				System.out.println(path);
 //			FileOutputStream fo=new FileOutputStream(path);
 //			fo.write(file.getBytes());
