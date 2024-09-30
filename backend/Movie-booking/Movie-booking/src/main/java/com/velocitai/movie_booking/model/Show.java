@@ -42,4 +42,5 @@ public class Show {
 		@OneToOne(cascade = CascadeType.ALL)
 		private Movie movie;
 	
+		
 }

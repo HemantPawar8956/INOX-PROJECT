@@ -30,6 +30,7 @@ public class UserService {
         return users;
     }
 
+<<<<<<< HEAD
 	public ResponseEntity<?> saveImage(MultipartFile file, HttpSession session,long id) throws IOException {
 //		User u=userRepository.findById(id).get();
 		if(file.isEmpty()) {
@@ -51,5 +52,7 @@ public class UserService {
 		return ResponseEntity.ok(u.getPhoto());
 	}
 	
+=======
+>>>>>>> 5ac1b348248660da3ea1909ac94a79ac2562e287
 	
 }
