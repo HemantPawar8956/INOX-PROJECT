@@ -16,6 +16,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
@@ -50,6 +51,8 @@ public class User implements UserDetails{
 	private Role role;
 	
 	private String image;
+	@Lob
+	private byte[] photo;
 	
 	@Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
