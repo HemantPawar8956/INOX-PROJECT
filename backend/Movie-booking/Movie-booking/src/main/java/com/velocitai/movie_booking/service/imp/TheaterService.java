@@ -89,4 +89,17 @@ public class TheaterService {
         
         return responseStructure;
     }
-}
+
+
+
+
+
+
+	public Theater updateTheater( Theater updatedTheater) {
+
+		        return theaterRepo.save(updatedTheater);
+		    }
+		
+	}
+
+
