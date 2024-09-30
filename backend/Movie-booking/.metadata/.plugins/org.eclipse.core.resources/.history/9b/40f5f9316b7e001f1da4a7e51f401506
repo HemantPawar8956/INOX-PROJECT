@@ -1,0 +1,21 @@
+package com.velocitai.movie_booking.model;
+
+import org.springframework.security.core.userdetails.UserDetails;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Table(name = "users")
+@Entity
+
+public class User implements UserDetails{
+	
+	private long id;
+	private String name;
+	private String email;
+	private long phone;
+	private String password;
+	private Role role;
+	
+
+}

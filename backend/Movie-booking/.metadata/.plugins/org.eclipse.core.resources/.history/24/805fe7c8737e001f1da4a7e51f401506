@@ -1,0 +1,5 @@
+package com.velocitai.movie_booking.service.imp;
+
+public class User {
+
+}

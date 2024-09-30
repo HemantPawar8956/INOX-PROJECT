@@ -1,0 +1,5 @@
+package com.velocitai.movie_booking.exception;
+
+public class Ex {
+
+}
