@@ -7,7 +7,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 
-import jakarta.annotation.Generated;
+import com.velocitai.movie_booking.util.Role;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -15,7 +16,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
@@ -48,8 +48,8 @@ public class User implements UserDetails{
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private Role role;
-	@Lob
-	private byte[] image;
+	
+	private String image;
 	
 	@Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
