@@ -30,7 +30,6 @@ public class Movie {
 	private String movieLanguage;
 	private LocalTime duration;
 	private String genre;
-	private String movieImageName;
 	@Column(name="movie_image")
 	private String movieImage;
 	@OneToMany
