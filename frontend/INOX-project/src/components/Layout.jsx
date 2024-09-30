@@ -7,7 +7,7 @@ import Corousel1 from "./Corousel1";
 import Corousel2 from "./Corousel2";
 import { Outlet } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
-import RegisterPage from "../pages/RegisterPage";
+// import RegisterPage from "../pages/RegisterPage";
 const Layout = () => {
 
   let { siderVisible, setSiderVisible } = useContext(globalVar)
@@ -19,8 +19,8 @@ const Layout = () => {
 
       )}
       <Navbar />
-      <Corousel1 />
-      <Corousel2 />
+      {/* <Corousel1 /> */}
+      {/* <Corousel2 /> */}
       <LoginPage />
       <Outlet />
     </div>
