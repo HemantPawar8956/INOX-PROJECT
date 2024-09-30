@@ -8,6 +8,7 @@ export let routingVar = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+
     children: [
       {
         path: "",
