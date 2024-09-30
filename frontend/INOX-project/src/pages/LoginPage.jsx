@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const LoginPage = () => {
-  return (
-    <div className='text-red-700'>
-      Hello
-    </div>
-  )
-}
+  return <div>Hello</div>;
+};
 
-export default LoginPage
+export default LoginPage;
