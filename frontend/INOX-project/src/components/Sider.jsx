@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import { globalVar } from "../globalContext/GlobalContext";
 import { ImCross } from "react-icons/im";
-import banglore from '../assests/banglore.jpeg'
-import delhi from '../assests/delhincr.jpeg'
-import mumbai from '../assests/mumbai.jpeg'
-import hyderabaad from '../assests/hyderabaad.jpeg'
+import banglore from "../assests/banglore.jpg"
+import delhi from "../assests/delhincr.jpg"
+import mumbai from "../assests/mumbai.jpg"
+import hyderabad from "../assests/hyderabad.jpg"
 
 const Sider = () => {
     let staticCity = [
-        { name: 'Ahmedabad', image: {hyderabaad} },
+        { name: 'Ahmedabad', image: {hyderabad} },
         { name: 'Delhi-NCR', image: {delhi} },
         { name: 'Mumbai-All', image: {mumbai} },
         { name: 'Bengaluru', image: {banglore} }
@@ -39,8 +39,8 @@ const Sider = () => {
         <div
           key={index}
           className="city-tile"
-          style={{ backgroundImage: `url(${city.image})` }}
         >
+            <img src={city.image} alt="" />
           {city.name}
         </div>
       ))}
