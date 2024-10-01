@@ -1,20 +1,21 @@
-import React, { useContext, useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { globalVar } from '../globalContext/GlobalContext';
+import React, { useContext, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { globalVar } from "../globalContext/GlobalContext";
 
 const LoginPage = () => {
   let navigate = useNavigate();
+  let { loginPanel, setLoginPanel } = useContext(globalVar);
   let [user, setUser] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   let handleChange = (e) => {
-    let {name, value} =e.target;
+    let { name, value } = e.target;
     setUser({
       ...user,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -22,14 +23,18 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      console.log(user.password)
-      const response = await axios.post(`http://localhost:8080/auth/login?email=${user.email}&password=${user.password}`,user, {
-        headers: {
-          'Content-Type': 'application/json ,text/plain, /',
-        },
-      });
-      console.log('User authenticated:', response);
-      
+      console.log(user.password);
+      const response = await axios.post(
+        `http://localhost:8080/auth/login?email=${user.email}&password=${user.password}`,
+        user,
+        {
+          headers: {
+            "Content-Type": "application/json ,text/plain, /",
+          },
+        }
+      );
+      console.log("User authenticated:", response);
+
       /*console.log(role==='ADMIN')
        if (role === 'ADMIN') {
           navigate('/admin'); 
@@ -39,41 +44,44 @@ const LoginPage = () => {
           console.error('Unknown role:', response.data.role);
           
       }*/
-  
-  } catch (error) {
-      console.error('There was an error authenticating the user!', error);
-  }
+    } catch (error) {
+      console.error("There was an error authenticating the user!", error);
+    }
   };
-console.log(user)
-  return  (
-    <section className='mainCont'>
-    <form className="login-form" onSubmit={handleSubmit}>
-      <h2 className="login-title">Login Page</h2>
+  console.log(user);
+  return (
+    <section
+      className="mainCont"
+      onClick={(e) => {
+        e.stopPropagation(), setLoginPanel(!loginPanel);
+      }}>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h2 className="login-title">Login Page</h2>
 
-      <div className="form-group">
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={user.email}
-          onChange={handleChange}
-          required
-          className="input-field"
-        />
-      </div>
-      <div className="form-group">
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={user.password}
-          onChange={handleChange}
-          required
-          className="input-field"
-        />
-      </div>
-      <button  className="login-button">Login</button>
-    </form>
+        <div className="form-group">
+          <label>Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={user.email}
+            onChange={handleChange}
+            required
+            className="input-field"
+          />
+        </div>
+        <div className="form-group">
+          <label>Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={user.password}
+            onChange={handleChange}
+            required
+            className="input-field"
+          />
+        </div>
+        <button className="login-button">Login</button>
+      </form>
     </section>
   );
 };

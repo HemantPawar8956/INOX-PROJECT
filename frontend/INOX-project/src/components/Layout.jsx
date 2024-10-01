@@ -8,22 +8,18 @@ import { Outlet } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 // import RegisterPage from "../pages/RegisterPage";
 
-
 const Layout = () => {
-
-  let { siderVisible, setSiderVisible ,loginPanel,setLoginPanel} = useContext(globalVar);
+  let { siderVisible, setSiderVisible, loginPanel, setLoginPanel } =
+    useContext(globalVar);
+  console.log(loginPanel);
 
   return (
     <div>
       {siderVisible && <Sider />}
-      {loginPanel && <LoginPage />} 
+      {loginPanel && <LoginPage />}
       <Navbar />
-      {/* <Corousel1 /> */}
-      {/* <Corousel2 /> */}
-
       <Outlet />
     </div>
-
   );
 };
 

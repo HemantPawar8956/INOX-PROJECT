@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
 import App from "./App";
-import "./global.css";
+// import "./global.css";
 
 import "./inox.css";
 
