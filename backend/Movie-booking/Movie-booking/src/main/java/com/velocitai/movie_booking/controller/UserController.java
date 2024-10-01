@@ -3,6 +3,7 @@ package com.velocitai.movie_booking.controller;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,9 +22,10 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("/users")
 @RestController
 public class UserController {
-    private final UserService userService;
-
-    public UserController(UserService userService) {
+    //private  final String fileService = null;
+	private final UserService userService; 
+  
+   public UserController(UserService userService) {
         this.userService = userService;
     }
 
@@ -41,7 +43,18 @@ public class UserController {
         List <User> users = userService.allUsers();
 
         return ResponseEntity.ok(users);
+  }
+    @Value("${project.image}")
+    private String path;
+    @PostMapping("/upload")
+    public ResponseEntity<String> uploadImage(@RequestParam("image") MultipartFile image) throws IOException {
+        String uploadDir = "uploads/";  // Set your upload directory here
+
+        // Call the method to upload the image
+		ResponseEntity <String>fileName = uploadImage(image);
+		return ResponseEntity.ok("Image uploaded successfully: " + fileName);
     }
+
     
 
 
@@ -55,5 +68,6 @@ public class UserController {
 		return userService.findImage(id);
 		
 	}
+
 
 }
