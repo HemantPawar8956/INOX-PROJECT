@@ -8,10 +8,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-<<<<<<< HEAD
-=======
-import org.springframework.web.bind.annotation.RequestBody;
->>>>>>> 5ac1b348248660da3ea1909ac94a79ac2562e287
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,7 +43,7 @@ public class UserController {
         return ResponseEntity.ok(users);
     }
     
-<<<<<<< HEAD
+
     @PostMapping("/image")
     public ResponseEntity<?> saveimage(@RequestParam MultipartFile file , HttpSession session,int id) throws IOException {
 		return userService.saveImage(file,session,id);
@@ -58,7 +54,5 @@ public class UserController {
 		return userService.findImage(id);
 		
 	}
-=======
-   
->>>>>>> 5ac1b348248660da3ea1909ac94a79ac2562e287
+
 }

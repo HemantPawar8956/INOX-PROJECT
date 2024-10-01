@@ -4,6 +4,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,6 +34,9 @@ public class Movie {
 	private String genre;
 	@Column(name="movie_image")
 	private String movieImage;
+	@Transient  // This field is not persisted in the DB, used for uploading images
+    private MultipartFile imageFile;
+
 	@OneToMany
 	private List<Show> show;
 	

@@ -30,7 +30,7 @@ public class UserService {
         return users;
     }
 
-<<<<<<< HEAD
+
 	public ResponseEntity<?> saveImage(MultipartFile file, HttpSession session,long id) throws IOException {
 //		User u=userRepository.findById(id).get();
 		if(file.isEmpty()) {
@@ -39,7 +39,7 @@ public class UserService {
 //			userRepository.save(u);
 			
 //			String path=session.getServletContext().getRealPath("/")+"WEB-INF"+File.separator+"resources"+File.separator+"image"+File.separator+user.getName()+user.getEmail()+".jpeg";
-				System.out.println(path);
+//				System.out.println(path);
 //			FileOutputStream fo=new FileOutputStream(path);
 //			fo.write(file.getBytes());
 		}
@@ -52,7 +52,6 @@ public class UserService {
 		return ResponseEntity.ok(u.getPhoto());
 	}
 	
-=======
->>>>>>> 5ac1b348248660da3ea1909ac94a79ac2562e287
+
 	
 }
