@@ -7,6 +7,7 @@ import { Outlet } from "react-router-dom";
 
 
 const Layout = () => {
+
   let { siderVisible, setSiderVisible } = useContext(globalVar);
 
   return (
@@ -16,6 +17,7 @@ const Layout = () => {
       <Navbar />
       <Outlet />
     </div>
+
   );
 };
 
