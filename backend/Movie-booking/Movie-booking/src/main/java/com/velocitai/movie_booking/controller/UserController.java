@@ -44,6 +44,7 @@ public class UserController {
     }
     
 
+
     @PostMapping("/image")
     public ResponseEntity<?> saveimage(@RequestParam MultipartFile file , HttpSession session,int id) throws IOException {
 		return userService.saveImage(file,session,id);

@@ -1,6 +1,5 @@
 package com.velocitai.movie_booking.service.imp;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +30,7 @@ public class UserService {
     }
 
 
+
 	public ResponseEntity<?> saveImage(MultipartFile file, HttpSession session,long id) throws IOException {
 //		User u=userRepository.findById(id).get();
 		if(file.isEmpty()) {
@@ -52,6 +52,7 @@ public class UserService {
 		return ResponseEntity.ok(u.getPhoto());
 	}
 	
+
 
 	
 }

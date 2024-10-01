@@ -7,6 +7,8 @@ import { Outlet } from "react-router-dom";
 
 import LoginPage from "../pages/LoginPage";
 // import RegisterPage from "../pages/RegisterPage";
+
+
 const Layout = () => {
 
   let { siderVisible, setSiderVisible } = useContext(globalVar);
@@ -14,12 +16,14 @@ const Layout = () => {
   return (
     <div>
       {siderVisible && <Sider />}
+
       <Navbar />
       {/* <Corousel1 /> */}
       {/* <Corousel2 /> */}
       <LoginPage />
       <Outlet />
     </div>
+
   );
 };
 
