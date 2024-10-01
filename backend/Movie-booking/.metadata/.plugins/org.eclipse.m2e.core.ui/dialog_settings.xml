@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\inox project\INOX-PROJECT\backend\Movie-booking\Movie-booking"/>
 			<item value="D:\velocai\project\Movie-booking\Movie-booking"/>
 		</list>
 		<list key="projectNameTemplate">

@@ -6,10 +6,10 @@ import Payment from "./Payment";
 const Layout = () => {
   return (
   <div>
-   <Corousel1 />
-   <Corousel2 />
+   {/* <Corousel1 />
+   <Corousel2 /> */}
 
-  
+  <Payment/>
   </div>
   );
 };
