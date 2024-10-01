@@ -5,15 +5,19 @@ import Sider from "./Sider";
 
 import { Outlet } from "react-router-dom";
 
+
 const Layout = () => {
+
   let { siderVisible, setSiderVisible } = useContext(globalVar);
 
   return (
     <div>
       {siderVisible && <Sider />}
+      
       <Navbar />
       <Outlet />
     </div>
+
   );
 };
 
