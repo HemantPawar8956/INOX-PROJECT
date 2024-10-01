@@ -1,6 +1,7 @@
 package com.velocitai.movie_booking.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import jakarta.validation.Valid;
 
 @RequestMapping("/auth")
 @RestController
+@CrossOrigin
 public class AuthenticationController {
     private final JwtService jwtService;
     
@@ -39,7 +41,7 @@ public class AuthenticationController {
         User authenticatedUser = authenticationService.authenticate(email,password);
 
         String jwtToken = jwtService.generateToken(authenticatedUser);
-
+       System.out.println(email);
         LoginResponse loginResponse = new LoginResponse();
   loginResponse.setToken(jwtToken);
   loginResponse.setExpiresIn(jwtService.getExpirationTime());
