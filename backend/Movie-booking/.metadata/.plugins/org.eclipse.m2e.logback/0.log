@@ -287,3 +287,16 @@
 2024-09-29 21:54:29,802 [Worker-93: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\velocai\project\Movie-booking\Movie-booking\src\test\resources
 2024-09-29 21:57:18,424 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped oejs.Server@8c176e5{STOPPING}[12.0.9,sto=0]
 2024-09-29 21:57:18,443 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@515234ab{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
+2024-09-30 11:48:29,798 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2024-09-30 11:48:36,461 [Worker-15: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.velocitai:Movie-booking:0.0.1-SNAPSHOT @ E:\INOX_project\INOX-PROJECT\backend\Movie-booking\Movie-booking\pom.xml.
+2024-09-30 11:48:37,539 [Worker-15: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-09-30 11:48:37,575 [Worker-15: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-09-30 11:48:37,581 [Worker-15: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory E:\INOX_project\INOX-PROJECT\backend\Movie-booking\Movie-booking\src\test\resources
+2024-09-30 11:48:40,924 [Worker-10: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.velocitai:Movie-booking:0.0.1-SNAPSHOT @ E:\INOX_project\INOX-PROJECT\backend\Movie-booking\Movie-booking\pom.xml.
+2024-09-30 11:48:42,244 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-09-30 11:48:42,291 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-09-30 11:48:42,305 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory E:\INOX_project\INOX-PROJECT\backend\Movie-booking\Movie-booking\src\test\resources
+2024-09-30 11:55:49,500 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-09-30 11:55:49,526 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-09-30 11:55:49,531 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory E:\INOX_project\INOX-PROJECT\backend\Movie-booking\Movie-booking\src\test\resources
+2024-09-30 23:39:12,700 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
