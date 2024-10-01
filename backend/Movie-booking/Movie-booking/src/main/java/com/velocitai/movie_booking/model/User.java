@@ -48,8 +48,8 @@ public class User implements UserDetails{
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private Role role;
-	@Lob
-	private byte[] image;
+	
+	private String image;
 	
 	@Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
