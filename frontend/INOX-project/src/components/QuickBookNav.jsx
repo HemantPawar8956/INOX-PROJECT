@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-
+import React, { useState } from "react";
 
 const QuickBookNav = () => {
   const [change, setChange] = useState("Movie");
@@ -8,7 +7,7 @@ const QuickBookNav = () => {
     movie: "",
     cinema: "",
     date: "",
-    timing: ""
+    timing: "",
   });
 
   const { Show, movie, cinema, date, timing } = data;
@@ -18,7 +17,7 @@ const QuickBookNav = () => {
     const { name, value } = e.target;
     setData({
       ...data,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -27,11 +26,11 @@ const QuickBookNav = () => {
     e.preventDefault();
     // axios
   };
-  console.log(data)
+  console.log(data);
   return (
     <div className="quick-book-container">
       <span className="quick-title">Quick Book</span>
-      
+
       <div className="quick-book-change">
         <button onClick={() => setChange("Movie")}>Movie</button>
         <button onClick={() => setChange("Cinema")}>Cinema</button>
@@ -44,7 +43,7 @@ const QuickBookNav = () => {
             name={change}
             placeholder={`Select ${change}`}
             onChange={handleChange}
-            value={data[change]}  // This will bind the value to the state
+            value={data[change]} // This will bind the value to the state
           />
         </div>
         <div className="option">
@@ -53,7 +52,7 @@ const QuickBookNav = () => {
             name="date"
             placeholder="Select Date"
             onChange={handleChange}
-            value={date}  // This will bind the value to the state
+            value={date} // This will bind the value to the state
           />
         </div>
         <div className="option">
@@ -62,7 +61,7 @@ const QuickBookNav = () => {
             name={change === "Movie" ? "cinema" : "movie"}
             placeholder={`Select ${change === "Movie" ? "Cinema" : "Movie"}`}
             onChange={handleChange}
-            value={change === "Movie" ? cinema : movie}  // Bind the correct field to the state
+            value={change === "Movie" ? cinema : movie} // Bind the correct field to the state
           />
         </div>
         <div className="option">
@@ -71,10 +70,12 @@ const QuickBookNav = () => {
             name="timing"
             placeholder="Select Timing"
             onChange={handleChange}
-            value={timing}  // This will bind the value to the state
+            value={timing} // This will bind the value to the state
           />
         </div>
-        <button className="book-button" type="submit">Book</button>
+        <button className="book-button" type="submit">
+          Book
+        </button>
       </form>
     </div>
   );

@@ -25,7 +25,7 @@ import { globalVar } from "../globalContext/GlobalContext";
 
 const Navbar = () => {
   let [dropdownVisible, setDropdownVisible] = useState(false);
-  let { siderVisible, setSiderVisible } = useContext(globalVar);
+  let { siderVisible, setSiderVisible ,loginPanel,setLoginPanel} = useContext(globalVar);
 
   let Dropdown = () => {
     setDropdownVisible(!dropdownVisible);
@@ -133,12 +133,12 @@ const Navbar = () => {
         </div>
         <div className="location">
           <button className="locationbtn" onClick={siderVisiblefunc}>
-            <MdLocationSearching className="location-logo" /> Location{" "}
+            <MdLocationSearching className="location-logo" /> Location
             <FaChevronDown />
           </button>
         </div>
-        <button className="login">
-          {" "}
+        <button className="login" onClick={()=>{setLoginPanel(true)}}>
+         
           <FaUserCircle />
           Login
         </button>

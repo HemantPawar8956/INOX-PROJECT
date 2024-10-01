@@ -78,10 +78,10 @@ const ShowTimings = () => {
         <div></div>
       </div>
       <section className="accor">
-        <Accordion />
+        {/* <Accordion />
         <Accordion1 />
         <Accordion2 />
-        <Accordion3 />
+        <Accordion3 /> */}
       </section>
     </section>
   );

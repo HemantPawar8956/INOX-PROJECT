@@ -11,16 +11,16 @@ import LoginPage from "../pages/LoginPage";
 
 const Layout = () => {
 
-  let { siderVisible, setSiderVisible } = useContext(globalVar);
+  let { siderVisible, setSiderVisible ,loginPanel,setLoginPanel} = useContext(globalVar);
 
   return (
     <div>
       {siderVisible && <Sider />}
-
+      {loginPanel && <LoginPage />} 
       <Navbar />
       {/* <Corousel1 /> */}
       {/* <Corousel2 /> */}
-      <LoginPage />
+
       <Outlet />
     </div>
 
