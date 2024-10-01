@@ -51,8 +51,10 @@ public class User implements UserDetails{
 	private Role role;
 	
 	private String image;
+
 	@Lob
 	private byte[] photo;
+
 	
 	@Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
