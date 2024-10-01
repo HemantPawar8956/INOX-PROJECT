@@ -1,12 +1,18 @@
 package com.velocitai.movie_booking.service.imp;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.velocitai.movie_booking.dao.UserRepository;
 import com.velocitai.movie_booking.model.User;
+
+import jakarta.servlet.http.HttpSession;
 
 @Service
 public class UserService {
@@ -23,4 +29,30 @@ public class UserService {
 
         return users;
     }
+
+<<<<<<< HEAD
+	public ResponseEntity<?> saveImage(MultipartFile file, HttpSession session,long id) throws IOException {
+//		User u=userRepository.findById(id).get();
+		if(file.isEmpty()) {
+//			u.setImage(file.getName());
+//			u.setPhoto(file.getBytes());
+//			userRepository.save(u);
+			
+//			String path=session.getServletContext().getRealPath("/")+"WEB-INF"+File.separator+"resources"+File.separator+"image"+File.separator+user.getName()+user.getEmail()+".jpeg";
+				System.out.println(path);
+//			FileOutputStream fo=new FileOutputStream(path);
+//			fo.write(file.getBytes());
+		}
+		return null;
+	}
+
+	public ResponseEntity<?> findImage(long id) {
+		User u=userRepository.findById(id).get();
+		
+		return ResponseEntity.ok(u.getPhoto());
+	}
+	
+=======
+>>>>>>> 5ac1b348248660da3ea1909ac94a79ac2562e287
+	
 }
