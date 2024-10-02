@@ -3,6 +3,8 @@ import Layout from "./../components/Layout";
 import Home from "./../components/Home";
 import Showtimings from "./../components/Showtimings";
 import Cinemas from "./../components/Cinemas";
+import Payment from "./../components/Payment";
+import SeatLayout from "./../components/SeatLayout";
 
 export let routingVar = createBrowserRouter([
   {
@@ -27,5 +29,13 @@ export let routingVar = createBrowserRouter([
         element: <Cinemas />,
       },
     ],
+  },
+  {
+    path: "/payment",
+    element: <Payment />,
+  },
+  {
+    path: "/selectseats",
+    element: <SeatLayout />,
   },
 ]);

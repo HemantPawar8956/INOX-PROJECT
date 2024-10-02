@@ -21,6 +21,7 @@ const LoginPage = () => {
 
   let handleSubmit = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
 
     try {
       console.log(user.password);
@@ -55,7 +56,12 @@ const LoginPage = () => {
       onClick={(e) => {
         e.stopPropagation(), setLoginPanel(!loginPanel);
       }}>
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form
+        className="login-form"
+        onSubmit={handleSubmit}
+        onClick={(e) => {
+          e.stopPropagation(), setLoginPanel(true);
+        }}>
         <h2 className="login-title">Login Page</h2>
 
         <div className="form-group">
