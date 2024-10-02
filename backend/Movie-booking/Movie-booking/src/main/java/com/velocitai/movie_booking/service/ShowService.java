@@ -15,9 +15,7 @@ public interface ShowService {
 
 	public ResponseEntity<Show> findShowById(long id);
 
-	public ResponseEntity<Show> UpdateShow(Show show);
-
-	public ResponseEntity<?> deleteShow(Show show);
+	public ResponseEntity<?> deleteShow(Long  id);
 
 	public ResponseEntity<List<Show>> findAllShow();
 
@@ -28,5 +26,7 @@ public interface ShowService {
 	public ResponseEntity<List<Show>> findShowByDate(LocalDate date);
 
 	public ResponseEntity<List<Show>> findShowByTheater(long theaterId);
+
+   public 	ResponseEntity<Show> UpdateShow( Show show);
 
 }
