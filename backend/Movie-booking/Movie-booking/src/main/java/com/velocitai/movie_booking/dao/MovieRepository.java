@@ -8,6 +8,8 @@ import com.velocitai.movie_booking.model.Movie;
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long> {
 
+	Movie findByMoviename(String moviename);
+	
 	
 
 }

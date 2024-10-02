@@ -22,8 +22,6 @@ public class TheaterController {
 	@Autowired
     private TheaterService theaterService;
 
-	
-	 
 
 	    // Get theaters by address
 	    @GetMapping("/gettheaters/{address}")
@@ -38,10 +36,6 @@ public class TheaterController {
 	    }
 
 
-	   
-	
-	
-	
 	@DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteTheater(@PathVariable Long id) {
         return theaterService.deleteTheater(id);
