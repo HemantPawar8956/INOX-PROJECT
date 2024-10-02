@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -69,14 +70,25 @@ public class ShowServiceImp implements ShowService {
 
 	@Override
 	public ResponseEntity<List<Show>> findShowByDate(LocalDate date) {
-		// TODO Auto-generated method stub
-		return null;
+	    List<Show> shows = showRepository.findByDate(date);
+	    if (shows.isEmpty()) {
+	        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	    }
+	    return new ResponseEntity<>(shows, HttpStatus.OK);
 	}
 
+
+
+
+	
+
 	@Override
-	public ResponseEntity<List<Show>> findShowByTheater(long theaterId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public ResponseEntity<List<Show>> findShowByTheater(long theaterId) {
+        List<Show> shows = showRepository.findByTheaterId(theaterId);
+        if (shows.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(shows, HttpStatus.OK);
+    }
 
 }

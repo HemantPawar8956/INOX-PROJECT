@@ -33,7 +33,7 @@ public class Ticket {
 		private double totalePrice;
 	    @OneToOne
 		private Show showTime;
-		@ManyToOne(cascade = CascadeType.ALL)
+		@ManyToOne
 		private User user;
 	    @OneToMany(cascade = CascadeType.ALL)
 		private List<Seat> seats;
