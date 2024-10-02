@@ -1,6 +1,7 @@
 package com.velocitai.movie_booking.controller;
 
 import java.net.MalformedURLException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.velocitai.movie_booking.model.Movie;
 import com.velocitai.movie_booking.service.MovieService;
+
 
 
 @RestController
@@ -44,5 +46,7 @@ public class MovieController {
         	
         	return null;
         }
+        
+      
 
 }
