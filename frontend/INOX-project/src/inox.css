@@ -1270,3 +1270,132 @@ select {
   min-width: 10px;
   color: transparent;
 }
+
+/* mantasha */
+/* addmovies form */
+.main-body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
+}
+
+.center-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.center-section .form-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.center-section .form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.center-section .form-container .form-group {
+  margin-bottom: 15px;
+}
+
+.center-section .form-container .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.center-section .form-container .form-group input,
+.center-section .form-container .form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #fafafa;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.center-section .form-container .form-group input:focus,
+.center-section .form-container .form-group select:focus {
+  border-color: #007bff;
+  outline: none;
+  background-color: #fff;
+}
+
+.center-section .form-container .form-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.center-section .form-container .form-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.center-section .form-container .form-actions .update-btn {
+  background-color: rgb(106, 106, 248);
+}
+
+
+.center-section .form-container .form-actions .delete-btn {
+  background-color: rgb(106, 106, 248);
+}
+
+/* for popup */
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 80%;
+}
+
+.modal-content h3 {
+  margin-bottom: 20px;
+}
+
+.modal-content p {
+  margin: 10px 0;
+}
+
+.modal-actions {
+  text-align: center;
+}
+.close {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}

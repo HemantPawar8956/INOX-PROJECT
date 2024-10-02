@@ -5,6 +5,7 @@ import Showtimings from "./../components/Showtimings";
 import Cinemas from "./../components/Cinemas";
 import Payment from "./../components/Payment";
 import SeatLayout from "./../components/SeatLayout";
+import Addmovie from './../components/Addmovie';
 
 export let routingVar = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export let routingVar = createBrowserRouter([
   {
     path: "/payment",
     element: <Payment />,
+  },
+  {
+    path: "/addmovie",
+    element: <Addmovie />,
   },
   {
     path: "/selectseats",
