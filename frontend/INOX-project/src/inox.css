@@ -45,7 +45,7 @@
   padding: 5px 10px;
 }
 .nav ul li:has(.active) {
-  padding: 0px;
+  padding: 0px !important;
 }
 .nav ul li:last-child {
   padding: 0px !important;
@@ -310,6 +310,7 @@
 }
 .city-sidebar .cityLines h4 {
   color: gray;
+  font-weight: 700;
 }
 .city-sidebar li:hover {
   color: #032b55;
@@ -317,12 +318,22 @@
 
 .city-sidebar .selectcity input {
   width: 100%;
-  height: 30px;
+  height: 35px;
   font-size: 12px;
   padding: 10px;
+  border: 2px solid rgb(161, 161, 161);
+  padding: 7px;
+  font-size: 15px;
+  outline: none;
+  border-radius: 5px;
 }
 .city-sidebar .selectcity {
   padding: 12px;
+}
+.city-sidebar .selectcity h3 {
+  font-weight: 700;
+  font-size: larger;
+  color: gray;
 }
 .city-sidebar .btn {
   background-color: #fff;
@@ -411,18 +422,14 @@
   width: 500px;
   /* border: 1px solid; */
   display: flex;
+  align-items: start;
 }
 .box1 {
   height: 50px;
-  width: 163px;
+  /* width: 16px; */
   /* border: 1px solid; */
   margin-top: 7px;
   padding: 15px;
-  font-size: large;
-}
-
-select {
-  border: 1px solid rgba(200, 197, 197, 0.832);
   font-size: large;
 }
 
@@ -442,10 +449,10 @@ select {
 }
 
 .corousel2 .cards2 {
-  height: 480px;
-  width: 300px;
+  /* height: 480px; */
+  width: 260px;
   /* border: 1px solid; */
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   box-shadow: 0px 3px 10px grey;
   padding: 5px;
   border-radius: 5px;
@@ -453,32 +460,80 @@ select {
 }
 
 .corousel2 .cards2 img {
-  height: 350px;
+  height: 320px;
   min-width: 100%;
   border-radius: 5px;
   /* border: 1px solid; */
 }
-
+.corousel2 .cards2:hover {
+  box-shadow: 0px 3px 20px rgb(104, 104, 104);
+}
 .corousel2 .card-info p {
   color: rgb(165, 166, 167);
-  padding: 2px 5px;
+  padding: 2px;
 }
 
 .card-info button {
-  background-color: rgb(9, 100, 192);
+  background-color: rgb(6, 92, 179);
   color: white;
-  padding: 7px 10px;
-  border: 1px solid rgb(9, 100, 192);
+  padding: 7px 25px;
+  /* border: 1px solid rgb(9, 100, 192); */
   border-radius: 5px;
-  padding-left: 5px;
+  /* padding-left: 5px; */
+}
+.card-info button:hover {
+  background-color: rgb(3, 64, 126);
 }
 
+.box .box1 input[type="checkbox"]:checked {
+  border: 3px solid red;
+}
+.box .box1 label {
+  font-size: 15px;
+  padding: 5px 8px;
+  margin-left: 5px;
+  color: rgb(54, 54, 54);
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+.box .box1 label:hover {
+  font-size: 16px;
+}
+.box1 select {
+  padding: 5px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.box1 select:focus {
+  outline: none;
+  border-color: gray; /* Change border color on focus */
+}
+
+.box1 select option {
+  padding: 10px;
+}
+/* Payment */
+.paymentPage {
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(236, 235, 235);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .paymentmain {
-  width: 450px;
-  height: 590px;
-  border: 1px solid gray;
-  margin: 40px 490px;
-  box-shadow: 0px 4px 20px gray;
+  width: 480px;
+  height: 620px;
+  padding: 10px;
+  /* border: 1px solid gray; */
+  box-shadow: 0px 4px 10px gray;
+  background-color: white;
+  border-radius: 10px;
 }
 
 .pay1 {
@@ -536,14 +591,20 @@ select {
   color: black;
   margin-top: 10px;
   font-size: large;
+  font-family: sans-serif;
 }
 
 .pays2 p {
   color: rgba(7, 127, 246, 0.979);
   font-weight: bold;
+  /* border: 1px solid; */
 }
 h1 {
-  margin: 10px 20px;
+  margin: 0px 20px 15px 20px;
+  font-size: larger;
+  font-weight: 700;
+  color: red;
+  font-family: sans-serif;
 }
 
 p {
@@ -638,26 +699,31 @@ p {
   /* border: 1px solid; */
   margin-top: 10px;
   margin-left: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(to right, rgb(146, 152, 218), rgb(89, 89, 89));
 }
 .pays9 p {
   font-size: larger;
-  margin: 20px 60px;
+  /* margin: 20px 60px; */
   color: white;
 }
 
 .pay6 {
-  width: 100%;
-  height: 60px;
-  border: 1px solid rgb(19, 81, 237);
-  margin-bottom: 20px;
+  width: 95%;
+  height: 50px;
+  /* border: 1px solid rgb(19, 81, 237); */
+  border-radius: 7px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgb(25, 121, 246);
 }
 
 .pay6 p {
-  font-size: x-large;
-  margin-left: 140px;
-  margin-top: 10px;
+  font-size: larger;
   color: white;
 }
 
@@ -677,7 +743,7 @@ p {
   width: 500px;
   height: 400px;
   padding: 20px;
-  background-color: #fff;
+  background-color: #fff !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   display: flex;
@@ -798,4 +864,409 @@ p {
 
 .register-button:hover {
   background-color: #0056b3;
+}
+
+/* Lubna */
+.show {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c6d4e9;
+}
+.show-item {
+  width: 80%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.show-item-heading {
+  font-size: 30px;
+  font-weight: bold;
+}
+.show-btn {
+  padding: 5px 20px;
+  border-radius: 30px;
+  background-color: blue;
+  color: white;
+}
+.show-timings-container1 {
+  width: 100%;
+  height: 80px;
+  border: 1px solid black;
+  position: relative;
+}
+.show-timings-dates {
+  width: 50%;
+  display: flex;
+  position: absolute;
+  left: 100px;
+}
+.date-item {
+  margin: 15px;
+  width: 30%;
+  height: 80px;
+}
+.date-item h3 {
+  font-weight: bold;
+}
+.show-timings-search-status {
+  width: 100%;
+  height: 120px;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+.search-inside {
+  box-shadow: 0px 5px 5px rgb(202, 201, 201);
+  width: 80%;
+  border-radius: 10px;
+  border: 1px solid gray;
+  height: 80px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.search-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  padding: 10px;
+  height: 35px;
+  border-radius: 8px;
+  border: 1px solid gray;
+}
+
+.search-bar {
+  width: 30%;
+}
+
+.first-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.status-color {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+}
+
+.available {
+  background-color: green;
+}
+
+.filling-fast {
+  background-color: goldenrod;
+}
+
+.sold-out {
+  background-color: red;
+}
+
+.lapsed {
+  background-color: gray;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.subtitle-icon,
+.accessibility-icon {
+  font-size: 18px;
+}
+.search-bar {
+  position: relative;
+  display: inline-block;
+}
+
+.search-input {
+  padding-left: 35px;
+  width: 300px;
+  height: 35px;
+  font-size: 16px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+}
+.show-timings-container {
+  width: 100%;
+  margin: 0 auto;
+}
+.accordion-header {
+  width: 80%;
+  border-radius: 10px;
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid black;
+}
+.timings-row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+}
+.time-box {
+  padding: 15px 35px;
+  border: 1px solid green;
+  margin: 10px;
+  color: green;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.accordion-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Seeebi */
+.navseat {
+  height: 7vh;
+  width: 100%;
+
+  background-color: rgb(216, 216, 225);
+}
+.nav2 {
+  height: 7vh;
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+span {
+  font-size: 10px;
+  color: black;
+  font-weight: 50%;
+}
+select {
+  height: 50px;
+  width: 200px;
+  border: 1px solid rgb(211, 208, 208);
+}
+.hindi {
+  height: 50px;
+  width: 250px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.nav3 {
+  height: 50px;
+  width: 100%;
+  border-bottom: 1px solid rgb(209, 201, 201);
+  display: flex;
+  flex-direction: row;
+}
+.hindi1 {
+  font-size: 10px;
+}
+
+.line {
+  height: 80px;
+  width: 100%;
+  border-top: 10px solid;
+  border-radius: 50%;
+}
+.seat {
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.seat-content {
+  height: 150px;
+  width: 80%;
+  margin: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.seat-legend {
+  height: 60px;
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 100px;
+}
+.main {
+  height: 100vh;
+  width: 100%;
+}
+.small {
+  height: 12px;
+  width: 12px;
+  border: 1px solid rgb(51, 51, 51);
+  font-size: large;
+}
+.small1 .selectedSeat {
+  background-color: #003688;
+}
+
+.small1 .occupiedSeat {
+  background-color: #757575;
+}
+
+.small + div {
+  font-size: small;
+  font-family: sans-serif;
+}
+.small1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.main1 {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.carpayment {
+  height: 800px;
+  width: 40%;
+  border: 1px solid rgb(214, 209, 209);
+}
+.image-pic {
+  height: 50px;
+  width: 100%;
+  border: 1px solid rgb(143, 140, 140);
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.r1 {
+  height: 20px;
+  width: 20px;
+  border: 1px solid;
+  background-color: rgb(212, 212, 237);
+}
+.t1 {
+  height: 25px;
+}
+.image-pic2 {
+  height: 120px;
+  width: 100%;
+  border-bottom: 1px solid;
+}
+.button-grand {
+  height: 30px;
+  width: 350px;
+  border-radius: 10px;
+
+  background-color: rgb(61, 61, 127);
+  margin: 20px;
+  color: white;
+}
+.image-pic3 {
+  height: 120px;
+  width: 100%;
+  margin: 8px;
+  border-bottom: 1px solid;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+.image-pic4 {
+  height: 65px;
+  width: 100%;
+  border-bottom: 1px solid;
+}
+.image-pic5 {
+  height: 110px;
+  width: 100%;
+  border-bottom: 1px solid;
+}
+.image-pic6 {
+  height: 130px;
+  width: 100%;
+  border-bottom: 1px solid;
+}
+.image-pic7 {
+  height: 130px;
+  width: 100%;
+  border-bottom: 1px solid;
+}
+.seat-screen {
+  font-size: 12px;
+  font-weight: bold;
+}
+.seats {
+  height: 32px;
+  width: 4%;
+  border: 2px solid rgb(92, 92, 92);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: small;
+  margin: 3px;
+}
+.car1 .bookedSeat {
+  background-color: gray !important;
+  cursor: no-drop;
+}
+.car1 {
+  width: 95%;
+  /* height: 200px; */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* border: 1px solid; */
+
+  /* padding: 10px; */
+}
+.seats ~ .space {
+  height: 10px;
+  min-width: 10px;
+  color: transparent;
 }
