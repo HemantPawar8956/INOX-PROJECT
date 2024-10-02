@@ -2,16 +2,16 @@ import React, { useContext } from "react";
 import { globalVar } from "../globalContext/GlobalContext";
 import { ImCross } from "react-icons/im";
 import banglore from "../assests/banglore.jpg";
-import delhi from "../assests/delhincr.jpg";
+import delhi from "../assests/delhi.png";
 import mumbai from "../assests/mumbai.jpg";
 import hyderabad from "../assests/hyderabad.jpg";
 
 const Sider = () => {
   let staticCity = [
-    { name: "Ahmedabad", image: { hyderabad } },
-    { name: "Delhi-NCR", image: { delhi } },
-    { name: "Mumbai-All", image: { mumbai } },
-    { name: "Bengaluru", image: { banglore } },
+    { name: "Ahmedabad", image: hyderabad },
+    { name: "Delhi-NCR", image:  delhi  },
+    { name: "Mumbai-All", image:  mumbai  },
+    { name: "Bengaluru", image:  banglore  },
   ];
   let cities = [
     "Ahmedabad",
@@ -38,9 +38,9 @@ const Sider = () => {
     "Coimbatore",
     "Cuddalore",
     "Cuttack",
-    // Add more cities as needed
+
   ];
-  let { siderVisible, setSiderVisible } = useContext(globalVar);
+  let { siderVisible, setSiderVisible ,userLocation,setUserLocation} = useContext(globalVar);
   let handleClose = (e) => {
     e.stopPropagation();
     setSiderVisible(false);
@@ -66,9 +66,8 @@ const Sider = () => {
         <div className="static">
           <div className="city-grid">
             {staticCity.map((city, index) => (
-              <div key={index} className="city-tile">
+              <div key={index} className="city-tile" onClick={()=>{setUserLocation(city.name)}}>
                 <img src={city.image} alt="" />
-                {city.name}
               </div>
             ))}
           </div>
@@ -80,7 +79,7 @@ const Sider = () => {
         </div>
         <ul>
           {cities.map((city, index) => (
-            <li key={index}>{city}</li>
+            <li key={index} onClick={()=>{setUserLocation(city)}}>{city}</li>
           ))}
         </ul>
       </div>
