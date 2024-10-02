@@ -5,6 +5,8 @@ import Showtimings from "./../components/Showtimings";
 import Cinemas from "./../components/Cinemas";
 import Payment from "./../components/Payment";
 import SeatLayout from "./../components/SeatLayout";
+import Booking from "../components/Booking";
+import SignUp from "../pages/SignUp";
 
 export let routingVar = createBrowserRouter([
   {
@@ -15,6 +17,14 @@ export let routingVar = createBrowserRouter([
       {
         path: "",
         element: <Home />,
+      },
+      {
+        path: "/booking",
+        element: <Booking/>,
+      },
+      {
+        path: "/signup",
+        element: <SignUp/>,
       },
       {
         path: "/showtimings",
