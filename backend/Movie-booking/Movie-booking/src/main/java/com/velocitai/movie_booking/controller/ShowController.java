@@ -23,6 +23,7 @@ public class ShowController {
 	  @Autowired
 	    private ShowServiceImpl showServiceImpl;
 	    
+	  
 	    // Find shows by movie name
 	    @GetMapping("/movie")
 	    public ResponseEntity<List<Show>> getShowsByMovieName(@RequestParam String movieName) {
