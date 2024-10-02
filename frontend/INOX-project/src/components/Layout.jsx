@@ -6,6 +6,8 @@ import Sider from "./Sider";
 import { Outlet } from "react-router-dom";
 
 import LoginPage from "../pages/LoginPage";
+import Booking from "./Booking";
+import SignUp from "../pages/SignUp";
 // import RegisterPage from "../pages/RegisterPage";
 
 const Layout = () => {
@@ -15,10 +17,12 @@ const Layout = () => {
 
   return (
     <div>
-      {siderVisible && <Sider />}
+     {/*  {siderVisible && <Sider />}
       {loginPanel && <LoginPage />}
       <Navbar />
-      <Outlet />
+      <Outlet /> */}
+     {/*  <Booking/> */}
+     <SignUp/>
     </div>
   );
 };
