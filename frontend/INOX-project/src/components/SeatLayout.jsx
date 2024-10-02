@@ -1,5 +1,6 @@
-import { space } from "postcss/lib/list";
+
 import React, { useState } from "react";
+import Payment from "./Payment";
 
 const SeatLayout = () => {
   let seatSeq = "A";
@@ -266,6 +267,7 @@ const SeatLayout = () => {
           </section>
         </section>
       </section>
+      <Payment/>
       {/* <section className="carpayment">
         <div className="image-pic">
           <h1>Booking Summary</h1>
