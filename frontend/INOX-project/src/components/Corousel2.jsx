@@ -126,7 +126,7 @@ const Corousel2 = () => {
             <label htmlFor="Subtitle">With Subtitle</label>
           </div>
           <div className="box1">
-            <select name="" id="">
+            <select name="" id="" className="GenreDropdown">
               <option value="">All Genres</option>
               <option value="">Action</option>
               <option value="">Adventures</option>
