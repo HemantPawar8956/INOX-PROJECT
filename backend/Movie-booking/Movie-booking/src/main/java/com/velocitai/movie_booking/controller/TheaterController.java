@@ -22,8 +22,6 @@ public class TheaterController {
 	@Autowired
 	private TheaterServiceImpl theaterService;
 
-	
-	 
 
 	    // Get theaters by address
 	    @GetMapping("/gettheaters/{address}")
@@ -31,42 +29,36 @@ public class TheaterController {
 	        return theaterService.findTheaterByLocation(address);
 	    }
 	    
-	    // Add a new theater
-	    @PostMapping("/add")
-	    public ResponseEntity<Theater> addTheater(@RequestBody Theater theater) {
-	        return theaterService.saveTheater(theater);
-	    }
-	@DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteTheater(@PathVariable Long id) {
+	    @DeleteMapping("/delete/{id}")
+	    public ResponseEntity<?> deleteTheater(@PathVariable Long id) {
         return theaterService.deleteTheater(id);   
-    }
-	 @PutMapping("/update/{id}")
+	    }
+	    
+	    @PutMapping("/update/{id}")
 	    public ResponseEntity<Theater> updateTheater( @RequestBody Theater theater) {
-	        
-	            return theaterService.updateTheater(theater);
-	}
-	@PostMapping("/save")
-	public ResponseEntity<Theater> addTheater(@RequestBody Theater theater) {
+	    return theaterService.updateTheater(theater);
+	    }
+	    
+	    @PostMapping("/save")
+	    public ResponseEntity<Theater> addTheater(@RequestBody Theater theater) {
 		return theaterService.saveTheater(theater);
-	}
+	    }
 
-	// Get a theater by ID
-	@GetMapping("/{id}")
-	public ResponseEntity<Theater> getTheaterById(@PathVariable long id) {
+	    // Get a theater by ID
+	    @GetMapping("/{id}")
+	    public ResponseEntity<Theater> getTheaterById(@PathVariable long id) {
 		return theaterService.findTheaterById(id);
-	}
-
-	
-
-	// findAllTheaters
-	@GetMapping("/all")
-	public ResponseEntity<List<Theater>> getAllTheaters() {
+	    }
+	    
+	    // findAllTheaters
+	    @GetMapping("/all")
+	    public ResponseEntity<List<Theater>> getAllTheaters() {
 		return theaterService.findAllTheater();
-	}
+	    }
 
-	// findTheaterByMovieName
-	@GetMapping("/movie/{movieName}")
-	public ResponseEntity<List<Theater>> findTheaterByMovieName(@PathVariable String movieName) {
+	    // findTheaterByMovieName
+	    @GetMapping("/movie/{movieName}")
+	    	public ResponseEntity<List<Theater>> findTheaterByMovieName(@PathVariable String movieName) {
 		return theaterService.findTheaterByMovieName(movieName);
 	}
 
