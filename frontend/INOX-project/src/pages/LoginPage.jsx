@@ -25,16 +25,16 @@ const LoginPage = () => {
 
     try {
       console.log(user.password);
-      //   const response = await axios.post(
-      //     `http://localhost:8080/auth/login?email=${user.email}&password=${user.password}`,
-      //     user,
-      //     {
-      //       headers: {
-      //         "Content-Type": "application/json ,text/plain, /",
-      //       },
-      //     }
-      //   );
-      //   console.log("User authenticated:", response);
+        const response = await axios.post(
+           `http://localhost:8088/auth/login?email=${user.email}&password=${user.password}`,
+            user,
+           {
+             headers: {
+               "Content-Type": "application/json ,text/plain, /",
+             },
+           }
+         );
+         console.log("User authenticated:", response);
       localStorage.setItem(
         "auth",
         JSON.stringify({
