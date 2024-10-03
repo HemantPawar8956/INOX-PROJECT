@@ -80,8 +80,6 @@ public class ShowServiceImp implements ShowService {
 
 
 
-	
-
 	@Override
     public ResponseEntity<List<Show>> findShowByTheater(long theaterId) {
         List<Show> shows = showRepository.findByTheaterId(theaterId);
