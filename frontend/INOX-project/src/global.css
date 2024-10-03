@@ -1,10 +1,10 @@
-/* * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Navbar 
+/* Navbar */
 .navbar {
   width: 100%;
   height: 10vh;
@@ -14,7 +14,7 @@
   padding: 10px 20px;
   background-color: #fff;
 }
-/* Logo 
+/* Logo */
 .logo img {
   height: 29px;
   width: 60px;
@@ -144,7 +144,7 @@
   background-color: rgb(224, 222, 222);
 }
 
-/* second nav  
+/* second nav  */
 
 .quick-book-container {
   display: flex;
@@ -241,9 +241,9 @@
   background-color: #0056b3;
 }
 
-/* sider 
+/* sider */
 .sideBar {
-  /* height: 100vh; 
+  /* height: 100vh; */
   width: 100%;
   background-color: rgba(0, 0, 0, 0.684);
   position: fixed;
@@ -339,17 +339,4 @@
 .city-tile:hover {
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
-} */
-
-/* addnewmoviebtn */
-.new-btn button{
-  border: 1px solid;
-  height: 40px;
-margin-left: 400px;
-margin-top: 15px;
-background-color: #003688;
-color: white;
-width: 150px;
-padding: 5px;
-border-radius: 10px;
 }
