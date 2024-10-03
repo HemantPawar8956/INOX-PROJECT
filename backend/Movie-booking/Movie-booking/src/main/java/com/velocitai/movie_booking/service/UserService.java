@@ -8,19 +8,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.velocitai.movie_booking.model.User;
 
+import jakarta.mail.Multipart;
+
 @Service
 public interface UserService {
 
-	 public List<User> allUsers();
-
+	    public List<User> allUsers();
 		public ResponseEntity<User> findUserById(long id);
-
 		public ResponseEntity<User> UpdateUser(User user);
-
-		public ResponseEntity<?> deleteUser(User user);
-		
-		public ResponseEntity<?> saveUserImage(User user,MultipartFile file);
-		
+		public ResponseEntity<User> deleteUser(User user);
+		public ResponseEntity<User> saveUserImage(User user,MultipartFile file);
 		public ResponseEntity<?> getUserImage();
-
 }

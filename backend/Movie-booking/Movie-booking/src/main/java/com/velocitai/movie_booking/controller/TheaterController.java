@@ -36,18 +36,10 @@ public class TheaterController {
 	    public ResponseEntity<Theater> addTheater(@RequestBody Theater theater) {
 	        return theaterService.saveTheater(theater);
 	    }
-
-
-	   
-	
-	
-	
 	@DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteTheater(@PathVariable Long id) {
-        return theaterService.deleteTheater(id);
-        
+        return theaterService.deleteTheater(id);   
     }
-
 	 @PutMapping("/update/{id}")
 	    public ResponseEntity<Theater> updateTheater( @RequestBody Theater theater) {
 	        
