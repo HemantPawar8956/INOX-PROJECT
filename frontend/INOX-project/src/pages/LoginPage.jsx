@@ -44,9 +44,9 @@ let handleChange = (e) => {
       localStorage.setItem(
         "auth",
         JSON.stringify({
-          token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI3OTM2MjU3LCJleHAiOjE3Mjc5NzIyNTd9.JF5yDl8_DPaKBKuBt2P6sscjrpop9KcZ1DwnnUFHH7Q",
+          token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrYW51MTIzQGdtYWlsLmNvbSIsImlhdCI6MTcyNzk1MjA5NiwiZXhwIjoxNzI3OTg4MDk2fQ.DhI29sbnh2YIemtu9dn3-ky-xEWhMAec4wE2bPFhsSI",
           user: {
-            role: loginType.toLowerCase(),
+            role: "user",
           },
         })
       );
