@@ -1,9 +1,15 @@
+<<<<<<< HEAD
 !SESSION 2024-09-30 11:50:18.496 -----------------------------------------------
 eclipse.buildId=4.33.0.20240905-0613
+=======
+!SESSION 2024-09-30 11:44:40.160 -----------------------------------------------
+eclipse.buildId=4.32.0.20240606-1231
+>>>>>>> c391d100b6ca7084ab64d91b103dfa579743cb21
 java.version=22.0.2
 java.vendor=Eclipse Adoptium
 BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
 Framework arguments:  -product org.eclipse.epp.package.jee.product
+<<<<<<< HEAD
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product -data D:\inox project\INOX-PROJECT\backend\Movie-booking\Movie-booking
 
 !ENTRY ch.qos.logback.classic 1 0 2024-09-30 11:50:21.132
@@ -15,6 +21,39 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.e
 !ENTRY org.eclipse.egit.ui 2 0 2024-09-30 11:50:28.425
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\siddi'. If this is
+=======
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY ch.qos.logback.classic 1 0 2024-09-30 11:45:23.390
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-09-30 11:45:45.717
+!MESSAGE Logback config file: E:\INOX_project\INOX-PROJECT\backend\Movie-booking\Movie-booking\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-09-30 11:45:54.774
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\HP'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2024-09-30 11:46:27.882 -----------------------------------------------
+eclipse.buildId=4.32.0.20240606-1231
+java.version=22.0.2
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product -data E:\INOX_project\INOX-PROJECT\backend\Movie-booking\Movie-booking
+
+!ENTRY ch.qos.logback.classic 1 0 2024-09-30 11:46:31.045
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-09-30 11:46:32.309
+!MESSAGE Logback config file: E:\INOX_project\INOX-PROJECT\backend\Movie-booking\Movie-booking\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-09-30 11:46:37.911
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\HP'. If this is
+>>>>>>> c391d100b6ca7084ab64d91b103dfa579743cb21
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.

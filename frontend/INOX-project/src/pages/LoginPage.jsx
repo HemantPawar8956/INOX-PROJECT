@@ -4,12 +4,22 @@ import { useNavigate } from "react-router-dom";
 import { globalVar } from "../globalContext/GlobalContext";
 
 const LoginPage = () => {
+<<<<<<< HEAD
   let navigate = useNavigate();
   let { loginPanel, setLoginPanel } = useContext(globalVar);
   let [user, setUser] = useState({
     email: "",
     password: "",
   });
+=======
+  return (
+    <div >
+    hello
+      
+    </div>
+  )
+}
+>>>>>>> c391d100b6ca7084ab64d91b103dfa579743cb21
 
   let handleChange = (e) => {
     let { name, value } = e.target;
