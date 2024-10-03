@@ -31,5 +31,8 @@ public class Theater {
 	private String address;
 	@OneToMany
 	private List<Show> showTime;
+	
+	@OneToMany(mappedBy = "theater") // Indicates the 'theater' field in the Show class
+	private List<Show> showTimes;
 
 }

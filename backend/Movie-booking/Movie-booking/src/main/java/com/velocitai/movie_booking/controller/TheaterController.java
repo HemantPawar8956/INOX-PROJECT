@@ -14,46 +14,58 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.velocitai.movie_booking.model.Theater;
-import com.velocitai.movie_booking.service.TheaterService;
+
+import com.velocitai.movie_booking.service.TheaterServiceImpl;
+
+
 
 @RestController
 @RequestMapping("/theaters")
 public class TheaterController {
 	@Autowired
-    private TheaterService theaterService;
+    private TheaterServiceImpl theaterService;
 
 	
 	 
 
-	    // Get theaters by address
-	    @GetMapping("/gettheaters/{address}")
-	    public ResponseEntity<List<Theater>> searchByAddress(@PathVariable String address) {
-	        return theaterService.findTheaterByLocation(address);
-	    }
-	    
-	    // Add a new theater
-	    @PostMapping("/add")
+	 @PostMapping("/save")
 	    public ResponseEntity<Theater> addTheater(@RequestBody Theater theater) {
 	        return theaterService.saveTheater(theater);
 	    }
 
-
-	   
-	
-	
-	
-	@DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteTheater(@PathVariable Long id) {
-        return theaterService.deleteTheater(id);
-        
-    }
-
-	 @PutMapping("/update/{id}")
-	    public ResponseEntity<Theater> updateTheater( @RequestBody Theater theater) {
-	        
-	            return theaterService.updateTheater(theater);
-	        
+	    // Get a theater by ID
+	    @GetMapping("/{id}")
+	    public ResponseEntity<Theater> getTheaterById(@PathVariable long id) {
+	        return theaterService.findTheaterById(id);
 	    }
-	 
-	
-}
+
+	    // Update a theater
+	    @PutMapping("/update/{id}")
+	    public ResponseEntity<Theater> updateTheater(@RequestBody Theater theater) {
+	        return theaterService.updateTheater(theater);
+	    }
+
+	    // Delete a theater
+	    @DeleteMapping("/delete/{id}")
+	    public ResponseEntity<?> deleteTheater(@PathVariable long id) {
+	        return theaterService.deleteTheater(id);
+	    }
+
+	    // findAllTheaters
+	    @GetMapping("/all")
+	    public ResponseEntity<List<Theater>> getAllTheaters() {
+	        return theaterService.findAllTheater();
+	    }
+
+	 // findTheaterByMovieName
+	    @GetMapping("/movie/{movieName}")
+	    public ResponseEntity<List<Theater>> findTheaterByMovieName(@PathVariable String movieName) {
+	        return theaterService.findTheaterByMovieName(movieName);
+	    }
+
+	    // findTheaterByLocation
+	    @GetMapping("/location/{location}")
+	    public ResponseEntity<List<Theater>> findTheaterByLocation(@PathVariable String location) {
+	        return theaterService.findTheaterByLocation(location);
+	    }
+	}
