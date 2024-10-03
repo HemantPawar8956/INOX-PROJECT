@@ -11,7 +11,7 @@ const LoginPage = () => {
     password: "",
   });
  
-}
+
 
   let handleChange = (e) => {
     let { name, value } = e.target;
