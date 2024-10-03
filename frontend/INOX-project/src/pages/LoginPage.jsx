@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { globalVar } from "../globalContext/GlobalContext";
-
+import { jwtDecode } from "jwt-decode";
 const LoginPage = () => {
   let navigate = useNavigate();
-  let { loginPanel, setLoginPanel } = useContext(globalVar);
+  let { loginPanel, setLoginPanel, loginTypes, loginType, setLoginType } = useContext(globalVar);
+  
+  // Default user state with email and password
   let [user, setUser] = useState({
     email: "",
     password: "",
@@ -20,30 +22,30 @@ let handleChange = (e) => {
     });
   };
 
+  // Handle form submission
   let handleSubmit = async (e) => {
     e.preventDefault();
     e.stopPropagation();
 
     try {
       console.log(user.password);
-      //   const response = await axios.post(
-      //     `http://localhost:8080/auth/login?email=${user.email}&password=${user.password}`,
-      //     user,
+         const response = await axios.post(
+           `http://localhost:8080/auth/login?email=${user.email}&password=${user.password}`
       //     {
       //       headers: {
       //         "Content-Type": "application/json ,text/plain, /",
       //       },
-      //     }
-      //   );
-      //   console.log("User authenticated:", response);
+       //   }
+         );
+         console.log("User authenticated:", response);
 
-    
+        
       localStorage.setItem(
         "auth",
         JSON.stringify({
-          token: "xyzhgehcknhfkhf",
+          token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrYW51MTIzQGdtYWlsLmNvbSIsImlhdCI6MTcyNzk1MjA5NiwiZXhwIjoxNzI3OTg4MDk2fQ.DhI29sbnh2YIemtu9dn3-ky-xEWhMAec4wE2bPFhsSI",
           user: {
-            role: "admin",
+            role: "user",
           },
         })
       );
@@ -63,45 +65,62 @@ let handleChange = (e) => {
       console.error("There was an error authenticating the user!", error);
     }
   };
-  console.log(user);
+  const handleSignUpClick = () => {
+    navigate("/signup");
+  };
+
   return (
     <section
       className="mainCont"
       onClick={(e) => {
-        e.stopPropagation(), setLoginPanel(!loginPanel);
+        e.stopPropagation();
+        setLoginPanel(!loginPanel);
       }}>
-      <form
-        className="login-form"
-        onSubmit={handleSubmit}
-        onClick={(e) => {
-          e.stopPropagation(), setLoginPanel(true);
-        }}>
-        <h2 className="login-title">Login Page</h2>
+      <section className="headlogin">
+       
 
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={user.email}
-            onChange={handleChange}
-            required
-            className="input-field"
-          />
+        <form
+          className="login-form"
+          onSubmit={handleSubmit}
+          onClick={(e) => {
+            e.stopPropagation();
+            setLoginPanel(true);
+          }}>
+             <div className="mainadminbtn">
+        {loginTypes.map((ele) => (
+         <button key={ele.loginVal} onClick={() => setLoginType(ele.loginVal)} 
+            className={`adminbtns ${loginType === ele.loginVal ? "active" : ""}`}>  
+            {ele.loginName}
+          </button> 
+        ))}
         </div>
-        <div className="form-group">
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={user.password}
-            onChange={handleChange}
-            required
-            className="input-field"
-          />
-        </div>
-        <button className="login-button">Login</button>
-      </form>
+        <h1 className="login-title">Login as {loginType}</h1>
+          <div className="form-group">
+            <label>Email:</label>
+            <input
+              type="email"
+              name="email"
+              value={user.email}
+              onChange={handleChange}
+              required
+              className="input-field"
+            />
+          </div>
+          <div className="form-group">
+            <label>Password:</label>
+            <input
+              type="password"
+              name="password"
+              value={user.password}
+              onChange={handleChange}
+              required
+              className="input-field"
+            />
+          </div>
+          <button className="login-button">Login</button>
+          <button className="signupbtn" onClick={handleSignUpClick}>SignUp</button>
+        </form>
+      </section>
     </section>
   );
 };

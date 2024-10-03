@@ -794,7 +794,7 @@ p {
   text-align: center;
   margin-bottom: 20px;
   font-size: 24px;
-  color: #333;
+  color: black;
 }
 
 .form-group {
@@ -804,7 +804,6 @@ p {
 .form-group label {
   display: block;
   font-size: 14px;
-  color: #666;
   margin-bottom: 5px;
 }
 
@@ -825,7 +824,7 @@ p {
 .login-button {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #ff7300;
   color: #fff;
   font-size: 16px;
   border: none;
@@ -835,8 +834,56 @@ p {
 }
 
 .login-button:hover {
-  background-color: #0056b3;
+  background-color: #b34800;
 }
+
+.mainadminbtn {
+  width: 350px;
+  height: 100px;
+ /*  border: 1px solid; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+  gap: 10px;
+}
+
+.adminbtns {
+  width: 100%;
+  max-width: 150px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  background-color: #00defc;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 5px black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.adminbtns:hover {
+  background-color:#00fcc5;
+}
+
+
+.signupbtn{
+  font-size: 18px;
+  text-decoration: underline;
+  color: black;
+  font-weight: bold;
+}
+
+.signupbtn:hover{
+  color: red;
+}
+
+
+
+
+
+
 
 /* .mainCont1 { */
 /* display: flex; */
@@ -1329,8 +1376,8 @@ p {
 
 /* mantasha */
 /* addmovies form */
-.main-body {
-}
+/* .main-body {
+} */
 /* SelectLocation */
 
 .selectLocation {
@@ -1543,3 +1590,100 @@ p {
   font-size: 14px; 
   cursor: pointer; 
 }
+
+/* SEEMA SIGNUP PAGE */
+/* Main section container */
+.signMain {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; /* You can adjust the background color */
+}
+
+/* Signup form container */
+.signMain .signup-form {
+  width: 450px;
+  height: 600px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Form title */
+.signMain .signup-form .form-title {
+  font-family: 'Arial', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form group */
+.signMain .signup-form .form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form label */
+.signMain .signup-form .form-group .form-label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+/* Form input */
+.signMain .signup-form .form-group .form-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.signMain .signup-form .form-group .form-input:focus {
+  border-color: #007bff;
+}
+
+/* Submit button */
+.signMain .signup-form .submit-btn {
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signMain .signup-form .submit-btn:hover {
+  background-color: #0056b3;
+}
+/* ********************************* */
+
+/* Form container */
+/* .login-form { */
+  /* width: 100%; */
+  /* max-width: 400px; */
+  /* margin: 0 auto; */
+  /* padding: 20px; */
+  /* background-color: white; */
+  /* border-radius: 8px; */
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+/* } */
+
+

@@ -8,8 +8,9 @@ import Payment from "./../components/Payment";
 import SeatLayout from "./../components/SeatLayout";
 import Addmovie from './../components/Addmovie';
 import Addtheatre from "../components/Addtheatre";
-import ProtectedRoute from "../Auth/ProtectedRoute";
+import ProtectedRoute from './../Auth/ProtectedRoute';
 import LoginPage from "../pages/LoginPage";
+import SelectLocation from './../components/SelectLocation';
 
 export let routingVar = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ export let routingVar = createBrowserRouter([
       {
         path: "",
         element: <Home />,
+      },
+      {
+        path: "selectlocation",
+        element: <SelectLocation />,
       },
       {
         path: "/showtimings",
@@ -60,4 +65,25 @@ export let routingVar = createBrowserRouter([
     element: <LoginPage />,
 
   },
+  {
+    path: "/signup",
+    element: <SignUp/>, 
+  },
+  {
+    path: "/admin",
+    element: (
+      <ProtectedRoute role="admin">
+        <AdminPage/>
+      </ProtectedRoute>
+    )
+  },
+  {
+    path: "/user",
+    element: (
+      <ProtectedRoute role="user">
+        <UserPage/>
+      </ProtectedRoute>
+    )
+  }
+  
 ]);

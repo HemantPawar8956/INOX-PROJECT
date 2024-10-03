@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 const QuickBookNav = () => {
@@ -26,6 +27,18 @@ const QuickBookNav = () => {
     e.preventDefault();
     // axios
   };
+console.log(change)
+  let handleMovieData= async()=>{
+  
+    try{
+        let data =  await axios.get(`http://localhost:8080/open/${change.toLowerCase()}s/alls`)
+        console.log(data)
+    }
+
+    catch{
+console.log("helll")
+    }
+  }
   console.log(data);
   return (
     <div className="quick-book-container">
@@ -39,6 +52,7 @@ const QuickBookNav = () => {
       <form className="quick-book-options" onSubmit={handleSubmit}>
         <div className="option">
           <input
+            onClick={handleMovieData}
             type="text"
             name={change}
             placeholder={`Select ${change}`}

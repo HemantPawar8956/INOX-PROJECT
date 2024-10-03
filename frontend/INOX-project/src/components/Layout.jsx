@@ -7,6 +7,7 @@ import { Outlet } from "react-router-dom";
 
 import LoginPage from "../pages/LoginPage";
 import Addtheatre from "./Addtheatre";
+import SelectLocation from "./SelectLocation";
 // import RegisterPage from "../pages/RegisterPage";
 import SelectLocation from './SelectLocation';
 
