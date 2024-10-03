@@ -7,6 +7,7 @@ import Payment from "./../components/Payment";
 import SeatLayout from "./../components/SeatLayout";
 import ProtectedRoute from "./../Auth/ProtectedRoute";
 import LoginPage from "./../pages/LoginPage";
+import AllBookings from "../components/AllBookings";
 
 export let routingVar = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export let routingVar = createBrowserRouter([
         path: "/Booking",
         element: <Cinemas />,
       },
+      {
+        path:"/allbookings",
+        element:<AllBookings/>
+      }
     ],
   },
   {

@@ -22,6 +22,7 @@ const GlobalContext = ({ children }) => {
         setLocation,
         userLocation,
         setUserLocation,
+        loginType, setLoginType
       }}>
       {children}
     </Provider>
