@@ -8,6 +8,7 @@ import { Outlet } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import Addtheatre from "./Addtheatre";
 // import RegisterPage from "../pages/RegisterPage";
+import SelectLocation from './SelectLocation';
 
 const Layout = () => {
   let { siderVisible, setSiderVisible, loginPanel, setLoginPanel ,location ,setLocation} =
@@ -17,7 +18,7 @@ const Layout = () => {
   return (
     <div>
       {siderVisible && <Sider />}
-      {location && <SelectLocation/>}
+      {/* {location && <SelectLocation/>} */}
       {loginPanel && <LoginPage />}
       <Navbar />
       <Outlet />

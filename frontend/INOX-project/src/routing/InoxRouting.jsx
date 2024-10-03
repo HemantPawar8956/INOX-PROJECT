@@ -8,6 +8,8 @@ import Payment from "./../components/Payment";
 import SeatLayout from "./../components/SeatLayout";
 import Addmovie from './../components/Addmovie';
 import Addtheatre from "../components/Addtheatre";
+import ProtectedRoute from "../Auth/ProtectedRoute";
+import LoginPage from "../pages/LoginPage";
 
 export let routingVar = createBrowserRouter([
   {
