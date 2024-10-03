@@ -1314,7 +1314,9 @@ p {
   color: transparent;
 }
 
-/* kanupriya */
+/* mantasha */
+/* addmovies form */
+.main-body {
 /* SelectLocation */
 
 .selectLocation {
@@ -1326,290 +1328,124 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.5); /* Dark background */
-  z-index: 10;
+  background-color: #f4f4f4;
 }
 
-.selectLocation .horizontalBar {
-  background-color: white;
+.center-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.center-section .form-container {
+  background-color: #fff;
   padding: 20px;
-  width: 80%;
-  height: 70%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.center-section .form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.center-section .form-container .form-group {
+  margin-bottom: 15px;
+}
+
+.center-section .form-container .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.center-section .form-container .form-group input,
+.center-section .form-container .form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #fafafa;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.center-section .form-container .form-group input:focus,
+.center-section .form-container .form-group select:focus {
+  border-color: #007bff;
+  outline: none;
+  background-color: #fff;
+}
+
+.center-section .form-container .form-actions {
   display: flex;
   justify-content: space-between;
-  align-content: space-between;
-  gap: 20px;
-  border-radius: 10px;
-  overflow-y: auto;
 }
-.selectLocation .input-container h3 {
-  padding: 10px;
-  font-size: 24px;
-  color: #003688;
-  font-weight: 900;
-}
-.selectLocation .btn {
+
+.center-section .form-container .form-actions button {
+  padding: 10px 20px;
   border: none;
-  font-size: 14px;
-}
-.selectLocation .input-container input {
-  width: 80%;
-  padding: 8px 20px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  font-size: 16px;
+  cursor: pointer;
+  color: #fff;
+  transition: background-color 0.3s ease;
 }
 
-.selectLocation .city-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+.center-section .form-container .form-actions .update-btn {
+  background-color: rgb(106, 106, 248);
 }
 
-.selectLocation .city-tile img {
+
+.center-section .form-container .form-actions .delete-btn {
+  background-color: rgb(106, 106, 248);
+}
+
+/* for popup */
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
 }
 
-.selectLocation .city-list ul {
-  list-style-type: none;
-  padding: 5px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 80%;
 }
-.selectLocation .city-list h4 {
-  padding: 10px;
-  font-size: 24px;
-  color: #003688;
-  font-weight: 800;
+
+.modal-content h3 {
+  margin-bottom: 20px;
 }
-.selectLocation .city-list li {
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+
+.modal-content p {
+  margin: 10px 0;
+}
+
+.modal-actions {
   text-align: center;
-  font-size: 15px;
 }
-.selectLocation .city-list li:hover {
-  background-color: #0b57ca61;
-}
-@tailwind utilities;
-
-.navseat{
-    height: 7vh;
-    width: 100%;
-    
-    background-color: rgb(216, 216, 225);
-   
-    
-}
-.nav2{
-    height: 7vh;
-    width: 50%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-}
-span{
-    font-size: 10px;
-    color: black;
-    font-weight:50%;
-}
-select{
-    height: 50px;
-    width: 200px;
-    border: 1px solid rgb(211, 208, 208);;
-}
-.hindi{
-    height: 50px;
-    width:250px;
-    
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-around;
-
-
-
-}
-.nav3{
-    height: 50px;
-    width: 100%;
-    border-bottom: 1px solid rgb(209, 201, 201);
-    display: flex;
-    flex-direction: row;
-
-}
-.hindi1{
-    font-size: 10px;
-}
-
-.line{
-    height: 80px;
-    width: 100%;
-    border-top: 10px solid;
-    border-radius: 50%;
-}
-.seat{
-    height: 100vh;
-    width:100%;
-    
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.seat-content{
-    height: 150px;
-    width: 80%;
-    margin: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-}
-.seat-legend{
-   
-    height: 60px;
-    width: 350px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-content: space-around;
-    font-size: 100px;
-}
-.main{
-    height: 100vh;
-    width: 100%;
-    
-
-}
-.small{
-    height: 10px;
-    width: 10px;
-    border: 1px solid;
-}
-.small1{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-.main1{
-    height: 100vh;
-    width: 100%;
-    display: flex;
- 
-
-}
-::-webkit-scrollbar{
-    display: none;
-}
-.carpayment{
-    height: 800px;
-    width: 40%;
-    border: 1px solid rgb(214, 209, 209);
-}
-.image-pic{
-    height: 50px;
-    width: 100%;
-    border: 1px solid rgb(143, 140, 140);
-    font-size: 15px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-}
-.r1{
-    height: 20px;
-    width: 20px;
-    border: 1px solid;
-    background-color: rgb(212, 212, 237);
-    
-}
-.t1{
-    height: 25px;
-
-}
-.image-pic2{
-    height: 120px;
-    width: 100%;
-    border-bottom: 1px solid;
-
-}
-.button-grand{
-    height: 30px;
-    width: 350px;
-    border-radius: 10px;
-
-    background-color: rgb(61, 61, 127);
-    margin: 20px;
-    color: white;
-}
-.image-pic3{
-    height: 120px;
-    width: 100%;
-    margin: 8px;
-    border-bottom: 1px solid;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 5px;
-
-}
-.image-pic4{
-    height: 65px;
-    width: 100%;
-    border-bottom: 1px solid;
-
-}
-.image-pic5{
-    height: 110px;
-    width: 100%;
-    border-bottom: 1px solid;
-
-}
-.image-pic6{
-    height: 130px;
-    width: 100%;
-    border-bottom: 1px solid;
-
-}
-.image-pic7{
-    height: 130px;
-    width: 100%;
-    border-bottom: 1px solid;
-
-}
-.seat-screen{
-    font-size: 12px;
-    font-weight: bold;
-}
-.cards{
-    height: 50px;
-    width: 50%;
-    border: 2px solid;
-
-}
-.car1{
-    width: 80%;
-    height:600px;
-
-    /* padding: 10px; */
-}
-.cards{
-    
-    padding: 1px 2px;
-    margin-bottom: 8px;
-    border-radius: 5px;
-    margin: 3px;
-    
-    
-}
-.cards .space{
-    height: 10px;
-    width: 10px;
-    background-color: red;
+.close {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
