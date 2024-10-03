@@ -1,56 +1,139 @@
 package com.velocitai.movie_booking.service.imp;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.velocitai.movie_booking.dao.MovieRepository;
+import com.velocitai.movie_booking.dao.ShowRepository;
+import com.velocitai.movie_booking.dao.TheaterRepository;
 import com.velocitai.movie_booking.model.Movie;
+import com.velocitai.movie_booking.model.Show;
+import com.velocitai.movie_booking.model.Theater;
 import com.velocitai.movie_booking.service.MovieService;
 
 @Service
 public class MovieServiceImp implements MovieService {
-	
+
 	@Autowired
 	MovieRepository movieRepository;
 
+	@Autowired
+	TheaterRepository theaterRepository;
+
+	@Autowired
+	ShowRepository showRepository;
+
 	@Override
 	public ResponseEntity<Movie> saveMovie(Movie movie) {
-		// TODO Auto-generated method stub
-		return null;
+
+		if (movie.getMoviename() != null) {
+			try {
+				Movie savedMovie = movieRepository.save(movie);
+				return ResponseEntity.status(HttpStatus.CREATED).body(savedMovie);
+			} catch (Exception e) {
+				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+			}
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+
 	}
 
 	@Override
 	public ResponseEntity<Movie> findMovieById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Movie> optionalMovie = movieRepository.findById(id);
+		if (optionalMovie.isPresent()) {
+			return ResponseEntity.ok(optionalMovie.get());
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+
 	}
 
 	@Override
 	public ResponseEntity<Movie> UpdateMovie(Movie movie) {
-		// TODO Auto-generated method stub
-		return null;
+
+		if (movie.getId() <= 0) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+
+		Optional<Movie> optionalExistingMovie = movieRepository.findById(movie.getId());
+		if (!optionalExistingMovie.isPresent()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+		Movie existingMovie = optionalExistingMovie.get();
+		existingMovie.setMoviename(movie.getMoviename());
+		existingMovie.setGenre(movie.getGenre());
+		existingMovie.setMovieLanguage(movie.getMovieLanguage());
+		existingMovie.setDuration(movie.getDuration());
+		existingMovie.setMovieImage(movie.getMovieImage());
+		Movie updatedMovie = movieRepository.save(existingMovie);
+		return ResponseEntity.ok(updatedMovie);
 	}
 
 	@Override
 	public ResponseEntity<?> deleteMovie(Movie movie) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Movie> optionalMovie = movieRepository.findById(movie.getId());
+		if (optionalMovie.isPresent()) {
+			movieRepository.delete(movie);
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Movie not found");
+		}
+
 	}
 
 	@Override
 	public ResponseEntity<List<Movie>> findAllMovie() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Movie> movies = movieRepository.findAll();
+		if (!movies.isEmpty()) {
+			return ResponseEntity.ok(movies);
+		} else {
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+		}
+
 	}
 
 	@Override
 	public ResponseEntity<List<Movie>> findMoviesByLocation(String location) {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<Theater> theaters = theaterRepository.findByAddressContainingIgnoreCase(location);
+		System.out.println(theaters.get(1).getName());
+		Optional<Show> s = showRepository.findById(theaters.get(0).getId());
+		System.out.println(s.get().getMovie().getMoviename());
+
+	    List<Movie> movieList = new ArrayList<>();
+
+	    if (!theaters.isEmpty())
+	    {
+	        for (Theater theater : theaters) {
+	            List<Show> shows = showRepository.findByTheater(theater);
+	            if (!shows.isEmpty()) {
+	                for (Show show : shows) {
+	                    Movie movies = show.getMovie();
+	                    if (!movieList.contains(movies)) {
+	                        movieList.add(movies);
+	                    }
+	                }
+	            } else {
+	                System.out.println("No shows found for Theater ID " + theater.getId());
+	            }
+	        }
+	    } else {
+	          return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+	    }
+
+	return ResponseEntity.ok(movieList);
+
 	}
 
 	@Override

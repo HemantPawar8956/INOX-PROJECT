@@ -1,11 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./../components/Layout";
+
 import Home from "./../components/Home";
 import Showtimings from "./../components/Showtimings";
 import Cinemas from "./../components/Cinemas";
 import Payment from "./../components/Payment";
 import SeatLayout from "./../components/SeatLayout";
 import Addmovie from './../components/Addmovie';
+import ProtectedRoute from "./../Auth/ProtectedRoute";
+import LoginPage from "./../pages/LoginPage";
+
+import SeatLayout from "../components/SeatLayout";
+
 
 export let routingVar = createBrowserRouter([
   {
@@ -33,7 +39,11 @@ export let routingVar = createBrowserRouter([
   },
   {
     path: "/payment",
-    element: <Payment />,
+    element: (
+      <ProtectedRoute>
+        <Payment />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/addmovie",
@@ -42,5 +52,10 @@ export let routingVar = createBrowserRouter([
   {
     path: "/selectseats",
     element: <SeatLayout />,
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
+
   },
 ]);
