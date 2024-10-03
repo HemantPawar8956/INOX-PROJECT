@@ -12,8 +12,7 @@ const LoginPage = () => {
   });
  
 
-
-  let handleChange = (e) => {
+let handleChange = (e) => {
     let { name, value } = e.target;
     setUser({
       ...user,
@@ -37,6 +36,8 @@ const LoginPage = () => {
       //     }
       //   );
       //   console.log("User authenticated:", response);
+
+    
       localStorage.setItem(
         "auth",
         JSON.stringify({
@@ -56,6 +57,8 @@ const LoginPage = () => {
           console.error('Unknown role:', response.data.role);
           
       }*/
+    
+    
     } catch (error) {
       console.error("There was an error authenticating the user!", error);
     }

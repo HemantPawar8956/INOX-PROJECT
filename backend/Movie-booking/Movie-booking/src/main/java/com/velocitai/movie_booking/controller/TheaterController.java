@@ -16,36 +16,37 @@ import org.springframework.web.bind.annotation.RestController;
 import com.velocitai.movie_booking.model.Theater;
 import com.velocitai.movie_booking.service.imp.TheaterServiceImp;
 
-
 @RestController
 @RequestMapping("/theater")
 public class TheaterController {
 	@Autowired
 	private TheaterServiceImp theaterService;
 
+	// Get theaters by address
+	@GetMapping("/gettheaters/{address}")
+	public ResponseEntity<List<Theater>> searchByAddress(@PathVariable String address) {
+		return theaterService.findTheaterByLocation(address);
+	}
+
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteTheater(@PathVariable Long id) {
 		return theaterService.deleteTheater(id);
-
 	}
 
 	@PutMapping("/update/{id}")
-	    public ResponseEntity<Theater> updateTheater( @RequestBody Theater theater) {
-	        
-	            return theaterService.updateTheater(theater);
+	public ResponseEntity<Theater> updateTheater(@RequestBody Theater theater) {
+		return theaterService.updateTheater(theater);
 	}
+
 	@PostMapping("/save")
 	public ResponseEntity<Theater> addTheater(@RequestBody Theater theater) {
 		return theaterService.saveTheater(theater);
 	}
 
-	// Get a theater by ID
 	@GetMapping("/{id}")
 	public ResponseEntity<Theater> getTheaterById(@PathVariable long id) {
-		return theaterService.findTheaterById(id); 
+		return theaterService.findTheaterById(id);
 	}
-
-	
 
 	// findAllTheaters
 	@GetMapping("/all")

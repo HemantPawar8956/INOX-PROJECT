@@ -33,39 +33,32 @@ public class MovieController {
 	
 	@PostMapping("/save")
     public ResponseEntity<Movie> addMovie(@RequestBody Movie movie) {
-        
-             return movieService.saveMovie(movie);
+    return movieService.saveMovie(movie);
 	}
-
 	
 	@PutMapping("/update")
     public ResponseEntity<Movie> updateMovie(@RequestBody Movie movie) {
-        
-             return movieService.UpdateMovie(movie);
+    return movieService.UpdateMovie(movie);
 	}
 
 	@GetMapping("/find/{id}")
     public ResponseEntity<Movie> findMovie(@PathVariable long id) {
-        
-             return movieService.findMovieById(id);
+    return movieService.findMovieById(id);
 	}
 	
 	@DeleteMapping("/delete")
     public ResponseEntity<?> deleteMovie(@RequestBody Movie movie) {
-        
-             return movieService.deleteMovie(movie);
+    return movieService.deleteMovie(movie);
 	}
 	
 	@GetMapping("/all")
     public  ResponseEntity<List<Movie>> findAllMovie() {
-        
-             return movieService.findAllMovie();
+    return movieService.findAllMovie();
 	}
 	
 	@GetMapping("/location/{location}")
 	public ResponseEntity<List<Movie>> findMoviesByLocation(@PathVariable String location) {
-	     return movieService.findMoviesByLocation(location);
-	    
+	return movieService.findMoviesByLocation(location);
 	}
 	
 
