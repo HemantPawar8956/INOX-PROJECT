@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.velocitai.movie_booking.model.Theater;
-import com.velocitai.movie_booking.service.TheaterServiceImpl;
+import com.velocitai.movie_booking.service.imp.TheaterServiceImpl;
 
 @RestController
 @RequestMapping("/theater")
@@ -30,10 +30,14 @@ public class TheaterController {
 	    }
 	    
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    @DeleteMapping("/delete/{id}")
 	    public ResponseEntity<?> deleteTheater(@PathVariable Long id) {
 =======
 	   
+=======
+
+>>>>>>> d0ec154f6a975656552d535808bf15f2127b2832
 	@DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteTheater(@PathVariable Long id) {
 >>>>>>> 6cf4a241f1b3d68e5d65d4c997368eb4e9c6859e
