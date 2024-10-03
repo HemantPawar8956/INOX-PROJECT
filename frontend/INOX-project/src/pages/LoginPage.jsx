@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import { globalVar } from "../globalContext/GlobalContext";
 
 const LoginPage = () => {
@@ -10,8 +10,9 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
+ 
 
-  let handleChange = (e) => {
+let handleChange = (e) => {
     let { name, value } = e.target;
     setUser({
       ...user,
@@ -21,19 +22,31 @@ const LoginPage = () => {
 
   let handleSubmit = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
 
     try {
       console.log(user.password);
-      const response = await axios.post(
-        `http://localhost:8080/auth/login?email=${user.email}&password=${user.password}`,
-        user,
-        {
-          headers: {
-            "Content-Type": "application/json ,text/plain, /",
+      //   const response = await axios.post(
+      //     `http://localhost:8080/auth/login?email=${user.email}&password=${user.password}`,
+      //     user,
+      //     {
+      //       headers: {
+      //         "Content-Type": "application/json ,text/plain, /",
+      //       },
+      //     }
+      //   );
+      //   console.log("User authenticated:", response);
+
+    
+      localStorage.setItem(
+        "auth",
+        JSON.stringify({
+          token: "xyzhgehcknhfkhf",
+          user: {
+            role: "admin",
           },
-        }
+        })
       );
-      console.log("User authenticated:", response);
 
       /*console.log(role==='ADMIN')
        if (role === 'ADMIN') {
@@ -44,6 +57,8 @@ const LoginPage = () => {
           console.error('Unknown role:', response.data.role);
           
       }*/
+    
+    
     } catch (error) {
       console.error("There was an error authenticating the user!", error);
     }
@@ -55,7 +70,12 @@ const LoginPage = () => {
       onClick={(e) => {
         e.stopPropagation(), setLoginPanel(!loginPanel);
       }}>
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form
+        className="login-form"
+        onSubmit={handleSubmit}
+        onClick={(e) => {
+          e.stopPropagation(), setLoginPanel(true);
+        }}>
         <h2 className="login-title">Login Page</h2>
 
         <div className="form-group">
@@ -85,5 +105,6 @@ const LoginPage = () => {
     </section>
   );
 };
+
 
 export default LoginPage;

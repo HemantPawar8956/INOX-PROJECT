@@ -23,7 +23,7 @@ public interface TheaterService {
 	
 	public ResponseEntity<List<Theater>> findTheaterByLocation(String location);
 
-	;
+	
 
 	
 }

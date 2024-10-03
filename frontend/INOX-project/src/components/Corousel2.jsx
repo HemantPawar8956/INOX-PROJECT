@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext} from "react";
 import photo1 from "../Assets/photo1.webp";
 import photo2 from "../Assets/photo2.jpg";
 import photo3 from "../Assets/photo3.jpg";
@@ -19,8 +19,10 @@ import photo17 from "../Assets/photo17.avif";
 import photo18 from "../Assets/photo18.webp";
 import photo19 from "../Assets/photo19.avif";
 import photo20 from "../Assets/photo20.avif";
+import { globalVar } from "../globalContext/GlobalContext";
 
 const Corousel2 = () => {
+ let {loginType} =  useContext(globalVar);
   let data1 = [
     {
       img: photo1,
@@ -122,11 +124,11 @@ const Corousel2 = () => {
         </div>
         <div className="box">
           <div className="box1">
-            <input type="checkbox" name="" id="" />
-            <label htmlFor="">With Subtitle</label>
+            <input type="checkbox" name="" id="Subtitle" />
+            <label htmlFor="Subtitle">With Subtitle</label>
           </div>
           <div className="box1">
-            <select name="" id="">
+            <select name="" id="" className="GenreDropdown">
               <option value="">All Genres</option>
               <option value="">Action</option>
               <option value="">Adventures</option>
@@ -160,7 +162,14 @@ const Corousel2 = () => {
               <h3>{ele.title}</h3>
               <p>Genres: {ele.genres}</p>
               <p>language: {ele.languages}</p>
-              <button>Book Tickets</button>
+              {loginType === 'USER' ? (
+  <button>Book Tickets</button>
+) : loginType === 'admin' ? (
+  <div >
+    <button>Update</button>
+    <button>Delete</button>
+  </div>
+) : null}
             </div>
           </div>
         );

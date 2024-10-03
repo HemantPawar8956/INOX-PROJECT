@@ -11,6 +11,8 @@ import com.velocitai.movie_booking.model.User;
 
 @Service
 public interface MovieService {
+	
+	
 
 	public ResponseEntity<Movie> saveMovie(Movie movie);
 
@@ -27,5 +29,10 @@ public interface MovieService {
 	public ResponseEntity<?> saveMovieImage(Movie user,MultipartFile file);
 	
 	public ResponseEntity<?> getMovieImage(long id);
+
+	
+	
+
+	
 
 }
