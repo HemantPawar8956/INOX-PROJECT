@@ -346,6 +346,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
+  width: 70%;
   padding: 20px;
 }
 
@@ -764,6 +765,22 @@ p {
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.856);
 }
+
+/* Lubna : MovieTicket  start*/
+/* body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+>>>>>>> lubnanaaz
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+<<<<<<< HEAD
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.856);
+} */
 
 .login-form {
   width: 500px;
@@ -1316,8 +1333,8 @@ p {
 
 /* mantasha */
 /* addmovies form */
-.main-body {
-}
+/* .main-body {
+} */
 /* SelectLocation */
 
 .selectLocation {
@@ -1325,11 +1342,128 @@ p {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f4f4f4;
+  z-index: 10;
+}
+
+.horizontalBar {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 80%;
+  max-width: 900px;
+  height: 80%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow-y: auto;
+}
+
+.horizontalBar.hidden {
+  display: none;
+}
+
+.horizontalBar.visible {
+  display: block;
+}
+
+.btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.input-container {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.input-container input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.static-horizontal {
+  width: 100%;
+  border: 1px solid;
+  display: flex;
+  /* flex-direction: column; */
+  gap: 15px;
+}
+
+.city-grid {
+  width: 50%;
+  border: 1px solid;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  /* margin-top: 20px; */
+}
+
+.city-tile {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.city-tile .locationImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.city-list {
+  flex: 1;
+  margin-left: 20px;
+  overflow-y: auto;
+  max-height: calc(80vh - 50px);
+}
+
+.city-list h4 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.city-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.city-list ul li {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.city-list ul li:hover {
+  background-color: #e0e0e0;
 }
 
 .center-section {
@@ -1401,7 +1535,6 @@ p {
   background-color: rgb(106, 106, 248);
 }
 
-
 .center-section .form-container .form-actions .delete-btn {
   background-color: rgb(106, 106, 248);
 }
@@ -1460,7 +1593,7 @@ p {
 }
 
 .theatre-form-section {
-  width: 40%; 
+  width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1468,42 +1601,43 @@ p {
 
 .theatre-form-container {
   background-color: #fff;
-  padding: 20px; 
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 400px; 
+  width: 400px;
 }
 
 .theatre-form-container h2 {
   text-align: center;
-  margin-bottom: 15px; 
+  margin-bottom: 15px;
   color: #333;
   font-weight: bolder;
   font-size: larger;
 }
 
 .theatre-form-group {
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
 }
 
 .theatre-form-group label {
   display: block;
-  margin-bottom: 3px; 
+  margin-bottom: 3px;
   color: #555;
-  font-size: 14px; 
+  font-size: 14px;
 }
 
 .theatre-form-group input {
   width: 100%;
-  padding: 8px; 
+  padding: 8px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  font-size: 14px; 
+  font-size: 14px;
   background-color: #fafafa;
 }
 
 .theatre-form-group input:focus {
-  border-color: #007bff; }
+  border-color: #007bff;
+}
 
 .theatre-form-actions {
   display: flex;
@@ -1512,21 +1646,130 @@ p {
 }
 
 .theatre-update-btn {
-  padding: 10px 15px; 
-  background-color: #007bff; 
+  padding: 10px 15px;
+  background-color: #007bff;
   color: white;
-  border: none; 
-  border-radius: 5px; 
-  font-size: 14px; 
-  cursor: pointer; 
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .theatre-delete-btn {
   padding: 10px 15px;
-  background-color: #007bff; 
-  color: white; 
-  border: none; 
-  border-radius: 5px; 
-  font-size: 14px; 
-  cursor: pointer; 
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
 }
+
+.ticket-outer {
+  word-spacing: 5px;
+  position: relative;
+  background-color: #003566;
+  width: 700px;
+  height: 250px;
+}
+
+.ticket {
+  display: flex;
+  width: 700px;
+  height: 250px;
+  z-index: 0;
+  background-color: #003566;
+  overflow: hidden;
+}
+.ticket-container-number {
+  top: 15px;
+  z-index: 1;
+  position: absolute;
+  display: flex;
+  background-color: #003566;
+  justify-content: space-around;
+  align-items: center;
+  width: 700px;
+  height: 30px;
+}
+.ticket-number {
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.ticket-left {
+  width: 30%;
+  padding: 20px;
+}
+
+.ticket-right {
+  background-color: white;
+  width: 71%;
+  padding: 20px;
+}
+.ticket-number {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.ticket-left {
+  background-color: white;
+  color: white;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.theater-info {
+  top: 60px;
+  position: absolute;
+  left: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.icon {
+  font-size: 50px;
+}
+
+.theater-details {
+  color: black;
+  text-align: center;
+}
+
+.ticket-right {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movie-name {
+  margin-top: 50px;
+  align-items: center;
+  color: black;
+}
+.movie-name,
+h4 {
+  font-size: 24px;
+}
+
+.movie-name,
+p {
+  font-size: 15px;
+}
+
+.barcode {
+  width: 150px;
+  height: 60px;
+  font-size: 30px;
+}
+/* Lubna : MovieTicket  End */

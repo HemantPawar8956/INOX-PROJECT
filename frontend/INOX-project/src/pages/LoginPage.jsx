@@ -10,9 +10,8 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
- 
 
-let handleChange = (e) => {
+  let handleChange = (e) => {
     let { name, value } = e.target;
     setUser({
       ...user,
@@ -37,11 +36,11 @@ let handleChange = (e) => {
       //   );
       //   console.log("User authenticated:", response);
 
-    
       localStorage.setItem(
         "auth",
         JSON.stringify({
-          token: "xyzhgehcknhfkhf",
+          token:
+            "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI3OTMxOTEzLCJleHAiOjE3Mjc5Njc5MTN9.7ckIjm1lnLC285EdcXJE8s_rHKtILZ6IdFoNvdHAfdw",
           user: {
             role: "admin",
           },
@@ -57,8 +56,6 @@ let handleChange = (e) => {
           console.error('Unknown role:', response.data.role);
           
       }*/
-    
-    
     } catch (error) {
       console.error("There was an error authenticating the user!", error);
     }
@@ -105,6 +102,5 @@ let handleChange = (e) => {
     </section>
   );
 };
-
 
 export default LoginPage;

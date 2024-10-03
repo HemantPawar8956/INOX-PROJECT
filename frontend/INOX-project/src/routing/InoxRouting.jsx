@@ -6,8 +6,11 @@ import Showtimings from "./../components/Showtimings";
 import Cinemas from "./../components/Cinemas";
 import Payment from "./../components/Payment";
 import SeatLayout from "./../components/SeatLayout";
-import Addmovie from './../components/Addmovie';
+import Addmovie from "./../components/Addmovie";
 import Addtheatre from "../components/Addtheatre";
+import MovieTicket from "./../components/MovieTicket";
+import ProtectedRoute from "../Auth/ProtectedRoute";
+import LoginPage from "../pages/LoginPage";
 
 export let routingVar = createBrowserRouter([
   {
@@ -56,6 +59,9 @@ export let routingVar = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
-
+  },
+  {
+    path: "/movieTicket",
+    element: <MovieTicket />,
   },
 ]);

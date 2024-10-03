@@ -1,5 +1,7 @@
 import React, { createContext, useState } from "react";
 export let globalVar = createContext();
+// import jwt_decode from "jsonwebtoken";
+import { jwtDecode } from "jwt-decode";
 
 export const GlobalContext = ({ children }) => {
   let { Provider } = globalVar;
@@ -9,6 +11,10 @@ export const GlobalContext = ({ children }) => {
   let [userLocation, setUserLocation] = useState("");
   let auth = JSON.parse(localStorage.getItem("auth"));
   console.log(auth);
+  //   const decodedToken = jwt_decode(auth.token);
+  const decodedToken = jwtDecode(auth.token);
+  console.log(decodedToken);
+
   let [loginType, setLoginType] = useState(auth?.user?.role || "USER");
   console.log(loginType);
   return (
@@ -22,7 +28,8 @@ export const GlobalContext = ({ children }) => {
         setLocation,
         userLocation,
         setUserLocation,
-        loginType, setLoginType
+        loginType,
+        setLoginType,
       }}>
       {children}
     </Provider>
