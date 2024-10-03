@@ -7,6 +7,9 @@ import Payment from "./../components/Payment";
 import SeatLayout from "./../components/SeatLayout";
 import ProtectedRoute from "./../Auth/ProtectedRoute";
 import LoginPage from "./../pages/LoginPage";
+import AdminPage from "../pages/AdminPage";
+import UserPage from "../pages/UserPage";
+import SignUp from "../pages/SignUp";
 
 export let routingVar = createBrowserRouter([
   {
@@ -48,4 +51,25 @@ export let routingVar = createBrowserRouter([
     path: "/login",
     element: <LoginPage />,
   },
+  {
+    path: "/signup",
+    element: <SignUp/>, 
+  },
+  {
+    path: "/admin",
+    element: (
+      <ProtectedRoute role="admin">
+        <AdminPage/>
+      </ProtectedRoute>
+    )
+  },
+  {
+    path: "/user",
+    element: (
+      <ProtectedRoute role="user">
+        <UserPage/>
+      </ProtectedRoute>
+    )
+  }
+  
 ]);
