@@ -10,8 +10,9 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
+ 
 
-  let handleChange = (e) => {
+let handleChange = (e) => {
     let { name, value } = e.target;
     setUser({
       ...user,
@@ -25,16 +26,18 @@ const LoginPage = () => {
 
     try {
       console.log(user.password);
-        const response = await axios.post(
-           `http://localhost:8088/auth/login?email=${user.email}&password=${user.password}`,
-            user,
-           {
-             headers: {
-               "Content-Type": "application/json ,text/plain, /",
-             },
-           }
-         );
-         console.log("User authenticated:", response);
+      //   const response = await axios.post(
+      //     `http://localhost:8080/auth/login?email=${user.email}&password=${user.password}`,
+      //     user,
+      //     {
+      //       headers: {
+      //         "Content-Type": "application/json ,text/plain, /",
+      //       },
+      //     }
+      //   );
+      //   console.log("User authenticated:", response);
+
+    
       localStorage.setItem(
         "auth",
         JSON.stringify({
@@ -54,6 +57,8 @@ const LoginPage = () => {
           console.error('Unknown role:', response.data.role);
           
       }*/
+    
+    
     } catch (error) {
       console.error("There was an error authenticating the user!", error);
     }
@@ -100,5 +105,6 @@ const LoginPage = () => {
     </section>
   );
 };
+
 
 export default LoginPage;
