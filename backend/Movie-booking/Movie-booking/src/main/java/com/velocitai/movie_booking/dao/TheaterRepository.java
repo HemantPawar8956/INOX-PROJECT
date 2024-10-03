@@ -1,6 +1,7 @@
 package com.velocitai.movie_booking.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,12 +13,15 @@ import com.velocitai.movie_booking.model.Theater;
 @Repository
 public interface TheaterRepository extends JpaRepository<Theater, Long>{
 	
-	 List<Theater> findByAddressContainingIgnoreCase(String location);
+	List<Theater> findByAddressContainingIgnoreCase(String location);
 
 	List<Theater> findByAddress(String address);
 	
 	 @Query("SELECT t FROM Theater t WHERE LOWER(t.address) LIKE LOWER(CONCAT('%', :address, '%'))")
 	    List<Theater> searchByAddress(@Param("address") String address);
+
+	 // Method to find a theater by name (if needed)
+	    Optional<Theater> findByName(String name);
 
 
 }

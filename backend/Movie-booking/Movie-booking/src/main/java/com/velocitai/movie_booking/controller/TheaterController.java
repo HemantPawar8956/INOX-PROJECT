@@ -17,7 +17,7 @@ import com.velocitai.movie_booking.model.Theater;
 import com.velocitai.movie_booking.service.TheaterService;
 
 @RestController
-@RequestMapping("/theaters")
+@RequestMapping("/theater")
 public class TheaterController {
 	@Autowired
     private TheaterService theaterService;
@@ -25,18 +25,7 @@ public class TheaterController {
 	
 	 
 
-	    // Get theaters by address
-	    @GetMapping("/gettheaters/{address}")
-	    public ResponseEntity<List<Theater>> searchByAddress(@PathVariable String address) {
-	        return theaterService.findTheaterByLocation(address);
-	    }
-	    
-	    // Add a new theater
-	    @PostMapping("/add")
-	    public ResponseEntity<Theater> addTheater(@RequestBody Theater theater) {
-	        return theaterService.saveTheater(theater);
-	    }
-
+	
 
 	   
 	
