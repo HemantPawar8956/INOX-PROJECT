@@ -6,24 +6,22 @@ import Sider from "./Sider";
 import { Outlet } from "react-router-dom";
 
 import LoginPage from "../pages/LoginPage";
+import Addtheatre from "./Addtheatre";
 // import RegisterPage from "../pages/RegisterPage";
 
-
 const Layout = () => {
-
-  let { siderVisible, setSiderVisible ,loginPanel,setLoginPanel} = useContext(globalVar);
+  let { siderVisible, setSiderVisible, loginPanel, setLoginPanel ,location ,setLocation} =
+    useContext(globalVar);
+  console.log(loginPanel);
 
   return (
     <div>
       {siderVisible && <Sider />}
-      {loginPanel && <LoginPage />} 
+      {location && <SelectLocation/>}
+      {loginPanel && <LoginPage />}
       <Navbar />
-      {/* <Corousel1 /> */}
-      {/* <Corousel2 /> */}
-
       <Outlet />
     </div>
-
   );
 };
 

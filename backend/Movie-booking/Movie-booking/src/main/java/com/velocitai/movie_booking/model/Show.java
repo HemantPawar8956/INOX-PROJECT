@@ -13,6 +13,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -35,11 +36,14 @@ public class Show {
 		private LocalTime time;
 		@Column(name = "DateOfShow")
 		private LocalDate date;
+		
 		@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 		private List<Seat> seat;
-		@ManyToOne(cascade = CascadeType.ALL)
+		
+		@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 		private Theater theater;
-		@OneToOne(cascade = CascadeType.ALL)
+		
+		@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 		private Movie movie;
 	
 		

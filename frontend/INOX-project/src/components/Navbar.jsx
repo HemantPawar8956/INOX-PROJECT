@@ -25,7 +25,8 @@ import { globalVar } from "../globalContext/GlobalContext";
 
 const Navbar = () => {
   let [dropdownVisible, setDropdownVisible] = useState(false);
-  let { siderVisible, setSiderVisible ,loginPanel,setLoginPanel} = useContext(globalVar);
+  let { siderVisible, setSiderVisible, loginPanel, setLoginPanel } =
+    useContext(globalVar);
 
   let Dropdown = () => {
     setDropdownVisible(!dropdownVisible);
@@ -64,18 +65,10 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? "active" : "")}>
-              <FaTags className="icon" /> Offers
-            </NavLink>
+            <FaTags className="icon" /> Offers
           </li>
           <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? "active" : "")}>
-              <AiFillFund className="icon" /> Investor Section
-            </NavLink>
+            <AiFillFund className="icon" /> Investor Section
           </li>
           <li>
             <NavLink
@@ -137,8 +130,11 @@ const Navbar = () => {
             <FaChevronDown />
           </button>
         </div>
-        <button className="login" onClick={()=>{setLoginPanel(true)}}>
-         
+        <button
+          className="login"
+          onClick={() => {
+            setLoginPanel(!loginPanel);
+          }}>
           <FaUserCircle />
           Login
         </button>
