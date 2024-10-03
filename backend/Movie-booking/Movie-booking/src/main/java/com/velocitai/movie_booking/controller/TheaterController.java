@@ -22,13 +22,25 @@ public class TheaterController {
 	@Autowired
 	private TheaterServiceImpl theaterService;
 
+	
+	 
+
+	    // Get theaters by address
+	    @GetMapping("/gettheaters/{address}")
+	    public ResponseEntity<List<Theater>> searchByAddress(@PathVariable String address) {
+	        return theaterService.findTheaterByLocation(address);
+	    }
+	    
+	    // Add a new theater
+	    @PostMapping("/add")
+	    public ResponseEntity<Theater> addTheater(@RequestBody Theater theater) {
+	        return theaterService.saveTheater(theater);
+	    }
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteTheater(@PathVariable Long id) {
-		return theaterService.deleteTheater(id);
-
-	}
-
-	@PutMapping("/update/{id}")
+    public ResponseEntity<?> deleteTheater(@PathVariable Long id) {
+        return theaterService.deleteTheater(id);   
+    }
+	 @PutMapping("/update/{id}")
 	    public ResponseEntity<Theater> updateTheater( @RequestBody Theater theater) {
 	        
 	            return theaterService.updateTheater(theater);
