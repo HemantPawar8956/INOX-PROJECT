@@ -37,7 +37,7 @@ public class Movie {
 	@Transient  // This field is not persisted in the DB, used for uploading images
     private MultipartFile imageFile;
 
-	@OneToMany
-	private List<Show> show;
+	@OneToMany(mappedBy = "movie") // Indicates the 'movie' field in the Show class
+	private List<Show> shows; 
 	
 }

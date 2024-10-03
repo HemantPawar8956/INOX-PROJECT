@@ -12,9 +12,9 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
+ 
 
-  // Handle input changes
-  let handleChange = (e) => {
+let handleChange = (e) => {
     let { name, value } = e.target;
     setUser({
       ...user,
@@ -28,16 +28,19 @@ const LoginPage = () => {
     e.stopPropagation();
 
     try {
-      const response = await axios.post(
-        `http://localhost:8080/auth/login?email=${user.email}&password=${user.password}`,
-        user,
-        {
-          headers: {
-            "Content-Type": "application/json ,text/plain, /",
-          },
-        }
-      );
-      console.log("User authenticated:", response);
+      console.log(user.password);
+      //   const response = await axios.post(
+      //     `http://localhost:8080/auth/login?email=${user.email}&password=${user.password}`,
+      //     user,
+      //     {
+      //       headers: {
+      //         "Content-Type": "application/json ,text/plain, /",
+      //       },
+      //     }
+      //   );
+      //   console.log("User authenticated:", response);
+
+    
       localStorage.setItem(
         "auth",
         JSON.stringify({
@@ -47,9 +50,18 @@ const LoginPage = () => {
           },
         })
       );
-      // setLoginPanel(false)
-      // Navigate based on role (Admin/User)
-  
+
+      /*console.log(role==='ADMIN')
+       if (role === 'ADMIN') {
+          navigate('/admin'); 
+      } else if (role === 'USER') {
+          navigate('/user');
+      } else {
+          console.error('Unknown role:', response.data.role);
+          
+      }*/
+    
+    
     } catch (error) {
       console.error("There was an error authenticating the user!", error);
     }
@@ -113,5 +125,6 @@ const LoginPage = () => {
     </section>
   );
 };
+
 
 export default LoginPage;

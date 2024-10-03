@@ -7,17 +7,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.velocitai.movie_booking.model.Show;
+import com.velocitai.movie_booking.model.Theater;
 
 @Service
 public interface ShowService {
 
-	public ResponseEntity<Show> saveShow(Show show);
+	//public ResponseEntity<Show> saveShow(Long movieId, Long theaterId, Show show);
 
 	public ResponseEntity<Show> findShowById(long id);
 
-	public ResponseEntity<Show> UpdateShow(Show show);
-
-	public ResponseEntity<?> deleteShow(Show show);
+	public ResponseEntity<?> deleteShow(Long  id);
 
 	public ResponseEntity<List<Show>> findAllShow();
 
@@ -28,5 +27,12 @@ public interface ShowService {
 	public ResponseEntity<List<Show>> findShowByDate(LocalDate date);
 
 	public ResponseEntity<List<Show>> findShowByTheater(long theaterId);
+
+
+	public ResponseEntity<Show> saveShow(long movieId, long theaterId, Show show);
+   public 	ResponseEntity<Show> UpdateShow( Show show);
+
+    public  ResponseEntity<Show> saveShow(Show show);
+
 
 }

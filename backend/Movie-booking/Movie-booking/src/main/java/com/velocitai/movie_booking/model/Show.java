@@ -35,11 +35,14 @@ public class Show {
 		private LocalTime time;
 		@Column(name = "DateOfShow")
 		private LocalDate date;
+		
 		@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 		private List<Seat> seat;
-		@ManyToOne(cascade = CascadeType.ALL)
+		
+		@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 		private Theater theater;
-		@OneToOne(cascade = CascadeType.ALL)
+		
+		@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 		private Movie movie;
 	
 		

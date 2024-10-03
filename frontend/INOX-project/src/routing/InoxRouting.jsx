@@ -1,15 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./../components/Layout";
+
 import Home from "./../components/Home";
 import Showtimings from "./../components/Showtimings";
 import Cinemas from "./../components/Cinemas";
 import Payment from "./../components/Payment";
 import SeatLayout from "./../components/SeatLayout";
-import ProtectedRoute from "./../Auth/ProtectedRoute";
-import LoginPage from "./../pages/LoginPage";
-import AdminPage from "../pages/AdminPage";
-import UserPage from "../pages/UserPage";
-import SignUp from "../pages/SignUp";
+import Addmovie from './../components/Addmovie';
+import Addtheatre from "../components/Addtheatre";
 
 export let routingVar = createBrowserRouter([
   {
@@ -44,12 +42,21 @@ export let routingVar = createBrowserRouter([
     ),
   },
   {
+    path: "/addmovie",
+    element: <Addmovie />,
+  },
+  {
+    path: "/addtheatre",
+    element: <Addtheatre />,
+  },
+  {
     path: "/selectseats",
     element: <SeatLayout />,
   },
   {
     path: "/login",
     element: <LoginPage />,
+
   },
   {
     path: "/signup",

@@ -1361,7 +1361,10 @@ p {
   color: transparent;
 }
 
-/* kanupriya */
+/* mantasha */
+/* addmovies form */
+.main-body {
+}
 /* SelectLocation */
 
 .selectLocation {
@@ -1373,72 +1376,206 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.5); /* Dark background */
-  z-index: 10;
+  background-color: #f4f4f4;
 }
 
-.selectLocation .horizontalBar {
-  background-color: white;
+.center-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.center-section .form-container {
+  background-color: #fff;
   padding: 20px;
-  width: 80%;
-  height: 70%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.center-section .form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.center-section .form-container .form-group {
+  margin-bottom: 15px;
+}
+
+.center-section .form-container .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.center-section .form-container .form-group input,
+.center-section .form-container .form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #fafafa;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.center-section .form-container .form-group input:focus,
+.center-section .form-container .form-group select:focus {
+  border-color: #007bff;
+  outline: none;
+  background-color: #fff;
+}
+
+.center-section .form-container .form-actions {
   display: flex;
   justify-content: space-between;
-  align-content: space-between;
-  gap: 20px;
-  border-radius: 10px;
-  overflow-y: auto;
 }
-.selectLocation .input-container h3 {
-  padding: 10px;
-  font-size: 24px;
-  color: #003688;
-  font-weight: 900;
-}
-.selectLocation .btn {
+
+.center-section .form-container .form-actions button {
+  padding: 10px 20px;
   border: none;
-  font-size: 14px;
-}
-.selectLocation .input-container input {
-  width: 80%;
-  padding: 8px 20px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  font-size: 16px;
+  cursor: pointer;
+  color: #fff;
+  transition: background-color 0.3s ease;
 }
 
-.selectLocation .city-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+.center-section .form-container .form-actions .update-btn {
+  background-color: rgb(106, 106, 248);
 }
 
-.selectLocation .city-tile img {
+
+.center-section .form-container .form-actions .delete-btn {
+  background-color: rgb(106, 106, 248);
+}
+
+/* for popup */
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
 }
 
-.selectLocation .city-list ul {
-  list-style-type: none;
-  padding: 5px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 80%;
 }
-.selectLocation .city-list h4 {
-  padding: 10px;
-  font-size: 24px;
-  color: #003688;
-  font-weight: 800;
+
+.modal-content h3 {
+  margin-bottom: 20px;
 }
-.selectLocation .city-list li {
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+
+.modal-content p {
+  margin: 10px 0;
+}
+
+.modal-actions {
   text-align: center;
-  font-size: 15px;
 }
-.selectLocation .city-list li:hover {
-  background-color: #0b57ca61;
+.close {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+/* addtheatre */
+.theatre-main-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+}
+
+.theatre-form-section {
+  width: 40%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.theatre-form-container {
+  background-color: #fff;
+  padding: 20px; 
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px; 
+}
+
+.theatre-form-container h2 {
+  text-align: center;
+  margin-bottom: 15px; 
+  color: #333;
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.theatre-form-group {
+  margin-bottom: 10px; 
+}
+
+.theatre-form-group label {
+  display: block;
+  margin-bottom: 3px; 
+  color: #555;
+  font-size: 14px; 
+}
+
+.theatre-form-group input {
+  width: 100%;
+  padding: 8px; 
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px; 
+  background-color: #fafafa;
+}
+
+.theatre-form-group input:focus {
+  border-color: #007bff; }
+
+.theatre-form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.theatre-update-btn {
+  padding: 10px 15px; 
+  background-color: #007bff; 
+  color: white;
+  border: none; 
+  border-radius: 5px; 
+  font-size: 14px; 
+  cursor: pointer; 
+}
+
+.theatre-delete-btn {
+  padding: 10px 15px;
+  background-color: #007bff; 
+  color: white; 
+  border: none; 
+  border-radius: 5px; 
+  font-size: 14px; 
+  cursor: pointer; 
 }
 
 /* SEEMA SIGNUP PAGE */

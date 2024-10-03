@@ -1,7 +1,6 @@
 import React, { createContext, useState } from "react";
 
-export let globalVar = createContext();
-const GlobalContext = ({ children }) => {
+export const GlobalContext = ({ children }) => {
   let { Provider } = globalVar;
   let [siderVisible, setSiderVisible] = useState(false);
   let [loginPanel, setLoginPanel] = useState(false);
@@ -34,9 +33,7 @@ const GlobalContext = ({ children }) => {
         setLocation,
         userLocation,
         setUserLocation,
-        loginTypes,
-        loginType,
-        setLoginType
+        loginType, setLoginType
       }}>
       {children}
     </Provider>
