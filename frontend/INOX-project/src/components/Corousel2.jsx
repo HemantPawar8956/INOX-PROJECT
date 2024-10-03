@@ -122,11 +122,11 @@ const Corousel2 = () => {
         </div>
         <div className="box">
           <div className="box1">
-            <input type="checkbox" name="" id="" />
-            <label htmlFor="">With Subtitle</label>
+            <input type="checkbox" name="" id="Subtitle" />
+            <label htmlFor="Subtitle">With Subtitle</label>
           </div>
           <div className="box1">
-            <select name="" id="">
+            <select name="" id="" className="GenreDropdown">
               <option value="">All Genres</option>
               <option value="">Action</option>
               <option value="">Adventures</option>
