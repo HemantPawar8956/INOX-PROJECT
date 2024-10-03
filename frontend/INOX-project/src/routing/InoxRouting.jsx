@@ -65,4 +65,25 @@ export let routingVar = createBrowserRouter([
     element: <LoginPage />,
 
   },
+  {
+    path: "/signup",
+    element: <SignUp/>, 
+  },
+  {
+    path: "/admin",
+    element: (
+      <ProtectedRoute role="admin">
+        <AdminPage/>
+      </ProtectedRoute>
+    )
+  },
+  {
+    path: "/user",
+    element: (
+      <ProtectedRoute role="user">
+        <UserPage/>
+      </ProtectedRoute>
+    )
+  }
+  
 ]);
