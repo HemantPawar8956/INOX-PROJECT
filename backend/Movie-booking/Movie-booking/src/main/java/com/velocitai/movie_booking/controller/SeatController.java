@@ -6,14 +6,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.velocitai.movie_booking.model.Seat;
-import com.velocitai.movie_booking.service.SeatServiceImplimentation;
+import com.velocitai.movie_booking.service.imp.SeatServiceImp;
+
 
 @RestController
 @RequestMapping("/seats")
 public class SeatController {
 
     @Autowired
-    private SeatServiceImplimentation seatServiceImp;
+    private SeatServiceImp seatServiceImp;
 
     // Update an existing seat
     @PutMapping("/update")

@@ -4,22 +4,30 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.velocitai.movie_booking.dao.MovieRepository;
 import com.velocitai.movie_booking.dao.SeatRepository;
 import com.velocitai.movie_booking.dao.ShowRepository;
+import com.velocitai.movie_booking.dao.TheaterRepository;
+import com.velocitai.movie_booking.model.Movie;
 import com.velocitai.movie_booking.model.Show;
+import com.velocitai.movie_booking.model.Theater;
 import com.velocitai.movie_booking.service.ShowService;
 
 @Service
 public class ShowServiceImp implements ShowService {
 
-	@Autowired
-	ShowRepository showRepository;
-	
-	@Autowired
-	SeatRepository seatRepository;
+	  @Autowired
+	    private ShowRepository showRepository;
+	  
+	  @Autowired
+	    private MovieRepository movieRepository;
+	  
+	  @Autowired
+	  private TheaterRepository theaterRepository;
 	
 	@Override
 	public ResponseEntity<Show> saveShow(Show show) {
@@ -55,17 +63,37 @@ public class ShowServiceImp implements ShowService {
 		return null;
 	}
 
-	@Override
-	public ResponseEntity<List<Show>> findShowByMovieName(String movieName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    
+    @Override
+    public ResponseEntity<List<Show>> findShowByMovieName(String moviename) {
+    	List<Movie> movies = movieRepository.findAll();
+    	System.out.println("allmovies");
+    	System.out.println(movies);
+    	Movie movie = movieRepository.findByMoviename(moviename);
+    	System.out.println("movie00");
+    	System.out.println(movie);
+        List<Show> shows = showRepository.findByMovie(movie);
+        System.out.println("vhghgh");
+        System.out.println(shows);
+        if (shows.isEmpty()) {
+	        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	    }
+	    return new ResponseEntity<>(shows, HttpStatus.OK);
+	
+    }
 
-	@Override
-	public ResponseEntity<List<Show>> findShowByLocation(String location) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+    @Override
+    public ResponseEntity<List<Show>> findShowByLocation(String location) {
+    	Theater theater = theaterRepository.findByAddress(location) ;
+        List<Show> shows = showRepository.findByTheater(theater);
+        if (shows.isEmpty()) {
+	        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	    }
+	    return new ResponseEntity<>(shows, HttpStatus.OK);
+	
+
+    }
 
 	@Override
 	public ResponseEntity<List<Show>> findShowByDate(LocalDate date) {

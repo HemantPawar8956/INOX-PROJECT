@@ -1,11 +1,11 @@
 package com.velocitai.movie_booking.controller;
 
-import java.time.LocalDate;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.velocitai.movie_booking.model.Show;
-import com.velocitai.movie_booking.service.ShowServiceImpl;
+import com.velocitai.movie_booking.service.imp.ShowServiceImp;
 
 @RestController
 @RequestMapping("/show")
 public class ShowController {
 	
 	  @Autowired
-	    private ShowServiceImpl showServiceImpl;
+	    private ShowServiceImp showServiceImpl;
 	    
 	  
 	    // Find shows by movie name
