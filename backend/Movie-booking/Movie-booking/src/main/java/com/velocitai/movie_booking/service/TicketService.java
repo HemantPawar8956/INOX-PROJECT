@@ -10,6 +10,6 @@ public interface TicketService {
 
 	public ResponseEntity<Ticket> saveTicket(Ticket Ticket, boolean paymentStatus);
 
-	public ResponseEntity<?> deleteTicket(Ticket Ticket);
+	public ResponseEntity<?> deleteTicket(Long id);
 
 }
