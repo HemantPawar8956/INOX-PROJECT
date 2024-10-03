@@ -44,11 +44,7 @@ public class TheaterController {
 		return theaterService.findTheaterById(id);
 	}
 
-	// Delete a theater
-	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteTheater(@PathVariable long id) {
-		return theaterService.deleteTheater(id);
-	}
+	
 
 	// findAllTheaters
 	@GetMapping("/all")
