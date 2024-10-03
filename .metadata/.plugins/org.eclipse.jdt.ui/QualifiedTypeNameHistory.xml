@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.velocitai.movie_booking.service.ShowService"/>
+    <fullyQualifiedTypeName name="com.velocitai.movie_booking.dao.TicketRepository"/>
+    <fullyQualifiedTypeName name="com.velocitai.movie_booking.dao.SeatRepository"/>
+    <fullyQualifiedTypeName name="com.velocitai.movie_booking.dao.UserRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.velocitai.movie_booking.service.TicketService"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+</qualifiedTypeNameHistroy>

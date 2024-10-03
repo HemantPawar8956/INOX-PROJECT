@@ -1,4 +1,4 @@
-package com.velocitai.movie_booking.controller;
+ package com.velocitai.movie_booking.controller;
 
 import java.util.List;
 

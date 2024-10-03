@@ -67,12 +67,8 @@ public class TheaterServiceImpl implements TheaterService {
         return ResponseEntity.ok(theaters);
     }
 
-//    @Override
-//    public ResponseEntity<List<Theater>> findTheaterByLocation(String location) {
-//        List<Theater> theaters = theaterRepository.findByAddressContainingIgnoreCase(location);
-//        return ResponseEntity.ok(theaters);
-//    }
-	@Override
+   
+    @Override
 	public ResponseEntity<List<Theater>> findTheaterByLocation(String location) {
 		 List<Theater> theaters = theaterRepository.findByAddress(location);
 

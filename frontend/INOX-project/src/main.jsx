@@ -3,4 +3,6 @@ import App from "./App";
 // import "./global.css";
 import "./inox.css";
 
+
+
 createRoot(document.getElementById("root")).render(<App />);
