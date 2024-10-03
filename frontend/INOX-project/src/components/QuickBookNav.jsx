@@ -28,11 +28,13 @@ const QuickBookNav = () => {
     // axios
   };
 console.log(change)
-  let handleMovieData= async()=>{ 
+  let handleMovieData= async()=>{
+  
     try{
         let data =  await axios.get(`http://localhost:8080/open/${change.toLowerCase()}s/alls`)
         console.log(data)
     }
+
     catch{
 console.log("helll")
     }
