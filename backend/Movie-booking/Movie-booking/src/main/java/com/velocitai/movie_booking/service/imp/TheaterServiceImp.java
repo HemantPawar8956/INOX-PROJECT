@@ -17,75 +17,62 @@ public class TheaterServiceImp implements TheaterService {
 
 	@Autowired
 	TheaterRepository theaterRepository;
-	
-	
 
 	@Override
 	public ResponseEntity<Theater> findTheaterById(long id) {
-		 Optional<Theater> theater = theaterRepository.findById(id);
-	        return theater.map(t -> new ResponseEntity<>(t, HttpStatus.OK))
-	                      .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-	}
-
-	
-
-	@Override
-	public ResponseEntity<List<Theater>> findAllTheater() {
-		 List<Theater> theaters = theaterRepository.findAll();
-	        return new ResponseEntity<>(theaters, HttpStatus.OK);
+		Optional<Theater> theater = theaterRepository.findById(id);
+		return theater.map(t -> new ResponseEntity<>(t, HttpStatus.OK))
+				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 
 	@Override
 	public ResponseEntity<List<Theater>> findTheaterByMovieName(String movieName) {
-		 List<Theater> theaters = theaterRepository.findByShow_MovieName(movieName);
-	        
-	        return ResponseEntity.ok(theaters);
+		List<Theater> theaters = theaterRepository.findByShow_MovieName(movieName);
+
+		return ResponseEntity.ok(theaters);
 	}
 
 	@Override
 	public ResponseEntity<List<Theater>> findTheaterByLocation(String location) {
-		 List<Theater> theaters = theaterRepository.findByAddress(location);
+		List<Theater> theaters = theaterRepository.findByAddress(location);
 
-		    if (theaters.isEmpty()) {
-		        
-		        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-		    }
+		if (theaters.isEmpty()) {
 
-		    return ResponseEntity.ok(theaters);
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+
+		return ResponseEntity.ok(theaters);
 	}
 
 	@Override
 	public ResponseEntity<?> deleteTheater(long id) {
 		if (theaterRepository.existsById(id)) {
-            theaterRepository.deleteById(id);
-            return ResponseEntity.ok("Theater deleted successfully.");
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+			theaterRepository.deleteById(id);
+			return ResponseEntity.ok("Theater deleted successfully.");
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 
 	@Override
 	public ResponseEntity<Theater> updateTheater(Theater Theater) {
-		 if (theaterRepository.existsById(Theater.getId())) {
-	            Theater updatedTheater = theaterRepository.save(Theater);
-	            return new ResponseEntity<>(updatedTheater, HttpStatus.OK);
-	        } else {
-	            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	        }
+		if (theaterRepository.existsById(Theater.getId())) {
+			Theater updatedTheater = theaterRepository.save(Theater);
+			return new ResponseEntity<>(updatedTheater, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
-
-
-
-
 
 	@Override
 	public ResponseEntity<Theater> saveTheater(Theater Theater) {
 		Theater savedTheater = theaterRepository.save(Theater);
-        return new ResponseEntity<>(savedTheater, HttpStatus.CREATED);
+		return new ResponseEntity<>(savedTheater, HttpStatus.CREATED);
 	}
-	
+
+	@Override
+	public ResponseEntity<List<Theater>> findAllTheater() {
+		List<Theater> theaters = theaterRepository.findAll();
+		return new ResponseEntity<>(theaters, HttpStatus.OK);
+	}
 }
-
-    
-
-
