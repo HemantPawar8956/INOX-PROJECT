@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -52,9 +53,9 @@ public class UserServiceImp  implements UserService{
 	        Optional<User> optionalUser = userRepository.findById(id);
 	        if (optionalUser.isPresent()) {
 	            User existingUser = optionalUser.get();
-	            existingUser.setName(user.getName());
-	            existingUser.setEmail(user.getEmail()); 
-	        //    existingUser.setPassword(user.getPassword());    
+	            // existingUser.setName(user.getName());
+	            // existingUser.setEmail(user.getEmail()); 
+	            // existingUser.setPassword(user.getPassword());    
 	            User updatedUser = userRepository.save(existingUser);
 	            return new ResponseEntity<>(updatedUser, HttpStatus.OK); 
 	        } else {
@@ -87,25 +88,19 @@ public class UserServiceImp  implements UserService{
 	                     if (!uploadDir.exists()) {
 	                         uploadDir.mkdirs();
 	                     }
-
 	                     // Generate a unique file name
 	                     String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 	                     Path filePath = Paths.get(UPLOAD_DIR + fileName);
-
 	                     // Save the image file to the file system
 	                     Files.write(filePath, file.getBytes());
-
 	                     // Set the file path in the existing user object
 	                     existingUser.setImage(filePath.toString());
-
 	                     // Update other user fields from the input user object (if necessary)
 	                     existingUser.setName(user.getName());
 	                     existingUser.setEmail(user.getEmail());
 	                     // Add other fields you want to update
-
 	                     // Save user with the new or updated image path
 	                     userRepository.save(existingUser);
-
 	                     return new ResponseEntity<>(HttpStatus.OK);
 	                 } catch (IOException e) {
 	                     return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -114,4 +109,26 @@ public class UserServiceImp  implements UserService{
 	                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	             }
 	         }
+	         public ResponseEntity<String> uploadImage(String path, MultipartFile file) {
+	        	    try {
+	        	        // Get the original file name
+	        	        String name = file.getOriginalFilename();
+	        	        // Create full path (use the provided path and the file name)
+	        	        String filePath = path + File.separator + name;
+	        	        // Create directory if it doesn't exist
+	        	        File dir = new File(path);
+	        	        if (!dir.exists()) {
+	        	            dir.mkdirs(); // This creates both parent directories if they don't exist
+	        	        }
+	        	        // Copy the file to the target directory
+	        	        Files.copy(file.getInputStream(), Path.of(filePath), StandardCopyOption.REPLACE_EXISTING);     
+	        	        // Return a success response with the file name
+	        	        return ResponseEntity.ok("File uploaded successfully: " + name);      	        
+	             	    } catch (IOException e) {
+	        	        // Return error response in case of an exception
+	        	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+	        	                .body("File upload failed: " + e.getMessage());
+	        	    }
+	        	}
+
 }
