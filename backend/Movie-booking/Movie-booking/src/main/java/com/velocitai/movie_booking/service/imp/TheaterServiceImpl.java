@@ -1,4 +1,4 @@
-package com.velocitai.movie_booking.service;
+package com.velocitai.movie_booking.service.imp;
 
 
 import java.util.List;
@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.velocitai.movie_booking.dao.TheaterRepository;
 import com.velocitai.movie_booking.model.Theater;
+import com.velocitai.movie_booking.service.TheaterService;
 
 
 @Service
@@ -66,9 +67,20 @@ public class TheaterServiceImpl implements TheaterService {
         return ResponseEntity.ok(theaters);
     }
 
-    @Override
-    public ResponseEntity<List<Theater>> findTheaterByLocation(String location) {
-        List<Theater> theaters = theaterRepository.findByAddressContainingIgnoreCase(location);
-        return ResponseEntity.ok(theaters);
-    }
+//    @Override
+//    public ResponseEntity<List<Theater>> findTheaterByLocation(String location) {
+//        List<Theater> theaters = theaterRepository.findByAddressContainingIgnoreCase(location);
+//        return ResponseEntity.ok(theaters);
+//    }
+	@Override
+	public ResponseEntity<List<Theater>> findTheaterByLocation(String location) {
+		 List<Theater> theaters = theaterRepository.findByAddress(location);
+
+		    if (theaters.isEmpty()) {
+		        
+		        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		    }
+
+		    return ResponseEntity.ok(theaters);
+	}
 }

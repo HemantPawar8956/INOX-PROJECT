@@ -41,9 +41,9 @@ let handleChange = (e) => {
       localStorage.setItem(
         "auth",
         JSON.stringify({
-          token: "xyzhgehcknhfkhf",
+          token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrYW51MTIzQGdtYWlsLmNvbSIsImlhdCI6MTcyNzk1MjA5NiwiZXhwIjoxNzI3OTg4MDk2fQ.DhI29sbnh2YIemtu9dn3-ky-xEWhMAec4wE2bPFhsSI",
           user: {
-            role: "admin",
+            role: "user",
           },
         })
       );

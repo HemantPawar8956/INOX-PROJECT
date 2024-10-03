@@ -8,6 +8,9 @@ import Payment from "./../components/Payment";
 import SeatLayout from "./../components/SeatLayout";
 import Addmovie from './../components/Addmovie';
 import Addtheatre from "../components/Addtheatre";
+import ProtectedRoute from './../Auth/ProtectedRoute';
+import LoginPage from "../pages/LoginPage";
+import SelectLocation from './../components/SelectLocation';
 
 export let routingVar = createBrowserRouter([
   {
@@ -18,6 +21,10 @@ export let routingVar = createBrowserRouter([
       {
         path: "",
         element: <Home />,
+      },
+      {
+        path: "selectlocation",
+        element: <SelectLocation />,
       },
       {
         path: "/showtimings",
