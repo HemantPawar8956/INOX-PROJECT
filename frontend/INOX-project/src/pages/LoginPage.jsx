@@ -10,6 +10,8 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
+ 
+}
 
   let handleChange = (e) => {
     let { name, value } = e.target;
@@ -100,5 +102,6 @@ const LoginPage = () => {
     </section>
   );
 };
+
 
 export default LoginPage;
