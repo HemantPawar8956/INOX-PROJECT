@@ -329,6 +329,9 @@
 }
 .city-sidebar .selectcity {
   padding: 12px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
 }
 .city-sidebar .selectcity h3 {
   font-weight: 700;
@@ -360,8 +363,12 @@
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   border-radius: 10px;
+  overflow: hidden;
 }
-
+.city-grid .city-tile img {
+  min-width: 100%;
+  min-height: 100%;
+}
 .city-tile::before {
   content: "";
   position: absolute;
@@ -376,6 +383,25 @@
 .city-tile:hover {
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
+}
+.SearchedCityPanel {
+  width: 90% !important;
+  /* border: 1px solid; */
+  box-shadow: 0px 5px 10px black;
+  /* position: absolute;
+  bottom: -27px; */
+  z-index: 10;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+.SearchedCityPanel .SearchedCityPanelItems {
+  width: 100%;
+  padding: 3px 5px;
+}
+.SearchedCityPanel .SearchedCityPanelItems:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
 }
 
 /* Mantasha */
@@ -1317,9 +1343,9 @@ p {
   overflow-y: auto;
 }
 .selectLocation .input-container h3 {
-  padding:10px;
+  padding: 10px;
   font-size: 24px;
-  color:#003688;
+  color: #003688;
   font-weight: 900;
 }
 .selectLocation .btn {
@@ -1335,26 +1361,26 @@ p {
 
 .selectLocation .city-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
 
 .selectLocation .city-tile img {
-  width: 70%;
-  height: 60px;
+  width: 100%;
+  min-height: 100%;
 }
 
 .selectLocation .city-list ul {
   list-style-type: none;
-  padding:5px;
+  padding: 5px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
-.selectLocation .city-list h4{
-  padding:10px;
+.selectLocation .city-list h4 {
+  padding: 10px;
   font-size: 24px;
-  color:#003688;
+  color: #003688;
   font-weight: 800;
 }
 .selectLocation .city-list li {
@@ -1365,5 +1391,5 @@ p {
   font-size: 15px;
 }
 .selectLocation .city-list li:hover {
-  background-color:#0b57ca61;
+  background-color: #0b57ca61;
 }
