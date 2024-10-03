@@ -14,13 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.velocitai.movie_booking.model.Theater;
-import com.velocitai.movie_booking.service.TheaterServiceImpl;
+import com.velocitai.movie_booking.service.imp.TheaterServiceImp;
+
 
 @RestController
 @RequestMapping("/theater")
 public class TheaterController {
 	@Autowired
-	private TheaterServiceImpl theaterService;
+	private TheaterServiceImp theaterService;
 
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteTheater(@PathVariable Long id) {
@@ -41,14 +42,10 @@ public class TheaterController {
 	// Get a theater by ID
 	@GetMapping("/{id}")
 	public ResponseEntity<Theater> getTheaterById(@PathVariable long id) {
-		return theaterService.findTheaterById(id);
+		return theaterService.findTheaterById(id); 
 	}
 
-	// Delete a theater
-	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteTheater(@PathVariable long id) {
-		return theaterService.deleteTheater(id);
-	}
+	
 
 	// findAllTheaters
 	@GetMapping("/all")
