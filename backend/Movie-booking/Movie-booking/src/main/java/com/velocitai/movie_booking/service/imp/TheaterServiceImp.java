@@ -29,11 +29,7 @@ public class TheaterServiceImp implements TheaterService {
 
 	
 
-	@Override
-	public ResponseEntity<List<Theater>> findAllTheater() {
-		 List<Theater> theaters = theaterRepository.findAll();
-	        return new ResponseEntity<>(theaters, HttpStatus.OK);
-	}
+	
 
 	@Override
 	public ResponseEntity<List<Theater>> findTheaterByMovieName(String movieName) {
@@ -83,6 +79,11 @@ public class TheaterServiceImp implements TheaterService {
 		Theater savedTheater = theaterRepository.save(Theater);
         return new ResponseEntity<>(savedTheater, HttpStatus.CREATED);
 	}
+	 @Override
+	    public ResponseEntity<List<Theater>> findAllTheater() {
+	        List<Theater> theaters = theaterRepository.findAll();
+	        return new ResponseEntity<>(theaters, HttpStatus.OK);
+	    }
 	
 }
 

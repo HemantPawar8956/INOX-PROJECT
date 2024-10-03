@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { globalVar } from "../globalContext/GlobalContext";
-
+import { jwtDecode } from "jwt-decode";
 const LoginPage = () => {
   let navigate = useNavigate();
   let { loginPanel, setLoginPanel, loginTypes, loginType, setLoginType } = useContext(globalVar);
@@ -29,18 +29,17 @@ let handleChange = (e) => {
 
     try {
       console.log(user.password);
-      //   const response = await axios.post(
-      //     `http://localhost:8080/auth/login?email=${user.email}&password=${user.password}`,
-      //     user,
+         const response = await axios.post(
+           `http://localhost:8080/auth/login?email=${user.email}&password=${user.password}`
       //     {
       //       headers: {
       //         "Content-Type": "application/json ,text/plain, /",
       //       },
-      //     }
-      //   );
-      //   console.log("User authenticated:", response);
+       //   }
+         );
+         console.log("User authenticated:", response);
 
-    
+        
       localStorage.setItem(
         "auth",
         JSON.stringify({
