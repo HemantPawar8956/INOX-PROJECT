@@ -31,11 +31,7 @@ public class TheaterController {
 	        return theaterService.findTheaterByLocation(address);
 	    }
 	    
-	    // Add a new theater
-	    @PostMapping("/add")
-	    public ResponseEntity<Theater> addTheater(@RequestBody Theater theater) {
-	        return theaterService.saveTheater(theater);
-	    }
+	   
 	@DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteTheater(@PathVariable Long id) {
         return theaterService.deleteTheater(id);   
