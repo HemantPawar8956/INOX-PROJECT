@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.velocitai.movie_booking.model.Theater;
-import com.velocitai.movie_booking.service.TheaterServiceImpl;
+import com.velocitai.movie_booking.service.imp.TheaterServiceImpl;
 
 @RestController
 @RequestMapping("/theater")
@@ -31,8 +31,7 @@ public class TheaterController {
 	        return theaterService.findTheaterByLocation(address);
 	    }
 	    
-	    // Add a new theater
-	    
+
 	@DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteTheater(@PathVariable Long id) {
         return theaterService.deleteTheater(id);   
