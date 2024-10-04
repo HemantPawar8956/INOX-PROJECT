@@ -136,13 +136,12 @@ const Corousel2 = () => {
           <h1>Now Showing</h1>
         </div>
 
-      
-          {loginType == "admin" && (
-            <div className="new-btn">
-              <button>Add New Movies</button>
-            </div>
-          )}
-        
+        {loginType == "admin" && (
+          <div className="new-btn">
+            <button>Add New Movies</button>
+          </div>
+        )}
+
         <div className="box">
           <div className="box1 checkboxBox">
             <input type="checkbox" name="" id="Subtitle" />

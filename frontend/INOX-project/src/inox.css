@@ -571,9 +571,9 @@
   border-radius: 5px;
   transition: all 0.5s;
 }
-.box .box1 label:hover {
+/* .box .box1 label:hover {
   font-size: 16px;
-}
+} */
 .box1 .GenreDropdown {
   padding: 5px 10px;
   font-size: 14px;
