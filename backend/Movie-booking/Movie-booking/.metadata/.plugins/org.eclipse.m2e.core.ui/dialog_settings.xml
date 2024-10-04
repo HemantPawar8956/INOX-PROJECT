@@ -2,11 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
-<<<<<<< HEAD
 			<item value="D:\inox project\INOX-PROJECT\backend\Movie-booking\Movie-booking"/>
-=======
-			<item value="E:\INOX_project\INOX-PROJECT\backend\Movie-booking\Movie-booking"/>
->>>>>>> c391d100b6ca7084ab64d91b103dfa579743cb21
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

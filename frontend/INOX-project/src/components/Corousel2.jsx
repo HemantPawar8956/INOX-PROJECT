@@ -1,4 +1,4 @@
-import React, { useContext} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import photo1 from "../Assets/photo1.webp";
 import photo2 from "../Assets/photo2.jpg";
 import photo3 from "../Assets/photo3.jpg";
@@ -22,7 +22,8 @@ import photo20 from "../Assets/photo20.avif";
 import { globalVar } from "../globalContext/GlobalContext";
 
 const Corousel2 = () => {
- let {loginType} =  useContext(globalVar);
+  const [movies, setMovies] = useState([]);
+  let { loginType } = useContext(globalVar);
   let data1 = [
     {
       img: photo1,
@@ -115,6 +116,18 @@ const Corousel2 = () => {
       languages: "Hindi",
     },
   ];
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await fetch("");
+        const data = await response.json();
+        setMovies(data);
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      }
+    };
+    fetchMovies();
+  }, []);
 
   return (
     <section className="corousel2">
@@ -122,10 +135,18 @@ const Corousel2 = () => {
         <div className="head">
           <h1>Now Showing</h1>
         </div>
+
+      
+          {loginType == "admin" && (
+            <div className="new-btn">
+              <button>Add New Movies</button>
+            </div>
+          )}
+        
         <div className="box">
-          <div className="box1">
+          <div className="box1 checkboxBox">
             <input type="checkbox" name="" id="Subtitle" />
-            <label htmlFor="Subtitle">With Subtitle</label>
+            <label htmlFor="Subtitle">WithSubtitle</label>
           </div>
           <div className="box1">
             <select name="" id="" className="GenreDropdown">
@@ -141,7 +162,7 @@ const Corousel2 = () => {
             </select>
           </div>
           <div className="box1">
-            <select name="" id="">
+            <select name="" id="" className="GenreDropdown">
               <option value="">All Languages</option>
               <option value="">English</option>
               <option value="">Hindi</option>
@@ -162,14 +183,14 @@ const Corousel2 = () => {
               <h3>{ele.title}</h3>
               <p>Genres: {ele.genres}</p>
               <p>language: {ele.languages}</p>
-              {loginType === 'USER' ? (
-  <button>Book Tickets</button>
-) : loginType === 'admin' ? (
-  <div >
-    <button>Update</button>
-    <button>Delete</button>
-  </div>
-) : null}
+              {loginType === "USER" ? (
+                <button>Book Tickets</button>
+              ) : loginType === "admin" ? (
+                <div>
+                  <button>Update</button>
+                  <button>Delete</button>
+                </div>
+              ) : null}
             </div>
           </div>
         );

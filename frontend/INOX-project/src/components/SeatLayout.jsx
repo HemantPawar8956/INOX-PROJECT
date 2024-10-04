@@ -1,6 +1,5 @@
-
 import React, { useState } from "react";
-import Payment from "./Payment";
+// import Payment from "./Payment";
 
 const SeatLayout = () => {
   let seatSeq = "A";
@@ -180,7 +179,7 @@ const SeatLayout = () => {
       e.target.style.color = "white";
       setSelectedSeats([...selectedSeats, ele.seatNo]);
     } else {
-      e.target.style.backgroundColor = "white";
+      e.target.style.backgroundColor = "lightgray";
       e.target.style.color = "black";
       setSelectedSeats(selectedSeats.filter((seat) => seat !== ele.seatNo));
     }
@@ -267,8 +266,8 @@ const SeatLayout = () => {
           </section>
         </section>
       </section>
-      <Payment/>
-      {/* <section className="carpayment">
+
+      <section className="carpayment">
         <div className="image-pic">
           <h1>Booking Summary</h1>
         </div>
@@ -309,7 +308,7 @@ const SeatLayout = () => {
             <button className="button-grand">proceed</button>
           </div>
         </div>
-      </section> */}
+      </section>
     </section>
   );
 };

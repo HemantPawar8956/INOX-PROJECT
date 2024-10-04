@@ -9,8 +9,11 @@ import SeatLayout from "./../components/SeatLayout";
 import Addmovie from "./../components/Addmovie";
 import Addtheatre from "../components/Addtheatre";
 import MovieTicket from "./../components/MovieTicket";
-import ProtectedRoute from "../Auth/ProtectedRoute";
+
+import ProtectedRoute from "./../Auth/ProtectedRoute";
 import LoginPage from "../pages/LoginPage";
+import SelectLocation from "./../components/SelectLocation";
+import SignUp from "./../pages/SignUp";
 
 export let routingVar = createBrowserRouter([
   {
@@ -21,6 +24,10 @@ export let routingVar = createBrowserRouter([
       {
         path: "",
         element: <Home />,
+      },
+      {
+        path: "selectlocation",
+        element: <SelectLocation />,
       },
       {
         path: "/showtimings",
@@ -56,12 +63,16 @@ export let routingVar = createBrowserRouter([
     path: "/selectseats",
     element: <SeatLayout />,
   },
-  {
-    path: "/login",
-    element: <LoginPage />,
-  },
+  //   {
+  //     path: "/login",
+  //     element: <LoginPage />,
+  //   },
   {
     path: "/movieTicket",
     element: <MovieTicket />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
   },
 ]);

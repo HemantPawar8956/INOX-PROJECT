@@ -96,8 +96,7 @@ const Sider = () => {
                 className="city-tile"
                 onClick={() => {
                   setUserLocation(city.name);
-                }}
-                >
+                }}>
                 <img src={city.image} alt="" />
               </div>
             ))}

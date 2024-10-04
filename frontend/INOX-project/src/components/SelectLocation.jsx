@@ -54,7 +54,7 @@ const SelectLocation = () => {
   return (
     <section className="selectLocation" onClick={handleClose}>
       <section
-        className={`horizontalBar ${location ? "visible" : "hidden"}`}
+        className={`horizontalBar`}
         onClick={(ele) => {
           ele.stopPropagation(), setLocation(true);
         }}>

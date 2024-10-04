@@ -41,7 +41,7 @@ const ShowTimings = () => {
           />
         </div>
 
-        {/* <div  className="status-options1">
+        <div  className="status-options1">
           <div className="status-options">
           <div className="status-item available1"><div className="status-item available"></div><div>Available</div></div>
           <div className="status-item filling-fast">Filling Fast</div>
@@ -52,7 +52,7 @@ const ShowTimings = () => {
           <div className="status-item subtitle">Subtitle</div>
           <div className="status-item accessibility">Accessibility</div>
           </div>
-        </div> */}
+        </div>
         <div className="first-status">
           <div className="first-status1">
             <div className="available"></div>

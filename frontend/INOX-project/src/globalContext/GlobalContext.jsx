@@ -16,7 +16,18 @@ export const GlobalContext = ({ children }) => {
   console.log(decodedToken);
 
   let [loginType, setLoginType] = useState(auth?.user?.role || "USER");
-  console.log(loginType);
+
+  let loginTypes = [
+    {
+      loginName: "Admin",
+      loginVal: "Admin",
+    },
+    {
+      loginName: "Users",
+      loginVal: "Users",
+    },
+  ];
+
   return (
     <Provider
       value={{
@@ -30,6 +41,7 @@ export const GlobalContext = ({ children }) => {
         setUserLocation,
         loginType,
         setLoginType,
+        loginTypes,
       }}>
       {children}
     </Provider>
