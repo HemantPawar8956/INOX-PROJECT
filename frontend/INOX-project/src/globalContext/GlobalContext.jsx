@@ -12,8 +12,8 @@ export const GlobalContext = ({ children }) => {
   let auth = JSON.parse(localStorage.getItem("auth"));
   console.log(auth);
   //   const decodedToken = jwt_decode(auth.token);
-  const decodedToken = jwtDecode(auth.token);
-  console.log(decodedToken);
+  // const decodedToken = jwtDecode(auth.token);
+  // console.log(decodedToken);
 
   let [loginType, setLoginType] = useState(auth?.user?.role || "USER");
 
@@ -39,9 +39,13 @@ export const GlobalContext = ({ children }) => {
         setLocation,
         userLocation,
         setUserLocation,
+<<<<<<< HEAD
         loginType,
         setLoginType,
         loginTypes,
+=======
+        loginType, setLoginType
+>>>>>>> Kanupriya
       }}>
       {children}
     </Provider>
