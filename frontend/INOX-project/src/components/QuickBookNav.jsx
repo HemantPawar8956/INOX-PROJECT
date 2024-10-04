@@ -29,20 +29,17 @@ const QuickBookNav = () => {
     e.preventDefault();
     // Add your form submission logic here (e.g., axios)
   };
-<<<<<<< HEAD
-console.log(change)
-  let handleMovieData= async()=>{
-  
-    try{
-        let data =  await axios.get(`http://localhost:8080/open/${change.toLowerCase()}s/alls`)
-        console.log(data)
+  console.log(change);
+  let handleMovieData = async () => {
+    try {
+      let data = await axios.get(
+        `http://localhost:8080/open/${change.toLowerCase()}s/alls`
+      );
+      console.log(data);
+    } catch {
+      console.log("helll");
     }
-
-    catch{
-console.log("helll")
-    }
-  }
-=======
+  };
 
   // Handle date change
   const handleDateChange = (selectedDate) => {
@@ -60,9 +57,8 @@ console.log("helll")
     });
   };
 
->>>>>>> Kanupriya
   console.log(data);
-  
+
   return (
     <div className="quick-book-container">
       <span className="quick-title">Quick Book</span>
@@ -104,9 +100,8 @@ console.log("helll")
           />
         </div>
         <div className="option">
-          
           <input type="time" name="" id="" />
-        </div> 
+        </div>
         <button className="book-button" type="submit">
           Book
         </button>
@@ -116,4 +111,3 @@ console.log("helll")
 };
 
 export default QuickBookNav;
-

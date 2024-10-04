@@ -39,13 +39,9 @@ export const GlobalContext = ({ children }) => {
         setLocation,
         userLocation,
         setUserLocation,
-<<<<<<< HEAD
         loginType,
         setLoginType,
         loginTypes,
-=======
-        loginType, setLoginType
->>>>>>> Kanupriya
       }}>
       {children}
     </Provider>
