@@ -17,7 +17,7 @@ const Layout = () => {
   return (
     <div>
       {siderVisible && <Sider />}
-      {location && <SelectLocation/>}
+      {/* {location && <SelectLocation/>} */}
       {loginPanel && <LoginPage />}
       <Navbar />
       <Outlet />

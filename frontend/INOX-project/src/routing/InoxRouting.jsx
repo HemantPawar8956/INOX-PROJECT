@@ -10,7 +10,7 @@ import Addmovie from './../components/Addmovie';
 import ProtectedRoute from "./../Auth/ProtectedRoute";
 import LoginPage from "./../pages/LoginPage";
 
-import SeatLayout from "../components/SeatLayout";
+
 
 
 export let routingVar = createBrowserRouter([
