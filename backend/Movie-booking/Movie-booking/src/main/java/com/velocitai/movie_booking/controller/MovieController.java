@@ -32,7 +32,7 @@ public class MovieController {
 
 	
 	@PostMapping("/save")
-    public ResponseEntity<Movie> addMovie(@ModelAttribute Movie movie) {
+    public ResponseEntity<Movie> addMovie(@RequestBody Movie movie) {
         
              return movieService.saveMovie(movie);
 	}

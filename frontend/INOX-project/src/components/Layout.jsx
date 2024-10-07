@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import Navbar from "./Navbar";
 import { globalVar } from "../globalContext/GlobalContext";
-import Sider from "./Sider";
 
 import { Outlet } from "react-router-dom";
 
@@ -11,7 +10,10 @@ import SelectLocation from "./SelectLocation";
 import SignUp from "../pages/SignUp";
 import Addmovie from './Addmovie';
 
+<<<<<<< HEAD
 import Corousel2 from "./Corousel2";
+=======
+>>>>>>> d8b31352f0538df49384db37ba4b0629067ad88f
 // import RegisterPage from "../pages/RegisterPage";
 
 import { Toaster } from "react-hot-toast";

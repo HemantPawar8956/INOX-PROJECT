@@ -23,13 +23,11 @@ const Addmovie = () => {
 
   const handleSave = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/movies/save', formData, 
-        {
-          headers:{
-            Authorization: `Bearer ${localStorage.getItem("auth")}`
-          }
-        }
-      );
+      const response = await axios.post('http://localhost:8080/movies/save', formData, {
+        headers: {
+          Authorization :`Bearer ${localStorage.getItem("auth")}`, // Use application/json for sending data
+        },
+      });
 
       console.log(response.data);
       alert('Movie details saved successfully!');
@@ -74,7 +72,7 @@ const Addmovie = () => {
             <div className="form-group">
               <label htmlFor="duration">Duration:</label>
               <input
-                type="text"
+                type="time"
                 id="duration"
                 name="duration"
                 value={formData.duration}
@@ -123,7 +121,7 @@ const Addmovie = () => {
       </section>
 
       {showModal && (
-        <div className="modal">
+        <div className="modal" onClick={()=>{setShowModal(false)}}>
           <div className="modal-content">
             <h3>Confirm Movie Details</h3>
             <p>
