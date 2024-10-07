@@ -116,6 +116,7 @@ public class UserServiceImp  implements UserService{
 	        	        // Create full path (use the provided path and the file name)
 	        	        String filePath = path + File.separator + name;
 	        	        // Create directory if it doesn't exist
+	        	        System.out.println(filePath);
 	        	        File dir = new File(path);
 	        	        if (!dir.exists()) {
 	        	            dir.mkdirs(); // This creates both parent directories if they don't exist

@@ -346,29 +346,27 @@
 .show-sec {
   background-color: antiquewhite;
 }
-.show {
-  /* * {
+/* * {
+=======
+/* * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-/* Navbar 
-.navbar {
-  width: 100%;
-  height: 70px;
-  display: flex;
-  /* justify-content: center; */
-  align-items: center;
-  background-color: #c6d4e9;
-}
-.show .showh2 {
-  font-size: 28px;
-  font-weight: bold;
-  margin-right: 65%;
-}
 
-.show-sec .show-timings-dates {
-  /* Logo 
+/* Navbar */
+
+/* Logo 
+=======
+
+/* Logo 
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+}
+/* Logo */
 .logo img {
   height: 29px;
   width: 60px;
@@ -498,7 +496,7 @@
   background-color: rgb(224, 222, 222);
 }
 
-/* second nav  
+/* second nav  */
 
 .quick-book-container {
   display: flex;
@@ -595,9 +593,9 @@
   background-color: #0056b3;
 }
 
-/* sider 
+/* sider */
 .sideBar {
-  /* height: 100vh; 
+  /* height: 100vh; */
   width: 100%;
   background-color: rgba(0, 0, 0, 0.684);
   position: fixed;
@@ -628,22 +626,29 @@
   /* display: flex; */
   /* position: absolute; */
   /* left: 100px; */
-  margin-left: 4%;
 }
-.show-timings-container1 {
-  width: 100%;
-  height: 80px;
-  border: 1px solid black;
-  position: relative;
+.city-tile:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
 }
 
 .date-item {
   margin: 15px;
   width: 30%;
   height: 80px;
+} /* accordian css by seema */
+.show-sec {
+  background-color: antiquewhite;
 }
-.date-item h3 {
+
+.show {
+  align-items: center;
+  background-color: #c6d4e9;
+}
+.show .showh2 {
+  font-size: 28px;
   font-weight: bold;
+  margin-right: 65%;
 }
 .status-options {
   width: 80%;
@@ -651,11 +656,14 @@
   border: 1px solid;
   margin-left: 173px;
 }
-.show-timings-search-status {
+.show-sec .show-timings-dates {
+  margin-left: 4%;
+  text-align: center;
+  padding: 10px;
+}
+/* .city-sidebar .cityLines {
   width: 100%;
-  height: 95px;
-  border: 1px solid #c6d4e9;
-  border-radius: 10px;
+  height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -668,7 +676,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .optionitems {
   width: 480px;
@@ -716,42 +724,8 @@
 }
 
 .show-timings-container {
-  width: 100%;
-  margin: 0 auto;
 }
-.accordion-header {
-  width: 80%;
-  border-radius: 10px;
-  height: 90px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  border: 1px solid black;
-  margin-left: 173px;
-}
-.accordion-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.timings-row {
-  display: flex;
-  flex-wrap: wrap;
-  width: 80%;
-}
-.time-box {
-  padding: 15px 35px;
-  border: 1px solid green;
-  margin: 10px;
-  color: green;
-  font-weight: 600;
-  border-radius: 5px;
-}
-.city-tile:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease-in-out;
-}
+/*  */
 
 /* mantasha */
 
@@ -860,3 +834,70 @@
   color: white;
   border-radius: 20px;
 }
+.main1 .carpayment .image-pic2 {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  color: grey;
+}
+.main1 .carpayment .image-pic3 {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+.main1 .carpayment .image-pic3 div {
+  display: flex;
+  justify-content: space-between;
+}
+.main1 .carpayment .image-pic3 div h1 {
+  color: black;
+}
+
+.main1 .carpayment .image-pic4 {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.main1 .carpayment .image-pic4 h1 {
+  color: black;
+}
+
+.main1 .carpayment .image-pic4 select .t1 {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.main1 .carpayment .image-pic5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main1 .carpayment .image-pic5 h1 {
+  margin-left: 10px;
+  color: black;
+  /* border: 1px solid; */
+  width: 300px;
+}
+
+.main1 .carpayment .image-pic5 .button-grand {
+  border: 1px solid;
+  width: 300px;
+  height: 50px;
+  margin-top: 20px;
+  font-size: x-large;
+  background-color: rgb(10, 41, 113);
+  color: white;
+  border-radius: 20px;
+}
+
+.city-tile:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* >>>>>>> ffba752729e1af5bc4389c3b1c92e736dde6bd55 */

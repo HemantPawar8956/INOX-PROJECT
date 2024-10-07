@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,8 +35,7 @@ public class Movie {
 	private String genre;
 	@Column(name="movie_image")
 	private String movieImage;
-	@Transient  // This field is not persisted in the DB, used for uploading images
-    private MultipartFile imageFile;
+	
 
 	@OneToMany(mappedBy = "movie") // Indicates the 'movie' field in the Show class
 	private List<Show> shows; 
