@@ -55,7 +55,7 @@ public class ShowController {
 	   }
 	   
 	   
-	   @DeleteMapping("/deleteshow/{id}")
+	   @DeleteMapping("/delete/{id}")
 	   public ResponseEntity<?> deleteShow(@PathVariable  Long id) {
 		   return showServiceImp.deleteShow(id);
 	   }

@@ -1,12 +1,15 @@
 package com.velocitai.movie_booking.service.imp;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -32,19 +35,25 @@ public class MovieServiceImp implements MovieService {
 	@Autowired
 	ShowRepository showRepository;
 
+	
+	
 	@Override
 	public ResponseEntity<Movie> saveMovie(Movie movie) {
+		
+		 try {
+		        // Save the movie object to the database
+		        Movie savedMovie = movieRepository.save(movie);
 
-		if (movie.getMoviename() != null) {
-			try {
-				Movie savedMovie = movieRepository.save(movie);
-				return ResponseEntity.status(HttpStatus.CREATED).body(savedMovie);
-			} catch (Exception e) {
-				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-			}
-		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-		}
+		        // Return the saved movie with a status of CREATED
+		        return ResponseEntity.status(HttpStatus.CREATED).body(savedMovie);
+		    } catch (Exception e) {
+		        // Log the error (optional)
+		        e.printStackTrace();
+
+		        // Return an error response with status INTERNAL_SERVER_ERROR
+		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		    }
+		
 
 	}
 
@@ -107,10 +116,11 @@ public class MovieServiceImp implements MovieService {
 	public ResponseEntity<List<Movie>> findMoviesByLocation(String location) {
 
 		List<Theater> theaters = theaterRepository.findByAddressContainingIgnoreCase(location);
-		System.out.println(theaters.get(1).getName());
-		Optional<Show> s = showRepository.findById(theaters.get(0).getId());
-		System.out.println(s.get().getMovie().getMoviename());
-
+		/*
+		 * System.out.println(theaters.get(1).getName()); Optional<Show> s =
+		 * showRepository.findById(theaters.get(0).getId());
+		 * System.out.println(s.get().getMovie().getMoviename());
+		 */
 	    List<Movie> movieList = new ArrayList<>();
 
 	    if (!theaters.isEmpty())

@@ -1,6 +1,7 @@
 package com.velocitai.movie_booking.service.imp;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,68 +15,67 @@ import com.velocitai.movie_booking.service.TheaterService;
 @Service
 public class TheaterServiceImp implements TheaterService {
 
-	@Autowired
-	TheaterRepository theaterRepository;
+
+	 @Autowired
+	    private TheaterRepository theaterRepository;
+
+	    @Override
+	    public ResponseEntity<Theater> saveTheater(Theater theater) {
+	        Theater savedTheater = theaterRepository.save(theater);
+	        return new ResponseEntity<>(savedTheater, HttpStatus.CREATED);
+	    }
+
+	    @Override
+	    public ResponseEntity<Theater> findTheaterById(long id) {
+	        Optional<Theater> theater = theaterRepository.findById(id);
+	        return theater.map(t -> new ResponseEntity<>(t, HttpStatus.OK))
+	                      .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+	    }
+
+	    @Override
+	    public ResponseEntity<Theater> updateTheater(Theater theater) {
+	        if (theaterRepository.existsById(theater.getId())) {
+	            Theater updatedTheater = theaterRepository.save(theater);
+	            return new ResponseEntity<>(updatedTheater, HttpStatus.OK);
+	        } else {
+	            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	        }
+	    }
+
+	    @Override
+	    public ResponseEntity<?> deleteTheater(long id) {
+	        if (theaterRepository.existsById(id)) {
+	            theaterRepository.deleteById(id);
+	            return ResponseEntity.ok("Theater deleted successfully.");
+	        } else {
+	            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	        }
+	    }
+
+	    @Override
+	    public ResponseEntity<List<Theater>> findAllTheater() {
+	        List<Theater> theaters = theaterRepository.findAll();
+	        return new ResponseEntity<>(theaters, HttpStatus.OK);
+	    }
+
+	    @Override
+	    public ResponseEntity<List<Theater>> findTheaterByMovieName(String movieName) {
+	    	
+	        List<Theater> theaters = theaterRepository.findByShow_MovieName(movieName);
+	        
+	        return ResponseEntity.ok(theaters);
+	    }
+
+	    @Override
+	    public ResponseEntity<List<Theater>> findTheaterByLocation(String location) {
+	        List<Theater> theaters = theaterRepository.findByAddressContainingIgnoreCase(location);
+	        return ResponseEntity.ok(theaters);
+	    }
+	}
+
+
 	
 	
-
-	@Override
-	public ResponseEntity<Theater> findTheaterById(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-
-	
-
-	@Override
-	public ResponseEntity<List<Theater>> findAllTheater() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResponseEntity<List<Theater>> findTheaterByMovieName(String movieName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResponseEntity<List<Theater>> findTheaterByLocation(String location) {
-		 List<Theater> theaters = theaterRepository.findByAddress(location);
-
-		    if (theaters.isEmpty()) {
-		        
-		        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-		    }
-
-		    return ResponseEntity.ok(theaters);
-	}
-
-	@Override
-	public ResponseEntity<?> deleteTheater(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResponseEntity<Theater> updateTheater(Theater Theater) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-
-
-	@Override
-	public ResponseEntity<Theater> saveTheater(Theater Theater) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-}
 
     
 
