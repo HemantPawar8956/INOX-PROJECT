@@ -9,20 +9,20 @@ export const GlobalContext = ({ children }) => {
   let [loginPanel, setLoginPanel] = useState(false);
   let [moviePanel, setMoviePanel] = useState(false);
   let [location, setLocation] = useState(true);
-  let [signupPanel, setSignupPanel]=useState(false);
+  let [signupPanel, setSignupPanel] = useState(false);
   let [userLocation, setUserLocation] = useState("");
   let auth = localStorage.getItem("auth");
   console.log(auth);
-  let [inoxLoginType, setInoxLoginType] = useState("USER");
+  let [inoxLoginType, setInoxLoginType] = useState("ADMIN");
   //   const decodedToken = jwt_decode(auth.token);
   // const decodedToken = jwtDecode(auth.token);
   // console.log(decodedToken);
 
   console.log("loginPanel", loginPanel);
   console.log("signupPanel", signupPanel);
-  
+
   let [loginType, setLoginType] = useState(auth?.user?.role || "USER");
-  console.log(loginType) 
+  console.log(loginType);
 
   let loginTypes = [
     {
@@ -44,7 +44,8 @@ export const GlobalContext = ({ children }) => {
         setLoginPanel,
         signupPanel,
         setSignupPanel,
-        moviePanel, setMoviePanel,
+        moviePanel,
+        setMoviePanel,
         location,
         setLocation,
         userLocation,
@@ -52,7 +53,8 @@ export const GlobalContext = ({ children }) => {
         loginType,
         setLoginType,
         loginTypes,
-        inoxLoginType, setInoxLoginType
+        inoxLoginType,
+        setInoxLoginType,
       }}>
       {children}
     </Provider>

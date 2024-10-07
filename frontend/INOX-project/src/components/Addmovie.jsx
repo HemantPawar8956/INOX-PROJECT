@@ -26,12 +26,12 @@ const Addmovie = () => {
   };
 
   return (
-    <div class="main-body">
-      <section class="center-section">
-        <div class="form-container">
+    <div className="main-body">
+      <section className="center-section">
+        <div className="form-container">
           <h2>Movie Details</h2>
           <form action="#">
-            <div class="form-group">
+            <div className="form-group">
               <label for="movieName">Movie Name:</label>
               <input
                 type="text"
@@ -44,7 +44,7 @@ const Addmovie = () => {
               />
             </div>
 
-            <div class="form-group">
+            <div className="form-group">
               <label for="genre">Genre:</label>
               <input
                 type="text"
@@ -57,7 +57,7 @@ const Addmovie = () => {
               />
             </div>
 
-            <div class="form-group">
+            <div className="form-group">
               <label for="duration">Duration:</label>
               <input
                 type="text"
@@ -70,7 +70,7 @@ const Addmovie = () => {
               />
             </div>
 
-            <div class="form-group">
+            <div className="form-group">
               <label for="language">Language:</label>
               <input
                 type="text"
@@ -83,21 +83,33 @@ const Addmovie = () => {
               />
             </div>
 
-                <div class="form-actions">
-                    <button type="submit" class="update-btn" onClick={handleUpdate}>Update</button>
-                </div>
-            </form>
+            <div className="form-actions">
+              <button
+                type="submit"
+                className="update-btn"
+                onClick={handleUpdate}>
+                Update
+              </button>
+            </div>
+          </form>
         </div>
       </section>
       {showModal && (
         <div className="modal">
           <div className="modal-content">
             <h3>Confirm Movie Details</h3>
-            <p><strong>Movie Name:</strong> {formData.movieName}</p>
-            <p><strong>Genre:</strong> {formData.genre}</p>
-            <p><strong>Duration:</strong> {formData.duration}</p>
-            <p><strong>Language:</strong> {formData.language}</p>
-           
+            <p>
+              <strong>Movie Name:</strong> {formData.movieName}
+            </p>
+            <p>
+              <strong>Genre:</strong> {formData.genre}
+            </p>
+            <p>
+              <strong>Duration:</strong> {formData.duration}
+            </p>
+            <p>
+              <strong>Language:</strong> {formData.language}
+            </p>
 
             <div className="modal-actions">
               <button className="close" onClick={handleSave}>
