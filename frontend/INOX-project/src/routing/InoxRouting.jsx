@@ -6,15 +6,14 @@ import Showtimings from "./../components/Showtimings";
 import Cinemas from "./../components/Cinemas";
 import Payment from "./../components/Payment";
 import SeatLayout from "./../components/SeatLayout";
-import Addmovie from "./../components/Addmovie";
 import Addtheatre from "../components/Addtheatre";
 import MovieTicket from "./../components/MovieTicket";
-
+import Addmovie from './../components/Addmovie';
+import ProtectedRoute from "./../Auth/ProtectedRoute";
 import AllBookings from "../components/AllBookings";
 import SelectLocation from "./../components/SelectLocation";
 import SignUp from "../pages/SignUp";
 import LoginPage from "../pages/LoginPage";
-import ProtectedRoute from "../Auth/ProtectedRoute";
 
 export let routingVar = createBrowserRouter([
   {
