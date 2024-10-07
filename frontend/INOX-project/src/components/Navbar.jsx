@@ -32,6 +32,8 @@ const Navbar = () => {
     setLoginPanel,
     loginType,
     setLoginType,
+    inoxLoginType,
+    setInoxLoginType,
   } = useContext(globalVar);
 
   let Dropdown = () => {
@@ -74,11 +76,11 @@ const Navbar = () => {
             <FaTags className="icon" /> Offers
           </li>
           <li>
-            {loginType == "ADMIN" ? (
+            {inoxLoginType == "ADMIN" ? (
               <>
-                <Link to="allbookings">
+                <NavLink to="allbookings">
                   <AiFillFund className="icon" /> All Bookings
-                </Link>
+                </NavLink>
               </>
             ) : (
               <>

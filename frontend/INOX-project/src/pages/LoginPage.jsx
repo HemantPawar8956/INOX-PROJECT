@@ -3,10 +3,20 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { globalVar } from "../globalContext/GlobalContext";
 import { jwtDecode } from "jwt-decode";
+import toast from "react-hot-toast";
 const LoginPage = () => {
   let navigate = useNavigate();
-  let { loginPanel, setLoginPanel, loginTypes, loginType, setLoginType,inoxLoginType, setInoxLoginType } =
-    useContext(globalVar);
+  let {
+    loginPanel,
+    setLoginPanel,
+    loginTypes,
+    loginType,
+    setLoginType,
+    inoxLoginType,
+    setInoxLoginType,
+    signupPanel,
+    setSignupPanel,
+  } = useContext(globalVar);
   console.log(loginTypes);
   // Default user state with email and password
   let [user, setUser] = useState({
@@ -28,40 +38,27 @@ const LoginPage = () => {
     e.stopPropagation();
 
     try {
-    
       const response = await axios.post(
         `http://localhost:8080/auth/login?email=${user.email}&password=${user.password}`
       );
       console.log("User authenticated:", response.data);
       let token = response.data.token;
-      localStorage.setItem("auth",token)
+      !token && toast.success("Login Succesfully");
+      localStorage.setItem("auth", token);
       // let token = response.data.token;
-      console.log('Token:', token); 
-     //to get user
-     // Making an API call to fetch user data using the token
+      console.log("Token:", token);
 
-      let decode= jwtDecode(token);
-      
-       console.log(decode);
-    // console.log('User Data:', userObj.data);
+      let decode = jwtDecode(localStorage.getItem("auth"));
 
-      // console.log(role==='ADMIN')
-      let roles=decode.role;
-       if (roles === 'ADMIN') {
-          navigate('/'); 
-      } else if (roles === 'USER') {
-          navigate('/');
-      } else {
-          console.error('Unknown role:', response.data.role);          
-      } 
-
+      setInoxLoginType(decode.role);
     } catch (error) {
       console.error("There was an error authenticating the user!", error);
     }
   };
   const handleSignUpClick = (e) => {
-    navigate("/signup");
-    // e.stopPropagation();
+    e.stopPropagation();
+    setSignupPanel(true);
+    setLoginPanel(false);
   };
 
   return (
@@ -113,10 +110,10 @@ const LoginPage = () => {
             />
           </div>
           <button className="login-button">Login</button>
-          <button className="signupbtn" onClick={handleSignUpClick}>
-            Click to Signup
-          </button>
         </form>
+        <button className="signupbtn" onClick={handleSignUpClick}>
+          Click to Signup
+        </button>
       </section>
     </section>
   );
