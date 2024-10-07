@@ -230,7 +230,7 @@
   margin-right: 0;
 }
 
-.option input {
+.option input,select {
   width: 100%;
   padding: 3px;
   border: 1px solid #ccc;

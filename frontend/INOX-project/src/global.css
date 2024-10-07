@@ -350,6 +350,8 @@
 =======
 /* * {
 * {
+=======
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -361,6 +363,11 @@
 =======
 
 /* Logo 
+=======
+/* .navbar {
+  width: 100%;
+  height: 10vh;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
@@ -494,11 +501,13 @@
 .dropDown {
   position: fixed;
   background-color: rgb(224, 222, 222);
-}
+} */
 
 /* second nav  */
 /* 
 .quick-book-container {
+
+/* .quick-book-container {
   display: flex;
   justify-content: end;
   align-items: center;
@@ -570,9 +579,9 @@
   font-size: 14px;
   color: #333;
   background-color: white;
-}
+} */
 
-.option input::placeholder {
+/* .option input::placeholder {
   color: #999;
   font-size: 12px;
 }
@@ -595,13 +604,18 @@
 
 /* sider */
 /* .sideBar {
+<<<<<<< HEAD
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.684);
+=======
+  /* height: 100vh; */
+/* width: 100%;
+/* >>>>>>> 768b764b304fb59f2c373366e5325a7d100e4ef9 */
+  /* background-color: rgba(0, 0, 0, 0.684);
   position: fixed;
   display: flex;
   justify-content: end;
-}
-.city-sidebar::-webkit-scrollbar {
+} */
+/* .city-sidebar::-webkit-scrollbar {
   display: none;
 }
 .sideBar .city-sidebar {
@@ -621,12 +635,18 @@
   width: 100%;
 }
 .city-sidebar li {
-  width: 50%;
+  width: 50%; */
   /* display: flex; */
+/* <<<<<<< HEAD */
   /* position: absolute; */
   /* left: 100px; */
 /* }
-.city-tile:hover {
+=======
+/* position: absolute; */
+/* left: 100px; */
+
+/* >>>>>>> 768b764b304fb59f2c373366e5325a7d100e4ef9 */
+/* .city-tile:hover {
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
 }
@@ -635,7 +655,7 @@
   margin: 15px;
   width: 30%;
   height: 80px;
-}  */  
+}  */   */
 
 /* accordian css by seema */
 /* .show-sec {
@@ -900,7 +920,7 @@
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
 } */ 
-
+ 
 /* Deletion model -- kanupriya  */
 
 .modal-backdrop-deletenotify {
@@ -915,6 +935,7 @@
   align-items: center;
   z-index: 1000;
 }
+*/
 
 .modal-container-deletenotify {
   background-color: white;
@@ -1014,3 +1035,113 @@
   background-color: #5cb85c;
   color: white;
 }
+
+/* Kanupriya -- Cinema  */
+.cinema-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.cinema-list .cinema-container {
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+/* Search bar styling */
+.cinema-list .search-bar {
+  position: sticky;
+  top: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  min-width: 100%;
+  z-index: 5;
+}
+
+.cinema-list .search-input {
+  display: flex;
+  max-width: 30%;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  background-color: #f9f9f9;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.cinema-list .search-input:focus {
+  border-color: #4a90e2;
+}
+.cinema-list .cinema-item {
+  display: flex;
+  justify-content: space-between;
+  align-content: end;
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.cinema-list .cinema-item:hover {
+  transform: scale(1.02);
+}
+
+.cinema-list .cinema-name {
+  font-size: 1.5em;
+  color: #333;
+  padding: 10px;
+}
+
+.cinema-list .cinema-address {
+  font-size: 1.2em;
+  color: #666;
+}
+
+.cinema-list .cinema-movie-items {
+  position: relative;
+  left: 190px;
+  min-width: 30%;
+  overflow-x: auto;
+}
+.cinema-list .cinema-movie-items h2 {
+  font-size: 19px;
+  font-weight: 350;
+}
+.cinema-list .movie-list {
+  width: 64%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto !important;
+}
+.cinema-list .movie-item img {
+  min-width: 90px;
+  height: 22vh;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+.cinema-list .movie-item img:hover {
+  transform: scale(1.05);
+}
+
+.cinema-list .addtheater {
+  background-color: #0443a1;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.cinema-list .addtheater:hover {
+  background-color: #0443a1d0;
+}
+
