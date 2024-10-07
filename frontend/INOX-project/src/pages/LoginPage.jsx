@@ -44,7 +44,8 @@ const LoginPage = () => {
       console.log("User authenticated:", response.data);
       let token = response.data.token;
        toast.success("Login Succesfully");
-        setLoginPanel(false)
+      setLoginPanel(false)
+    //toast && toast.success("Login Succesfully");
       localStorage.setItem("auth", token);
       // let token = response.data.token;
       console.log("Token:", token);

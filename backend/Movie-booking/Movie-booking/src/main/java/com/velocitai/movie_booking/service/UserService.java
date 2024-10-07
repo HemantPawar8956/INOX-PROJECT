@@ -19,4 +19,5 @@ public interface UserService {
 		public ResponseEntity<User> deleteUser(User user);
 		public ResponseEntity<User> saveUserImage(User user,MultipartFile file);
 		public ResponseEntity<?> getUserImage();
+		public ResponseEntity<String> uploadImage(String path, MultipartFile image);
 }

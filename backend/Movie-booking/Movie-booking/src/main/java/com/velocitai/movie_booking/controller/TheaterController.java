@@ -1,9 +1,12 @@
 package com.velocitai.movie_booking.controller;
 
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,12 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.velocitai.movie_booking.model.Theater;
 import com.velocitai.movie_booking.service.imp.TheaterServiceImp;
+import com.velocitai.movie_booking.service.TheaterService;
+
 
 @RestController
 @RequestMapping("/theater")
+@CrossOrigin
 public class TheaterController {
 	@Autowired
-	private TheaterServiceImp theaterService;
+	private TheaterService theaterService;
 
 	// Get theaters by address
 	@GetMapping("/gettheaters/{address}")

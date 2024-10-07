@@ -75,7 +75,13 @@ public class UserController {
     @PostMapping("/upload") 
     public ResponseEntity<String>uploadImage(@RequestParam("image") MultipartFile image) throws IOException{
     	String uploadDir = "uploads/";
-    	ResponseEntity <String>fileName = uploadImage(image);
+    	ResponseEntity <String>fileName = userService.uploadImage(path,image);
 		  return ResponseEntity.ok("Image uploaded successfully :" + fileName);
+    }
+    
+    @PostMapping("/uploads") 
+    public ResponseEntity<String>uploadImages(@RequestParam MultipartFile image) throws IOException{
+    	
+		  return ResponseEntity.ok("Image uploaded successfully :" + image);
     }
 }

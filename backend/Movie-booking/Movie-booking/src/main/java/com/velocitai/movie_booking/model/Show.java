@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,6 +27,7 @@ import lombok.Setter;
 @Component
 @Getter
 @Setter
+
 public class Show {
 
 	 @Id
@@ -38,10 +41,10 @@ public class Show {
 		
 		@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 		private List<Seat> seat;
-		
+		@JsonIgnore
 		@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 		private Theater theater;
-		
+		@JsonIgnore
 		@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 		private Movie movie;
 	

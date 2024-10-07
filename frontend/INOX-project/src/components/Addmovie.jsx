@@ -1,50 +1,67 @@
-import React, { useState } from "react";
+import axios from 'axios';
+import React, { useContext, useState } from 'react';
+import { globalVar } from '../globalContext/GlobalContext';
 
 const Addmovie = () => {
+  let {moviePanel, setMoviePanel}=useContext(globalVar)
   const [formData, setFormData] = useState({
-    movieName: "",
+    moviename: "",
     genre: "",
     duration: "",
     language: "",
     movieImage:""
+
   });
 
-  let [showModal, setShowModal] = useState(false);
+  console.log(formData.duration);
 
-  let handleChange = (e) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  let handleUpdate = () => {
+  const handleUpdate = (e) => {
+    e.preventDefault(); // Prevent form submission
     setShowModal(true);
   };
 
-  let handleSave = () => {
-    alert("Movie details saved successfully!");
-    setShowModal(false);
+  const handleSave = async () => {
+    try {
+      const response = await axios.post('http://localhost:8080/movies/save', formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("auth")}`, // Use application/json for sending data
+        },
+      });
+
+      alert('Movie details saved successfully!');
+      setShowModal(false);
+    } catch (error) {
+      console.error('Error saving movie details:', error);
+    }
   };
 
   return (
-    <div class="main-body">
-      <section class="center-section">
-        <div class="form-container">
+    <div className="main-body" onClick={(e)=>{e.stopPropagation(),setMoviePanel(false)}}>
+      <section className="center-section"  >
+        <div className="form-container">
           <h2>Movie Details</h2>
-          <form action="#">
-            <div class="form-group">
-              <label for="movieName">Movie Name:</label>
+          <form onClick={(e)=>{e.stopPropagation(),setMoviePanel(true)}}>
+            <div className="form-group">
+              <label htmlFor="movieName">Movie Name:</label>
               <input
                 type="text"
                 id="movieName"
-                name="movieName"
-                value={formData.movieName}
+                name="moviename"
+                value={formData.moviename}
                 onChange={handleChange}
                 placeholder="Enter movie name"
                 required
               />
             </div>
 
-            <div class="form-group">
-              <label for="genre">Genre:</label>
+            <div className="form-group">
+              <label htmlFor="genre">Genre:</label>
               <input
                 type="text"
                 id="genre"
@@ -56,10 +73,10 @@ const Addmovie = () => {
               />
             </div>
 
-            <div class="form-group">
-              <label for="duration">Duration:</label>
+            <div className="form-group">
+              <label htmlFor="duration">Duration:</label>
               <input
-                type="text"
+                type="time"
                 id="duration"
                 name="duration"
                 value={formData.duration}
@@ -69,34 +86,58 @@ const Addmovie = () => {
               />
             </div>
 
-            <div class="form-group">
-              <label for="language">Language:</label>
+            <div className="form-group">
+              <label htmlFor="movieLanguage">Language:</label>
               <input
                 type="text"
-                id="language"
-                name="language"
-                value={formData.language}
+                id="movieLanguage"
+                name="movieLanguage"
+                value={formData.movieLanguage}
                 onChange={handleChange}
                 placeholder="Enter language"
                 required
               />
             </div>
-
+            <div className="form-group">
+              <label htmlFor="movieImage">Movie Image URL:</label>
+              <input
+                id="movieImage"
+                name="movieImage"
+                type="text"
+                value={formData.movieImage}
+                onChange={handleChange}
+                placeholder="Enter image URL"
+                required
+              />
+            </div>
                 <div class="form-actions">
                     <button type="submit" class="update-btn" onClick={handleUpdate}>Add</button>
                 </div>
             </form>
-        </div>
+    
+
+          </div>
       </section>
+
       {showModal && (
         <div className="modal">
           <div className="modal-content">
             <h3>Confirm Movie Details</h3>
-            <p><strong>Movie Name:</strong> {formData.movieName}</p>
-            <p><strong>Genre:</strong> {formData.genre}</p>
-            <p><strong>Duration:</strong> {formData.duration}</p>
-            <p><strong>Language:</strong> {formData.language}</p>
-           
+            <p>
+              <strong>Movie Name:</strong> {formData.moviename}
+            </p>
+            <p>
+              <strong>Genre:</strong> {formData.genre}
+            </p>
+            <p>
+              <strong>Duration:</strong> {formData.duration}
+            </p>
+            <p>
+              <strong>Language:</strong> {formData.movieLanguage}
+            </p>
+            <p>
+              <strong>Movie Image URL:</strong> {formData.movieImage}
+            </p>
 
             <div className="modal-actions">
               <button className="close" onClick={handleSave}>
@@ -104,6 +145,17 @@ const Addmovie = () => {
               </button>
             </div>
           </div>
+        </div>
+      )}
+
+      {formData.movieImage && (
+        <div>
+          <h3>Image Preview:</h3>
+          <img
+            src={formData.movieImage}
+            alt="Movie"
+            style={{ width: '300px', height: 'auto' }}
+          />
         </div>
       )}
     </div>

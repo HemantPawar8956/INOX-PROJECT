@@ -8,7 +8,6 @@ const Corousel2 = () => {
 
   useEffect(() => {
     let token = localStorage.getItem("auth");
-    console.log(token)
     const fetchMovies = async () => {
       try {
        const response = await axios.get('http://localhost:8080/movies/all', {
@@ -74,14 +73,15 @@ const Corousel2 = () => {
       {movies.length > 0 && movies.map((ele, i) => (
         <div className="cards2" key={i}>
           <div className="card-info">
+            <img src={ele.movieImage} alt=""/>
             <h3>{ele.moviename}</h3>
             <p>Language: {ele.movieLanguage}</p>
             <p>Duration: {ele.duration} minutes</p>
             <p>Genre: {ele.genre}</p>
 
-            {loginType === 'USER' ? (
+            {inoxLoginType === 'USER' ? (
               <button>Book Tickets</button>
-            ) : loginType === 'ADMIN' ? (
+            ) : inoxLoginType === 'ADMIN' ? (
               <div className="admin-btn">
                 <button>Update</button>
                 <button>Delete</button>
