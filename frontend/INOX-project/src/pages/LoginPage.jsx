@@ -5,7 +5,7 @@ import { globalVar } from "../globalContext/GlobalContext";
 import { jwtDecode } from "jwt-decode";
 const LoginPage = () => {
   let navigate = useNavigate();
-  let { loginPanel, setLoginPanel, loginTypes, loginType, setLoginType } =
+  let { loginPanel, setLoginPanel, loginTypes, loginType, setLoginType,inoxLoginType, setInoxLoginType } =
     useContext(globalVar);
   console.log(loginTypes);
   // Default user state with email and password
@@ -33,15 +33,16 @@ const LoginPage = () => {
         `http://localhost:8080/auth/login?email=${user.email}&password=${user.password}`
       );
       console.log("User authenticated:", response.data);
-      let token=response.data.token;
-     /*  let token = response.data.token;
-      console.log('Token:', token); */
+      let token = response.data.token;
+      localStorage.setItem("auth",token)
+      // let token = response.data.token;
+      console.log('Token:', token); 
      //to get user
      // Making an API call to fetch user data using the token
-     
+
       let decode= jwtDecode(token);
       
-       console.log(decode.role);
+       console.log(decode);
     // console.log('User Data:', userObj.data);
 
       // console.log(role==='ADMIN')
@@ -49,7 +50,7 @@ const LoginPage = () => {
        if (roles === 'ADMIN') {
           navigate('/'); 
       } else if (roles === 'USER') {
-          navigate('/user');
+          navigate('/');
       } else {
           console.error('Unknown role:', response.data.role);          
       } 
@@ -88,7 +89,7 @@ const LoginPage = () => {
             e.stopPropagation();
             setLoginPanel(true);
           }}>
-          <h1 className="login-title">Login as {inoxLoginType}</h1>
+          <h1 className="login-title">Login as {loginType}</h1>
           <div className="form-group">
             <label>Email:</label>
             <input

@@ -16,7 +16,7 @@ import com.velocitai.movie_booking.service.TheaterService;
 
 @RestController
 @RequestMapping("/open")
-@CrossOrigin
+
 public class NoAuthController {
 	
 	@Autowired

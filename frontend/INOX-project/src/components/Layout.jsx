@@ -20,6 +20,8 @@ const Layout = () => {
     loginPanel,
     setLoginPanel,
     location,
+    signupPanel,
+    setSignupPanel,
     setLocation,moviePanel, setMoviePanel
   } = useContext(globalVar);
   console.log(loginPanel);

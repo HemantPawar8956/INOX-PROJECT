@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { globalVar } from '../globalContext/GlobalContext';
 
 const SignUp = () => {
-  // let navigate = useNavigate();
+   let navigate = useNavigate();
   let { loginPanel, setLoginPanel,signupPanel,setSignupPanel } =
   useContext(globalVar);
   const [user, setUser] = useState({
@@ -12,7 +12,7 @@ const SignUp = () => {
     email: '',
     phone: '',
     password: '',
-    role: ''
+    role: 'USER'
   });
 
   const handleChange = (e) => {
@@ -32,9 +32,9 @@ const SignUp = () => {
       const response = await axios.post('http://localhost:8080/auth/signup', user);
       console.log('User created:', response.data);
       // Navigate to login page after successful signup
-     // navigate("/login"); 
-     setSignupPanel(false);
-     setLoginPanel(true);
+      navigate("/login"); 
+    //  setSignupPanel(false);
+    //  setLoginPanel(true);
 
     } catch (error) {
       console.error('There was an error creating the user!', error);
@@ -89,17 +89,8 @@ const SignUp = () => {
           required
         />
       </div>
-      <div className="form-group">
-        <label className="form-label">Role :</label>
-        <input
-          type="text"
-          name="role"
-          value={user.role}
-          onChange={handleChange}
-          className="form-input"
-          required
-        />
-      </div>
+      
+      
       <button type="submit" className="submit-btn">Submit</button>
     </form>
     </section>

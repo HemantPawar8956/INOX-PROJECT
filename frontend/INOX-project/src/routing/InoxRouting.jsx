@@ -77,9 +77,9 @@ export let routingVar = createBrowserRouter([
     element: <MovieTicket />,
   },
 
- /*  {
+   {
     path: "/signup",
     element: <SignUp />,
-  }, */
+  }, 
 
 ]);

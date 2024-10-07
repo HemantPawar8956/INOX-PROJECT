@@ -7,9 +7,15 @@ const Corousel2 = () => {
   const { loginType,moviePanel, setMoviePanel } = useContext(globalVar);
 
   useEffect(() => {
+    let token = localStorage.getItem("auth");
+    console.log(token)
     const fetchMovies = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/open/movies/alls');
+       const response = await axios.get('http://localhost:8080/movies/all', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    } );
         console.log(response.data);
         setMovies(response.data);
       } catch (error) {

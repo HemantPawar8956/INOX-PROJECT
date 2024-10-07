@@ -11,7 +11,7 @@ export const GlobalContext = ({ children }) => {
   let [location, setLocation] = useState(true);
   let [signupPanel, setSignupPanel]=useState(false);
   let [userLocation, setUserLocation] = useState("");
-  let auth = JSON.parse(localStorage.getItem("auth"));
+  let auth = localStorage.getItem("auth");
   console.log(auth);
   let [inoxLoginType, setInoxLoginType] = useState("USER");
   //   const decodedToken = jwt_decode(auth.token);
@@ -26,11 +26,11 @@ export const GlobalContext = ({ children }) => {
 
   let loginTypes = [
     {
-      loginName: "Admin",
+      loginName: "ADMIN",
       loginVal: "ADMIN",
     },
     {
-      loginName: "Users",
+      loginName: "USER",
       loginVal: "USER",
     },
   ];
