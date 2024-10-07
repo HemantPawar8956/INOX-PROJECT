@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { globalVar } from "../globalContext/GlobalContext";
-import { jwtDecode } from "jwt-decode";
+// import { jwtDecode } from "jwt-decode";
 const LoginPage = () => {
   let navigate = useNavigate();
   let { loginPanel, setLoginPanel, loginTypes, loginType, setLoginType } =
@@ -42,8 +42,7 @@ const LoginPage = () => {
       localStorage.setItem(
         "auth",
         JSON.stringify({
-          token:
-            "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrYW51MTIzQGdtYWlsLmNvbSIsImlhdCI6MTcyNzk1MjA5NiwiZXhwIjoxNzI3OTg4MDk2fQ.DhI29sbnh2YIemtu9dn3-ky-xEWhMAec4wE2bPFhsSI",
+          token:"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrYW51MTIzQGdtYWlsLmNvbSIsImlhdCI6MTcyODAyMTYwMSwiZXhwIjoxNzI4MDU3NjAxfQ.TGjyjkHbtxNx1qaclidSNhxDuUbOcbshKLEqSyzuKLU",
           user: {
             role: "user",
           },
