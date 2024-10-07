@@ -7,6 +7,8 @@ import { Outlet } from "react-router-dom";
 
 import LoginPage from "../pages/LoginPage";
 import Addtheatre from "./Addtheatre";
+import Addmovie from "./Addmovie";
+import Corousel2 from "./Corousel2";
 // import RegisterPage from "../pages/RegisterPage";
 
 const Layout = () => {
@@ -16,11 +18,21 @@ const Layout = () => {
 
   return (
     <div>
+{/* 
       {siderVisible && <Sider />}
       {location && <SelectLocation/>}
       {loginPanel && <LoginPage />}
+
       <Navbar />
       <Outlet />
+      <Addtheatre/>
+     
+        */ }
+          <Addmovie/>
+       
+       
+    
+    
     </div>
   );
 };

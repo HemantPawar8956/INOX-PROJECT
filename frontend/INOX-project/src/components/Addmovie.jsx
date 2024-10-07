@@ -1,103 +1,144 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useState } from 'react';
 
 const Addmovie = () => {
-    const [formData, setFormData] = useState({
-        movieName: "",
-        genre: "",
-        duration: "",
-        language: "",
-        showTimings: "",
-        theatre: "",
+  const [formData, setFormData] = useState({
+    moviename: '',
+    genre: '',
+    duration: '',
+    movieLanguage: '',
+    movieImage: '', // This holds the image URL as a string
+  });
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault(); // Prevent form submission
+    setShowModal(true);
+  };
+
+  const handleSave = async () => {
+    try {
+      const response = await axios.post('http://localhost:8080/open/saves', formData, {
+        headers: {
+          'Content-Type': 'application/json', // Use application/json for sending data
+        },
       });
-    
-      let [showModal, setShowModal] = useState(false);
-    
-    
-      let handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-      };
-    
-      let handleUpdate = () => {
-        setShowModal(true);
-      };
-    
-      let handleSave = () => {
-        alert("Movie details saved successfully!");
-        setShowModal(false);
-      };
-    return (
 
-    <div class="main-body">
-    <section class="center-section">
-        <div class="form-container">
-            <h2>Movie Details</h2>
-            <form action="#">
-                <div class="form-group">
-                    <label for="movieName">Movie Name:</label>
-                    <input type="text" id="movieName" name="movieName" value={formData.movieName}
-                onChange={handleChange} placeholder="Enter movie name" required/>
-                </div>
+      console.log(response.data);
+      alert('Movie details saved successfully!');
+      setShowModal(false);
+    } catch (error) {
+      console.error('Error saving movie details:', error);
+    }
+  };
 
-                <div class="form-group">
-                    <label for="genre">Genre:</label>
-                    <input type="text" id="genre" name="genre"  value={formData.genre}
-                onChange={handleChange} placeholder="Enter genre" required/>
-                </div>
+  return (
+    <div className="main-body">
+      <section className="center-section">
+        <div className="form-container">
+          <h2>Movie Details</h2>
+          <form>
+            <div className="form-group">
+              <label htmlFor="movieName">Movie Name:</label>
+              <input
+                type="text"
+                id="movieName"
+                name="moviename"
+                value={formData.moviename}
+                onChange={handleChange}
+                placeholder="Enter movie name"
+                required
+              />
+            </div>
 
-                <div class="form-group">
-                    <label for="duration">Duration:</label>
-                    <input type="text" id="duration" name="duration"  value={formData.duration}
-                onChange={handleChange} placeholder="Enter duration" required/>
-                </div>
+            <div className="form-group">
+              <label htmlFor="genre">Genre:</label>
+              <input
+                type="text"
+                id="genre"
+                name="genre"
+                value={formData.genre}
+                onChange={handleChange}
+                placeholder="Enter genre"
+                required
+              />
+            </div>
 
-                <div class="form-group">
-                    <label for="language">Language:</label>
-                    <input type="text" id="language" name="language" value={formData.language}
-                onChange={handleChange} placeholder="Enter language" required/>
-                </div>
+            <div className="form-group">
+              <label htmlFor="duration">Duration:</label>
+              <input
+                type="text"
+                id="duration"
+                name="duration"
+                value={formData.duration}
+                onChange={handleChange}
+                placeholder="Enter duration"
+                required
+              />
+            </div>
 
-                <div class="form-group">
-             <label for="showTimings">Show Timings:</label>
-             <select id="showTimings" name="showTimings"  value={formData.showTimings}
-                onChange={handleChange} required>
-                 <option value="" disabled selected>Select show timing</option>
-                 <option value="10am">10:00 AM</option>
-                 <option value="1pm">1:00 PM</option>
-                 <option value="4pm">4:00 PM</option>
-                 <option value="7pm">7:00 PM</option>
-                 <option value="10pm">10:00 PM</option>
-             </select>
-         </div>
-                <div class="form-group">
-                    <label for="theatre">Theatre:</label>
-                    <select id="theatre" name="theatre"  value={formData.theatre}
-                onChange={handleChange}  required>
-                        <option value="" disabled selected>Select theatre</option>
-                        <option value="theatre1">PVR MGF gurugram</option>
-                        <option value="theatre2">PVR Mega Mall gurugram</option>
-                        <option value="theatre3">PVR Ambience Mall gurugram</option>
-                        <option value="theatre4">INOX world mark gurugram</option>
-                        <option value="theatre5">PVR City Centre gurugram</option>
-                    </select>
-                </div>
+            <div className="form-group">
+              <label htmlFor="movieLanguage">Language:</label>
+              <input
+                type="text"
+                id="movieLanguage"
+                name="movieLanguage"
+                value={formData.movieLanguage}
+                onChange={handleChange}
+                placeholder="Enter language"
+                required
+              />
+            </div>
 
-                <div class="form-actions">
-                    <button type="submit" class="update-btn" onClick={handleUpdate}>Update</button>
-                    <button type="reset" class="delete-btn">Delete</button>
-                </div>
-            </form>
+            <div className="form-group">
+              <label htmlFor="movieImage">Movie Image URL:</label>
+              <input
+                id="movieImage"
+                name="movieImage"
+                type="text"
+                value={formData.movieImage}
+                onChange={handleChange}
+                placeholder="Enter image URL"
+                required
+              />
+            </div>
+
+            <div className="form-actions">
+              <button type="submit" className="update-btn" onClick={handleUpdate}>
+                Update
+              </button>
+              <button type="reset" className="delete-btn" onClick={() => setFormData({ moviename: '', genre: '', duration: '', movieLanguage: '', movieImage: '' })}>
+                Delete
+              </button>
+            </div>
+          </form>
         </div>
-    </section>
-    {showModal && (
+      </section>
+
+      {showModal && (
         <div className="modal">
           <div className="modal-content">
             <h3>Confirm Movie Details</h3>
-            <p><strong>Movie Name:</strong> {formData.movieName}</p>
-            <p><strong>Genre:</strong> {formData.genre}</p>
-            <p><strong>Duration:</strong> {formData.duration}</p>
-            <p><strong>Language:</strong> {formData.language}</p>
-            <p><strong>Show Timings:</strong> {formData.showTimings}</p>
-            <p><strong>Theatre:</strong> {formData.theatre}</p>
+            <p>
+              <strong>Movie Name:</strong> {formData.moviename}
+            </p>
+            <p>
+              <strong>Genre:</strong> {formData.genre}
+            </p>
+            <p>
+              <strong>Duration:</strong> {formData.duration}
+            </p>
+            <p>
+              <strong>Language:</strong> {formData.movieLanguage}
+            </p>
+            <p>
+              <strong>Movie Image URL:</strong> {formData.movieImage}
+            </p>
 
             <div className="modal-actions">
               <button className="close" onClick={handleSave}>
@@ -107,10 +148,19 @@ const Addmovie = () => {
           </div>
         </div>
       )}
-   
-</div>
 
-)
-}
+      {formData.movieImage && (
+        <div>
+          <h3>Image Preview:</h3>
+          <img
+            src={formData.movieImage}
+            alt="Movie"
+            style={{ width: '300px', height: 'auto' }}
+          />
+        </div>
+      )}
+    </div>
+  );
+};
 
-export default Addmovie
+export default Addmovie;
