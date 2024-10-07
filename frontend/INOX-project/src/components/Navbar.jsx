@@ -25,7 +25,7 @@ import { globalVar } from "../globalContext/GlobalContext";
 
 const Navbar = () => {
   let [dropdownVisible, setDropdownVisible] = useState(false);
-  let { siderVisible, setSiderVisible, loginPanel, setLoginPanel } =
+  let { siderVisible, setSiderVisible, loginPanel, setLoginPanel, loginType,setLoginType} =
     useContext(globalVar);
 
   let Dropdown = () => {
@@ -68,7 +68,18 @@ const Navbar = () => {
             <FaTags className="icon" /> Offers
           </li>
           <li>
+            {loginType == "ADMIN" ? (
+              <>
+              <Link to="allbookings">
+           <AiFillFund className="icon" /> All Bookings
+           </Link>
+           </>
+            ):(
+              <>
             <AiFillFund className="icon" /> Investor Section
+
+              </>
+            )}
           </li>
           <li>
             <NavLink

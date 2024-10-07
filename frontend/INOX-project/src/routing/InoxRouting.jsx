@@ -63,10 +63,10 @@ export let routingVar = createBrowserRouter([
     path: "/selectseats",
     element: <SeatLayout />,
   },
-  //   {
-  //     path: "/login",
-  //     element: <LoginPage />,
-  //   },
+    {
+      path: "/login",
+      element: <LoginPage />,
+    },
   {
     path: "/movieTicket",
     element: <MovieTicket />,

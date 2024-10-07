@@ -5,7 +5,7 @@ import { globalVar } from "../globalContext/GlobalContext";
 import { jwtDecode } from "jwt-decode";
 const LoginPage = () => {
   let navigate = useNavigate();
-  let { loginPanel, setLoginPanel, loginTypes, loginType, setLoginType } =
+  let { loginPanel, setLoginPanel, loginTypes, loginType, setLoginType,inoxLoginType, setInoxLoginType } =
     useContext(globalVar);
   console.log(loginTypes);
   // Default user state with email and password
@@ -37,18 +37,23 @@ const LoginPage = () => {
         //       },
         //   }
       );
-      console.log("User authenticated:", response);
+      console.log("User authenticated:", response.data);
 
       localStorage.setItem(
         "auth",
         JSON.stringify({
           token:
-            "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrYW51MTIzQGdtYWlsLmNvbSIsImlhdCI6MTcyNzk1MjA5NiwiZXhwIjoxNzI3OTg4MDk2fQ.DhI29sbnh2YIemtu9dn3-ky-xEWhMAec4wE2bPFhsSI",
+            "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuZWhhQGdtYWlsLmNvb…jIzfQ.uNDUWYS4ak4lZYwTCSk0WKJ7CV7WB_KYSQhFLGQaEYU",
           user: {
-            role: "user",
+            role: inoxLoginType,
           },
         })
       );
+      // toast.success(`Successfully Logged in as ${inoxLoginType}`);
+      setTimeout(()=>{
+        setLoginType(inoxLoginType);
+        setLoginPanel(!loginPanel);
+      },1500);
 
       /*console.log(role==='ADMIN')
        if (role === 'ADMIN') {
@@ -79,7 +84,7 @@ const LoginPage = () => {
           {loginTypes?.map((ele) => (
             <button
               key={ele.loginVal}
-              onClick={(e) => (e.stopPropagation(), setLoginType(ele.loginVal))}
+              onClick={(e) => (e.stopPropagation(), setInoxLoginType(ele.loginVal))}
               className="adminbtns">
               {ele.loginName}
             </button>
@@ -92,7 +97,7 @@ const LoginPage = () => {
             e.stopPropagation();
             setLoginPanel(true);
           }}>
-          <h1 className="login-title">Login as {loginType}</h1>
+          <h1 className="login-title">Login as {inoxLoginType}</h1>
           <div className="form-group">
             <label>Email:</label>
             <input

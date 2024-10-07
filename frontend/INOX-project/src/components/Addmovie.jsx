@@ -6,8 +6,6 @@ const Addmovie = () => {
         genre: "",
         duration: "",
         language: "",
-        showTimings: "",
-        theatre: "",
       });
     
       let [showModal, setShowModal] = useState(false);
@@ -56,34 +54,8 @@ const Addmovie = () => {
                 onChange={handleChange} placeholder="Enter language" required/>
                 </div>
 
-                <div class="form-group">
-             <label for="showTimings">Show Timings:</label>
-             <select id="showTimings" name="showTimings"  value={formData.showTimings}
-                onChange={handleChange} required>
-                 <option value="" disabled selected>Select show timing</option>
-                 <option value="10am">10:00 AM</option>
-                 <option value="1pm">1:00 PM</option>
-                 <option value="4pm">4:00 PM</option>
-                 <option value="7pm">7:00 PM</option>
-                 <option value="10pm">10:00 PM</option>
-             </select>
-         </div>
-                <div class="form-group">
-                    <label for="theatre">Theatre:</label>
-                    <select id="theatre" name="theatre"  value={formData.theatre}
-                onChange={handleChange}  required>
-                        <option value="" disabled selected>Select theatre</option>
-                        <option value="theatre1">PVR MGF gurugram</option>
-                        <option value="theatre2">PVR Mega Mall gurugram</option>
-                        <option value="theatre3">PVR Ambience Mall gurugram</option>
-                        <option value="theatre4">INOX world mark gurugram</option>
-                        <option value="theatre5">PVR City Centre gurugram</option>
-                    </select>
-                </div>
-
                 <div class="form-actions">
                     <button type="submit" class="update-btn" onClick={handleUpdate}>Update</button>
-                    <button type="reset" class="delete-btn">Delete</button>
                 </div>
             </form>
         </div>
@@ -96,8 +68,7 @@ const Addmovie = () => {
             <p><strong>Genre:</strong> {formData.genre}</p>
             <p><strong>Duration:</strong> {formData.duration}</p>
             <p><strong>Language:</strong> {formData.language}</p>
-            <p><strong>Show Timings:</strong> {formData.showTimings}</p>
-            <p><strong>Theatre:</strong> {formData.theatre}</p>
+           
 
             <div className="modal-actions">
               <button className="close" onClick={handleSave}>

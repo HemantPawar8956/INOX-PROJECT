@@ -1,175 +1,46 @@
 import React, { useState } from "react";
-// import Payment from "./Payment";
 
 const SeatLayout = () => {
   let seatSeq = "A";
   let [selectedSeats, setSelectedSeats] = useState([]);
+  let [showPayment, setShowPayment] = useState(false); 
   let data = [
-    {
-      seatNo: "A1",
-      price: 200,
-      boooked: true,
-    },
-    {
-      seatNo: "A2",
-      price: 200,
-      boooked: true,
-    },
-    {
-      seatNo: "A3",
-      price: 200,
-      boooked: false,
-    },
-    {
-      seatNo: "A4",
-      price: 200,
-      boooked: false,
-    },
-    {
-      seatNo: "A5",
-      price: 200,
-      boooked: false,
-    },
-    {
-      seatNo: "A6",
-      price: 200,
-      boooked: false,
-    },
-    {
-      seatNo: "A7",
-      price: 200,
-      boooked: false,
-    },
-    {
-      seatNo: "A8",
-      price: 200,
-      boooked: true,
-    },
-    {
-      seatNo: "A9",
-      price: 200,
-      boooked: false,
-    },
-    {
-      seatNo: "A10",
-      price: 200,
-      boooked: true,
-    },
-    {
-      seatNo: "A11",
-      price: 200,
-      boooked: true,
-    },
-    {
-      seatNo: "A12",
-      price: 200,
-      boooked: false,
-    },
-    {
-      seatNo: "A13",
-      price: 200,
-      boooked: false,
-    },
-    {
-      seatNo: "A14",
-      price: 200,
-      boooked: false,
-    },
-    {
-      seatNo: "A15",
-      price: 200,
-      boooked: true,
-    },
-
-    {
-      seatNo: "A16",
-      price: 200,
-    },
-    {
-      seatNo: "A17",
-      price: 200,
-    },
-    {
-      seatNo: "A18",
-      price: 200,
-      boooked: false,
-    },
-    {
-      seatNo: "B1",
-      price: 200,
-      boooked: false,
-    },
-    {
-      seatNo: "B2",
-      price: 200,
-      boooked: false,
-    },
-    {
-      seatNo: "B3",
-      price: 200,
-      boooked: false,
-    },
-    {
-      seatNo: "B4",
-      price: 200,
-      boooked: false,
-    },
-    {
-      seatNo: "B5",
-      price: 200,
-    },
-    {
-      seatNo: "B6",
-      price: 200,
-    },
-    {
-      seatNo: "B7",
-      price: 200,
-    },
-    {
-      seatNo: "B8",
-      price: 200,
-    },
-    {
-      seatNo: "B9",
-      price: 200,
-    },
-    {
-      seatNo: "B10",
-      price: 200,
-    },
-    {
-      seatNo: "B11",
-      price: 200,
-    },
-    {
-      seatNo: "B12",
-      price: 200,
-    },
-    {
-      seatNo: "B13",
-      price: 200,
-    },
-    {
-      seatNo: "B14",
-      price: 200,
-    },
-    {
-      seatNo: "B15",
-      price: 200,
-    },
-    {
-      seatNo: "B16",
-      price: 200,
-    },
-    {
-      seatNo: "B17",
-      price: 200,
-    },
-    {
-      seatNo: "B18",
-      price: 200,
-    },
+    { seatNo: "A1", price: 200, boooked: true },
+    { seatNo: "A2", price: 200, boooked: true },
+    { seatNo: "A3", price: 200, boooked: false },
+    { seatNo: "A4", price: 200, boooked: false },
+    { seatNo: "A5", price: 200, boooked: false },
+    { seatNo: "A6", price: 200, boooked: false },
+    { seatNo: "A7", price: 200, boooked: false },
+    { seatNo: "A8", price: 200, boooked: true },
+    { seatNo: "A9", price: 200, boooked: false },
+    { seatNo: "A10", price: 200, boooked: true },
+    { seatNo: "A11", price: 200, boooked: true },
+    { seatNo: "A12", price: 200, boooked: false },
+    { seatNo: "A13", price: 200, boooked: false },
+    { seatNo: "A14", price: 200, boooked: false },
+    { seatNo: "A15", price: 200, boooked: true },
+    { seatNo: "A16", price: 200, boooked: false },
+    { seatNo: "A17", price: 200, boooked: false },
+    { seatNo: "A18", price: 200, boooked: false },
+    { seatNo: "B1", price: 200, boooked: false },
+    { seatNo: "B2", price: 200, boooked: false },
+    { seatNo: "B3", price: 200, boooked: false },
+    { seatNo: "B4", price: 200, boooked: false },
+    { seatNo: "B5", price: 200, boooked: false },
+    { seatNo: "B6", price: 200, boooked: false },
+    { seatNo: "B7", price: 200, boooked: false },
+    { seatNo: "B8", price: 200, boooked: false },
+    { seatNo: "B9", price: 200, boooked: false },
+    { seatNo: "B10", price: 200, boooked: false },
+    { seatNo: "B11", price: 200, boooked: false },
+    { seatNo: "B12", price: 200, boooked: false },
+    { seatNo: "B13", price: 200, boooked: false },
+    { seatNo: "B14", price: 200, boooked: false },
+    { seatNo: "B15", price: 200, boooked: false },
+    { seatNo: "B16", price: 200, boooked: false },
+    { seatNo: "B17", price: 200, boooked: false },
+    { seatNo: "B18", price: 200, boooked: false },
   ];
   let spaces = [1, 2, 3];
 
@@ -177,14 +48,23 @@ const SeatLayout = () => {
     if (!ele.boooked && !selectedSeats.includes(ele.seatNo)) {
       e.target.style.backgroundColor = "#003688";
       e.target.style.color = "white";
-      setSelectedSeats([...selectedSeats, ele.seatNo]);
-    } else {
+      setSelectedSeats((prevSeats) => [...prevSeats, ele.seatNo]);
+      setShowPayment(true); 
+    } else if (selectedSeats.includes(ele.seatNo)) {
       e.target.style.backgroundColor = "lightgray";
       e.target.style.color = "black";
-      setSelectedSeats(selectedSeats.filter((seat) => seat !== ele.seatNo));
+      setSelectedSeats((prevSeats) => prevSeats.filter((seat) => seat !== ele.seatNo));
+
+      if (selectedSeats.length === 1) {
+        setShowPayment(false);
+      }
     }
   };
-  console.log(selectedSeats);
+
+  const seatPrice = 200; 
+  const subtotal = selectedSeats.length * seatPrice;
+  const grandTotal = subtotal; 
+
   return (
     <section className="main1">
       <section className="main">
@@ -200,21 +80,21 @@ const SeatLayout = () => {
 
         <div className="nav3">
           <select name="" id="" className="dateDropDown">
-            <option value="">30 sep,Monday</option>
-            <option value="">1 oct tuesday</option>
+            <option value="">07 oct, Monday</option>
+            <option value="">08 oct, Tuesday</option>
           </select>
           <div className="hindi">
             <div className="hindi1">
               Hindi
-              <div>03:40PM</div>
+              <div>03:40 PM</div>
             </div>
             <div className="hindi1">
               Hindi
-              <div>03:40PM</div>
+              <div>03:40 PM</div>
             </div>
             <div className="hindi1">
               Hindi
-              <div>03:40PM</div>
+              <div>03:40 PM</div>
             </div>
           </div>
         </div>
@@ -250,14 +130,15 @@ const SeatLayout = () => {
                         <br key={index + 1} />
                       </>
                     ))}
-                  <spans
+
+                  <span
                     className={`seats ${ele.boooked ? "bookedSeat" : ""}`}
                     disabled={ele.boooked}
                     onClick={(e) => {
                       SeatStatus(e, ele);
                     }}>
                     {ele.seatNo}
-                  </spans>
+                  </span>
                   {(ele.seatNo.slice(1) == 4 || ele.seatNo.slice(1) == 14) &&
                     spaces.map((ele) => <span className="space">space</span>)}
                 </>
@@ -267,48 +148,49 @@ const SeatLayout = () => {
         </section>
       </section>
 
-      <section className="carpayment">
-        <div className="image-pic">
-          <h1>Booking Summary</h1>
-        </div>
-        <div className="image-pic2"></div>
-        <div className="image-pic3">
-          <div>SEAT INFO</div>
-          <div>Gold</div>
-          <div className="r1">R1</div>
-        </div>
-        <div className="image-pic4">
-          <div>
-            <h1>Tickets</h1>
+      {showPayment && (
+        <section className="carpayment">
+          <div className="image-pic">
+            <h1>Booking Summary</h1>
           </div>
-          <div>
-            <h1>1 x 300</h1>
+          <div className="image-pic2">
+            <div>SEAT INFO</div>
+            <div>{selectedSeats.join(", ")}</div>
+            <div className="r1">R1</div>
           </div>
-        </div>
-        <div className="image-pic5">
-          <div>
-            <h1>PAYMENT DETAILS</h1>
+          <div className="image-pic3">
+            <div>
+              <h1>Tickets</h1>
+            </div>
+            <div>
+              <h1>{selectedSeats.length} x {seatPrice}</h1>
+            </div>
           </div>
-          <div>
-            <h1>Sub Total</h1>
+          <div className="image-pic4">
+            <div>
+              <h1>PAYMENT DETAILS</h1>
+            </div>
+            <div>
+              <h1>Sub Total: ₹{subtotal}</h1>
+            </div>
+            <div>
+              <select name="" id="" className="t1">
+                <option value="">TAXES & FEES</option>
+                <option value="">5%</option>
+                <option value="">10%</option>
+              </select>
+            </div>
           </div>
-          <div>
-            <select name="" id="" className="t1">
-              <option value="">TAXTS & FEES</option>
-              <option value="">1 oct tuesday</option>
-            </select>
+          <div className="image-pic5">
+            <div>
+              <h1>Grand Total: ₹{grandTotal}</h1>
+            </div>
+            <div>
+              <button className="button-grand">Proceed</button>
+            </div>
           </div>
-        </div>
-        <div className="image-pic6"></div>
-        <div className="image-pic7">
-          <div>
-            <h1>Grand total</h1>
-          </div>
-          <div>
-            <button className="button-grand">proceed</button>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
     </section>
   );
 };
