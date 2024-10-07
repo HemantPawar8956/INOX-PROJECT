@@ -361,14 +361,14 @@
   position: sticky;
   top:70px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center; 
   padding: 20px;
   border-radius: 8px;
   background-color: white;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   min-width: 100%; 
-  z-index: 10;
+  z-index: 5;
 }
 
 .cinema-list .search-input {
@@ -391,7 +391,6 @@
   justify-content: space-between;
   align-content:end;
   background-color: white;
-  /* border: 1px solid #ccc; */
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -440,4 +439,18 @@
 }
 .cinema-list .movie-item img:hover {
   transform: scale(1.05);
+}
+
+.cinema-list .addtheater{
+  background-color:#0443a1 ;
+  color:white;
+  padding:10px;
+  border-radius:5px;
+}
+
+.cinema-list .addtheater:hover{
+  
+  background-color:#0443a1d0 ;
+
+
 }

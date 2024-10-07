@@ -33,6 +33,7 @@ const Cinemas = () => {
           onChange={handleSearch}
           className="search-input"
         />
+        <button className="addtheater">Add Theater</button>
       </div>
       <div className="cinema-cards-display">
         {data1.map((data) => {

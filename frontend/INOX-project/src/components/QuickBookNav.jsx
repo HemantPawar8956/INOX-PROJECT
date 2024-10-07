@@ -1,22 +1,21 @@
-import React, { useState } from "react";
 import axios from "axios";
-import DatePicker from "react-datepicker"; // Assuming you are using this library
-import { useNavigate } from "react-router-dom"; // For navigation
-import "react-datepicker/dist/react-datepicker.css"; // Import date picker styles
+import React, { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"; // Import DatePicker styles
 
-const QuickBookNav = ({ change }) => {
-  const [fetchedData, setFetchedData] = useState([]);
-  let [searchedMovie, setSearchedMovie] = useState("");
+const QuickBookNav = () => {
+  const [change, setChange] = useState("Movie");
+  const [fetchedMovieData, setFetchedMovieData] = useState([]); // to store the fetched data
+  const [fetchedCinemaData, setFetchedCinemaData] = useState([]); // to store the fetched data
   const [data, setData] = useState({
-    Show: change, // Either Movie or Cinema
+    Show: change,
     movie: "",
     cinema: "",
-    date: null,
-    timing: "10:00", // Default time
+    date: null, // Set initial date as null
+    timing: "10:00", // Set a default time
   });
 
   const { Show, movie, cinema, date, timing } = data;
-  const navigate = useNavigate(); // Hook for navigation
 
   // Handle form changes
   const handleChange = (e) => {
@@ -27,117 +26,114 @@ const QuickBookNav = ({ change }) => {
     });
   };
 
-  // Handle form submission and navigate to the SelectSeat page
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Navigate to the 'selectseat' page and pass the data as state
-    navigate("/selectseat", { state: { ...data } });
-  };
+   
+  }
 
-  // Fetch Movie Data
-  const handleMovieData = async () => {
+  let handleMovieData = async () => {
     try {
-      const { data } = await axios.get(
+      let { data } = await axios.get(
         `http://localhost:8080/open/${change?.toLowerCase()}s/alls`
       );
-      setFetchedData(data);
+      setFetchedMovieData(data);
+      console.log(data);
     } catch {
       console.log("Data not found");
     }
   };
 
-  // Fetch Cinema Data
-  const handleCinemaData = async () => {
+  let handleCinemaData = async () => {
     try {
-      const { data } = await axios.get(
+      let { data } = await axios.get(
         `http://localhost:8080/open/${(change === "Movie"
           ? "Cinema"
           : "Movie"
-        ).toLowerCase()}s/alls`
+        )?.toLowerCase()}s/alls`
       );
-      setFetchedData(data);
+      setFetchedCinemaData(data);
+      console.log(data);
     } catch {
       console.log("Data not found");
     }
   };
-
+  
   // Handle date change
   const handleDateChange = (selectedDate) => {
     setData({
       ...data,
-      date: selectedDate, // Update the date field
+      date: selectedDate, // Update the date field with the selected date
     });
   };
 
+  // // Handle time change
+  // const handleTimeChange = (selectedTime) => {
+  //   setData({
+  //     ...data,
+  //     timing: selectedTime, // Update the timing field with the selected time
+  //   });
+  // };
+
+  // >>>>>>> Kanupriya
+
+  // console.log(
+  //   fetchedData
+      // .filter((movie) =>
+  //       movie?.moviename?.toLowerCase()?.includes(searchedMovie.toLowerCase())
+  //     )
+  //     .map((ele) => {
+  //       console.log(ele.moviename);
+  //     })
+  // );
+  useEffect(()=>{
+    handleMovieData();
+    handleCinemaData();
+  },[change])
   return (
     <div className="quick-book-container">
       <span className="quick-title">Quick Book</span>
 
-      {/* Toggle between Movie and Cinema */}
       <div className="quick-book-change">
-        <button onClick={() => setData({ ...data, Show: "Movie" })}>Movie</button>
-        <button onClick={() => setData({ ...data, Show: "Cinema" })}>Cinema</button>
+        <button onClick={() => setChange("Movie")}>Movie</button>
+        <button onClick={() => setChange("Cinema")}>Cinema</button>
       </div>
 
       <form className="quick-book-options" onSubmit={handleSubmit}>
-        {/* Movie/Cinema Input */}
-        <div className="option">
-          {fetchedData.length === 0 && (
-            <input
-              type="text"
-              onClick={handleMovieData}
-              onChange={(e) => setSearchedMovie(e.target.value)}
-              value={searchedMovie}
-              placeholder={`Search ${Show}`}
-            />
-          )}
-
-          {fetchedData.length > 0 && (
-            <select
-              onClick={handleMovieData}
-              onChange={(e) =>
-                setData({
-                  ...data,
-                  [Show.toLowerCase()]: e.target.value, // Dynamically update the selected value (movie or cinema)
-                })
-              }
-              value={data[Show.toLowerCase()]}
-            >
-              <option value="" disabled>
-                Select {Show}
-              </option>
-              {fetchedData.map((item) => (
-                <option key={item.id} value={item.moviename || item.name}>
-                  {item.moviename || item.name} - {item.genre} (
-                  {item.movieLanguage})
-                </option>
-              ))}
-            </select>
-          )}
-        </div>
-
-        {/* Date Picker */}
-        <div className="option">
-          <DatePicker
-            selected={date}
-            onChange={handleDateChange}
-            placeholderText="YYYY/MM/DD"
-            dateFormat="yyyy/MM/dd"
-            popperPlacement="bottom"
-            isClearable
-          />
-        </div>
-
-        {/* Time Input */}
         <div className="option">
           <input
-            type="time"
-            name="timing"
-            value={timing}
-            onChange={handleChange} // Handle time input change
+            type="text"
+            onClick={change=== "Movie"? handleMovieData : handleCinemaData}
+            onChange={(e) => handleChange(e.target.value)}
+            name={change}
+            placeholder={`Select ${change}`}
+          /> 
+         {change== "Movie" ? console.log(fetchedMovieData):console.log(fetchedCinemaData)}
+        </div>
+        <div className="option">
+          <DatePicker
+            className="datepicker"
+            selected={date} // Bind the selected date to the state
+            onChange={handleDateChange} 
+            placeholderText="YYYY/MM/DD" 
+            dateFormat="yyyy/MM/dd" 
+            popperPlacement="bottom"
+            isClearable // Allow clearing the date
           />
         </div>
-
+        <div className="option">
+          <input
+            onClick={change=== "Cinema"? handleMovieData : handleCinemaData}
+            type="text"
+            name={change === "Movie" ? "cinema" : "movie"}
+            placeholder={`Select ${change === "Movie" ? "Cinema" : "Movie"}`}
+            onChange={handleChange}
+            value={change === "Movie" ? cinema : movie} // Bind the correct field to the state
+          />
+        </div>
+        <div className="option">
+          <input type="time" name="" id="" />
+        </div>
         <button className="book-button" type="submit">
           Book
         </button>
