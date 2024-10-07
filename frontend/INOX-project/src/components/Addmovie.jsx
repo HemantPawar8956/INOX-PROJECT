@@ -23,11 +23,13 @@ const Addmovie = () => {
 
   const handleSave = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/open/saves', formData, {
-        headers: {
-          'Content-Type': 'application/json', // Use application/json for sending data
-        },
-      });
+      const response = await axios.post('http://localhost:8080/movies/save', formData, 
+        {
+          headers:{
+            Authorization: `Bearer ${localStorage.getItem("auth")}`
+          }
+        }
+      );
 
       console.log(response.data);
       alert('Movie details saved successfully!');
