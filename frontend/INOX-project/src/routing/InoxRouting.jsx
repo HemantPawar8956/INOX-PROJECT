@@ -11,9 +11,10 @@ import Addtheatre from "../components/Addtheatre";
 import MovieTicket from "./../components/MovieTicket";
 
 import ProtectedRoute from "./../Auth/ProtectedRoute";
-import LoginPage from "../pages/LoginPage";
+import LoginPage from "./../pages/LoginPage";
+import AllBookings from "../components/AllBookings";
 import SelectLocation from "./../components/SelectLocation";
-import SignUp from "./../pages/SignUp";
+import SignUp from "../pages/SignUp";
 
 export let routingVar = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ export let routingVar = createBrowserRouter([
 
     children: [
       {
-        path: "",
+        path: "/",
         element: <Home />,
       },
       {
@@ -40,6 +41,10 @@ export let routingVar = createBrowserRouter([
       {
         path: "/Booking",
         element: <Cinemas />,
+      },
+      {
+        path: "/allbookings",
+        element: <AllBookings />,
       },
     ],
   },

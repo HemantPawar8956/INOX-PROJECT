@@ -10,6 +10,7 @@ import Addtheatre from "./Addtheatre";
 import SelectLocation from "./SelectLocation";
 import Addmovie from './Addmovie';
 
+import { Toaster } from "react-hot-toast";
 
 const Layout = () => {
   let {
@@ -24,6 +25,7 @@ const Layout = () => {
 
   return (
     <div>
+      <Toaster />
       {siderVisible && <Sider />}
       {location && <SelectLocation />}
      {moviePanel && <Addmovie/>} 

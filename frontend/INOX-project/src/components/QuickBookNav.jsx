@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"; // Import DatePicker styles
 
 const QuickBookNav = () => {
   const [change, setChange] = useState("Movie");
@@ -7,8 +9,8 @@ const QuickBookNav = () => {
     Show: change,
     movie: "",
     cinema: "",
-    date: "",
-    timing: "",
+    date: null, // Set initial date as null
+    timing: "10:00", // Set a default time
   });
 
   const { Show, movie, cinema, date, timing } = data;
@@ -25,21 +27,38 @@ const QuickBookNav = () => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // axios
+    // Add your form submission logic here (e.g., axios)
   };
-console.log(change)
-  let handleMovieData= async()=>{
-  
-    try{
-        let data =  await axios.get(`http://localhost:8080/open/${change.toLowerCase()}s/alls`)
-        console.log(data)
+  console.log(change);
+  let handleMovieData = async () => {
+    try {
+      let data = await axios.get(
+        `http://localhost:8080/open/${change.toLowerCase()}s/alls`
+      );
+      console.log(data);
+    } catch {
+      console.log("helll");
     }
+  };
 
-    catch{
-console.log("helll")
-    }
-  }
+  // Handle date change
+  const handleDateChange = (selectedDate) => {
+    setData({
+      ...data,
+      date: selectedDate, // Update the date field with the selected date
+    });
+  };
+
+  // Handle time change
+  const handleTimeChange = (selectedTime) => {
+    setData({
+      ...data,
+      timing: selectedTime, // Update the timing field with the selected time
+    });
+  };
+
   console.log(data);
+
   return (
     <div className="quick-book-container">
       <span className="quick-title">Quick Book</span>
@@ -61,12 +80,14 @@ console.log("helll")
           />
         </div>
         <div className="option">
-          <input
-            type="text"
-            name="date"
-            placeholder="Select Date"
-            onChange={handleChange}
-            value={date} // This will bind the value to the state
+          <DatePicker
+            className="datepicker"
+            selected={date} // Bind the selected date to the state
+            onChange={handleDateChange} // Handle date change
+            placeholderText="YYYY/MM/DD" // Placeholder text
+            dateFormat="yyyy/MM/dd" // Date format
+            popperPlacement="bottom" // Position the date picker
+            isClearable // Allow clearing the date
           />
         </div>
         <div className="option">
@@ -79,13 +100,7 @@ console.log("helll")
           />
         </div>
         <div className="option">
-          <input
-            type="text"
-            name="timing"
-            placeholder="Select Timing"
-            onChange={handleChange}
-            value={timing} // This will bind the value to the state
-          />
+          <input type="time" name="" id="" />
         </div>
         <button className="book-button" type="submit">
           Book

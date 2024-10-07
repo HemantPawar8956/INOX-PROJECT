@@ -3,9 +3,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { globalVar } from "../globalContext/GlobalContext";
 import { jwtDecode } from "jwt-decode";
+import toast from "react-hot-toast";
 const LoginPage = () => {
   let navigate = useNavigate();
-  let { loginPanel, setLoginPanel, loginTypes, loginType, setLoginType,inoxLoginType, setInoxLoginType } =
+  let { loginPanel, setLoginPanel, loginTypes, loginType, setLoginType } =
     useContext(globalVar);
   console.log(loginTypes);
   // Default user state with email and password
@@ -37,7 +38,7 @@ const LoginPage = () => {
         //       },
         //   }
       );
-      console.log("User authenticated:", response.data);
+      console.log("User authenticated:", response);
 
       localStorage.setItem(
         "auth",
@@ -49,11 +50,6 @@ const LoginPage = () => {
           },
         })
       );
-      // toast.success(`Successfully Logged in as ${inoxLoginType}`);
-      setTimeout(()=>{
-        setLoginType(inoxLoginType);
-        setLoginPanel(!loginPanel);
-      },1500);
 
       /*console.log(role==='ADMIN')
        if (role === 'ADMIN') {
@@ -84,7 +80,7 @@ const LoginPage = () => {
           {loginTypes?.map((ele) => (
             <button
               key={ele.loginVal}
-              onClick={(e) => (e.stopPropagation(), setInoxLoginType(ele.loginVal))}
+              onClick={(e) => (e.stopPropagation(), setLoginType(ele.loginVal))}
               className="adminbtns">
               {ele.loginName}
             </button>
