@@ -25,8 +25,14 @@ import { globalVar } from "../globalContext/GlobalContext";
 
 const Navbar = () => {
   let [dropdownVisible, setDropdownVisible] = useState(false);
-  let { siderVisible, setSiderVisible, loginPanel, setLoginPanel ,loginType, setLoginType} =
-    useContext(globalVar);
+  let {
+    siderVisible,
+    setSiderVisible,
+    loginPanel,
+    setLoginPanel,
+    loginType,
+    setLoginType,
+  } = useContext(globalVar);
 
   let Dropdown = () => {
     setDropdownVisible(!dropdownVisible);
@@ -46,24 +52,21 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
+              className={({ isActive }) => (isActive ? "active" : "")}>
               <FaHome className="icon" /> Home
             </NavLink>
           </li>
           <li>
             <NavLink
               to="/showtimings"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
+              className={({ isActive }) => (isActive ? "active" : "")}>
               <FaStar className="icon" /> Showtimings
             </NavLink>
           </li>
           <li>
             <NavLink
               to="/cinemas"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
+              className={({ isActive }) => (isActive ? "active" : "")}>
               <FaFilm className="icon" /> Cinemas
             </NavLink>
           </li>
@@ -71,21 +74,22 @@ const Navbar = () => {
             <FaTags className="icon" /> Offers
           </li>
           <li>
-            {loginType == "admin" ? (
+            {loginType == "ADMIN" ? (
               <>
-              <Link to="allbookings"  ><AiFillFund className="icon" /> All Bookings</Link>
+                <Link to="allbookings">
+                  <AiFillFund className="icon" /> All Bookings
+                </Link>
               </>
-            ) : loginType == "user" ? (
+            ) : (
               <>
                 <AiFillFund className="icon" /> Investor Section
               </>
-            ) : null}
+            )}
           </li>
           <li>
             <NavLink
               to="/passport"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
+              className={({ isActive }) => (isActive ? "active" : "")}>
               <FaUser className="icon" /> Passport
             </NavLink>
           </li>
@@ -94,8 +98,7 @@ const Navbar = () => {
               <button
                 className="dropdownbtn"
                 onMouseOver={Dropdown}
-                onMouseLeave={Dropdown}
-              >
+                onMouseLeave={Dropdown}>
                 <FaBars /> More <FaChevronDown />
               </button>
               {dropdownVisible && (
@@ -103,8 +106,7 @@ const Navbar = () => {
                   onMouseOver={() => {
                     setDropdownVisible(true);
                   }}
-                  onMouseLeave={Dropdown}
-                >
+                  onMouseLeave={Dropdown}>
                   <div className="dropDown">
                     <p className="content">
                       <FaGift />
@@ -148,8 +150,7 @@ const Navbar = () => {
           className="login"
           onClick={() => {
             setLoginPanel(!loginPanel);
-          }}
-        >
+          }}>
           <FaUserCircle />
           Login
         </button>

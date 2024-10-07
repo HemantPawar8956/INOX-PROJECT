@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { globalVar } from "../globalContext/GlobalContext";
 import { jwtDecode } from "jwt-decode";
-
 const LoginPage = () => {
   let navigate = useNavigate();
   let { loginPanel, setLoginPanel, loginTypes, loginType, setLoginType } =
@@ -89,7 +88,7 @@ const LoginPage = () => {
             e.stopPropagation();
             setLoginPanel(true);
           }}>
-          <h1 className="login-title">Login as {loginType}</h1>
+          <h1 className="login-title">Login as {inoxLoginType}</h1>
           <div className="form-group">
             <label>Email:</label>
             <input

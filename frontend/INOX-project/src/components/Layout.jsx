@@ -9,7 +9,9 @@ import LoginPage from "../pages/LoginPage";
 import Addtheatre from "./Addtheatre";
 import SelectLocation from "./SelectLocation";
 import SignUp from "../pages/SignUp";
+import Addmovie from './Addmovie';
 
+import { Toaster } from "react-hot-toast";
 
 const Layout = () => { 
   let {
@@ -18,16 +20,16 @@ const Layout = () => {
     loginPanel,
     setLoginPanel,
     location,
-    setLocation,
-    signupPanel, 
-    setSignupPanel
+    setLocation,moviePanel, setMoviePanel
   } = useContext(globalVar);
   console.log(loginPanel);
 
   return (
     <div>
+      <Toaster />
       {siderVisible && <Sider />}
       {location && <SelectLocation />}
+     {moviePanel && <Addmovie/>} 
       {/* {location && <SelectLocation/>} */}
       {loginPanel && <LoginPage />}
       {signupPanel && <SignUp/>}
