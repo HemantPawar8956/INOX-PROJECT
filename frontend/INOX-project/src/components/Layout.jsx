@@ -28,12 +28,14 @@ const Layout = () => {
     setLocation,
     moviePanel,
     setMoviePanel,
+    addthatrePanel,
+    setAddTheatrePanel,
   } = useContext(globalVar);
 
   return (
     <div>
       <Toaster />
-
+      {addthatrePanel && <Addtheatre />}
       {location && <SelectLocation />}
       {siderVisible && <Sider />}
       {moviePanel && <Addmovie />}
@@ -43,9 +45,8 @@ const Layout = () => {
 
       <Navbar />
       <Outlet />
-      {/* <Addtheatre/> */}
 
-      {/* <Addmovie/> */}
+      
     </div>
   );
 };

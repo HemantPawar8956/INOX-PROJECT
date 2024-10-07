@@ -230,7 +230,8 @@
   margin-right: 0;
 }
 
-.option input,select {
+.option input,
+select {
   width: 100%;
   padding: 3px;
   border: 1px solid #ccc;
@@ -1483,10 +1484,13 @@ p {
 /* Theatre Form Section */
 .theatre-main-container {
   height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f9f9f9;
+  background-color: rgba(0, 0, 0, 0.76);
+  position: fixed;
+  z-index: 10;
 }
 
 .theatre-form-section {

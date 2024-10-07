@@ -68,8 +68,7 @@ const Navbar = () => {
           </li>
 
           <li>
-            <FaTags className="icon" /> Offers
-            {loginType == "admin" ? (
+            {inoxLoginType == "ADMIN" ? (
               <>
                 <NavLink
                   to="/cinemas"
@@ -77,7 +76,11 @@ const Navbar = () => {
                   <BiCard className="icon" /> Cinemas{" "}
                 </NavLink>
               </>
-            ) : null}
+            ) : (
+              <>
+                <FaTags className="icon" /> Offers
+              </>
+            )}
           </li>
           <li>
             {inoxLoginType == "ADMIN" ? (

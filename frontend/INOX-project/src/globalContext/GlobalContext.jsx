@@ -8,6 +8,7 @@ export const GlobalContext = ({ children }) => {
   let [siderVisible, setSiderVisible] = useState(false);
   let [loginPanel, setLoginPanel] = useState(false);
   let [moviePanel, setMoviePanel] = useState(false);
+  let [addthatrePanel, setAddTheatrePanel] = useState(false);
   let [location, setLocation] = useState(true);
   let [signupPanel, setSignupPanel] = useState(false);
   let [userLocation, setUserLocation] = useState("");
@@ -56,6 +57,8 @@ export const GlobalContext = ({ children }) => {
         loginTypes,
         inoxLoginType,
         setInoxLoginType,
+        addthatrePanel,
+        setAddTheatrePanel,
       }}>
       {children}
     </Provider>

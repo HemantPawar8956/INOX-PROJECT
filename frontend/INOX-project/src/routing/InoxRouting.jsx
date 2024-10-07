@@ -28,8 +28,12 @@ export let routingVar = createBrowserRouter([
       },
 
       {
-        path: "/Booking",
+        path: "/cinemas",
         element: <Cinemas />,
+      },
+      {
+        path: "/allbookings",
+        element: <AllBookings />,
       },
     ],
   },

@@ -133,8 +133,8 @@ const Addmovie = () => {
       {showModal && (
         <div
           className="modal"
-          onClick={() => {
-            setShowModal(false);
+          onClick={(e) => {
+            e.stopPropagation(), setShowModal(false);
           }}>
           <div className="modal-content">
             <h3>Confirm Movie Details</h3>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import movie1 from "../assests/movie1.avif";
 import movie2 from "../assests/movie2.avif";
@@ -6,8 +6,10 @@ import movie3 from "../assests/movie3.avif";
 import movie4 from "../assests/movie4.avif";
 import movie5 from "../assests/movie5.jpg";
 import movie6 from "../assests/movie6.jpg";
+import { globalVar } from "../globalContext/GlobalContext";
 
 const Cinemas = () => {
+  let { addthatrePanel, setAddTheatrePanel } = useContext(globalVar);
   const movies = [
     { title: "Movie 1", posterUrl: movie1 },
     { title: "Movie 2", posterUrl: movie2 },
@@ -41,10 +43,16 @@ const Cinemas = () => {
           onChange={handleSearch}
           className="search-input"
         />
-        <button className="addtheater">Add Theater</button>
+        <button
+          className="addtheater"
+          onClick={() => {
+            setAddTheatrePanel(true);
+          }}>
+          Add Theater
+        </button>
       </div>
       <div className="cinema-cards-display">
-        {data1.map((data) => {
+        {data1?.map((data) => {
           return (
             <div className="cinema-item" key={data.name}>
               <div>
