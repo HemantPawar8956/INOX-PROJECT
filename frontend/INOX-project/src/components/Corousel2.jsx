@@ -4,7 +4,7 @@ import axios from "axios";
 
 const Corousel2 = () => {
   const [movies, setMovies] = useState([]);
-  const { loginType,moviePanel, setMoviePanel } = useContext(globalVar);
+  const { loginType,moviePanel, setMoviePanel ,inoxLoginType, setInoxLoginType} = useContext(globalVar);
 
   useEffect(() => {
     let token = localStorage.getItem("auth");
@@ -32,7 +32,7 @@ const Corousel2 = () => {
           <h1>Now Showing</h1>
         </div>
 
-        {loginType === 'ADMIN' && (
+        {inoxLoginType === 'ADMIN' && (
           <div className="new-btn" onClick={()=>{setMoviePanel(!moviePanel)}}>
             <button>Add New Movies</button>
           </div>

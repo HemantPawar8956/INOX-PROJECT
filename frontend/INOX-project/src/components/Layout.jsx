@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Navbar from "./Navbar";
 import { globalVar } from "../globalContext/GlobalContext";
 import Sider from "./Sider";

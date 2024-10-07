@@ -6,8 +6,7 @@ const Addmovie = () => {
     genre: "",
     duration: "",
     language: "",
-    showTimings: "",
-    theatre: "",
+    movieImage:""
   });
 
   let [showModal, setShowModal] = useState(false);
@@ -84,7 +83,7 @@ const Addmovie = () => {
             </div>
 
                 <div class="form-actions">
-                    <button type="submit" class="update-btn" onClick={handleUpdate}>Update</button>
+                    <button type="submit" class="update-btn" onClick={handleUpdate}>Add</button>
                 </div>
             </form>
         </div>

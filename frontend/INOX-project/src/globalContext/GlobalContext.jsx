@@ -12,16 +12,16 @@ export const GlobalContext = ({ children }) => {
   let [signupPanel, setSignupPanel]=useState(false);
   let [userLocation, setUserLocation] = useState("");
   let auth = localStorage.getItem("auth");
-  console.log(auth);
-  let [inoxLoginType, setInoxLoginType] = useState("USER");
+     const decodedToken = jwtDecode(auth);
+  console.log(decodedToken);
+  let [inoxLoginType, setInoxLoginType] = useState(decodedToken?.role || "USER");
   //   const decodedToken = jwt_decode(auth.token);
-  // const decodedToken = jwtDecode(auth.token);
-  // console.log(decodedToken);
+
 
   console.log("loginPanel", loginPanel);
   console.log("signupPanel", signupPanel);
   
-  let [loginType, setLoginType] = useState(auth?.user?.role || "USER");
+  let [loginType, setLoginType] = useState("USER");
   console.log(loginType) 
 
   let loginTypes = [

@@ -43,13 +43,14 @@ const LoginPage = () => {
       );
       console.log("User authenticated:", response.data);
       let token = response.data.token;
-      !token && toast.success("Login Succesfully");
+       toast.success("Login Succesfully");
+        setLoginPanel(false)
       localStorage.setItem("auth", token);
       // let token = response.data.token;
       console.log("Token:", token);
 
       let decode = jwtDecode(localStorage.getItem("auth"));
-
+  console.log(decode)
       setInoxLoginType(decode.role);
     } catch (error) {
       console.error("There was an error authenticating the user!", error);
