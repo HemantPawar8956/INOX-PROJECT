@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { globalVar } from "../globalContext/GlobalContext";
 import { jwtDecode } from "jwt-decode";
+
 const LoginPage = () => {
   let navigate = useNavigate();
   let { loginPanel, setLoginPanel, loginTypes, loginType, setLoginType } =
@@ -28,43 +29,39 @@ const LoginPage = () => {
     e.stopPropagation();
 
     try {
-      console.log(user.password);
+    
       const response = await axios.post(
         `http://localhost:8080/auth/login?email=${user.email}&password=${user.password}`
-        //     {
-        //       headers: {
-        //         "Content-Type": "application/json ,text/plain, /",
-        //       },
-        //   }
       );
-      console.log("User authenticated:", response);
+      console.log("User authenticated:", response.data);
+      let token=response.data.token;
+     /*  let token = response.data.token;
+      console.log('Token:', token); */
+     //to get user
+     // Making an API call to fetch user data using the token
+     
+      let decode= jwtDecode(token);
+      
+       console.log(decode.role);
+    // console.log('User Data:', userObj.data);
 
-      localStorage.setItem(
-        "auth",
-        JSON.stringify({
-          token:
-            "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrYW51MTIzQGdtYWlsLmNvbSIsImlhdCI6MTcyNzk1MjA5NiwiZXhwIjoxNzI3OTg4MDk2fQ.DhI29sbnh2YIemtu9dn3-ky-xEWhMAec4wE2bPFhsSI",
-          user: {
-            role: "user",
-          },
-        })
-      );
-
-      /*console.log(role==='ADMIN')
-       if (role === 'ADMIN') {
-          navigate('/admin'); 
-      } else if (role === 'USER') {
+      // console.log(role==='ADMIN')
+      let roles=decode.role;
+       if (roles === 'ADMIN') {
+          navigate('/'); 
+      } else if (roles === 'USER') {
           navigate('/user');
       } else {
-          console.error('Unknown role:', response.data.role);
-          
-      }*/
+          console.error('Unknown role:', response.data.role);          
+      } 
+
     } catch (error) {
       console.error("There was an error authenticating the user!", error);
     }
   };
-  const handleSignUpClick = () => {
+  const handleSignUpClick = (e) => {
     navigate("/signup");
+    // e.stopPropagation();
   };
 
   return (

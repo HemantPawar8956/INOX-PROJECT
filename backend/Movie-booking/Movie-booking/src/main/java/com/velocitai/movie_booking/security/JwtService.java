@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import com.velocitai.movie_booking.model.User;
+
 @Service
 public class JwtService {
     @Value("${security.jwt.secret-key}")
@@ -48,7 +50,12 @@ public class JwtService {
             Map<String, Object> extraClaims,
             UserDetails userDetails,
             long expiration
-    ) {
+    ) 
+    {
+    	User u=(User) userDetails;
+    	if(u instanceof UserDetails) {
+    		extraClaims.put("role", u.getRole().name());
+    	}
         return Jwts
                 .builder()
                 .setClaims(extraClaims)

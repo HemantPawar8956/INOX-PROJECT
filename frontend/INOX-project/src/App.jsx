@@ -2,12 +2,17 @@ import React from "react";
 import GlobalContext from "./globalContext/GlobalContext";
 import { routingVar } from "./routing/InoxRouting";
 import { RouterProvider } from "react-router-dom";
+import Accordion1 from "./components/Accordion1";
+import ShowTimings from "./components/Showtimings";
 
 const App = () => {
   return (
-    <GlobalContext>
+  <GlobalContext>
       <RouterProvider router={routingVar} />
-    </GlobalContext>
+    </GlobalContext> 
+    /* <Accordion1/> */
+   /*  <ShowTimings/> */
+   
   );
 };
 

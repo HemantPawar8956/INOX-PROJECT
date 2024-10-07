@@ -23,7 +23,7 @@ export let routingVar = createBrowserRouter([
 
     children: [
       {
-        path: "",
+        path: "/",
         element: <Home />,
       },
       {
@@ -76,8 +76,10 @@ export let routingVar = createBrowserRouter([
     path: "/movieTicket",
     element: <MovieTicket />,
   },
-  {
+
+ /*  {
     path: "/signup",
     element: <SignUp />,
-  },
+  }, */
+
 ]);

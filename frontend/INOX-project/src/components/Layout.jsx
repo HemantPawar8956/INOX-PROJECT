@@ -8,9 +8,10 @@ import { Outlet } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import Addtheatre from "./Addtheatre";
 import SelectLocation from "./SelectLocation";
+import SignUp from "../pages/SignUp";
 
 
-const Layout = () => {
+const Layout = () => { 
   let {
     siderVisible,
     setSiderVisible,
@@ -18,6 +19,8 @@ const Layout = () => {
     setLoginPanel,
     location,
     setLocation,
+    signupPanel, 
+    setSignupPanel
   } = useContext(globalVar);
   console.log(loginPanel);
 
@@ -27,6 +30,7 @@ const Layout = () => {
       {location && <SelectLocation />}
       {/* {location && <SelectLocation/>} */}
       {loginPanel && <LoginPage />}
+      {signupPanel && <SignUp/>}
       <Navbar />
       <Outlet />
     </div>

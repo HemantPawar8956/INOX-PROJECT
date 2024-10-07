@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { globalVar } from '../globalContext/GlobalContext';
 
 const SignUp = () => {
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
+  let { loginPanel, setLoginPanel,signupPanel,setSignupPanel } =
+  useContext(globalVar);
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -13,6 +16,7 @@ const SignUp = () => {
   });
 
   const handleChange = (e) => {
+    e.stopPropagation();
     const { name, value } = e.target;
     setUser({
       ...user,
@@ -21,20 +25,25 @@ const SignUp = () => {
   };
 
   const handleSubmit = async (e) => {
+    e.stopPropagation();
     e.preventDefault();
+
     try {
       const response = await axios.post('http://localhost:8080/auth/signup', user);
       console.log('User created:', response.data);
       // Navigate to login page after successful signup
-      navigate("/login"); 
+     // navigate("/login"); 
+     setSignupPanel(false);
+     setLoginPanel(true);
+
     } catch (error) {
       console.error('There was an error creating the user!', error);
     }
   };
 
   return (
-    <section className='signMain'>
-    <form className="signup-form" onSubmit={handleSubmit}>
+    <section className='signMain' onClick={(e)=>{e.stopPropagation(), setSignupPanel(false)}}>
+    <form className="signup-form" onSubmit={handleSubmit} onClick={(e)=>{e.stopPropagation(),setSignupPanel(true)}}>
       <h2 className="form-title">SIGNUP PAGE</h2>
       <div className="form-group">
         <label className="form-label">Name :</label>

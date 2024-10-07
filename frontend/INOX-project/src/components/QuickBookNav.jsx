@@ -40,7 +40,7 @@ const QuickBookNav = () => {
       console.log("helll");
     }
   };
-
+ 
   // Handle date change
   const handleDateChange = (selectedDate) => {
     setData({

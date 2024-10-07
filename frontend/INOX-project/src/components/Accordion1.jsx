@@ -8,6 +8,7 @@ const Accordion1 = () => {
   };
 
   return (
+    
     <div className="show-timings-container">
       <div className="accordion-header" onClick={toggleAccordion}>
         <h2>INOX AIPL JOY Street Mall Gurugram</h2>
@@ -30,13 +31,21 @@ const Accordion1 = () => {
             <div className="time-box">02:45 PM</div>
             <div className="time-box">04:20 PM</div>
             <div className="time-box">06:20 PM</div>
-            <div className="time-box">07:55 PM</div>
+            <div className="time-box">07:55 PM</div> 
             <div className="time-box">09:55 PM</div>
           </div>
         </div>
       )}
     </div>
+  
   );
 };
 
 export default Accordion1;
+
+
+
+
+
+
+

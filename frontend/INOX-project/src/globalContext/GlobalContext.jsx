@@ -8,6 +8,7 @@ export const GlobalContext = ({ children }) => {
   let [siderVisible, setSiderVisible] = useState(false);
   let [loginPanel, setLoginPanel] = useState(false);
   let [location, setLocation] = useState(true);
+  let [signupPanel, setSignupPanel]=useState(false);
   let [userLocation, setUserLocation] = useState("");
   let auth = JSON.parse(localStorage.getItem("auth"));
   console.log(auth);
@@ -15,6 +16,9 @@ export const GlobalContext = ({ children }) => {
   // const decodedToken = jwtDecode(auth.token);
   // console.log(decodedToken);
 
+  console.log("loginPanel", loginPanel);
+  console.log("signupPanel", signupPanel);
+  
   let [loginType, setLoginType] = useState(auth?.user?.role || "USER");
 
   let loginTypes = [
@@ -35,6 +39,8 @@ export const GlobalContext = ({ children }) => {
         setSiderVisible,
         loginPanel,
         setLoginPanel,
+        signupPanel,
+        setSignupPanel,
         location,
         setLocation,
         userLocation,
