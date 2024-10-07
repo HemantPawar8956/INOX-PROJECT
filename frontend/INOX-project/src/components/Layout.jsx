@@ -15,6 +15,8 @@ import Corousel2 from "./Corousel2";
 
 import { Toaster } from "react-hot-toast";
 import Sider from "./Sider";
+import DeleteNotify from "./DeleteNotify";
+import UpdateNotify from "./UpdateNotify";
 
 const Layout = () => {
   let {
@@ -28,12 +30,15 @@ const Layout = () => {
     setLocation,
     moviePanel,
     setMoviePanel,
+    isModalOpen, setIsModalOpen,
+        updateNotify,setupdateNotify
   } = useContext(globalVar);
 
   return (
     <div>
       <Toaster />
-
+      {isModalOpen && <DeleteNotify/>}
+      {/* {updateNotify && <UpdateNotify/>} */}
       {location && <SelectLocation />}
       {siderVisible && <Sider />}
       {moviePanel && <Addmovie />}

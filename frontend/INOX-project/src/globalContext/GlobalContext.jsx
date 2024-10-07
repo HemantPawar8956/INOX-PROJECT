@@ -11,6 +11,8 @@ export const GlobalContext = ({ children }) => {
   let [location, setLocation] = useState(true);
   let [signupPanel, setSignupPanel] = useState(false);
   let [userLocation, setUserLocation] = useState("");
+  let [isModalOpen, setIsModalOpen] = useState(true);
+  let [updateNotify,setupdateNotify] =useState(true);
   let auth = localStorage.getItem("auth");
   const decodedToken = jwtDecode(auth);
   console.log(decodedToken);
@@ -56,6 +58,8 @@ export const GlobalContext = ({ children }) => {
         loginTypes,
         inoxLoginType,
         setInoxLoginType,
+        isModalOpen, setIsModalOpen,
+        updateNotify,setupdateNotify
       }}>
       {children}
     </Provider>
