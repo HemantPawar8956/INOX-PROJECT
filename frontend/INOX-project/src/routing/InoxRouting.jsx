@@ -10,13 +10,11 @@ import Addmovie from "./../components/Addmovie";
 import Addtheatre from "../components/Addtheatre";
 import MovieTicket from "./../components/MovieTicket";
 
-import ProtectedRoute from "./../Auth/ProtectedRoute";
-import LoginPage from "./../pages/LoginPage";
 import AllBookings from "../components/AllBookings";
 import SelectLocation from "./../components/SelectLocation";
 import SignUp from "../pages/SignUp";
-import ProtectedRoute from './../Auth/ProtectedRoute';
 import LoginPage from "../pages/LoginPage";
+import ProtectedRoute from "../Auth/ProtectedRoute";
 
 export let routingVar = createBrowserRouter([
   {
@@ -56,6 +54,7 @@ export let routingVar = createBrowserRouter([
       <ProtectedRoute>
         <Payment />
       </ProtectedRoute>
+
     ),
   },
   {

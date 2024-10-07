@@ -21,7 +21,13 @@ const Addtheatre = () => {
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
     try {
-      const response = await axios.post('http://localhost:8080/open/savee', theatre);
+      const response = await axios.post('http://localhost:8080/open/savee', theatre,
+        {
+          headers: {
+            Authorization:`Bearer ${localStorage.getItem("auth")}`
+          }
+        }
+      );
       console.log('Theatre added successfully:', response.data);
       // Optionally clear form fields after successful submission
       setTheatre({ name: '', address: '' });
