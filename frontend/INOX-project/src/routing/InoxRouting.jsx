@@ -10,7 +10,6 @@ import Addmovie from './../components/Addmovie';
 import Addtheatre from "../components/Addtheatre";
 import ProtectedRoute from './../Auth/ProtectedRoute';
 import MovieTicket from "./../components/MovieTicket";
-import ProtectedRoute from "./../Auth/ProtectedRoute";
 import AllBookings from "../components/AllBookings";
 import SelectLocation from "./../components/SelectLocation";
 import SignUp from "../pages/SignUp";
