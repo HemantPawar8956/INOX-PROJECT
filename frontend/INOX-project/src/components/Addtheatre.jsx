@@ -28,7 +28,6 @@ const Addtheatre = () => {
           }
         }
       );
-      
       console.log('Theatre added successfully:', response.data);
       // Optionally clear form fields after successful submission
       setTheatre({ name: '', address: '' });

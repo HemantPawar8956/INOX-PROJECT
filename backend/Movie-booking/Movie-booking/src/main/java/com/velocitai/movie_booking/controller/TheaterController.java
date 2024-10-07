@@ -23,7 +23,7 @@ import com.velocitai.movie_booking.service.TheaterService;
 
 @RestController
 @RequestMapping("/theater")
-@CrossOrigin
+
 public class TheaterController {
 	@Autowired
 	private TheaterService theaterService;

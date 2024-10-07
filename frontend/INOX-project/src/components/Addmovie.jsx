@@ -120,7 +120,7 @@ const Addmovie = () => {
       </section>
 
       {showModal && (
-        <div className="modal">
+        <div className="modal" onClick={()=>{setShowModal(false)}}>
           <div className="modal-content">
             <h3>Confirm Movie Details</h3>
             <p>

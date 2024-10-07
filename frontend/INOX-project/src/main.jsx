@@ -4,5 +4,5 @@ import App from "./App";
 import "./global.css";
 // =======
 import "./inox.css"
-
+import "./global.css"
 createRoot(document.getElementById("root")).render(<App />);

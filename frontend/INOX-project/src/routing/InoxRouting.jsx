@@ -6,15 +6,14 @@ import Showtimings from "./../components/Showtimings";
 import Cinemas from "./../components/Cinemas";
 import Payment from "./../components/Payment";
 import SeatLayout from "./../components/SeatLayout";
-import Addmovie from "./../components/Addmovie";
+import Addmovie from './../components/Addmovie';
 import Addtheatre from "../components/Addtheatre";
+import ProtectedRoute from './../Auth/ProtectedRoute';
 import MovieTicket from "./../components/MovieTicket";
-
-import LoginPage from "./../pages/LoginPage";
 import AllBookings from "../components/AllBookings";
 import SelectLocation from "./../components/SelectLocation";
 import SignUp from "../pages/SignUp";
-import ProtectedRoute from './../Auth/ProtectedRoute';
+import LoginPage from "../pages/LoginPage";
 
 export let routingVar = createBrowserRouter([
   {
@@ -23,12 +22,8 @@ export let routingVar = createBrowserRouter([
 
     children: [
       {
-        path: "/",
+        path: "",
         element: <Home />,
-      },
-      {
-        path: "selectlocation",
-        element: <SelectLocation />,
       },
       {
         path: "/showtimings",
@@ -42,10 +37,6 @@ export let routingVar = createBrowserRouter([
         path: "/Booking",
         element: <Cinemas />,
       },
-      {
-        path: "/allbookings",
-        element: <AllBookings />,
-      },
     ],
   },
   {
@@ -54,6 +45,7 @@ export let routingVar = createBrowserRouter([
       <ProtectedRoute>
         <Payment />
       </ProtectedRoute>
+
     ),
   },
   {
@@ -68,18 +60,9 @@ export let routingVar = createBrowserRouter([
     path: "/selectseats",
     element: <SeatLayout />,
   },
-    {
-      path: "/login",
-      element: <LoginPage />,
-    },
   {
-    path: "/movieTicket",
-    element: <MovieTicket />,
+    path: "/login",
+    element: <LoginPage />,
+
   },
-
-   {
-    path: "/signup",
-    element: <SignUp />,
-  }, 
-
 ]);

@@ -4,7 +4,7 @@ import axios from "axios";
 
 const Corousel2 = () => {
   const [movies, setMovies] = useState([]);
-  const { loginType,moviePanel, setMoviePanel ,inoxLoginType, setInoxLoginType} = useContext(globalVar);
+  const { loginType,moviePanel, setMoviePanel,inoxLoginType } = useContext(globalVar);
 
   useEffect(() => {
     let token = localStorage.getItem("auth");
@@ -73,7 +73,7 @@ const Corousel2 = () => {
       {movies.length > 0 && movies.map((ele, i) => (
         <div className="cards2" key={i}>
           <div className="card-info">
-            <img src={ele.movieImage} alt=""/>
+            <img src={ele.movieImage} alt="" />
             <h3>{ele.moviename}</h3>
             <p>Language: {ele.movieLanguage}</p>
             <p>Duration: {ele.duration} minutes</p>
