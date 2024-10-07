@@ -10,6 +10,9 @@ import Addtheatre from "./Addtheatre";
 import SelectLocation from "./SelectLocation";
 import SignUp from "../pages/SignUp";
 import Addmovie from './Addmovie';
+import Addmovie from "./Addmovie";
+import Corousel2 from "./Corousel2";
+// import RegisterPage from "../pages/RegisterPage";
 
 import { Toaster } from "react-hot-toast";
 
@@ -29,14 +32,24 @@ const Layout = () => {
   return (
     <div>
       <Toaster />
+{/* 
       {siderVisible && <Sider />}
       {location && <SelectLocation />}
      {moviePanel && <Addmovie/>} 
       {/* {location && <SelectLocation/>} */}
       {loginPanel && <LoginPage />}
       {signupPanel && <SignUp/>}
+
       <Navbar />
       <Outlet />
+      <Addtheatre/>
+     
+         
+          <Addmovie/>
+       
+       
+    
+    
     </div>
   );
 };
