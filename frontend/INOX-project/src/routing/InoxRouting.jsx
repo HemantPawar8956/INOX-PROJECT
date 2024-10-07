@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./../components/Layout";
-
 import Home from "./../components/Home";
 import Showtimings from "./../components/Showtimings";
 import Cinemas from "./../components/Cinemas";
@@ -8,12 +7,10 @@ import Payment from "./../components/Payment";
 import SeatLayout from "./../components/SeatLayout";
 import Addmovie from "./../components/Addmovie";
 import Addtheatre from "../components/Addtheatre";
-import ProtectedRoute from "./../Auth/ProtectedRoute";
 import MovieTicket from "./../components/MovieTicket";
+import ProtectedRoute from "./../Auth/ProtectedRoute";
 import AllBookings from "../components/AllBookings";
-import SelectLocation from "./../components/SelectLocation";
-import SignUp from "../pages/SignUp";
-import LoginPage from "../pages/LoginPage";
+import SignUp from "./../pages/SignUp";
 
 export let routingVar = createBrowserRouter([
   {
@@ -29,10 +26,7 @@ export let routingVar = createBrowserRouter([
         path: "/showtimings",
         element: <Showtimings />,
       },
-      {
-        path: "/cinemas",
-        element: <Cinemas />,
-      },
+
       {
         path: "/Booking",
         element: <Cinemas />,
@@ -58,13 +52,5 @@ export let routingVar = createBrowserRouter([
   {
     path: "/selectseats",
     element: <SeatLayout />,
-  },
-  {
-    path: "/login",
-    element: <LoginPage />,
-  },
-  {
-    path: "/allbookings",
-    element: <AllBookings />,
   },
 ]);

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { globalVar } from "../globalContext/GlobalContext";
 import { jwtDecode } from "jwt-decode";
 import toast from "react-hot-toast";
+
 const LoginPage = () => {
   let navigate = useNavigate();
   let {
