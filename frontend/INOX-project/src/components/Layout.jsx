@@ -14,6 +14,7 @@ import Corousel2 from "./Corousel2";
 // import RegisterPage from "../pages/RegisterPage";
 
 import { Toaster } from "react-hot-toast";
+import Sider from "./Sider";
 
 const Layout = () => { 
   let {
@@ -31,20 +32,21 @@ const Layout = () => {
   return (
     <div>
       <Toaster />
-{/* 
-      {siderVisible && <Sider />}
-      {location && <SelectLocation />}
+
+
+      {/* {location && <SelectLocation />} */}
+      {siderVisible && <Sider/>}
      {moviePanel && <Addmovie/>} 
-      {/* {location && <SelectLocation/>} */}
+
       {loginPanel && <LoginPage />}
       {signupPanel && <SignUp/>}
 
       <Navbar />
       <Outlet />
-      <Addtheatre/>
+      {/* <Addtheatre/> */}
      
          
-          <Addmovie/>
+          {/* <Addmovie/> */}
        
        
     
