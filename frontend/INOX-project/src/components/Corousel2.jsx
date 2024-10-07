@@ -136,7 +136,7 @@ const Corousel2 = () => {
           <h1>Now Showing</h1>
         </div>
 
-        {loginType == "admin" && (
+        {loginType == "ADMIN" && (
           <div className="new-btn">
             <button>Add New Movies</button>
           </div>
@@ -184,7 +184,7 @@ const Corousel2 = () => {
               <p>language: {ele.languages}</p>
               {loginType === "USER" ? (
                 <button>Book Tickets</button>
-              ) : loginType === "admin" ? (
+              ) : loginType === "ADMIN" ? (
                 <div>
                   <button>Update</button>
                   <button>Delete</button>

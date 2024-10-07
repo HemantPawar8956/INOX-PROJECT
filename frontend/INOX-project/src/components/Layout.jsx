@@ -8,7 +8,7 @@ import { Outlet } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import Addtheatre from "./Addtheatre";
 import SelectLocation from "./SelectLocation";
-
+import { Toaster } from "react-hot-toast";
 
 const Layout = () => {
   let {
@@ -23,6 +23,7 @@ const Layout = () => {
 
   return (
     <div>
+      <Toaster />
       {siderVisible && <Sider />}
       {location && <SelectLocation />}
       {/* {location && <SelectLocation/>} */}

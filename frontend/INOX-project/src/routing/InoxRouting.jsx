@@ -23,7 +23,7 @@ export let routingVar = createBrowserRouter([
 
     children: [
       {
-        path: "",
+        path: "/",
         element: <Home />,
       },
       {
