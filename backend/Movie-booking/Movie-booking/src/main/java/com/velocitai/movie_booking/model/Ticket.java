@@ -31,7 +31,7 @@ public class Ticket {
 		private long id;
 		@Column(name = "ticket_totalprice")
 		private double totalePrice;
-	    @OneToOne
+	    @OneToOne(cascade = CascadeType.ALL)
 		private Show showTime;
 		@ManyToOne
 		private User user;
