@@ -32,6 +32,8 @@ public interface MovieService {
 
 	public ResponseEntity<?> deleteMovie(long id);
 
+	public ResponseEntity<List<Movie>> findMoviesByTheater(String theatername);
+
 	
 	
 

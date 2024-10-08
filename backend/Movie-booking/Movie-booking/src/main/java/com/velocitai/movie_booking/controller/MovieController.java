@@ -68,6 +68,12 @@ public class MovieController {
 	    
 	}
 
+	
+	@GetMapping("/allmovie/{theatername}")
+	public ResponseEntity<List<Movie>> findMoviesTheatername(@PathVariable String theatername) {
+	     return movieService.findMoviesByTheater(theatername);
+	}
+	
 	@PostMapping("/upload")
 	public ResponseEntity<String> uploadMovieImage(@RequestParam("movieImage") MultipartFile file,
   			@RequestParam("movieid") long movieId) {
@@ -80,5 +86,7 @@ public class MovieController {
 
 		return null;
 	}
+	
+	
 
 }

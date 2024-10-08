@@ -158,4 +158,34 @@ public class MovieServiceImp implements MovieService {
 		return null;
 	}
 
-}
+	@Override
+	public ResponseEntity<List<Movie>> findMoviesByTheater(String theatername) {
+		
+		 Optional<Theater> optional = theaterRepository.findByName(theatername);
+		    List<Movie> movieList = new ArrayList<>();
+
+		    if (optional.isPresent()) {
+		        Theater theater = optional.get(); // Retrieve the theater entity from Optional
+		        List<Show> shows = showRepository.findByTheater(theater);
+
+		        if (!shows.isEmpty()) {
+		            for (Show show : shows) {
+		                Movie movie = show.getMovie();
+		                if (!movieList.contains(movie)) {
+		                    movieList.add(movie); // Add unique movies to the list
+		                }
+		            }
+		        } else {
+		            System.out.println("No shows found for Theater ID " + theater.getId());
+		        }
+		    } else {
+		        // Return a bad request if the theater is not found
+		        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		    }
+
+		    return ResponseEntity.ok(movieList);
+		}
+		}
+	
+	
+
