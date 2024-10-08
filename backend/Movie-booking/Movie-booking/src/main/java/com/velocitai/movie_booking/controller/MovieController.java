@@ -67,6 +67,9 @@ public class MovieController {
 	     return movieService.findMoviesByLocation(location);
 	    
 	}
+	
+	
+	
 
 	@PostMapping("/upload")
 	public ResponseEntity<String> uploadMovieImage(@RequestParam("movieImage") MultipartFile file,

@@ -34,8 +34,8 @@ public class Theater {
 	private String name;
 	@Column(name = "theater_address")
 	private String address;
-	@OneToMany(fetch = FetchType.EAGER)
-	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY)
+	
 	private List<Show> showTime;
 	@JsonIgnore
 	@OneToMany(mappedBy = "theater") // Indicates the 'theater' field in the Show class

@@ -33,8 +33,11 @@ const QuickBookNav = () => {
 
   const handleMovieData = async () => {
     try {
-      let { data } = await axios.get(`http://localhost:8080/open/movies/alls`);
+      
+      let { data } = await axios.get("http://localhost:8080/open/movies/alls"
+      );
       setFetchedMovieData(data); // Fetch and set movie data
+      console.log(data)
     } catch {
       console.log("Movie data not found");
     }
@@ -42,7 +45,9 @@ const QuickBookNav = () => {
 
   const handleCinemaData = async () => {
     try {
-      let { data } = await axios.get(`http://localhost:8080/open/cinemas/alls`);
+      let { data } = await axios.get("http://localhost:8080/open/cinemas/alls"
+      );
+
       setFetchedCinemaData(data); // Fetch and set cinema data
     } catch {
       console.log("Cinema data not found");
@@ -54,11 +59,8 @@ const QuickBookNav = () => {
   };
 
   useEffect(() => {
-    if (change === "Movie") {
-      handleMovieData(); // Fetch movies when "Movie" is selected
-    } else {
-      handleCinemaData(); // Fetch cinemas when "Cinema" is selected
-    }
+   handleCinemaData();
+   handleMovieData();
   }, [change]);
 
   return (
@@ -77,13 +79,11 @@ const QuickBookNav = () => {
             value={change === "Movie" ? movie : cinema}
             onChange={handleChange}>
             <option value="">{`Select ${change}`}</option>
-            {(change === "Movie" ? fetchedMovieData : fetchedCinemaData).map(
-              (item, index) => (
-                <option key={index} value={item.name}>
-                  {item.name}
-                </option>
-              )
-            )}
+            {(change === "Movie" ? fetchedMovieData : fetchedCinemaData).map((item, index) => (
+              <option key={index} value={item.moviename}>
+                {item.moviename || item.name}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -103,17 +103,14 @@ const QuickBookNav = () => {
           <select
             name={change === "Movie" ? "cinema" : "movie"}
             value={change === "Movie" ? cinema : movie}
-            onChange={handleChange}>
-            <option value="">{`Select ${
-              change === "Movie" ? "Cinema" : "Movie"
-            }`}</option>
-            {(change === "Movie" ? fetchedCinemaData : fetchedMovieData).map(
-              (item, index) => (
-                <option key={index} value={item.name}>
-                  {item.name}
-                </option>
-              )
-            )}
+            onChange={handleChange}
+          >
+            <option value="">{`Select ${change === "Movie" ? "Cinema" : "Movie"}`}</option>
+            {(change === "Movie" ? fetchedCinemaData : fetchedMovieData).map((item, index) => (
+              <option key={index} value={item.name}>
+                {item.name || item.moviename}
+              </option>
+            ))}
           </select>
         </div>
 

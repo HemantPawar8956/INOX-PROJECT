@@ -2,6 +2,8 @@ import React, { createContext, useState } from "react";
 export let globalVar = createContext();
 // import jwt_decode from "jsonwebtoken";
 import { jwtDecode } from "jwt-decode";
+import UpdateTheatre from './../components/UpdateTheatre';
+import axios from "axios";
 
 export const GlobalContext = ({ children }) => {
   let { Provider } = globalVar;
@@ -14,7 +16,22 @@ export const GlobalContext = ({ children }) => {
   let [userLocation, setUserLocation] = useState("");
   let [isModalOpen, setIsModalOpen] = useState(false);
   let [updateNotify, setupdateNotify] = useState(false);
+  let [UpdateTheater,setUpdateTheater] = useState(false);
+  let [updateData,setUpdateData] = useState({
+    comp:"",
+    data:""
+  });
+  let [deleteData,setDeleteData] = useState({
+    comp:"",
+    data:""
+  });
+  let [updateCount,setUpdateCount] =useState(0); 
+  let [deleteCount,setDeleteCount] =useState(0);
+
+  let [theaterId,setTheaterId] = useState(0);
+
   let [selectedCity, setSelectedCity] = useState(null);
+
   let auth = localStorage.getItem("auth");
   console.log(auth);
   const decodedToken = auth && jwtDecode(auth);
@@ -37,6 +54,13 @@ export const GlobalContext = ({ children }) => {
       loginVal: "USER",
     },
   ];
+
+   let updateTheaterId=(ele)=>{
+      setTheaterId(ele.id);
+      console.log(ele)
+      setUpdateTheater(true)
+
+   }
 
   return (
     <Provider
@@ -64,8 +88,14 @@ export const GlobalContext = ({ children }) => {
         setIsModalOpen,
         updateNotify,
         setupdateNotify,
-        selectedCity,
-        setSelectedCity,
+        UpdateTheater,setUpdateTheater,
+        theaterId,setTheaterId,
+        updateTheaterId,
+        updateData,setUpdateData,
+        deleteData,setDeleteData,
+        updateCount,setUpdateCount,
+        deleteCount,setDeleteCount,
+        selectedCity,setSelectedCity
       }}>
       {children}
     </Provider>
