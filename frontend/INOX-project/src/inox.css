@@ -42,7 +42,7 @@
   justify-content: center;
   align-items: center;
   padding: 5px 10px;
-  min-width:11%;
+  min-width: 11%;
   height: 100%;
 }
 .nav ul li:has(.active) {

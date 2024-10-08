@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Accordion from "./Accordion1";
 import Accordion1 from "./Accordion1";
 import Accordion2 from "./Accordion1";
@@ -6,11 +6,13 @@ import Accordion3 from "./Accordion1";
 import { CiCreditCard1 } from "react-icons/ci";
 import { RiWheelchairFill } from "react-icons/ri";
 import { CiSearch } from "react-icons/ci";
-import { useLocation } from "react-router-dom";
+import axios from "axios";
+import { globalVar } from "../globalContext/GlobalContext";
 
 const ShowTimings = () => {
-  let { state } = useLocation();
-  console.log(state);
+  let { inoxLoginType, addthatrePanel, setAddTheatrePanel } =
+    useContext(globalVar);
+
   const dates = [
     { day: "Sep 30", label: "Today" },
     { day: "Oct 01", label: "Tomorrow" },
@@ -21,19 +23,50 @@ const ShowTimings = () => {
     { day: "Oct 06", label: "Sun" },
   ];
 
+  useEffect(() => {
+    let fetchData = async () => {
+      try {
+        let response = await axios.get(
+          `http://localhost:8080/movies/allmovie/{theatername}`,
+          {
+            headers: {
+              ContentType: "application/json",
+              Authorization: `Bearer ${localStorage.getItem("auth")}`,
+            },
+          }
+        );
+
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <section className="show-sec">
       <div className="show">
         <h2 className="showh2">Showtimings</h2>
+        {inoxLoginType === "ADMIN" && (
+          <button
+            className="addshowbtn"
+            onClick={(e) => {
+              e.stopPropagation(), setAddTheatrePanel(true);
+            }}>
+            Add Show
+          </button>
+        )}
       </div>
+
       <div className="show-timings-container1">
         <div className="show-timings-header"></div>
 
         <div className="show-timings-dates">
           {dates.map((date, index) => (
             <div key={index} className="date-item">
-              <span>{date.day}</span>
-              <span>{date.label}</span>
+              <span className="dateshow">{date.day}</span>
+              <span className="dateshow">{date.label}</span>
             </div>
           ))}
         </div>
@@ -87,10 +120,8 @@ const ShowTimings = () => {
         </div>
       </div>
       <section className="accor">
-        {<Accordion />}
-        <Accordion1 />
-        <Accordion2 />
-        <Accordion3 />
+        <Accordion1 data="theaterData Pass Here" />
+
       </section>
     </section>
   );

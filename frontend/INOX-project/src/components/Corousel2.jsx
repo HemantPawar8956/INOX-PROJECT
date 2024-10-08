@@ -88,7 +88,8 @@ const Corousel2 = () => {
         </div>
       </div>
 
-      {movies.length > 0 &&
+      {
+        movies.length > 0 &&
         movies.map((ele, i) => (
           <div className="cards2" key={i}>
             <div className="card-info">

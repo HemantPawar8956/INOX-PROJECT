@@ -14,6 +14,8 @@ import Sider from "./Sider";
 import UpdateTheatre from "./UpdateTheatre";
 import DeleteNotify from "./DeleteNotify";
 import UpdateNotify from "./UpdateNotify";
+import AddShows from "./AddShows";
+import UpdateShows from "./UpdatedShows";
 
 const Layout = () => {
   let {
@@ -33,33 +35,34 @@ const Layout = () => {
     setIsModalOpen,
     updateNotify,
     setupdateNotify,
-    UpdateTheater,setUpdateTheater
+    UpdateTheater,
+    setUpdateTheater,
+    addShowPanel,
+    updateShowPanel,
+    setUpdateShowPanel,
   } = useContext(globalVar);
 
   return (
     <div>
       <Toaster />
-      {UpdateTheater && <UpdateTheatre/>}
-      {/* {<Addtheatre/>} */}
-      
+      {UpdateTheater && <UpdateTheatre />}
+
       {addthatrePanel && <Addtheatre />}
       {isModalOpen && <DeleteNotify />}
       {updateNotify && <UpdateNotify />}
       {location && <SelectLocation />}
       {siderVisible && <Sider />}
       {moviePanel && <Addmovie />}
-
+      {addShowPanel && <AddShows />}
+      {updateShowPanel && <UpdateShows />}
       {loginPanel && <LoginPage />}
       {signupPanel && <SignUp />}
 
       <Navbar />
       <Outlet />
-    
-     
-         
-          {/* <Addmovie/> */}
-       
-    
+
+      {/* <Addmovie/> */}
+
       {/* {<Addtheatre />} */}
 
       {/* <Addmovie/> */}

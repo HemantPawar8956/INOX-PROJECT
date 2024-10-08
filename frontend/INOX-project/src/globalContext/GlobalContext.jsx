@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 export let globalVar = createContext();
 // import jwt_decode from "jsonwebtoken";
 import { jwtDecode } from "jwt-decode";
-import UpdateTheatre from './../components/UpdateTheatre';
+import UpdateTheatre from "./../components/UpdateTheatre";
 import axios from "axios";
 
 export const GlobalContext = ({ children }) => {
@@ -16,19 +16,21 @@ export const GlobalContext = ({ children }) => {
   let [userLocation, setUserLocation] = useState("");
   let [isModalOpen, setIsModalOpen] = useState(false);
   let [updateNotify, setupdateNotify] = useState(false);
-  let [UpdateTheater,setUpdateTheater] = useState(false);
-  let [updateData,setUpdateData] = useState({
-    comp:"",
-    data:""
+  let [UpdateTheater, setUpdateTheater] = useState(false);
+  let [addShowPanel, setAddShowPanel] = useState(false);
+  let [updateShowPanel, setUpdateShowPanel] = useState(false);
+  let [updateData, setUpdateData] = useState({
+    comp: "",
+    data: "",
   });
-  let [deleteData,setDeleteData] = useState({
-    comp:"",
-    data:""
+  let [deleteData, setDeleteData] = useState({
+    comp: "",
+    data: "",
   });
-  let [updateCount,setUpdateCount] =useState(0); 
-  let [deleteCount,setDeleteCount] =useState(0);
+  let [updateCount, setUpdateCount] = useState(0);
+  let [deleteCount, setDeleteCount] = useState(0);
 
-  let [theaterId,setTheaterId] = useState(0);
+  let [theaterId, setTheaterId] = useState(0);
 
   let [selectedCity, setSelectedCity] = useState(null);
 
@@ -37,7 +39,7 @@ export const GlobalContext = ({ children }) => {
   const decodedToken = auth && jwtDecode(auth);
   console.log(decodedToken);
   let [inoxLoginType, setInoxLoginType] = useState(
-    decodedToken?.role || "USER"
+    decodedToken?.role || "ADMIN"
   );
   //   const decodedToken = jwt_decode(auth.token);
 
@@ -55,12 +57,10 @@ export const GlobalContext = ({ children }) => {
     },
   ];
 
-   let updateTheaterId=(ele)=>{
-      setTheaterId(ele.id);
-      console.log(ele)
-      setUpdateTheater(true)
-
-   }
+  let updateTheaterId = (ele) => {
+    setTheaterId(ele.id);
+    setUpdateTheater(true);
+  };
 
   return (
     <Provider
@@ -88,14 +88,25 @@ export const GlobalContext = ({ children }) => {
         setIsModalOpen,
         updateNotify,
         setupdateNotify,
-        UpdateTheater,setUpdateTheater,
-        theaterId,setTheaterId,
+        UpdateTheater,
+        setUpdateTheater,
+        theaterId,
+        setTheaterId,
         updateTheaterId,
-        updateData,setUpdateData,
-        deleteData,setDeleteData,
-        updateCount,setUpdateCount,
-        deleteCount,setDeleteCount,
-        selectedCity,setSelectedCity
+        updateData,
+        setUpdateData,
+        deleteData,
+        setDeleteData,
+        updateCount,
+        setUpdateCount,
+        deleteCount,
+        setDeleteCount,
+        selectedCity,
+        setSelectedCity,
+        addShowPanel,
+        setAddShowPanel,
+        updateShowPanel,
+        setUpdateShowPanel,
       }}>
       {children}
     </Provider>
