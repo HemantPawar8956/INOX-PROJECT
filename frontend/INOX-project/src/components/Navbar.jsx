@@ -53,10 +53,12 @@ const Navbar = () => {
       <nav className="nav">
         <ul>
           <li>
+          
             <NavLink
               to="/"
               className={({ isActive }) => (isActive ? "active" : "")}>
-              <FaHome className="icon" /> Home
+                <FaHome className="icon" />
+              <span> Home</span>
             </NavLink>
           </li>
           <li>
@@ -73,7 +75,7 @@ const Navbar = () => {
                 <NavLink
                   to="/cinemas"
                   className={({ isActive }) => (isActive ? "active" : "")}>
-                  <BiCard className="icon" /> Cinemas{" "}
+                  <BiCard className="icon" /> Cinemas
                 </NavLink>
               </>
             ) : (
@@ -86,12 +88,14 @@ const Navbar = () => {
             {inoxLoginType == "ADMIN" ? (
               <>
                 <NavLink to="allbookings">
-                  <AiFillFund className="icon" /> All Bookings
+                  <AiFillFund className="icon" /> <span>All Bookings</span>
                 </NavLink>
               </>
             ) : (
               <>
-                <AiFillFund className="icon" /> Investor Section
+              
+                <AiFillFund className="icon" /> Investor Section                  
+              
               </>
             )}
           </li>

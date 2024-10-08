@@ -33,11 +33,15 @@ const Layout = () => {
     setIsModalOpen,
     updateNotify,
     setupdateNotify,
+    UpdateTheater,setUpdateTheater
   } = useContext(globalVar);
 
   return (
     <div>
       <Toaster />
+      {UpdateTheater && <UpdateTheatre/>}
+      {/* {<Addtheatre/>} */}
+      
       {addthatrePanel && <Addtheatre />}
       {isModalOpen && <DeleteNotify />}
       {updateNotify && <UpdateNotify />}
@@ -50,12 +54,12 @@ const Layout = () => {
 
       <Navbar />
       <Outlet />
-      {<Addtheatre/>}
+    
      
          
           {/* <Addmovie/> */}
        
-       <UpdateTheatre/>
+    
     </div>
   );
 };
