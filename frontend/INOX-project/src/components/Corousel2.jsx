@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+ import React, { useContext, useEffect, useState } from "react";
 import { globalVar } from "../globalContext/GlobalContext";
 import axios from "axios";
 
@@ -23,21 +23,23 @@ const Corousel2 = () => {
 
   }
   
+  
 
   useEffect(() => {
     let token = localStorage.getItem("auth");
-    console.log(token)
+    console.log(token);
+
     const fetchMovies = async () => {
       try {
-       const response = await axios.get('http://localhost:8080/movies/all', {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    } );
+        const response = await axios.get("http://localhost:8080/movies/all", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         console.log(response.data);
         setMovies(response.data);
       } catch (error) {
-        console.error('Error fetching movies:', error);
+        console.error("Error fetching movies:", error);
       }
     };
     fetchMovies();
@@ -50,8 +52,12 @@ const Corousel2 = () => {
           <h1>Now Showing</h1>
         </div>
 
-        {inoxLoginType === 'ADMIN' && (
-          <div className="new-btn" onClick={()=>{setMoviePanel(!moviePanel)}}>
+        {inoxLoginType === "ADMIN" && (
+          <div
+            className="new-btn"
+            onClick={() => {
+              setMoviePanel(!moviePanel);
+            }}>
             <button>Add New Movies</button>
           </div>
         )}
@@ -108,10 +114,9 @@ const Corousel2 = () => {
             ) : null}
           </div>
         </div>
-      ))}
+))}
     </section>
   );
-}
+};
 
 export default Corousel2;
-

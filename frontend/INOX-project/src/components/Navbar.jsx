@@ -17,11 +17,12 @@ import {
 import { AiFillFund } from "react-icons/ai";
 import { CiSearch } from "react-icons/ci";
 import { MdLocationSearching } from "react-icons/md";
-import Sider from "./Sider";
+// import Sider from "./Sider";
 import { IoBag } from "react-icons/io5";
 import { RiAdvertisementFill } from "react-icons/ri";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { globalVar } from "../globalContext/GlobalContext";
+import { BiCard } from "react-icons/bi";
 
 const Navbar = () => {
   let [dropdownVisible, setDropdownVisible] = useState(false);
@@ -65,15 +66,21 @@ const Navbar = () => {
               <FaStar className="icon" /> Showtimings
             </NavLink>
           </li>
+
           <li>
-            <NavLink
-              to="/cinemas"
-              className={({ isActive }) => (isActive ? "active" : "")}>
-              <FaFilm className="icon" /> Cinemas
-            </NavLink>
-          </li>
-          <li>
-            <FaTags className="icon" /> Offers
+            {inoxLoginType == "ADMIN" ? (
+              <>
+                <NavLink
+                  to="/cinemas"
+                  className={({ isActive }) => (isActive ? "active" : "")}>
+                  <BiCard className="icon" /> Cinemas{" "}
+                </NavLink>
+              </>
+            ) : (
+              <>
+                <FaTags className="icon" /> Offers
+              </>
+            )}
           </li>
           <li>
             {inoxLoginType == "ADMIN" ? (
