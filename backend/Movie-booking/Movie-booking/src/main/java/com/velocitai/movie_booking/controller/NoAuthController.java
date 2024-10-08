@@ -25,33 +25,54 @@ public class NoAuthController {
 
 	@Autowired
 	private MovieService movieService;
-	
+
 	@Autowired
 	private TheaterService theaterService;
 
-	
 	@DeleteMapping("/deletee")
-    public ResponseEntity<?> deleteMovie(@RequestBody Movie movie) {
-        
-             return movieService.deleteMovie(movie);
+	public ResponseEntity<?> deleteMovie(@RequestBody Movie movie) {
+
+		return movieService.deleteMovie(movie);
 	}
-	
+
 	@PostMapping("/savee")
 	public ResponseEntity<Theater> addTheater(@RequestBody Theater theater) {
 		return theaterService.saveTheater(theater);
 	}
-	
+
 	@PostMapping("/saves")
-    public ResponseEntity<Movie> addMovie(@RequestBody Movie movie) {
-        
-             return movieService.saveMovie(movie);
+	public ResponseEntity<Movie> addMovie(@RequestBody Movie movie) {
+
+		return movieService.saveMovie(movie);
 	}
 
-	
 	@PutMapping("/updates")
-    public ResponseEntity<Movie> updateMovie(@RequestBody Movie movie) {
-        
-             return movieService.UpdateMovie(movie);
+	public ResponseEntity<Movie> updateMovie(@RequestBody Movie movie) {
+
+		return movieService.UpdateMovie(movie);
+	}
+
+
+	@PutMapping("/updatee")
+	public ResponseEntity<Theater> updateTheater(@RequestBody Theater theater) {
+		return theaterService.updateTheater(theater);
 	}
 	
+	
+	
+	
+
+	// findAllTheaters
+	@GetMapping("/cinemas/alls")
+	public ResponseEntity<List<Theater>> getAllTheaters() {
+		return theaterService.findAllTheater();
+	}
+
+	@GetMapping("/movies/alls")
+	public ResponseEntity<List<Movie>> findAllMovie() {
+
+		return movieService.findAllMovie();
+	}
+
+
 }

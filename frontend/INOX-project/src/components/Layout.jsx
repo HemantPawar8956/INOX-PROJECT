@@ -11,6 +11,7 @@ import Corousel2 from "./Corousel2";
 // import RegisterPage from "../pages/RegisterPage";
 import { Toaster } from "react-hot-toast";
 import Sider from "./Sider";
+import UpdateTheatre from "./UpdateTheatre";
 import DeleteNotify from "./DeleteNotify";
 import UpdateNotify from "./UpdateNotify";
 
@@ -49,6 +50,12 @@ const Layout = () => {
 
       <Navbar />
       <Outlet />
+      {<Addtheatre/>}
+     
+         
+          {/* <Addmovie/> */}
+       
+       <UpdateTheatre/>
     </div>
   );
 };
