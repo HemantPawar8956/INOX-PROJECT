@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-const SeatLayout = ({ movieName, theatreName, showTiming, seatInfo, GrandTotal }) => {
-  const navigate = useNavigate();
+const SeatLayout = () => {
   let seatSeq = "A";
   let [selectedSeats, setSelectedSeats] = useState([]);
+  let [showPayment, setShowPayment] = useState(false); 
   let data = [
     { seatNo: "A1", price: 200, boooked: true },
     { seatNo: "A2", price: 200, boooked: true },
@@ -50,25 +49,19 @@ const SeatLayout = ({ movieName, theatreName, showTiming, seatInfo, GrandTotal }
       e.target.style.backgroundColor = "#003688";
       e.target.style.color = "white";
       setSelectedSeats((prevSeats) => [...prevSeats, ele.seatNo]);
+      setShowPayment(true); 
     } else if (selectedSeats.includes(ele.seatNo)) {
       e.target.style.backgroundColor = "lightgray";
       e.target.style.color = "black";
       setSelectedSeats((prevSeats) => prevSeats.filter((seat) => seat !== ele.seatNo));
+
+      if (selectedSeats.length === 1) {
+        setShowPayment(false);
+      }
     }
   };
-  const handleProceed = () => {
-    navigate('/payment', {
-        state: {
-            movieName,
-            theatreName,
-            showTiming,
-            seatInfo,
-            GrandTotal
-        }
-    });
-};
 
-  const seatPrice = 200; 
+  const seatPrice = 200;
   const subtotal = selectedSeats.length * seatPrice;
   const grandTotal = subtotal;
 
@@ -123,11 +116,16 @@ const SeatLayout = ({ movieName, theatreName, showTiming, seatInfo, GrandTotal }
                     disabled={ele.boooked}
                     onClick={(e) => {
                       SeatStatus(e, ele);
-                    }}>
+                    }}
+                    key={index + 2}>
                     {ele.seatNo}
                   </span>
                   {(ele.seatNo.slice(1) == 4 || ele.seatNo.slice(1) == 14) &&
-                    spaces.map((ele) => <span className="space">space</span>)}
+                    spaces.map((ele, i) => (
+                      <span className="space" key={i + 1}>
+                        space
+                      </span>
+                    ))}
                 </>
               );
             })}
@@ -135,52 +133,49 @@ const SeatLayout = ({ movieName, theatreName, showTiming, seatInfo, GrandTotal }
         </section>
       </section>
 
-      <section className="carpayment">
-        <div className="image-pic">
-          <h1>Booking Summary</h1>
-        </div>
-        <div className="image-pic1">
-          <p>Movie Name : </p>
-          <p>Theatre Name : </p>
-          <p>Show Timings : </p>
-        </div>
-
-        <div className="image-pic2">
-          <div>SEAT INFO</div>
-          <div>{selectedSeats.length > 0 ? selectedSeats.join(", ") : "No seats selected"}</div> 
-        </div>
-        <div className="image-pic3">
-          <div>
-            <h1>Tickets</h1>
+      {showPayment && (
+        <section className="carpayment">
+          <div className="image-pic">
+            <h1>Booking Summary</h1>
           </div>
-          <div>
-            <h1>{selectedSeats.length > 0 ? `${selectedSeats.length} x ₹${seatPrice}` : "0 x ₹0"}</h1>
+          <div className="image-pic2">
+            <div>SEAT INFO</div>
+            <div>{selectedSeats.join(", ")}</div>
+            <div className="r1">R1</div>
           </div>
-        </div>
-        <div className="image-pic4">
-          <div>
-            <h1>PAYMENT DETAILS</h1>
+          <div className="image-pic3">
+            <div>
+              <h1>Tickets</h1>
+            </div>
+            <div>
+              <h1>{selectedSeats.length} x {seatPrice}</h1>
+            </div>
           </div>
-          <div>
-            <h1>Sub Total: ₹{selectedSeats.length > 0 ? subtotal : 0}</h1>
+          <div className="image-pic4">
+            <div>
+              <h1>PAYMENT DETAILS</h1>
+            </div>
+            <div>
+              <h1>Sub Total: ₹{subtotal}</h1>
+            </div>
+            <div>
+              <select name="" id="" className="t1">
+                <option value="">TAXES & FEES</option>
+                <option value="">5%</option>
+                <option value="">10%</option>
+              </select>
+            </div>
           </div>
-          <div>
-            <select name="" id="" className="t1">
-              <option value="">TAXES & FEES</option>
-              <option value="">5%</option>
-              <option value="">10%</option>
-            </select>
+          <div className="image-pic5">
+            <div>
+              <h1>Grand Total: ₹{grandTotal}</h1>
+            </div>
+            <div>
+              <button className="button-grand">Proceed</button>
+            </div>
           </div>
-        </div>
-        <div className="image-pic5">
-          <div>
-            <h1>Grand Total: ₹{selectedSeats.length > 0 ? grandTotal : 0}</h1>
-          </div>
-          <div>
-            <button className="proceed" onClick={handleProceed}>PROCEED</button>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
     </section>
   );
 };

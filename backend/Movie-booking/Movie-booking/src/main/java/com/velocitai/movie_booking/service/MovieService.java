@@ -30,7 +30,7 @@ public interface MovieService {
 	
 	public ResponseEntity<?> getMovieImage(long id);
 
-	
+	public ResponseEntity<?>	findMoviesByTheaterId(long theaterId);
 	
 
 	

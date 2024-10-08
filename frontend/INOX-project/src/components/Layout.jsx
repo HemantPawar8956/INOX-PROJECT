@@ -11,6 +11,7 @@ import Corousel2 from "./Corousel2";
 // import RegisterPage from "../pages/RegisterPage";
 import { Toaster } from "react-hot-toast";
 import Sider from "./Sider";
+import UpdateTheatre from "./UpdateTheatre";
 import DeleteNotify from "./DeleteNotify";
 import UpdateNotify from "./UpdateNotify";
 import UpdateMovie from "./UpdateMovie";
@@ -33,12 +34,15 @@ const Layout = () => {
     setIsModalOpen,
     updateNotify,
     setupdateNotify,
-    updatemoviePanel,setUpdatemoviePanel
+    UpdateTheater,setUpdateTheater
   } = useContext(globalVar);
 
   return (
     <div>
       <Toaster />
+      {UpdateTheater && <UpdateTheatre/>}
+      {/* {<Addtheatre/>} */}
+      
       {addthatrePanel && <Addtheatre />}
       {isModalOpen && <DeleteNotify />}
       {updateNotify && <UpdateNotify />}
@@ -51,6 +55,17 @@ const Layout = () => {
 
       <Navbar />
       <Outlet />
+    
+     
+         
+          {/* <Addmovie/> */}
+       
+    
+      {/* {<Addtheatre />} */}
+
+      {/* <Addmovie/> */}
+
+      {/* <UpdateTheatre /> */}
     </div>
   );
 };

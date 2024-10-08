@@ -3,14 +3,20 @@ import Accordion from "./Accordion1";
 import Accordion1 from "./Accordion1";
 import Accordion2 from "./Accordion1";
 import Accordion3 from "./Accordion1";
+import { CiCreditCard1 } from "react-icons/ci";
+import { RiWheelchairFill } from "react-icons/ri";
+import { CiSearch } from "react-icons/ci";
+import { useLocation } from "react-router-dom";
 
 const ShowTimings = () => {
+  let { state } = useLocation();
+  console.log(state);
   const dates = [
     { day: "Sep 30", label: "Today" },
     { day: "Oct 01", label: "Tomorrow" },
     { day: "Oct 02", label: "Wed" },
-    { day: "Oct 03", label: "Thu" }, 
-    { day: "Oct 04", label: "Fri" }, 
+    { day: "Oct 03", label: "Thu" },
+    { day: "Oct 04", label: "Fri" },
     { day: "Oct 05", label: "Sat" },
     { day: "Oct 06", label: "Sun" },
   ];
@@ -33,31 +39,53 @@ const ShowTimings = () => {
         </div>
       </div>
 
-      <div className="status-options"> 
-      <div className="show-timings-search-status">
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Search for cinema"
-            className="search-input"
-          />
-        </div>        
-         <section className="optionitems">
-          <div className="available">
-          <div className="status-item available1">Available</div>
-          <div className="status-item filling-fast">Filling Fast</div>
-          <div className="status-item sold-out">Sold Out</div>
-          <div className="status-item lapsed">Lapsed</div>
+      <div className="status-options">
+        <div className="show-timings-search-status">
+          <div className="search-bar">
+            <div className="ciSearch">
+              <CiSearch />
+            </div>
+            <input
+              type="text"
+              placeholder="Search for cinema"
+              className="search-input"
+            />
           </div>
-         <div className="status-item1">
-          <div className="status-item subtitle">Subtitle</div>
-          <div className="status-item accessibility">Accessibility</div>
-          </div>
-          </section>
+          <section className="optionitems">
+            <div className="available">
+              <div className="color1">
+                <div className="colorg"></div>
+                <div>Available</div>
+              </div>
 
-          </div>
-       
-       </div> 
+              <div className="color1">
+                <div className="colory"></div>
+                <div>Filling Fast</div>
+              </div>
+
+              <div className="color1">
+                <div className="colorb"></div>
+                <div>Sold Out</div>
+              </div>
+
+              <div className="color1">
+                <div className="colorgray"></div>
+                <div>Lapsed</div>
+              </div>
+            </div>
+            <div className="status-item1">
+              <div className="reacticons">
+                <CiCreditCard1 />
+                Subtitle
+              </div>
+              <div className="reacticons">
+                <RiWheelchairFill />
+                Accessibility
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
       <section className="accor">
         {<Accordion />}
         <Accordion1 />

@@ -1,9 +1,10 @@
- import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { globalVar } from "../globalContext/GlobalContext";
 import axios from "axios";
-import UpdateMovie from "./UpdateMovie";
+import { useNavigate } from "react-router-dom";
 
 const Corousel2 = () => {
+  let navigate = useNavigate();
   const [movies, setMovies] = useState([]);
   const {
     loginType,
@@ -16,28 +17,9 @@ const Corousel2 = () => {
         delMovie,setDelMovie
   } = useContext(globalVar);
 
-
-  let UpdateMovie=(ele)=>{
-    setMovieId(ele.id)
-    setUpdatemoviePanel(!updatemoviePanel);
-  }
-
-  let deleteMovie=async(ele)=>{
-    console.log(ele.id);
-    let token = localStorage.getItem("auth");  
-    try {
-      const response = await axios.delete(`http://localhost:8080/movies/delete/${ele.id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,  
-        },
-      });
-      console.log("Movie deleted:", response.data);
-      setDelMovie(!delMovie);
-    } catch (error) {
-      console.error("Error deleting movie:", error);
-    }
-
-  }
+  let handleBooking = (ele) => {
+    navigate("/showtimings", { state: ele });
+  };
 
   useEffect(() => {
     let token = localStorage.getItem("auth");
@@ -117,7 +99,12 @@ const Corousel2 = () => {
               <p>Genre: {ele.genre}</p>
 
               {inoxLoginType === "USER" ? (
-                <button>Book Tickets</button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation(), handleBooking(ele);
+                  }}>
+                  Book Tickets
+                </button>
               ) : inoxLoginType === "ADMIN" ? (
                 <div className="admin-btn">
                   <button onClick={()=>{UpdateMovie(ele)}}>Update</button>

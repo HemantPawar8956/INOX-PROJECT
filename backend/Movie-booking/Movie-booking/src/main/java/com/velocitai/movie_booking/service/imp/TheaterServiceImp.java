@@ -26,11 +26,6 @@ public class TheaterServiceImp implements TheaterService {
 	                      .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 
-	
-
-	
-
-	
 
 	@Override
 	public ResponseEntity<List<Theater>> findTheaterByMovieName(String movieName) {

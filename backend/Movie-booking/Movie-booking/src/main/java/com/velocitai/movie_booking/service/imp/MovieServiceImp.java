@@ -158,4 +158,16 @@ public class MovieServiceImp implements MovieService {
 		return null;
 	}
 
+	@Override
+	public ResponseEntity<?> findMoviesByTheaterId(long theaterId) {
+		Optional<Theater> optional = theaterRepository.findById(theaterId);
+		if(optional.isPresent()) {
+		Theater theater=	optional.get();
+		List<String> list= theater.getShowTime().stream().map(x-> x.getMovie().getMovieImage()).toList();
+		return ResponseEntity.status(HttpStatus.OK).body(list);
+		}
+	
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+	}
+
 }

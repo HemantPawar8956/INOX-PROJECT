@@ -31,11 +31,19 @@ export let routingVar = createBrowserRouter([
 
       {
         path: "/cinemas",
-        element: <Cinemas />,
+        element: (
+          <ProtectedRoute>
+            <Cinemas />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/allbookings",
-        element: <AllBookings />,
+        element: (
+          <ProtectedRoute>
+            <AllBookings />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
@@ -57,7 +65,11 @@ export let routingVar = createBrowserRouter([
   },
   {
     path: "/selectseats",
-    element: <SeatLayout />,
+    element: (
+      <ProtectedRoute>
+        <SeatLayout />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/addshows",

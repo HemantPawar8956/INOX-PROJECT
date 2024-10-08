@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -52,6 +53,16 @@ public class NoAuthController {
 		return movieService.UpdateMovie(movie);
 	}
 
+
+	@PutMapping("/updatee")
+	public ResponseEntity<Theater> updateTheater(@RequestBody Theater theater) {
+		return theaterService.updateTheater(theater);
+	}
+	
+	
+	
+	
+
 	// findAllTheaters
 	@GetMapping("/cinemas/alls")
 	public ResponseEntity<List<Theater>> getAllTheaters() {
@@ -64,4 +75,10 @@ public class NoAuthController {
 		return movieService.findAllMovie();
 	}
 
+
+	@GetMapping("/location/{theaterId}")
+	public ResponseEntity<?> findMoviesByTheaterId(@PathVariable long theaterId) {
+	     return movieService.findMoviesByTheaterId(theaterId);
+	    
+	}
 }
