@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const SeatLayout = () => {
+  let { state } = useLocation();
+  console.log(state);
   let seatSeq = "A";
   let [selectedSeats, setSelectedSeats] = useState([]);
-  let [showPayment, setShowPayment] = useState(false); 
+  let [showPayment, setShowPayment] = useState(false);
   let data = [
     { seatNo: "A1", price: 200, boooked: true },
     { seatNo: "A2", price: 200, boooked: true },
@@ -49,11 +52,13 @@ const SeatLayout = () => {
       e.target.style.backgroundColor = "#003688";
       e.target.style.color = "white";
       setSelectedSeats((prevSeats) => [...prevSeats, ele.seatNo]);
-      setShowPayment(true); 
+      setShowPayment(true);
     } else if (selectedSeats.includes(ele.seatNo)) {
       e.target.style.backgroundColor = "lightgray";
       e.target.style.color = "black";
-      setSelectedSeats((prevSeats) => prevSeats.filter((seat) => seat !== ele.seatNo));
+      setSelectedSeats((prevSeats) =>
+        prevSeats.filter((seat) => seat !== ele.seatNo)
+      );
 
       if (selectedSeats.length === 1) {
         setShowPayment(false);
@@ -61,9 +66,9 @@ const SeatLayout = () => {
     }
   };
 
-  const seatPrice = 200; 
+  const seatPrice = 200;
   const subtotal = selectedSeats.length * seatPrice;
-  const grandTotal = subtotal; 
+  const grandTotal = subtotal;
 
   return (
     <section className="main1">
@@ -136,11 +141,16 @@ const SeatLayout = () => {
                     disabled={ele.boooked}
                     onClick={(e) => {
                       SeatStatus(e, ele);
-                    }}>
+                    }}
+                    key={index + 2}>
                     {ele.seatNo}
                   </span>
                   {(ele.seatNo.slice(1) == 4 || ele.seatNo.slice(1) == 14) &&
-                    spaces.map((ele) => <span className="space">space</span>)}
+                    spaces.map((ele, i) => (
+                      <span className="space" key={i + 1}>
+                        space
+                      </span>
+                    ))}
                 </>
               );
             })}
@@ -163,7 +173,9 @@ const SeatLayout = () => {
               <h1>Tickets</h1>
             </div>
             <div>
-              <h1>{selectedSeats.length} x {seatPrice}</h1>
+              <h1>
+                {selectedSeats.length} x {seatPrice}
+              </h1>
             </div>
           </div>
           <div className="image-pic4">

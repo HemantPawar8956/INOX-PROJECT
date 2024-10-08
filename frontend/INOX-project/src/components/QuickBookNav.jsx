@@ -2,11 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom";
 
 const QuickBookNav = () => {
   const [change, setChange] = useState("Movie");
   const [fetchedMovieData, setFetchedMovieData] = useState([]); // List of Movies
   const [fetchedCinemaData, setFetchedCinemaData] = useState([]); // List of Cinemas
+  let navigate = useNavigate();
   const [data, setData] = useState({
     Show: change,
     movie: "",
@@ -26,6 +28,7 @@ const QuickBookNav = () => {
     e.preventDefault();
     console.log("Form Submitted:", data);
     // Add your form submission logic here
+    navigate("/selectseats", { state: data });
   };
 
   const handleMovieData = async () => {
@@ -44,6 +47,7 @@ const QuickBookNav = () => {
     try {
       let { data } = await axios.get("http://localhost:8080/open/cinemas/alls"
       );
+
       setFetchedCinemaData(data); // Fetch and set cinema data
     } catch {
       console.log("Cinema data not found");
@@ -73,8 +77,7 @@ const QuickBookNav = () => {
           <select
             name={change === "Movie" ? "movie" : "cinema"}
             value={change === "Movie" ? movie : cinema}
-            onChange={handleChange}
-          >
+            onChange={handleChange}>
             <option value="">{`Select ${change}`}</option>
             {(change === "Movie" ? fetchedMovieData : fetchedCinemaData).map((item, index) => (
               <option key={index} value={item.moviename}>

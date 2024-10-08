@@ -60,6 +60,11 @@ const Layout = () => {
           {/* <Addmovie/> */}
        
     
+      {/* {<Addtheatre />} */}
+
+      {/* <Addmovie/> */}
+
+      {/* <UpdateTheatre /> */}
     </div>
   );
 };

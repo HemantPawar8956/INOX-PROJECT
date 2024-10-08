@@ -1840,14 +1840,13 @@ p {
   color: white;
 }
 
-/* .main1 .carpayment {
+.main1 .carpayment {
   width: 30%;
   background-color: #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   border-radius: 10px;
   border: 1px solid;
-  margin-left: 180px;
 }
 
 .main1 .carpayment .image-pic h1,
