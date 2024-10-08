@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useContext, useState } from "react";
+import axios from "axios";
+import { globalVar } from "../globalContext/GlobalContext";
 
 const Addtheatre = () => {
   // Create state for theatre name and address
+  let { addthatrePanel, setAddTheatrePanel } = useContext(globalVar);
   const [theatre, setTheatre] = useState({
-    name: '',
-    address: ''
+    name: "",
+    address: "",
   });
 
   // Handle input change
@@ -21,29 +23,39 @@ const Addtheatre = () => {
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
     try {
-      const response = await axios.post('http://localhost:8080/theater/save', theatre,
+      const response = await axios.post(
+        "http://localhost:8080/theater/save",
+        theatre,
         {
-          headers:{
-            Authorization: `Bearer ${localStorage.getItem("auth")}`
-          }
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("auth")}`,
+          },
         }
       );
-      console.log('Theatre added successfully:', response.data);
+      console.log("Theatre added successfully:", response.data);
       // Optionally clear form fields after successful submission
-      setTheatre({ name: '', address: '' });
+      setTheatre({ name: "", address: "" });
     } catch (error) {
-      console.error('Error adding theatre:', error);
+      console.error("Error adding theatre:", error);
     }
   };
 
   // Handle form reset
   const handleReset = () => {
-    setTheatre({ name: '', address: '' });
+    setTheatre({ name: "", address: "" });
   };
 
   return (
-    <div className="theatre-main-container">
-      <section className="theatre-form-section">
+    <div
+      className="theatre-main-container"
+      onClick={(e) => {
+        e.stopPropagation(), setAddTheatrePanel(false);
+      }}>
+      <section
+        className="theatre-form-section"
+        onClick={(e) => {
+          e.stopPropagation(), setAddTheatrePanel(true);
+        }}>
         <div className="theatre-form-container">
           <h2>Theatre Details</h2>
           <form onSubmit={handleSubmit}>
@@ -77,7 +89,10 @@ const Addtheatre = () => {
               <button type="submit" className="theatre-update-btn">
                 Submit
               </button>
-              <button type="button" className="theatre-delete-btn" onClick={handleReset}>
+              <button
+                type="button"
+                className="theatre-delete-btn"
+                onClick={handleReset}>
                 Reset
               </button>
             </div>

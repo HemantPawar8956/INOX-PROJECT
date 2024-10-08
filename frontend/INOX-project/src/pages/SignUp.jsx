@@ -3,8 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { globalVar } from "../globalContext/GlobalContext";
 import toast from "react-hot-toast";
-
 const SignUp = () => {
+  
   let navigate = useNavigate();
   let { loginPanel, setLoginPanel, signupPanel, setSignupPanel } =
     useContext(globalVar);

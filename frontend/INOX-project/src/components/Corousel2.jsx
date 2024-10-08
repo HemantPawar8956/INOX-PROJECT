@@ -1,24 +1,32 @@
-import React, { useContext, useEffect, useState } from "react";
+ import React, { useContext, useEffect, useState } from "react";
 import { globalVar } from "../globalContext/GlobalContext";
 import axios from "axios";
 
 const Corousel2 = () => {
   const [movies, setMovies] = useState([]);
-  const { loginType,moviePanel, setMoviePanel,inoxLoginType } = useContext(globalVar);
+  const {
+    loginType,
+    moviePanel,
+    setMoviePanel,
+    inoxLoginType,
+    setInoxLoginType,
+  } = useContext(globalVar);
 
   useEffect(() => {
     let token = localStorage.getItem("auth");
+    console.log(token);
+
     const fetchMovies = async () => {
       try {
-       const response = await axios.get('http://localhost:8080/movies/all', {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    } );
+        const response = await axios.get("http://localhost:8080/movies/all", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         console.log(response.data);
         setMovies(response.data);
       } catch (error) {
-        console.error('Error fetching movies:', error);
+        console.error("Error fetching movies:", error);
       }
     };
     fetchMovies();
@@ -31,8 +39,12 @@ const Corousel2 = () => {
           <h1>Now Showing</h1>
         </div>
 
-        {inoxLoginType === 'ADMIN' && (
-          <div className="new-btn" onClick={()=>{setMoviePanel(!moviePanel)}}>
+        {inoxLoginType === "ADMIN" && (
+          <div
+            className="new-btn"
+            onClick={() => {
+              setMoviePanel(!moviePanel);
+            }}>
             <button>Add New Movies</button>
           </div>
         )}
@@ -70,29 +82,29 @@ const Corousel2 = () => {
         </div>
       </div>
 
-      {movies.length > 0 && movies.map((ele, i) => (
-        <div className="cards2" key={i}>
-          <div className="card-info">
-            <img src={ele.movieImage} alt="" />
-            <h3>{ele.moviename}</h3>
-            <p>Language: {ele.movieLanguage}</p>
-            <p>Duration: {ele.duration} minutes</p>
-            <p>Genre: {ele.genre}</p>
+      {movies.length > 0 &&
+        movies.map((ele, i) => (
+          <div className="cards2" key={i}>
+            <div className="card-info">
+              <img src={ele.movieImage} alt="" />
+              <h3>{ele.moviename}</h3>
+              <p>Language: {ele.movieLanguage}</p>
+              <p>Duration: {ele.duration} minutes</p>
+              <p>Genre: {ele.genre}</p>
 
-            {inoxLoginType === 'USER' ? (
-              <button>Book Tickets</button>
-            ) : inoxLoginType === 'ADMIN' ? (
-              <div className="admin-btn">
-                <button>Update</button>
-                <button>Delete</button>
-              </div>
-            ) : null}
+              {inoxLoginType === "USER" ? (
+                <button>Book Tickets</button>
+              ) : inoxLoginType === "ADMIN" ? (
+                <div className="admin-btn">
+                  <button>Update</button>
+                  <button>Delete</button>
+                </div>
+              ) : null}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
     </section>
   );
-}
+};
 
 export default Corousel2;
-

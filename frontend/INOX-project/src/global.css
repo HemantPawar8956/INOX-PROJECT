@@ -811,8 +811,7 @@
 
 
 
-
-/* accordion and showtiming css by SEEMA */
+/* accordian and showtiming css by seema */
 .show-sec {
   background-color: #f8f9fa;
 }
@@ -829,7 +828,7 @@
 .show-timings-container1 {
   width: 100%;
   height: 80px;
-  border: 1px solid #cacaca; 
+  border: 1px solid #cacaca;
   position: relative;
   background-color: white;
 }
@@ -856,19 +855,18 @@
 .accor{
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  
+  gap: 15px; 
 }
 
 .accordion-header {
   width: 80%;
-  border-radius: 10px;
-  height: 90px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  border: 1px solid #cacaca;
+    border-radius: 10px;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #cacaca;
   background-color: white;
   margin:0px auto;
   box-shadow: 0px 2px 3px gray;
@@ -879,9 +877,7 @@
   height: 120px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  
-  
+  align-items: center; 
 }
 
 .status-options .show-timings-search-status{
@@ -894,29 +890,41 @@
 
 }
 
-.show-timings-search-status .search-bar{
- width: 400px;
- height: 50px;
- /* border: 1px solid; */
- display: flex;
+.show-timings-search-status .search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 50px;
+  margin: 0 auto;
+  /* border: 1px solid; */
 }
-
 
 .show-timings-search-status .search-bar .search-input {
-  width: 450px;
-  height: 45px;
+  min-width: 100%;
+  min-height: 40px;
+  padding: 10px 40px 10px 10px; 
+  /* border: 1px solid ; */
+  border-radius: 5px;
   font-size: 16px;
+  
+  
+}
+.show-timings-search-status .search-bar .search-input:focus{
+  outline: none; 
+  border-color: #007BFF; 
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
 }
 
-.search-bar .ciSearch{
-  font-size: 25px;
- position: relative;
- left: 30px;
- top: 10px;
+.ciSearch {
+  position: absolute;
+  left: 10px; 
+  top: 40%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  pointer-events: none; 
+  /* border: 1px solid; */
 }
 
-
-/* main div */
 .status-options .optionitems{ 
 width: 400px;
 height: 60px;
