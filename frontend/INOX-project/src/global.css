@@ -504,6 +504,8 @@
 } */
 
 /* second nav  */
+/* 
+.quick-book-container {
 
 /* .quick-book-container {
   display: flex;
@@ -602,14 +604,18 @@
 
 /* sider */
 /* .sideBar {
+<<<<<<< HEAD
+  width: 100%;
+=======
   /* height: 100vh; */
 /* width: 100%;
-  background-color: rgba(0, 0, 0, 0.684);
+/* >>>>>>> 768b764b304fb59f2c373366e5325a7d100e4ef9 */
+  /* background-color: rgba(0, 0, 0, 0.684);
   position: fixed;
   display: flex;
   justify-content: end;
-}
-.city-sidebar::-webkit-scrollbar {
+} */
+/* .city-sidebar::-webkit-scrollbar {
   display: none;
 }
 .sideBar .city-sidebar {
@@ -629,12 +635,18 @@
   width: 100%;
 }
 .city-sidebar li {
-  width: 50%;
+  width: 50%; */
   /* display: flex; */
+/* <<<<<<< HEAD */
+  /* position: absolute; */
+  /* left: 100px; */
+/* }
+=======
 /* position: absolute; */
 /* left: 100px; */
 
-.city-tile:hover {
+/* >>>>>>> 768b764b304fb59f2c373366e5325a7d100e4ef9 */
+/* .city-tile:hover {
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
 }
@@ -643,8 +655,10 @@
   margin: 15px;
   width: 30%;
   height: 80px;
-} /* accordian css by seema */
-.show-sec {
+}  */   */
+
+/* accordian css by seema */
+/* .show-sec {
   background-color: antiquewhite;
 }
 
@@ -667,7 +681,7 @@
   margin-left: 4%;
   text-align: center;
   padding: 10px;
-}
+} */
 /* .city-sidebar .cityLines {
   width: 100%;
   height: 20px;
@@ -684,7 +698,7 @@
   justify-content: center;
   align-items: center;
 } */
-
+/* 
 .optionitems {
   width: 480px;
   height: 95px;
@@ -693,13 +707,13 @@
   flex-wrap: wrap;
   padding: 19px;
   margin-left: 400px;
-}
+} */
 
-.available {
+/* .available { */
   /* width: 450px; */
   /* height: 50px; */
   /* border: 1px solid; */
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
 }
@@ -712,13 +726,13 @@
 .optionitems {
   display: flex;
   flex-direction: column;
-}
+} */
 
 /* .available { */
 /*  */
 /* } */
 
-.show-timings-search-status .search-bar {
+/* .show-timings-search-status .search-bar {
   position: relative;
   display: inline-block;
 }
@@ -731,12 +745,12 @@
 }
 
 .show-timings-container {
-}
+} */
 /*  */
 
 /* mantasha */
 
-.main-body {
+/* .main-body {
   height: 100vh;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.926) !important;
@@ -758,9 +772,9 @@
   background-color: #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 10px; */
   /* border: 1px solid; */
-  margin-left: 180px;
+  /* margin-left: 180px;
 }
 
 .main1 .carpayment .image-pic,
@@ -826,9 +840,9 @@
 }
 .main1 .carpayment .image-pic5 h1 {
   margin-left: 10px;
-  color: black;
+  color: black; */
   /* border: 1px solid; */
-  width: 300px;
+  /* width: 300px;
 }
 
 .main1 .carpayment .image-pic5 .button-grand {
@@ -888,7 +902,7 @@
   margin-left: 10px;
   color: black;
   /* border: 1px solid; */
-  width: 300px;
+  /* width: 300px;
 }
 
 .main1 .carpayment .image-pic5 .button-grand {
@@ -905,9 +919,122 @@
 .city-tile:hover {
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
+} */ 
+ 
+/* Deletion model -- kanupriya  */
+
+.modal-backdrop-deletenotify {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 */
 
+.modal-container-deletenotify {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-title-deletenotify {
+  padding:10px 10px;
+  font-size: 22px;
+}
+
+
+.modal-message-deletenotify {
+  font-size: 16px;
+  color:rgb(59, 58, 58);
+}
+
+.modal-actions-deletenotify {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-deletenotify {
+  padding: 10px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+}
+
+.cancel-btn-deletenotify {
+  background-color: #032b6d;
+  color: #f9f9f9;
+}
+
+.delete-btn-deletenotify {
+  background-color: #e40d06;
+  color: white;
+}
+
+
+/* Confirmation Updation -- kanupriya  */
+
+.update-modal-backdrop-updatenotify {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.update-modal-container-updatenotify {
+  background-color: white;
+  padding: 20px ;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.update-modal-title-updatenotify {
+  font-size: 22px;
+  padding:10px 10px;
+}
+
+.update-modal-message-updatenotify {
+  font-size: 16px;
+  color:rgb(66, 65, 65);
+}
+
+.update-modal-actions-updatenotify {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-updatenotify {
+  padding: 10px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+}
+
+.update-cancel-btn-updatenotify {
+  background-color: #021d77;
+  color: #efefef;
+}
+
+.update-confirm-btn-updatenotify {
+  background-color: #5cb85c;
+  color: white;
+}
 
 /* Kanupriya -- Cinema  */
 .cinema-list {
@@ -1017,3 +1144,4 @@
 .cinema-list .addtheater:hover {
   background-color: #0443a1d0;
 }
+

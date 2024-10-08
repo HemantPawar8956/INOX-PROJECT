@@ -12,6 +12,8 @@ export const GlobalContext = ({ children }) => {
   let [location, setLocation] = useState(true);
   let [signupPanel, setSignupPanel] = useState(false);
   let [userLocation, setUserLocation] = useState("");
+  let [isModalOpen, setIsModalOpen] = useState(false);
+  let [updateNotify, setupdateNotify] = useState(false);
   let auth = localStorage.getItem("auth");
   const decodedToken = jwtDecode(auth);
   console.log(decodedToken);
@@ -19,9 +21,6 @@ export const GlobalContext = ({ children }) => {
     decodedToken?.role || "ADMIN"
   );
   //   const decodedToken = jwt_decode(auth.token);
-
-  console.log("loginPanel", loginPanel);
-  console.log("signupPanel", signupPanel);
 
   let [loginType, setLoginType] = useState("USER");
   console.log(loginType);
@@ -59,6 +58,10 @@ export const GlobalContext = ({ children }) => {
         setInoxLoginType,
         addthatrePanel,
         setAddTheatrePanel,
+        isModalOpen,
+        setIsModalOpen,
+        updateNotify,
+        setupdateNotify,
       }}>
       {children}
     </Provider>
