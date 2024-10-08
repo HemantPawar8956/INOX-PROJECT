@@ -140,9 +140,9 @@ const SeatLayout = ({ movieName, theatreName, showTiming, seatInfo, GrandTotal }
           <h1>Booking Summary</h1>
         </div>
         <div className="image-pic1">
-          <p>Movie Name</p>
-          <p>Theatre Name</p>
-          <p>Show Timings</p>
+          <p>Movie Name : </p>
+          <p>Theatre Name : </p>
+          <p>Show Timings : </p>
         </div>
 
         <div className="image-pic2">
