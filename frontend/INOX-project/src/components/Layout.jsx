@@ -13,6 +13,7 @@ import { Toaster } from "react-hot-toast";
 import Sider from "./Sider";
 import DeleteNotify from "./DeleteNotify";
 import UpdateNotify from "./UpdateNotify";
+import UpdateMovie from "./UpdateMovie";
 
 const Layout = () => {
   let {
@@ -32,6 +33,7 @@ const Layout = () => {
     setIsModalOpen,
     updateNotify,
     setupdateNotify,
+    updatemoviePanel,setUpdatemoviePanel
   } = useContext(globalVar);
 
   return (
@@ -43,7 +45,7 @@ const Layout = () => {
       {location && <SelectLocation />}
       {siderVisible && <Sider />}
       {moviePanel && <Addmovie />}
-
+      {updatemoviePanel && <UpdateMovie/>}
       {loginPanel && <LoginPage />}
       {signupPanel && <SignUp />}
 

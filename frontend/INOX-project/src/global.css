@@ -754,22 +754,25 @@
 
 
 .admin-btn {
+  border: 1px solid;
   padding: 10px;
   display: flex;
   gap: 30px;
 }
 
 .main1 .carpayment {
-  width: 30%;
-  background-color: #fff;
+  width: 40%;
+  background-color: white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   border-radius: 10px;
   /* border: 1px solid; */
-  /* margin-left: 180px;*/
+  /* margin-left: 180px; */
+
 }
 
 .main1 .carpayment .image-pic,
+.main1 .carpayment .image-pic1,
 .main1 .carpayment .image-pic2,
 .main1 .carpayment .image-pic3,
 .main1 .carpayment .image-pic4,
@@ -783,6 +786,11 @@
 .main1 .carpayment .image-pic h1 {
   text-align: center;
   font-size: 24px;
+  font-weight: bold;
+  color: black;
+}
+.main1 .carpayment .image-pic1 p {
+  font-size: 20px;
   font-weight: bold;
   color: black;
 }
@@ -897,11 +905,11 @@
   /* width: 300px;*/
 }
 
-.main1 .carpayment .image-pic5 .button-grand {
+.main1 .carpayment .image-pic5 .proceed {
   border: 1px solid;
   width: 300px;
   height: 50px;
-  margin-top: 20px;
+  margin-top: 5px;
   font-size: x-large;
   background-color: rgb(10, 41, 113);
   color: white;
@@ -1271,3 +1279,147 @@
 .update-shows-container .submit-button:hover {
   background-color: #0056b3;
 }
+/* mantasha */
+/* updatemovie */
+.update-movie {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.926) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 10;
+  
+
+}
+
+.update-movie__form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 40%;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.update-movie__label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.update-movie__input {
+  margin-bottom: 16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.update-movie__button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+.main1 {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
+
+.main1 .main{
+  width: 100% !important;
+  background-color: white;
+
+  /* border: 1px solid; */
+}
+
+
+.main1 .main .navseat .nav2 {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #003566;
+  color: white;
+}
+
+.main1 .main .navseat .nav2 .SeatLayoutNavEle {
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+
+.main1 .main .seat {
+  margin-top: 20px;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.main1 .main .seat .seat-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main1 .main .seat .seat-content .seat-screen {
+  margin: 10px 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.main1 .main .seat .seat-content .seat-legend {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  /* border: 1px solid; */
+  margin-right: 150px;
+}
+
+.main1 .main .seat .seat-content .seat-legend .small1 {
+  display: flex;
+  align-items: center;
+ 
+}
+
+.main1 .main .seat .seat-content .seat-legend .small1 .small {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.main1 .main .seat .seat-content .seat-legend .small1 .availableSeat {
+  background-color: green;
+}
+
+.main1 .main .seat .seat-content .seat-legend .small1 .selectedSeat {
+  background-color: blue;
+}
+
+.main1 .main .seat .seat-content .seat-legend .small1 .occupiedSeat {
+  background-color: red;
+}
+
+.main1 .main .seat .car1 .seats {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 2px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: lightgray;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.main1 .main .seat .car1 .seats.bookedSeat {
+  background-color: gray !important;
+  cursor: not-allowed;
+  color: white;
+}
+

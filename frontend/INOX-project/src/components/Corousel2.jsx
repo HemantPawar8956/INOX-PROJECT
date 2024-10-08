@@ -1,6 +1,7 @@
  import React, { useContext, useEffect, useState } from "react";
 import { globalVar } from "../globalContext/GlobalContext";
 import axios from "axios";
+import UpdateMovie from "./UpdateMovie";
 
 const Corousel2 = () => {
   const [movies, setMovies] = useState([]);
@@ -10,7 +11,33 @@ const Corousel2 = () => {
     setMoviePanel,
     inoxLoginType,
     setInoxLoginType,
+    updatemoviePanel,setUpdatemoviePanel,
+        MovieId , setMovieId,refadd , setrefadd,
+        delMovie,setDelMovie
   } = useContext(globalVar);
+
+
+  let UpdateMovie=(ele)=>{
+    setMovieId(ele.id)
+    setUpdatemoviePanel(!updatemoviePanel);
+  }
+
+  let deleteMovie=async(ele)=>{
+    console.log(ele.id);
+    let token = localStorage.getItem("auth");  
+    try {
+      const response = await axios.delete(`http://localhost:8080/movies/delete/${ele.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,  
+        },
+      });
+      console.log("Movie deleted:", response.data);
+      setDelMovie(!delMovie);
+    } catch (error) {
+      console.error("Error deleting movie:", error);
+    }
+
+  }
 
   useEffect(() => {
     let token = localStorage.getItem("auth");
@@ -18,11 +45,8 @@ const Corousel2 = () => {
 
     const fetchMovies = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/movies/all", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.get("http://localhost:8080/open/movies/alls"
+          );
         console.log(response.data);
         setMovies(response.data);
       } catch (error) {
@@ -30,7 +54,7 @@ const Corousel2 = () => {
       }
     };
     fetchMovies();
-  }, []);
+  }, [refadd,delMovie]);
 
   return (
     <section className="corousel2">
@@ -96,8 +120,8 @@ const Corousel2 = () => {
                 <button>Book Tickets</button>
               ) : inoxLoginType === "ADMIN" ? (
                 <div className="admin-btn">
-                  <button>Update</button>
-                  <button>Delete</button>
+                  <button onClick={()=>{UpdateMovie(ele)}}>Update</button>
+                  <button onClick={()=>{deleteMovie(ele)}}>Delete</button>
                 </div>
               ) : null}
             </div>

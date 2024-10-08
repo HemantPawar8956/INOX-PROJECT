@@ -593,7 +593,7 @@ select {
 .box1 .GenreDropdown option {
   padding: 10px;
 }
-/* Payment */
+/* Payment
 .paymentPage {
   height: 100vh;
   width: 100%;
@@ -606,7 +606,7 @@ select {
   width: 480px;
   height: 620px;
   padding: 10px;
-  /* border: 1px solid gray; */
+  /* border: 1px solid gray; 
   box-shadow: 0px 4px 10px gray;
   background-color: white;
   border-radius: 10px;
@@ -615,28 +615,28 @@ select {
 .pay1 {
   width: 450px;
   height: 130px;
-  /* border: 1px solid; */
+  /* border: 1px solid; 
   display: flex;
   justify-content: space-between;
 }
 .pay2 {
   width: 450px;
   height: 160px;
-  /* border: 1px solid; */
+  /* border: 1px solid; 
   display: flex;
   justify-content: space-between;
 }
 .pay3 {
   width: 450px;
   height: 100px;
-  /* border: 1px solid; */
+  /* border: 1px solid; 
   display: flex;
   justify-content: space-between;
 }
 .pay4 {
   width: 450px;
   height: 70px;
-  /* border: 1px solid; */
+  /* border: 1px solid; 
   display: flex;
   justify-content: space-between;
 }
@@ -644,7 +644,7 @@ select {
 .pay5 {
   width: 450px;
   height: 70px;
-  /* border: 1px solid; */
+  /* border: 1px solid; 
   display: flex;
   justify-content: space-between;
 }
@@ -652,14 +652,14 @@ select {
 .pays1 {
   width: 300px;
   height: 110px;
-  /* border: 1px solid; */
+  /* border: 1px solid; 
   margin-top: 10px;
 }
 
 .pays2 {
   width: 100px;
   height: 110px;
-  /* border: 1px solid; */
+  /* border: 1px solid; 
   margin-top: 10px;
 }
 .date {
@@ -673,7 +673,7 @@ select {
 .pays2 p {
   color: rgba(7, 127, 246, 0.979);
   font-weight: bold;
-  /* border: 1px solid; */
+  /* border: 1px solid; 
 }
 h1 {
   margin: 0px 20px 15px 20px;
@@ -691,7 +691,7 @@ p {
 .pays3 {
   width: 300px;
   height: 140px;
-  /* border: 1px solid; */
+  /* border: 1px solid; 
   margin-top: 10px;
 }
 .pays3 p {
@@ -705,7 +705,7 @@ p {
 .pays4 {
   width: 100px;
   height: 140px;
-  /* border: 1px solid; */
+  /* border: 1px solid; 
   margin-top: 10px;
 }
 .pays4 .greys {
@@ -719,7 +719,7 @@ p {
 .pays5 {
   width: 300px;
   height: 80px;
-  /* border: 1px solid; */
+  /* border: 1px solid; 
   margin-top: 10px;
 }
 
@@ -737,7 +737,7 @@ p {
 .pays6 {
   width: 100px;
   height: 80px;
-  /* border: 1px solid; */
+  /* border: 1px solid; 
   margin-top: 10px;
 }
 .pays6 p {
@@ -747,7 +747,7 @@ p {
 .pays7 {
   width: 300px;
   height: 50px;
-  /* border: 1px solid; */
+  /* border: 1px solid; 
   margin-top: 10px;
 }
 .pays7 p {
@@ -759,7 +759,7 @@ p {
 .pays8 {
   width: 100px;
   height: 50px;
-  /* border: 1px solid; */
+  /* border: 1px solid; 
   margin-top: 10px;
 }
 
@@ -772,7 +772,7 @@ p {
 .pays9 {
   width: 80%;
   height: 60px;
-  /* border: 1px solid; */
+  /* border: 1px solid; 
   margin-top: 10px;
   margin-left: 45px;
   display: flex;
@@ -782,14 +782,14 @@ p {
 }
 .pays9 p {
   font-size: larger;
-  /* margin: 20px 60px; */
+  /* margin: 20px 60px; 
   color: white;
 }
 
 .pay6 {
   width: 95%;
   height: 50px;
-  /* border: 1px solid rgb(19, 81, 237); */
+  /* border: 1px solid rgb(19, 81, 237); 
   border-radius: 7px;
   margin: 10px;
   display: flex;
@@ -801,7 +801,7 @@ p {
 .pay6 p {
   font-size: larger;
   color: white;
-}
+} */
 
 /* Seema */
 .mainCont {
@@ -1706,14 +1706,14 @@ p {
   }
 }
 
-/* seebi */
+/* seebi 
 .main1 {
   height: 100vh;
   width: 100%;
   display: flex;
 }
 .main1 .main {
-  /* width: 70%; */
+   width: 70%; 
 }
 
 .main1 .main .navseat .nav2 {

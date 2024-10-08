@@ -10,6 +10,10 @@ export const GlobalContext = ({ children }) => {
   let [moviePanel, setMoviePanel] = useState(false);
   let [addthatrePanel, setAddTheatrePanel] = useState(false);
   let [location, setLocation] = useState(true);
+  let [updatemoviePanel,setUpdatemoviePanel] = useState(false);
+  let [MovieId , setMovieId] = useState(0);
+  let [refadd , setrefadd] = useState(false);
+  let [delMovie,setDelMovie] = useState(false);
   let [signupPanel, setSignupPanel] = useState(false);
   let [userLocation, setUserLocation] = useState("");
   let [isModalOpen, setIsModalOpen] = useState(false);
@@ -63,6 +67,9 @@ export const GlobalContext = ({ children }) => {
         setIsModalOpen,
         updateNotify,
         setupdateNotify,
+        updatemoviePanel,setUpdatemoviePanel,
+        MovieId , setMovieId,
+        refadd , setrefadd,delMovie,setDelMovie
       }}>
       {children}
     </Provider>
