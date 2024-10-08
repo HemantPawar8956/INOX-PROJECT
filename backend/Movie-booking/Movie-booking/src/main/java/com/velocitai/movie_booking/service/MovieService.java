@@ -30,6 +30,8 @@ public interface MovieService {
 	
 	public ResponseEntity<?> getMovieImage(long id);
 
+	public ResponseEntity<?> deleteMovie(long id);
+
 	
 	
 

@@ -24,6 +24,18 @@ const Corousel2 = () => {
     fetchMovies();
   }, []);
 
+  const deleteMovie = async (ele) => {
+    console.log(ele)
+    const response = await axios.delete(`http://localhost:8080/movies/delete/${ele.id}`,
+      {
+        headers: {
+          Authorization:`Bearer ${localStorage.getItem("auth")}`
+        }
+      }
+
+    )
+    console.log(response)
+  }
   return (
     <section className="corousel2">
       <div className="heading">
@@ -81,10 +93,10 @@ const Corousel2 = () => {
 
             {inoxLoginType === 'USER' ? (
               <button>Book Tickets</button>
-            ) : loginType === 'ADMIN' ? (
+            ) : inoxLoginType === 'ADMIN' ? (
               <div className="admin-btn">
-                <button>Update</button>
-                <button>Delete</button>
+                <button  >Update</button>
+                  <button onClick={() => { deleteMovie(ele) }} >Delete</button>
               </div>
             ) : null}
           </div>

@@ -158,4 +158,16 @@ public class MovieServiceImp implements MovieService {
 		return null;
 	}
 
+	@Override
+	public ResponseEntity<?> deleteMovie(long id) {
+		Movie movie= findMovieById(id).getBody();
+		if(movie!=null) {
+			if(movie.getShows()!=null) {
+				showRepository.deleteAll(movie.getShows());
+			}
+			movieRepository.delete(movie);
+		}
+		return ResponseEntity.ok("message")
+;	}
+
 }
