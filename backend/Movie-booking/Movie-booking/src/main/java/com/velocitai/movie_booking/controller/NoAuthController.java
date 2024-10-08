@@ -52,6 +52,16 @@ public class NoAuthController {
 		return movieService.UpdateMovie(movie);
 	}
 
+
+	@PutMapping("/updatee")
+	public ResponseEntity<Theater> updateTheater(@RequestBody Theater theater) {
+		return theaterService.updateTheater(theater);
+	}
+	
+	
+	
+	
+
 	// findAllTheaters
 	@GetMapping("/cinemas/alls")
 	public ResponseEntity<List<Theater>> getAllTheaters() {
@@ -63,5 +73,6 @@ public class NoAuthController {
 
 		return movieService.findAllMovie();
 	}
+
 
 }
