@@ -7,9 +7,11 @@ import movie4 from "../assests/movie4.avif";
 import movie5 from "../assests/movie5.jpg";
 import movie6 from "../assests/movie6.jpg";
 import { globalVar } from "../globalContext/GlobalContext";
+import axios from "axios";
 
 const Cinemas = () => {
   let { addthatrePanel, setAddTheatrePanel } = useContext(globalVar);
+  let [alltheateres,setAllTheatres]=useState([])
   const movies = [
     { title: "Movie 1", posterUrl: movie1 },
     { title: "Movie 2", posterUrl: movie2 },
@@ -29,6 +31,7 @@ const Cinemas = () => {
   let fetchCinemas = async () => {
     let { data } = await axios.get("http://localhost:8080/open/cinemas/alls");
     console.log(data);
+    setAllTheatres(data)
   };
   useEffect(() => {
     fetchCinemas();
@@ -52,7 +55,7 @@ const Cinemas = () => {
         </button>
       </div>
       <div className="cinema-cards-display">
-        {data1?.map((data) => {
+        {alltheateres?.map((data) => {
           return (
             <div className="cinema-item" key={data.name}>
               <div>
