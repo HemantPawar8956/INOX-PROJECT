@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { globalVar } from "../globalContext/GlobalContext";
 import { ImCross } from "react-icons/im";
-import { toast, ToastContainer } from "react-toastify";  
-import "react-toastify/dist/ReactToastify.css";  
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import banglore from "../assests/banglore.jpg";
 import delhi from "../assests/delhi.png";
 import mumbai from "../assests/mumbai.jpg";
@@ -11,7 +11,6 @@ import defaultimage from "../assests/defaultimage.jpg";
 
 const Sider = () => {
   let [searchedCity, setSEarchedCity] = useState("");
-  let [selectedCity, setSelectedCity] = useState(null);
 
   let staticCity = [
     { name: "Ahmedabad", image: hyderabad },
@@ -47,8 +46,14 @@ const Sider = () => {
     "Cuttack",
   ];
 
-  let { siderVisible, setSiderVisible, userLocation, setUserLocation } =
-    useContext(globalVar);
+  let {
+    siderVisible,
+    setSiderVisible,
+    userLocation,
+    setUserLocation,
+    selectedCity,
+    setSelectedCity,
+  } = useContext(globalVar);
 
   let handleClose = (e) => {
     e.stopPropagation();
@@ -59,12 +64,15 @@ const Sider = () => {
     if (selectedCity) {
       const timer = setTimeout(() => {
         setSiderVisible(false);
-      }, 3000);
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, [selectedCity]);
 
-  
+  useEffect(() => {
+    setSelectedCity(null);
+  }, []);
+
   const handleCitySelect = (city) => {
     setSelectedCity(city);
     setUserLocation(city.name);
@@ -73,7 +81,7 @@ const Sider = () => {
       autoClose: 2000,
     });
   };
-
+  console.log(searchedCity);
   return (
     <section className="sideBar" onClick={handleClose}>
       <ToastContainer />
@@ -82,8 +90,7 @@ const Sider = () => {
         onClick={(e) => {
           e.stopPropagation();
           setSiderVisible(true);
-        }}
-      >
+        }}>
         <div>
           <button className="btn" onClick={handleClose}>
             <ImCross />
@@ -128,16 +135,15 @@ const Sider = () => {
                           className="SearchedCityPanelItems"
                           onClick={() => {
                             if (foundCity) {
-                              handleCitySelect(foundCity); 
+                              handleCitySelect(foundCity);
                             } else {
                               handleCitySelect({
                                 name: cityName,
                                 image: defaultimage,
-                              }); 
+                              });
                             }
                             setSEarchedCity("");
-                          }}
-                        >
+                          }}>
                           {cityName}
                         </div>
                       );
@@ -146,44 +152,46 @@ const Sider = () => {
               )}
             </div>
 
-            <div className="static">
-              <div className="city-grid">
-                {staticCity.map((city, index) => (
-                  <div
-                    key={index}
-                    className="city-tile"
-                    onClick={() => handleCitySelect(city)}  
-                  >
-                    <img src={city.image} alt={city.name} />
+            {searchedCity == "" && (
+              <>
+                <div className="static">
+                  <div className="city-grid">
+                    {staticCity.map((city, index) => (
+                      <div
+                        key={index}
+                        className="city-tile"
+                        onClick={() => handleCitySelect(city)}>
+                        <img src={city.image} alt={city.name} />
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
-            <div className="cityLines">
-              <p></p>
-              <h4>Other Cities </h4>
-              <p></p>
-            </div>
-            <ul>
-              {cities.map((city, index) => (
-                <li
-                  key={index}
-                  onClick={() => {
-                    const foundCity = staticCity.find(
-                      (cityObj) => cityObj.name === city
-                    );
+                </div>
+                <div className="cityLines">
+                  <p></p>
+                  <h4>Other Cities </h4>
+                  <p></p>
+                </div>
+                <ul>
+                  {cities.map((city, index) => (
+                    <li
+                      key={index}
+                      onClick={() => {
+                        const foundCity = staticCity.find(
+                          (cityObj) => cityObj.name === city
+                        );
 
-                    if (foundCity) {
-                      handleCitySelect(foundCity); 
-                    } else {
-                      handleCitySelect({ name: city, image: defaultimage }); 
-                    }
-                  }}
-                >
-                  {city}
-                </li>
-              ))}
-            </ul>
+                        if (foundCity) {
+                          handleCitySelect(foundCity);
+                        } else {
+                          handleCitySelect({ name: city, image: defaultimage });
+                        }
+                      }}>
+                      {city}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
           </>
         )}
       </div>

@@ -14,6 +14,7 @@ export const GlobalContext = ({ children }) => {
   let [userLocation, setUserLocation] = useState("");
   let [isModalOpen, setIsModalOpen] = useState(false);
   let [updateNotify, setupdateNotify] = useState(false);
+  let [selectedCity, setSelectedCity] = useState(null);
   let auth = localStorage.getItem("auth");
   const decodedToken = jwtDecode(auth);
   console.log(decodedToken);
@@ -62,6 +63,8 @@ export const GlobalContext = ({ children }) => {
         setIsModalOpen,
         updateNotify,
         setupdateNotify,
+        selectedCity,
+        setSelectedCity,
       }}>
       {children}
     </Provider>
