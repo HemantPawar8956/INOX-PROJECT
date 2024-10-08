@@ -1,14 +1,18 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import axios from "axios";
+import React, { useContext, useState } from "react";
+import { globalVar } from "../globalContext/GlobalContext";
 
 const Addmovie = () => {
+  let { moviePanel, setMoviePanel } = useContext(globalVar);
   const [formData, setFormData] = useState({
-    moviename: '',
-    genre: '',
-    duration: '',
-    movieLanguage: '',
-    movieImage: '', // This holds the image URL as a string
+    moviename: "",
+    genre: "",
+    duration: "",
+    language: "",
+    movieImage: "",
   });
+
+  console.log(formData.duration);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -23,26 +27,36 @@ const Addmovie = () => {
 
   const handleSave = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/movies/save', formData, {
-        headers: {
-          Authorization :`Bearer ${localStorage.getItem("auth")}`, // Use application/json for sending data
-        },
-      });
+      const response = await axios.post(
+        "http://localhost:8080/movies/save",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("auth")}`, // Use application/json for sending data
+          },
+        }
+      );
 
-      console.log(response.data);
-      alert('Movie details saved successfully!');
+      alert("Movie details saved successfully!");
       setShowModal(false);
     } catch (error) {
-      console.error('Error saving movie details:', error);
+      console.error("Error saving movie details:", error);
     }
   };
 
   return (
-    <div className="main-body">
+    <div
+      className="main-body"
+      onClick={(e) => {
+        e.stopPropagation(), setMoviePanel(false);
+      }}>
       <section className="center-section">
         <div className="form-container">
           <h2>Movie Details</h2>
-          <form>
+          <form
+            onClick={(e) => {
+              e.stopPropagation(), setMoviePanel(true);
+            }}>
             <div className="form-group">
               <label htmlFor="movieName">Movie Name:</label>
               <input
@@ -107,13 +121,9 @@ const Addmovie = () => {
                 required
               />
             </div>
-
-            <div className="form-actions">
-              <button type="submit" className="update-btn" onClick={handleUpdate}>
-                Update
-              </button>
-              <button type="reset" className="delete-btn" onClick={() => setFormData({ moviename: '', genre: '', duration: '', movieLanguage: '', movieImage: '' })}>
-                Delete
+            <div class="form-actions">
+              <button type="submit" class="update-btn" onClick={handleUpdate}>
+                Add Movie
               </button>
             </div>
           </form>
@@ -121,7 +131,11 @@ const Addmovie = () => {
       </section>
 
       {showModal && (
-        <div className="modal" onClick={()=>{setShowModal(false)}}>
+        <div
+          className="modal"
+          onClick={(e) => {
+            e.stopPropagation(), setShowModal(false);
+          }}>
           <div className="modal-content">
             <h3>Confirm Movie Details</h3>
             <p>
@@ -155,7 +169,7 @@ const Addmovie = () => {
           <img
             src={formData.movieImage}
             alt="Movie"
-            style={{ width: '300px', height: 'auto' }}
+            style={{ width: "300px", height: "auto" }}
           />
         </div>
       )}

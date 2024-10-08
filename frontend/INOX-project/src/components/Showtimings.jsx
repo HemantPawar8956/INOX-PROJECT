@@ -10,7 +10,7 @@ const ShowTimings = () => {
     { day: "Oct 01", label: "Tomorrow" },
     { day: "Oct 02", label: "Wed" },
     { day: "Oct 03", label: "Thu" }, 
-    { day: "Oct 04", label: "Fri" },
+    { day: "Oct 04", label: "Fri" }, 
     { day: "Oct 05", label: "Sat" },
     { day: "Oct 06", label: "Sun" },
   ];

@@ -8,21 +8,23 @@ export const GlobalContext = ({ children }) => {
   let [siderVisible, setSiderVisible] = useState(false);
   let [loginPanel, setLoginPanel] = useState(false);
   let [moviePanel, setMoviePanel] = useState(false);
+  let [addthatrePanel, setAddTheatrePanel] = useState(false);
   let [location, setLocation] = useState(true);
-  let [signupPanel, setSignupPanel]=useState(false);
+  let [signupPanel, setSignupPanel] = useState(false);
   let [userLocation, setUserLocation] = useState("");
+  let [isModalOpen, setIsModalOpen] = useState(false);
+  let [updateNotify, setupdateNotify] = useState(false);
   let auth = localStorage.getItem("auth");
-  console.log(auth);
-  let [inoxLoginType, setInoxLoginType] = useState("USER");
+  console.log(auth)
+  const decodedToken = auth && jwtDecode(auth);
+  console.log(decodedToken);
+  let [inoxLoginType, setInoxLoginType] = useState(
+    decodedToken?.role || "ADMIN"
+  );
   //   const decodedToken = jwt_decode(auth.token);
-  // const decodedToken = jwtDecode(auth.token);
-  // console.log(decodedToken);
 
-  console.log("loginPanel", loginPanel);
-  console.log("signupPanel", signupPanel);
-  
-  let [loginType, setLoginType] = useState(auth?.user?.role || "USER");
-  console.log(loginType) 
+  let [loginType, setLoginType] = useState("USER");
+  console.log(loginType);
 
   let loginTypes = [
     {
@@ -44,7 +46,8 @@ export const GlobalContext = ({ children }) => {
         setLoginPanel,
         signupPanel,
         setSignupPanel,
-        moviePanel, setMoviePanel,
+        moviePanel,
+        setMoviePanel,
         location,
         setLocation,
         userLocation,
@@ -52,7 +55,14 @@ export const GlobalContext = ({ children }) => {
         loginType,
         setLoginType,
         loginTypes,
-        inoxLoginType, setInoxLoginType
+        inoxLoginType,
+        setInoxLoginType,
+        addthatrePanel,
+        setAddTheatrePanel,
+        isModalOpen,
+        setIsModalOpen,
+        updateNotify,
+        setupdateNotify,
       }}>
       {children}
     </Provider>

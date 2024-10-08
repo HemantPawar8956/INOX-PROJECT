@@ -230,7 +230,8 @@
   margin-right: 0;
 }
 
-.option input {
+.option input,
+select {
   width: 100%;
   padding: 3px;
   border: 1px solid #ccc;
@@ -1223,12 +1224,20 @@ p {
 /* mantasha */
 /* addmovies form */
 .main-body {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.926) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 10;
 }
 /* SelectLocation */
 .selectLocation {
   position: fixed;
   top: 0;
-  left: 0; 
+  left: 0;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -1429,6 +1438,7 @@ p {
 
 .center-section .form-container .form-actions .update-btn {
   background-color: rgb(106, 106, 248);
+  width: 100%;
 }
 
 .center-section .form-container .form-actions .delete-btn {
@@ -1483,10 +1493,13 @@ p {
 /* Theatre Form Section */
 .theatre-main-container {
   height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f9f9f9;
+  background-color: rgba(0, 0, 0, 0.76);
+  position: fixed;
+  z-index: 10;
 }
 
 .theatre-form-section {
@@ -1836,4 +1849,3 @@ p {
 
 /* Kanupriya */
 /* Navbar */
-

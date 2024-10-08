@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { globalVar } from "../globalContext/GlobalContext";
 import { jwtDecode } from "jwt-decode";
 import toast from "react-hot-toast";
+
 const LoginPage = () => {
   let navigate = useNavigate();
   let {
@@ -43,13 +44,15 @@ const LoginPage = () => {
       );
       console.log("User authenticated:", response.data);
       let token = response.data.token;
-      !token && toast.success("Login Succesfully");
+       toast.success("Login Succesfully");
+      setLoginPanel(false)
+    //toast && toast.success("Login Succesfully");
       localStorage.setItem("auth", token);
       // let token = response.data.token;
       console.log("Token:", token);
 
       let decode = jwtDecode(localStorage.getItem("auth"));
-
+  console.log(decode)
       setInoxLoginType(decode.role);
     } catch (error) {
       console.error("There was an error authenticating the user!", error);
