@@ -933,7 +933,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.7); /* semi-transparent background */
+  background: rgba(0, 0, 0, 0.836); /* semi-transparent background */
   z-index: 1000;
 }
 
@@ -1363,7 +1363,20 @@ p {
   display: flex;
   flex-wrap: wrap;
 }
-
+.selectLocation .horizontalBar .selectedCityHorizontalImage {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.selectLocation .horizontalBar .selectedCityHorizontalImage h3 {
+  width: 100%;
+  font-size: xx-large;
+  text-align: center;
+}
+.selectLocation .horizontalBar .selectedCityHorizontalImage img {
+  max-width: 50% !important;
+}
 .selectLocation .horizontalBar .static-horizontal .city-list ul li {
   padding: 8px 0;
   width: 30%;
@@ -1719,9 +1732,9 @@ p {
   width: 100%;
   display: flex;
 }
-.main1 .main {
+/* .main1 .main {
   /* width: 70%; */
-}
+/* }  */
 
 .main1 .main .navseat .nav2 {
   display: flex;

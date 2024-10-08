@@ -29,6 +29,9 @@ export const GlobalContext = ({ children }) => {
   let [deleteCount,setDeleteCount] =useState(0);
 
   let [theaterId,setTheaterId] = useState(0);
+
+  let [selectedCity, setSelectedCity] = useState(null);
+
   let auth = localStorage.getItem("auth");
   console.log(auth)
   const decodedToken = auth && jwtDecode(auth);
@@ -91,7 +94,8 @@ export const GlobalContext = ({ children }) => {
         updateData,setUpdateData,
         deleteData,setDeleteData,
         updateCount,setUpdateCount,
-        deleteCount,setDeleteCount
+        deleteCount,setDeleteCount,
+        selectedCity,setSelectedCity
       }}>
       {children}
     </Provider>
