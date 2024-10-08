@@ -999,3 +999,121 @@
   justify-content: center;
   align-items: center;
 }
+
+
+
+
+/* Add Show & Update Show */
+.add-shows-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.add-shows-container .add-show-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-shows-container .form-group {
+  margin-bottom: 15px;
+}
+
+.add-shows-container .form-group label {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.add-shows-container .form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-shows-container .error {
+  border-color: red;
+}
+
+.add-shows-container .error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.add-shows-container .submit-button {
+  background-color: #0033ff;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-shows-container .submit-button:hover {
+  background-color: #0056b3;
+}
+
+.update-shows-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.update-shows-container .update-show-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.update-shows-container .form-group {
+  margin-bottom: 15px;
+}
+
+.update-shows-container .form-group label {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.update-shows-container .form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.update-shows-container .error {
+  border-color: red;
+}
+
+.update-shows-container .error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.update-shows-container .submit-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.update-shows-container .submit-button:hover {
+  background-color: #0056b3;
+}
