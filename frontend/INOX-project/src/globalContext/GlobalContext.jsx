@@ -16,11 +16,11 @@ export const GlobalContext = ({ children }) => {
   let [updateNotify, setupdateNotify] = useState(false);
   let [selectedCity, setSelectedCity] = useState(null);
   let auth = localStorage.getItem("auth");
-  console.log(auth)
+  console.log(auth);
   const decodedToken = auth && jwtDecode(auth);
   console.log(decodedToken);
   let [inoxLoginType, setInoxLoginType] = useState(
-    decodedToken?.role || "ADMIN"
+    decodedToken?.role || "USER"
   );
   //   const decodedToken = jwt_decode(auth.token);
 

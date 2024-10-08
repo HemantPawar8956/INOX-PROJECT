@@ -50,12 +50,11 @@ const Layout = () => {
 
       <Navbar />
       <Outlet />
-      {<Addtheatre/>}
-     
-         
-          {/* <Addmovie/> */}
-       
-       <UpdateTheatre/>
+      {/* {<Addtheatre />} */}
+
+      {/* <Addmovie/> */}
+
+      {/* <UpdateTheatre /> */}
     </div>
   );
 };
