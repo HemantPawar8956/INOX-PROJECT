@@ -29,12 +29,7 @@ public class NoAuthController {
 	@Autowired
 	private TheaterService theaterService;
 
-	
-	@DeleteMapping("/deletee")
-    public ResponseEntity<?> deleteMovie(@RequestBody Movie movie) {
-        
-             return movieService.deleteMovie(movie);
-	}
+
 	
 	@PostMapping("/savee")
 	public ResponseEntity<Theater> addTheater(@RequestBody Theater theater) {

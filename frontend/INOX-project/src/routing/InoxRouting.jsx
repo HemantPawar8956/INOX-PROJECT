@@ -15,7 +15,6 @@ import AllBookings from "../components/AllBookings";
 import SelectLocation from "./../components/SelectLocation";
 import SignUp from "../pages/SignUp";
 import LoginPage from "../pages/LoginPage";
-import ProtectedRoute from "../Auth/ProtectedRoute";
 
 export let routingVar = createBrowserRouter([
   {

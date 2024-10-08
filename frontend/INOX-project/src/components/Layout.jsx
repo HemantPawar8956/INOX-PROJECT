@@ -31,7 +31,8 @@ const Layout = () => {
   return (
     <div>
       <Toaster />
-{/* 
+
+
       {siderVisible && <Sider />}
       {location && <SelectLocation />}
      {moviePanel && <Addmovie/>} 
@@ -44,7 +45,7 @@ const Layout = () => {
       <Addtheatre/>
      
          
-          <Addmovie/>
+         
        
        
     

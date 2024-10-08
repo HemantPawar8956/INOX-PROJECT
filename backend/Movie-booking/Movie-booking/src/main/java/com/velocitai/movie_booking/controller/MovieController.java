@@ -50,10 +50,10 @@ public class MovieController {
              return movieService.findMovieById(id);
 	}
 
-	@DeleteMapping("/delete")
-    public ResponseEntity<?> deleteMovie(@RequestBody Movie movie) {
+	@DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteMovie(@PathVariable long id) {
         
-             return movieService.deleteMovie(movie);
+             return movieService.deleteMovie(id);
 	}
 
 	@GetMapping("/all")
@@ -70,7 +70,7 @@ public class MovieController {
 
 	@PostMapping("/upload")
 	public ResponseEntity<String> uploadMovieImage(@RequestParam("movieImage") MultipartFile file,
-			@RequestParam("movieid") long movieId) {
+  			@RequestParam("movieid") long movieId) {
 		return null;
 
 	}

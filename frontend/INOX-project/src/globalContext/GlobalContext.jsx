@@ -5,6 +5,9 @@ import { jwtDecode } from "jwt-decode";
 
 export const GlobalContext = ({ children }) => {
   let { Provider } = globalVar;
+  let [addr,setAddr]=useState(false);
+  let [deletem,setDeletem]=useState(false);
+
   let [siderVisible, setSiderVisible] = useState(false);
   let [loginPanel, setLoginPanel] = useState(false);
   let [moviePanel, setMoviePanel] = useState(false);
@@ -38,6 +41,10 @@ export const GlobalContext = ({ children }) => {
   return (
     <Provider
       value={{
+        deletem,
+        setDeletem,
+        addr,
+        setAddr,
         siderVisible,
         setSiderVisible,
         loginPanel,

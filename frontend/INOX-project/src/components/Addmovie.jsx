@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { globalVar } from '../globalContext/GlobalContext';
 
 const Addmovie = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +10,7 @@ const Addmovie = () => {
     movieLanguage: '',
     movieImage: '', // This holds the image URL as a string
   });
-
+  const {moviePanel, setMoviePanel,addr,setAddr,} = useContext(globalVar);
   const [showModal, setShowModal] = useState(false);
 
   const handleChange = (e) => {
@@ -31,7 +32,9 @@ const Addmovie = () => {
 
       console.log(response.data);
       alert('Movie details saved successfully!');
+       setMoviePanel(!moviePanel);
       setShowModal(false);
+      setAddr(!addr);
     } catch (error) {
       console.error('Error saving movie details:', error);
     }

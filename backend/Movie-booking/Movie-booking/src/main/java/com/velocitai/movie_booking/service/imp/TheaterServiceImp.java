@@ -31,6 +31,7 @@ public class TheaterServiceImp implements TheaterService {
 	
 
 	
+	
 
 	@Override
 	public ResponseEntity<List<Theater>> findTheaterByMovieName(String movieName) {

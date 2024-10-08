@@ -20,7 +20,7 @@ public interface MovieService {
 
 	public ResponseEntity<Movie> UpdateMovie(Movie movie);
 
-	public ResponseEntity<?> deleteMovie(Movie movie);
+
 
 	public ResponseEntity<List<Movie>> findAllMovie();
 
@@ -29,6 +29,8 @@ public interface MovieService {
 	public ResponseEntity<?> saveMovieImage(Movie user,MultipartFile file);
 	
 	public ResponseEntity<?> getMovieImage(long id);
+
+	public ResponseEntity<?> deleteMovie(long id);
 
 	
 	

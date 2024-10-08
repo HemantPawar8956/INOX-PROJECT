@@ -4,7 +4,25 @@ import axios from "axios";
 
 const Corousel2 = () => {
   const [movies, setMovies] = useState([]);
-  const { loginType,moviePanel, setMoviePanel,inoxLoginType } = useContext(globalVar);
+  const { loginType,moviePanel, setMoviePanel,inoxLoginType, addr, setAddr,deletem,setDeletem} = useContext(globalVar);
+  
+  let deleteMovie=async(ele)=>{
+    console.log(ele.id);
+    let token = localStorage.getItem("auth");  // Retrieve the token
+    try {
+      const response = await axios.delete(`http://localhost:8080/movies/delete/${ele.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,  // Include token in the headers
+        },
+      });
+      console.log("Movie deleted:", response.data);
+      setDeletem(!deletem);
+    } catch (error) {
+      console.error("Error deleting movie:", error);
+    }
+
+  }
+  
 
   useEffect(() => {
     let token = localStorage.getItem("auth");
@@ -23,7 +41,7 @@ const Corousel2 = () => {
       }
     };
     fetchMovies();
-  }, []);
+  }, [addr,deletem]);
 
   return (
     <section className="corousel2">
@@ -74,6 +92,7 @@ const Corousel2 = () => {
       {movies.length > 0 && movies.map((ele, i) => (
         <div className="cards2" key={i}>
           <div className="card-info">
+            <img src={ele.movieImage} alt=''/>
             <h3>{ele.moviename}</h3>
             <p>Language: {ele.movieLanguage}</p>
             <p>Duration: {ele.duration} minutes</p>
@@ -84,7 +103,7 @@ const Corousel2 = () => {
             ) : loginType === 'ADMIN' ? (
               <div className="admin-btn">
                 <button>Update</button>
-                <button>Delete</button>
+                <button onClick={()=>{deleteMovie(ele)}}>Delete</button>
               </div>
             ) : null}
           </div>
