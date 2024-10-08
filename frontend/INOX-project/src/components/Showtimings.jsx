@@ -3,6 +3,12 @@ import Accordion from "./Accordion1";
 import Accordion1 from "./Accordion1";
 import Accordion2 from "./Accordion1";
 import Accordion3 from "./Accordion1";
+import { CiCreditCard1 } from "react-icons/ci";
+import { RiWheelchairFill } from "react-icons/ri";
+import { CiSearch } from "react-icons/ci";
+
+
+
 
 const ShowTimings = () => {
   const dates = [
@@ -21,7 +27,7 @@ const ShowTimings = () => {
         <h2 className="showh2">Showtimings</h2>
       </div>
       <div className="show-timings-container1">
-        <div className="show-timings-header"></div>
+        <div className="show-timings-header"></div> 
 
         <div className="show-timings-dates">
           {dates.map((date, index) => (
@@ -36,22 +42,43 @@ const ShowTimings = () => {
       <div className="status-options"> 
       <div className="show-timings-search-status">
         <div className="search-bar">
+        <div className="ciSearch"><CiSearch /></div>
           <input
             type="text"
             placeholder="Search for cinema"
-            className="search-input"
+            className="search-input" 
           />
         </div>        
          <section className="optionitems">
           <div className="available">
-          <div className="status-item available1">Available</div>
-          <div className="status-item filling-fast">Filling Fast</div>
-          <div className="status-item sold-out">Sold Out</div>
-          <div className="status-item lapsed">Lapsed</div>
+          <div className="color1">
+            <div className="colorg"></div>
+            <div>Available</div>
+          </div>
+
+          <div className="color1">
+            <div className="colory"></div>
+            <div>Filling Fast</div>
+          </div>
+
+          <div className="color1">
+            <div className="colorb"></div>
+            <div>Sold Out</div>
+          </div>
+
+
+          <div className="color1">
+            <div className="colorgray"></div>
+            <div>Lapsed</div>
+          </div>
           </div>
          <div className="status-item1">
-          <div className="status-item subtitle">Subtitle</div>
-          <div className="status-item accessibility">Accessibility</div>
+          <div className="reacticons">
+          <CiCreditCard1 />
+          Subtitle</div>
+          <div className="reacticons">
+          <RiWheelchairFill />
+          Accessibility</div>
           </div>
           </section>
 

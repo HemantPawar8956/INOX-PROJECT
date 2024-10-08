@@ -28,7 +28,7 @@ public class NoAuthController {
 	
 	@Autowired
 	private TheaterService theaterService;
-
+	
 	
 	@DeleteMapping("/deletee")
     public ResponseEntity<?> deleteMovie(@RequestBody Movie movie) {
@@ -53,5 +53,13 @@ public class NoAuthController {
         
              return movieService.UpdateMovie(movie);
 	}
+
+	@PutMapping("/updatee")
+	public ResponseEntity<Theater> updateTheater(@RequestBody Theater theater) {
+		return theaterService.updateTheater(theater);
+	}
+	
+	
+	
 	
 }

@@ -15,6 +15,7 @@ import Corousel2 from "./Corousel2";
 
 import { Toaster } from "react-hot-toast";
 import Sider from "./Sider";
+import UpdateTheatre from "./UpdateTheatre";
 
 const Layout = () => { 
   let {
@@ -43,12 +44,12 @@ const Layout = () => {
 
       <Navbar />
       <Outlet />
-      {/* <Addtheatre/> */}
+      {<Addtheatre/>}
      
          
           {/* <Addmovie/> */}
        
-       
+       <UpdateTheatre/>
     
     
     </div>

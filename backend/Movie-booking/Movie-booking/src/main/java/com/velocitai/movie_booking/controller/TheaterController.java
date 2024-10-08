@@ -23,7 +23,7 @@ import com.velocitai.movie_booking.service.TheaterService;
 
 @RestController
 @RequestMapping("/theater")
-
+@CrossOrigin
 public class TheaterController {
 	@Autowired
 	private TheaterService theaterService;
@@ -39,7 +39,7 @@ public class TheaterController {
 		return theaterService.deleteTheater(id);
 	}
 
-	@PutMapping("/update/{id}")
+	@PutMapping("/update")
 	public ResponseEntity<Theater> updateTheater(@RequestBody Theater theater) {
 		return theaterService.updateTheater(theater);
 	}
