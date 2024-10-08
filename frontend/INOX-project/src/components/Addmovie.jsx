@@ -123,7 +123,7 @@ const Addmovie = () => {
             </div>
             <div class="form-actions">
               <button type="submit" class="update-btn" onClick={handleUpdate}>
-                Add
+                Add Movie
               </button>
             </div>
           </form>

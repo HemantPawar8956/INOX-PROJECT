@@ -1224,6 +1224,14 @@ p {
 /* mantasha */
 /* addmovies form */
 .main-body {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.926) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 10;
 }
 /* SelectLocation */
 .selectLocation {
@@ -1430,6 +1438,7 @@ p {
 
 .center-section .form-container .form-actions .update-btn {
   background-color: rgb(106, 106, 248);
+  width: 100%;
 }
 
 .center-section .form-container .form-actions .delete-btn {

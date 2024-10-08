@@ -11,6 +11,8 @@ import MovieTicket from "./../components/MovieTicket";
 import ProtectedRoute from "./../Auth/ProtectedRoute";
 import AllBookings from "../components/AllBookings";
 import SignUp from "./../pages/SignUp";
+import AddShows from "../components/AddShows";
+import UpdateShows from "../components/UpdatedShows";
 
 export let routingVar = createBrowserRouter([
   {
@@ -56,5 +58,13 @@ export let routingVar = createBrowserRouter([
   {
     path: "/selectseats",
     element: <SeatLayout />,
+  },
+  {
+    path: "/addshows",
+    element: <AddShows />,
+  },
+  {
+    path: "/updateshow",
+    element: <UpdateShows />,
   },
 ]);

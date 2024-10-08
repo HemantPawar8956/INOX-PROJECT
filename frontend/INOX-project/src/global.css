@@ -610,7 +610,7 @@
   /* height: 100vh; */
 /* width: 100%;
 /* >>>>>>> 768b764b304fb59f2c373366e5325a7d100e4ef9 */
-  /* background-color: rgba(0, 0, 0, 0.684);
+/* background-color: rgba(0, 0, 0, 0.684);
   position: fixed;
   display: flex;
   justify-content: end;
@@ -636,10 +636,10 @@
 }
 .city-sidebar li {
   width: 50%; */
-  /* display: flex; */
+/* display: flex; */
 /* <<<<<<< HEAD */
-  /* position: absolute; */
-  /* left: 100px; */
+/* position: absolute; */
+/* left: 100px; */
 /* }
 =======
 /* position: absolute; */
@@ -655,7 +655,8 @@
   margin: 15px;
   width: 30%;
   height: 80px;
-}  */   */
+}  */
+*/
 
 /* accordian css by seema */
 /* .show-sec {
@@ -750,16 +751,7 @@
 
 /* mantasha */
 
-/* .main-body {
-  height: 100vh;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.926) !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  z-index: 10;
-}
+
 
 .admin-btn {
   padding: 10px;
@@ -772,9 +764,9 @@
   background-color: #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  border-radius: 10px; */
+  border-radius: 10px;
   /* border: 1px solid; */
-  /* margin-left: 180px;
+  /* margin-left: 180px;*/
 }
 
 .main1 .carpayment .image-pic,
@@ -840,9 +832,9 @@
 }
 .main1 .carpayment .image-pic5 h1 {
   margin-left: 10px;
-  color: black; */
+  color: black;
   /* border: 1px solid; */
-  /* width: 300px;
+  /* width: 300px;*/
 }
 
 .main1 .carpayment .image-pic5 .button-grand {
@@ -902,7 +894,7 @@
   margin-left: 10px;
   color: black;
   /* border: 1px solid; */
-  /* width: 300px;
+  /* width: 300px;*/
 }
 
 .main1 .carpayment .image-pic5 .button-grand {
@@ -919,8 +911,9 @@
 .city-tile:hover {
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
-} */ 
- 
+}
+*/
+
 /* Deletion model -- kanupriya  */
 
 .modal-backdrop-deletenotify {
@@ -928,15 +921,13 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 100;
 }
-*/
-
 .modal-container-deletenotify {
   background-color: white;
   padding: 20px;
@@ -946,14 +937,13 @@
 }
 
 .modal-title-deletenotify {
-  padding:10px 10px;
+  padding: 10px 10px;
   font-size: 22px;
 }
 
-
 .modal-message-deletenotify {
   font-size: 16px;
-  color:rgb(59, 58, 58);
+  color: rgb(59, 58, 58);
 }
 
 .modal-actions-deletenotify {
@@ -979,7 +969,6 @@
   color: white;
 }
 
-
 /* Confirmation Updation -- kanupriya  */
 
 .update-modal-backdrop-updatenotify {
@@ -988,7 +977,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -997,7 +986,7 @@
 
 .update-modal-container-updatenotify {
   background-color: white;
-  padding: 20px ;
+  padding: 20px;
   border-radius: 8px;
   width: 400px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -1005,12 +994,12 @@
 
 .update-modal-title-updatenotify {
   font-size: 22px;
-  padding:10px 10px;
+  padding: 10px 10px;
 }
 
 .update-modal-message-updatenotify {
   font-size: 16px;
-  color:rgb(66, 65, 65);
+  color: rgb(66, 65, 65);
 }
 
 .update-modal-actions-updatenotify {
@@ -1145,3 +1134,140 @@
   background-color: #0443a1d0;
 }
 
+/* Lubna */
+.add-show-main {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.926) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 10;
+}
+.add-shows-container {
+  width: 450px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+.add-shows-container h2 {
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+}
+.add-shows-container .add-show-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-shows-container .form-group {
+  margin-bottom: 15px;
+}
+
+.add-shows-container .form-group label {
+  font-size: 16px;
+  margin-bottom: 5px;
+ 
+}
+
+.add-shows-container .form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-shows-container .error {
+  border-color: red;
+}
+
+.add-shows-container .error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.add-shows-container .submit-button {
+  background-color: #0033ff;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-shows-container .submit-button:hover {
+  background-color: #0056b3;
+}
+.update-shows-main{
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.926) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 10;
+}
+
+.update-shows-container {
+  width: 450px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.update-shows-container .update-show-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.update-shows-container .form-group {
+  margin-bottom: 15px;
+}
+
+.update-shows-container .form-group label {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.update-shows-container .form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.update-shows-container .error {
+  border-color: red;
+}
+
+.update-shows-container .error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.update-shows-container .submit-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.update-shows-container .submit-button:hover {
+  background-color: #0056b3;
+}

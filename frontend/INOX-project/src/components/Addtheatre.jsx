@@ -51,7 +51,11 @@ const Addtheatre = () => {
       onClick={(e) => {
         e.stopPropagation(), setAddTheatrePanel(false);
       }}>
-      <section className="theatre-form-section">
+      <section
+        className="theatre-form-section"
+        onClick={(e) => {
+          e.stopPropagation(), setAddTheatrePanel(true);
+        }}>
         <div className="theatre-form-container">
           <h2>Theatre Details</h2>
           <form onSubmit={handleSubmit}>
