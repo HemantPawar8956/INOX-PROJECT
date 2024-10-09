@@ -8,12 +8,14 @@ import { RiWheelchairFill } from "react-icons/ri";
 import { CiSearch } from "react-icons/ci";
 import axios from "axios";
 import { globalVar } from "../globalContext/GlobalContext";
+import { useLocation } from "react-router-dom";
 
 const ShowTimings = () => {
   let { inoxLoginType,addShowPanel, setAddShowPanel  } =
     useContext(globalVar);
-
-
+   
+    let {state}=useLocation();
+    
      let [allTheater,setAllTheater]=useState([])
   const dates = [
     { day: "Sep 30", label: "Today" },
@@ -26,6 +28,7 @@ const ShowTimings = () => {
   ];
 
   useEffect(() => {
+    console.log("useEffect")
     let fetchData = async () => {
       try {
         let response = await axios.get(
@@ -37,8 +40,8 @@ const ShowTimings = () => {
             },
           }
         );
+        console.log(response.data)
         setAllTheater(response.data)
-        console.log(response.data);
       } catch (error) {
         console.error("Error fetching data", error);
       }
@@ -122,8 +125,9 @@ const ShowTimings = () => {
         </div>
       </div>
       <section className="accor">
-        {allTheater.map((data)=>{
-  return <Accordion1 data={data} />
+        {allTheater.map((data,i)=>{
+          console.log(allTheater)
+        return <Accordion1 data={data} key={i}/>
         })}
       
 

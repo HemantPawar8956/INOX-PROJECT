@@ -28,7 +28,7 @@ const QuickBookNav = () => {
     e.preventDefault();
     console.log("Form Submitted:", data);
     // Add your form submission logic here
-    navigate("/selectseats", { state: data });
+    navigate("/showtimings", { state: data });
   };
 
   const handleMovieData = async () => {
@@ -37,7 +37,6 @@ const QuickBookNav = () => {
       let { data } = await axios.get("http://localhost:8080/open/movies/alls"
       );
       setFetchedMovieData(data); // Fetch and set movie data
-      console.log(data)
     } catch {
       console.log("Movie data not found");
     }
@@ -57,6 +56,8 @@ const QuickBookNav = () => {
   const handleDateChange = (selectedDate) => {
     setData({ ...data, date: selectedDate });
   };
+
+
 
   useEffect(() => {
    handleCinemaData();
@@ -115,12 +116,21 @@ const QuickBookNav = () => {
         </div>
 
         <div className="option">
-          <input
+          <select
             type="time"
             name="timing"
             value={timing}
+            
             onChange={(e) => setData({ ...data, timing: e.target.value })}
-          />
+          >
+            <option value="8:00 AM">8:00 AM</option>
+            <option value="11:00 AM">11:00 AM</option>
+            <option value="2:00 PM">2:00 PM</option>
+            <option value="3:30 PM">3:30 PM</option>
+            <option value="6:00 PM">6:00 PM</option>
+            <option value="8:30 PM">8:30 PM</option>
+            <option value="12:00 PM">12:00 PM</option>
+          </select>
         </div>
 
         <button className="book-button" type="submit">

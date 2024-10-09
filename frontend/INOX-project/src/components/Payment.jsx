@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IoGiftSharp } from "react-icons/io5";
 import { useLocation } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 import ShowTimings from './Showtimings';
+import { globalVar } from "../globalContext/GlobalContext";
+import PaymentSuccess from './PaymentSuccess';
 
 const Payment = () => {
+  let auth = localStorage.getItem("auth");
+  const decodedToken = auth && jwtDecode(auth);
+  let userDetails=decodedToken.sub
+  let {setPaymentSuccessfullPanel,paymentSuccessfullPanel}=useContext(globalVar)
   const { state } = useLocation(); 
-  console.log(state)
   const { movieName, theatreName, showTiming, seatInfo, GrandTotal } = state;
 
   let [currentDate, setCurrentDate] = useState(new Date());
@@ -19,6 +25,7 @@ const Payment = () => {
 
   return (
     <section className="paymentPage">
+     { paymentSuccessfullPanel && <PaymentSuccess  ticket={{movieName, theatreName, showTiming, seatInfo, GrandTotal,userDetails}}/>}
       <div className="paymentmain">
         <div className="pay1">
           <div className="pays1">
@@ -56,8 +63,8 @@ const Payment = () => {
           </div>
         </div>
 
-        <div className="pay6">
-          <p>Pay Rs {parseFloat(GrandTotal) + 70.80 + 60 }</p>
+        <div className="pay6" onClick={(e)=>{setPaymentSuccessfullPanel(true)}}>
+          <p onClick={(e)=>{setPaymentSuccessfullPanel(true)}}>Pay Rs {parseFloat(GrandTotal) + 70.80 + 60 }</p>
         </div>
       </div>
     </section>

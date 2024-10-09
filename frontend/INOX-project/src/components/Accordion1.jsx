@@ -6,7 +6,6 @@ import { globalVar } from "../globalContext/GlobalContext";
 import { useNavigate } from "react-router-dom";
 
 const Accordion1 = ({ data }) => {
-  console.log(data);
   let navigate=useNavigate();
   let { setUpdateShowPanel, setDeleteData ,setIsModalOpen,inoxLoginType} = useContext(globalVar);
   const [isOpen, setIsOpen] = useState(false);

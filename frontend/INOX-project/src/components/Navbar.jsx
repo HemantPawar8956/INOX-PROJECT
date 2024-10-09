@@ -94,17 +94,15 @@ const Navbar = () => {
             ) : (
               <>
               
-                <AiFillFund className="icon" /> Investor Section                  
+                <AiFillFund className="icon" /> InvestorSection                  
               
               </>
             )}
           </li>
           <li>
-            <NavLink
-              to="/passport"
-              className={({ isActive }) => (isActive ? "active" : "")}>
+            
               <FaUser className="icon" /> Passport
-            </NavLink>
+           
           </li>
           <li>
             <div className="dropdown">

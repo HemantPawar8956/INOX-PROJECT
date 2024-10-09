@@ -5,6 +5,7 @@ import banglore from "../assests/banglore.jpg";
 import delhi from "../assests/delhi.png";
 import mumbai from "../assests/mumbai.jpg";
 import hyderabad from "../assests/hyderabad.jpg";
+import defaultimage from "../assests/defaultimage.jpg";
 import toast, { Toaster } from "react-hot-toast";
 
 const SelectLocation = () => {
@@ -115,7 +116,7 @@ const SelectLocation = () => {
                 onChange={(e) => {
                   setSelectedCity(e.target.value);
                 }}
-                value={selectedCity}
+                value={selectedCity || ""}
               />
               {selectedCity && (
                 <div className="searchedCityPanel">

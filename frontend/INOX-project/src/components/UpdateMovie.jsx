@@ -11,6 +11,8 @@ const UpdateMovie = () => {
     setUpdatemoviePanel,
     updateNotify,
     setupdateNotify,
+    updateCount,
+    setUpdateCount
   } = useContext(globalVar);
 
   let [updateMovie, setUpdateMovie] = useState({
@@ -46,6 +48,7 @@ const UpdateMovie = () => {
           }
         );
         setUpdateMovie(response.data);
+        setUpdateCount(updateCount+1)
         console.log("Movie updated:", response.data);
       } catch (error) {
         console.error("There was an error updating the movie!", error);

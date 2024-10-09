@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 const Addtheatre = () => {
   // Create state for theatre name and address
-  let { addthatrePanel, setAddTheatrePanel,setUpdateCount } = useContext(globalVar);
+  let { addthatrePanel, setAddTheatrePanel,updateCount,setUpdateCount } = useContext(globalVar);
   const [theatre, setTheatre] = useState({
     name: "",
     address: "",
@@ -35,7 +35,7 @@ const Addtheatre = () => {
       );
       console.log("Theater added successfully:", response.data);
       toast.success("Theater Added Successfully")
-      setUpdateCount(1)
+      setUpdateCount(updateCount+1)
       setAddTheatrePanel(false);
       // Optionally clear form fields after successful submission
       setTheatre({ name: "", address: "" });

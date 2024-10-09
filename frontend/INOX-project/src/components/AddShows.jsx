@@ -3,7 +3,7 @@ import axios from "axios";
 import { globalVar } from "../globalContext/GlobalContext";
 
 const AddShows = () => {
-  let{setAddShowPanel}=useContext(globalVar)
+  let{setAddShowPanel,updateCount,setUpdateCount}=useContext(globalVar)
   const [showDetails, setShowDetails] = useState({
     time: "",
     date: "",
@@ -108,7 +108,7 @@ const AddShows = () => {
         });
 
         console.log("API response:", response.data);
-
+        setUpdateCount(updateCount+1)
         setShowDetails({
           time: "",
           date: "",

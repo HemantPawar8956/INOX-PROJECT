@@ -23,7 +23,7 @@ const UpdateNotify = () => {
       console.log('Theatre updated successfully:', response.data);
       // Optionally reset form fields after successful submission
       toast.success(`${updateData.comp} is updated`)
-      setUpdateCount(1)
+      setUpdateCount(updateCount+1)
       return { id: '', name: '', address: '' }
     } catch (error) {
       console.error('Error updating theatre:', error);

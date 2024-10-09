@@ -46,7 +46,6 @@ const Corousel2 = () => {
 
   useEffect(() => {
     let token = localStorage.getItem("auth");
-    console.log(token);
 
     const fetchMovies = async () => {
       try {
