@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { globalVar } from "../globalContext/GlobalContext";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const UpdateMovie = () => {
   let {
@@ -58,6 +58,7 @@ const UpdateMovie = () => {
   }, []);
   return (
     <div className="update-movie" onClick={(e)=>{e.stopPropagation(),setUpdatemoviePanel(false)}}>
+      
       <form className="update-movie__form" onSubmit={handleSubmit} onClick={(e)=>{e.stopPropagation(),setUpdatemoviePanel(true)}}>
         <label className="update-movie__label">Movie ID:</label>
         <input

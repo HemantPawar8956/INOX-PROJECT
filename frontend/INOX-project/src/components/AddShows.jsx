@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { globalVar } from "../globalContext/GlobalContext";
+import { toast } from "react-toastify";
+import { Toaster } from "react-hot-toast";
 
 const AddShows = () => {
   let{setAddShowPanel,updateCount,setUpdateCount}=useContext(globalVar)
@@ -126,20 +128,20 @@ useEffect(() => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      console.log(localStorage.getItem("auth"))
-      const response = await axios.post("http://localhost:8080/show/save",
-        {
-          headers: {
-            Authorization:`Bearer ${localStorage.getItem("auth")}`
-          }
-        }
-      );
-      console.log(response)
-    }
-    catch (error) {
-      console.log("error" + error);
-    }
+    // try {
+    //   console.log(localStorage.getItem("auth"))
+    //   const response = await axios.post("http://localhost:8080/show/save",showDetails,
+    //     {
+    //       headers: {
+    //         Authorization:`Bearer ${localStorage.getItem("auth")}`
+    //       }
+    //     }
+    //   );
+    //   console.log(response)
+    // }
+    // catch (error) {
+    //   console.log("error" + error);
+    // }
     if (validateForm()) {
       setApiError("");
       setSuccessMessage("");
@@ -160,6 +162,7 @@ useEffect(() => {
         });
 
         console.log("API response:", response.data);
+        toast.success("Show Added Successfully");
         setUpdateCount(updateCount+1)
         setShowDetails({
           time: "",
@@ -167,8 +170,9 @@ useEffect(() => {
           theater: null,
           movie: null,
         });
+        setAddShowPanel(false);
         setErrors({});
-        setSuccessMessage("Show added successfully!");
+        // setSuccessMessage("Show added successfully!");
       } catch (error) {
         console.error("Error saving the show:", error);
 
@@ -212,9 +216,9 @@ useEffect(() => {
       }
     }
   };
-console.log(showDetails)
   return (
     <section className="add-show-main" onClick={(e)=>{e.stopPropagation(),setAddShowPanel(false)}}>
+      <Toaster/>
       <div className="add-shows-container" onClick={(e)=>{e.stopPropagation(),setAddShowPanel(true)}}>
         <h2>Add New Show</h2>
         <form onSubmit={handleSubmit} className="add-show-form">
@@ -289,7 +293,7 @@ console.log(showDetails)
           {apiError && <p className="error-message">{apiError}</p>}
           {successMessage && <p className="success-message">{successMessage}</p>}
         </form>
-        <div className="delete-show">
+        {/* <div className="delete-show">
           <h2>Delete Show</h2>
           <input
             type="text"
@@ -302,8 +306,8 @@ console.log(showDetails)
           </button>
           {apiError && <p className="error-message">{apiError}</p>}
           {successMessage && <p className="success-message">{successMessage}</p>}
-        </div>
-      </div>
+        </div> */}
+      </div> 
     </section>
   );
 };
