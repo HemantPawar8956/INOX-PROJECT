@@ -20,14 +20,11 @@ import com.velocitai.movie_booking.service.ShowService;
 import com.velocitai.movie_booking.service.imp.ShowServiceImp;
 
 @RestController
-@RequestMapping("/show")
+@RequestMapping("/show")	
 public class ShowController {
 	
     @Autowired
     private ShowService showservice;
-    
-   
-
     
     @GetMapping("/byTheater")
     public ResponseEntity<List<Show>> getShowsByTheater(@RequestParam("theaterId") long theaterId) {
@@ -39,10 +36,10 @@ public class ShowController {
         return showservice.findShowByDate(date);
     }
 
-
 	
 	
-	   @Autowired
+	
+   @Autowired
 	   ShowServiceImp showServiceImp;
 	   
 	   

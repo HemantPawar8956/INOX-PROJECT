@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const AddShows = () => {
+  const [theaters, setTheaters] = useState([]); // List of theaters
+  const [movies, setMovies] = useState([]);//list of movies
   const [showDetails, setShowDetails] = useState({
     time: "",
     date: "",
-    seat: "",
     theater: "",
     movie: "",
+
   });
 
   const [errors, setErrors] = useState({});
@@ -25,7 +28,6 @@ const AddShows = () => {
 
     if (!time) newErrors.time = "Time is required";
     if (!date) newErrors.date = "Date is required";
-    if (!seat) newErrors.seat = "Number of seats is required";
     if (!theater) newErrors.theater = "Theater name is required";
     if (!movie) newErrors.movie = "Movie name is required";
 
@@ -33,27 +35,79 @@ const AddShows = () => {
 
     return Object.keys(newErrors).length === 0;
   };
+useEffect(() => {
+  const fetchTheaters = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/theater/all',showDetails,
+        {
+          headers: {
+            Authorization:`Bearer ${localStorage.getItem("auth")}`
+          }
+        }
+      ); // Replace with your API endpoint
+      // const data = await response.json();
+      setTheaters(response.data); // Assuming data is an array of theaters
+    } catch (error) {
+      console.error("Error fetching theaters:", error);
+    }
+  };
+  fetchTheaters();
+}, []);
+  
+  useEffect(() => {
+    const fetchMovies = async () => {
+    
+    try {
+      const response = await axios.get('http://localhost:8080/movies/all',
+        {
+          headers: {
+            Authorization:`Bearer ${localStorage.getItem("auth")}`
+          }
+        }
+      ); // Replace with your API endpoint
+      setMovies(response.data); // Assuming response.data is an array of movies
+    } catch (error) {
+      console.error("Error fetching movies:", error);
+    }
+  };
+  fetchMovies();
+  }, []);
+  
+  
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+    try {
+      console.log(localStorage.getItem("auth"))
+      const response = await axios.post("http://localhost:8080/show/save",
+        {
+          headers: {
+            Authorization:`Bearer ${localStorage.getItem("auth")}`
+          }
+        }
+      );
+      console.log(response)
+    }
+    catch (error) {
+      console.log("error" + error);
+    }
     if (validateForm()) {
       
       console.log("Show Details:", showDetails);
-
-     
-      setShowDetails({
-        time: "",
-        date: "",
-        seat: "",
-        theater: "",
-        movie: "",
-      });
+      console.log("Show Details:", showDetails.movie);
+       console.log("Show Details:", showDetails.movie);
+      
+      // setShowDetails({
+      //   time: "",
+      //   date: "",
+      //   theater: "",
+      //   movie: "",
+      // });
       setErrors({});
-      alert("Show added successfully!");
+     
     }
   };
-
+console.log(showDetails)
   return (
     <section className="add-show-main">
     <div className="add-shows-container">
@@ -64,7 +118,7 @@ const AddShows = () => {
           <input
             type="time"
             name="time"
-            value={showDetails.time}
+            value={showDetails?.time}
             onChange={handleChange}
             className={errors.time ? "error" : ""}
           />
@@ -83,17 +137,6 @@ const AddShows = () => {
           {errors.date && <p className="error-message">{errors.date}</p>}
         </div>
 
-        <div className="form-group">
-          <label>Seat</label>
-          <input
-            type="number"
-            name="seat"
-            value={showDetails.seat}
-            onChange={handleChange}
-            className={errors.seat ? "error" : ""}
-          />
-          {errors.seat && <p className="error-message">{errors.seat}</p>}
-        </div>
 
         <div className="form-group">
           <label>Theater</label>
@@ -105,19 +148,42 @@ const AddShows = () => {
             className={errors.theater ? "error" : ""}
           />
           {errors.theater && <p className="error-message">{errors.theater}</p>}
-        </div>
+          </div>
+          <div className="form-group">
+  <label>Theater</label>
+  <select
+    name="theater"
+    value={showDetails.theater}
+    onChange={handleChange}
+    className={errors.theater ? "error" : ""}
+  >
+   <option value="">Select a theater</option>
+    {theaters.map((theater) => (
+      <option key={theater.id} value={theater.name}>
+        {theater.name}
+      </option> 
+    ))}
+  </select>
+  {errors.theater && <p className="error-message">{errors.theater}</p>}
+</div>
 
         <div className="form-group">
-          <label>Movie</label>
-          <input
-            type="text"
-            name="movie"
-            value={showDetails.movie}
-            onChange={handleChange}
-            className={errors.movie ? "error" : ""}
-          />
-          {errors.movie && <p className="error-message">{errors.movie}</p>}
-        </div>
+  <label>Movie</label>
+  <select
+    name="movie"
+    value={showDetails.movie}
+    onChange={handleChange}
+    className={errors.movie ? "error" : ""}
+  >
+    <option value="">Select a movie</option>
+    {movies.map((movie) => (
+      <option key={movie.id} value={movie}>
+        {movie.moviename}
+      </option>
+    ))}
+  </select>
+  {errors.movie && <p className="error-message">{errors.movie}</p>}
+</div>
 
         <button type="submit" className="submit-button">
           Add Show

@@ -50,11 +50,8 @@ public class User implements UserDetails{
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private Role role;
-	
+	//for later use to store image of user
 	private String image;
-
-	@Transient
-	private MultipartFile photo;
 
 	
 	@Override
