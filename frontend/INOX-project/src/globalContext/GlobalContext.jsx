@@ -2,6 +2,8 @@ import React, { createContext, useState } from "react";
 export let globalVar = createContext();
 // import jwt_decode from "jsonwebtoken";
 import { jwtDecode } from "jwt-decode";
+import UpdateTheatre from "./../components/UpdateTheatre";
+import axios from "axios";
 
 export const GlobalContext = ({ children }) => {
   let { Provider } = globalVar;
@@ -10,12 +12,31 @@ export const GlobalContext = ({ children }) => {
   let [moviePanel, setMoviePanel] = useState(false);
   let [addthatrePanel, setAddTheatrePanel] = useState(false);
   let [location, setLocation] = useState(true);
+  let [updatemoviePanel,setUpdatemoviePanel] = useState(false);
   let [signupPanel, setSignupPanel] = useState(false);
   let [userLocation, setUserLocation] = useState("");
   let [isModalOpen, setIsModalOpen] = useState(false);
   let [updateNotify, setupdateNotify] = useState(false);
+  let [UpdateTheater, setUpdateTheater] = useState(false);
+  let [addShowPanel, setAddShowPanel] = useState(false);
+  let [updateShowPanel, setUpdateShowPanel] = useState(false);
+  let [updateData, setUpdateData] = useState({
+    comp: "",
+    data: "",
+  });
+  let [deleteData, setDeleteData] = useState({
+    comp: "",
+    data: "",
+  });
+  let [updateCount, setUpdateCount] = useState(0);
+  let [deleteCount, setDeleteCount] = useState(0);
+
+  let [theaterId, setTheaterId] = useState(0);
+
+  let [selectedCity, setSelectedCity] = useState(null);
+
   let auth = localStorage.getItem("auth");
-  console.log(auth)
+  console.log(auth);
   const decodedToken = auth && jwtDecode(auth);
   console.log(decodedToken);
   let [inoxLoginType, setInoxLoginType] = useState(
@@ -36,6 +57,11 @@ export const GlobalContext = ({ children }) => {
       loginVal: "USER",
     },
   ];
+
+  let updateTheaterId = (ele) => {
+    setTheaterId(ele.id);
+    setUpdateTheater(true);
+  };
 
   return (
     <Provider
@@ -63,6 +89,26 @@ export const GlobalContext = ({ children }) => {
         setIsModalOpen,
         updateNotify,
         setupdateNotify,
+        UpdateTheater,
+        setUpdateTheater,
+        theaterId,
+        setTheaterId,
+        updateTheaterId,
+        updateData,
+        setUpdateData,
+        deleteData,
+        setDeleteData,
+        updateCount,
+        setUpdateCount,
+        deleteCount,
+        setDeleteCount,
+        selectedCity,
+        setSelectedCity,
+        addShowPanel,
+        setAddShowPanel,
+        updateShowPanel,
+        setUpdateShowPanel,
+        updatemoviePanel,setUpdatemoviePanel
       }}>
       {children}
     </Provider>

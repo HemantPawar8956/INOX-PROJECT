@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { globalVar } from "../globalContext/GlobalContext";
+import toast from "react-hot-toast";
 
 const Addtheatre = () => {
   // Create state for theatre name and address
-  let { addthatrePanel, setAddTheatrePanel } = useContext(globalVar);
+  let { addthatrePanel, setAddTheatrePanel,setUpdateCount } = useContext(globalVar);
   const [theatre, setTheatre] = useState({
     name: "",
     address: "",
@@ -32,9 +33,12 @@ const Addtheatre = () => {
           },
         }
       );
-      console.log("Theatre added successfully:", response.data);
+      console.log("Theater added successfully:", response.data);
+      toast.success("Theater Added Successfully")
+      setUpdateCount(1)
       // Optionally clear form fields after successful submission
       setTheatre({ name: "", address: "" });
+      
     } catch (error) {
       console.error("Error adding theatre:", error);
     }

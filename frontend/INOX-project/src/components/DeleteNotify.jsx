@@ -1,16 +1,37 @@
 import React, { useContext } from 'react';
 import { globalVar } from './../globalContext/GlobalContext';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const DeleteNotify = () => {
-let {isModalOpen, setIsModalOpen} = useContext(globalVar) 
+let {isModalOpen, setIsModalOpen,deleteData,setDeleteData,deleteCount,setDeleteCount} = useContext(globalVar) 
 
   const handleCancel = () => {
     setIsModalOpen(false); 
   };
-  const handleDelete = () => {
-    console.log('Notification deleted');
+
+
+  const handleDelete =async () => {
+    console.log(deleteData);
     setIsModalOpen(false); 
+ 
+    try {
+      const response = await axios.delete(`http://localhost:8080/${deleteData?.comp}/delete/${deleteData?.data?.id}` ,{
+        headers: {
+            ContentType: "application/json",
+          Authorization: `Bearer ${localStorage.getItem('auth')}`
+        } 
+      });
+      console.log('Theater Deleted successfully:', response.data);
+      // Optionally reset form fields after successful submission
+      toast.success(`${deleteData.comp} is deleted`)
+      setDeleteCount(1)
+      return { id: '', name: '', address: '' }
+    } catch (error) {
+      console.error('Error Deleting theater:', error);
+    }
   };
+
   return (
     isModalOpen && (
       <div className="modal-backdrop-deletenotify" onClick={handleCancel}>
@@ -26,7 +47,7 @@ let {isModalOpen, setIsModalOpen} = useContext(globalVar)
               Cancel
             </button>
             <button className="btn-deletenotify delete-btn-deletenotify" onClick={handleDelete}>
-              Delete Notification 
+              Delete
              </button>  {/* Put api to delete the selected item */}
           </div>
         </div>

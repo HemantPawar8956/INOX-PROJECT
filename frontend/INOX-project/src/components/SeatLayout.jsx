@@ -61,9 +61,9 @@ const SeatLayout = () => {
     }
   };
 
-  const seatPrice = 200; 
+  const seatPrice = 200;
   const subtotal = selectedSeats.length * seatPrice;
-  const grandTotal = subtotal; 
+  const grandTotal = subtotal;
 
   return (
     <section className="main1">
@@ -78,26 +78,6 @@ const SeatLayout = () => {
           </div>
         </nav>
 
-        <div className="nav3">
-          <select name="" id="" className="dateDropDown">
-            <option value="">07 oct, Monday</option>
-            <option value="">08 oct, Tuesday</option>
-          </select>
-          <div className="hindi">
-            <div className="hindi1">
-              Hindi
-              <div>03:40 PM</div>
-            </div>
-            <div className="hindi1">
-              Hindi
-              <div>03:40 PM</div>
-            </div>
-            <div className="hindi1">
-              Hindi
-              <div>03:40 PM</div>
-            </div>
-          </div>
-        </div>
 
         <section className="seat">
           <div className="seat-content">
@@ -136,11 +116,16 @@ const SeatLayout = () => {
                     disabled={ele.boooked}
                     onClick={(e) => {
                       SeatStatus(e, ele);
-                    }}>
+                    }}
+                    key={index + 2}>
                     {ele.seatNo}
                   </span>
                   {(ele.seatNo.slice(1) == 4 || ele.seatNo.slice(1) == 14) &&
-                    spaces.map((ele) => <span className="space">space</span>)}
+                    spaces.map((ele, i) => (
+                      <span className="space" key={i + 1}>
+                        space
+                      </span>
+                    ))}
                 </>
               );
             })}

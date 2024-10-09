@@ -1,12 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
+import { globalVar } from "../globalContext/GlobalContext";
 
 const UpdateTheatre = () => {
   // Create state for theatre details including the id
+  let {
+    UpdateTheater,
+    setUpdateTheater,
+    updateNotify,
+    setupdateNotify,
+    theaterId,
+    setTheaterId,
+    updateTheaterIdData,
+    setUpdateData,
+  } = useContext(globalVar);
   const [theatre, setTheatre] = useState({
-    id: '',
-    name: '',
-    address: ''
+    id: "",
+    name: "",
+    address: "",
   });
 
   // Handle input change for all fields (id, name, address)
@@ -18,33 +29,34 @@ const UpdateTheatre = () => {
     });
   };
 
+  let fetchTheater = async () => {
+    const response = await axios.get(
+      `http://localhost:8080/theater/${theaterId}`,
+      {
+        headers: {
+          Authorization: ` Bearer ${localStorage.getItem("auth")}`,
+        },
+      }
+    );
+    setTheatre(response.data);
+  };
   // Handle form submission to update the theatre details
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.put(`http://localhost:8080/theater/update`, {
-        id: theatre.id,
-        name: theatre.name,
-        address: theatre.address,
-      }, {
-        headers: {
-            ContentType: "application/json",
-          Authorization: `Bearer ${localStorage.getItem('auth')}`
-        }
-      });
-      console.log('Theatre updated successfully:', response.data);
-      // Optionally reset form fields after successful submission
-      setTheatre({ id: '', name: '', address: '' });
-    } catch (error) {
-      console.error('Error updating theatre:', error);
-    }
+    setupdateNotify(true);
+    setUpdateTheater(false);
+    //  setTheatre(data);
+    setUpdateData({ comp: "theater", data: theatre });
   };
 
   // Handle form reset
   const handleReset = () => {
-    setTheatre({ id: '', name: '', address: '' });
+    setTheatre({ id: "", name: "", address: "" });
   };
 
+  useEffect(() => {
+    fetchTheater();
+  }, []);
   return (
     <div className="theatre-main-container">
       <section className="theatre-form-section">
@@ -94,7 +106,10 @@ const UpdateTheatre = () => {
               <button type="submit" className="theatre-update-btn">
                 Update
               </button>
-              <button type="button" className="theatre-delete-btn" onClick={handleReset}>
+              <button
+                type="button"
+                className="theatre-delete-btn"
+                onClick={handleReset}>
                 Reset
               </button>
             </div>

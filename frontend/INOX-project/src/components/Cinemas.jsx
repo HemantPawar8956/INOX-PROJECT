@@ -10,8 +10,19 @@ import { globalVar } from "../globalContext/GlobalContext";
 import axios from "axios";
 
 const Cinemas = () => {
-  let { addthatrePanel, setAddTheatrePanel } = useContext(globalVar);
-  let [alltheateres,setAllTheatres]=useState([])
+  let {
+    addthatrePanel,
+    setAddTheatrePanel,
+    updateTheaterId,
+    setIsModalOpen,
+    deleteData,
+    setDeleteData,
+    deleteCount,
+    updateCount,
+  } = useContext(globalVar);
+  let [alltheateres, setAllTheatres] = useState([]);
+  let [allImages, setAllImages] = useState([]);
+
   const movies = [
     { title: "Movie 1", posterUrl: movie1 },
     { title: "Movie 2", posterUrl: movie2 },
@@ -31,11 +42,32 @@ const Cinemas = () => {
   let fetchCinemas = async () => {
     let { data } = await axios.get("http://localhost:8080/open/cinemas/alls");
     console.log(data);
-    setAllTheatres(data)
+    data.map((ele) => {
+      fetchCinemaImage(ele.id);
+    });
+    setAllTheatres(data);
   };
+  let fetchCinemaImage = async (id) => {
+    let { image } = await axios.get(
+      `http://localhost:8080/open/location/${id}`
+    );
+    console.log(image);
+    setAllImages([...allImages, image]);
+  };
+  console.log(allImages);
+
+  let deleteTheaterId = (data) => {
+    setIsModalOpen(true);
+    setDeleteData({
+      comp: "theater",
+      data: data,
+    });
+  };
+
   useEffect(() => {
+    console.log("data");
     fetchCinemas();
-  }, []);
+  }, [deleteCount, updateCount]);
   return (
     <div className="cinema-list">
       <div className="search-bar">
@@ -57,10 +89,27 @@ const Cinemas = () => {
       <div className="cinema-cards-display">
         {alltheateres?.map((data) => {
           return (
-            <div className="cinema-item" key={data.name}>
+            <div className="cinema-item" key={data.id}>
               <div>
                 <h2 className="cinema-name">{data.name}</h2>
                 <p className="cinema-address">{data.address}</p>
+                {/* <p className="cinema-address">{data?.show}</p> */}
+                <div className="buttons-update-delete">
+                  <button
+                    className="addupdate"
+                    onClick={() => {
+                      updateTheaterId(data);
+                    }}>
+                    Update
+                  </button>
+                  <button
+                    className="adddelete"
+                    onClick={() => {
+                      deleteTheaterId(data);
+                    }}>
+                    Delete
+                  </button>
+                </div>
               </div>
               <div className="cinema-movie-items">
                 <h2>Now Showing</h2>

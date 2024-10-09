@@ -1,35 +1,84 @@
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { globalVar } from "../globalContext/GlobalContext";
 
 const AddShows = () => {
-  const [theaters, setTheaters] = useState([]); // List of theaters
-  const [movies, setMovies] = useState([]);//list of movies
+  let { setAddShowPanel } = useContext(globalVar);
   const [showDetails, setShowDetails] = useState({
     time: "",
     date: "",
-    theater: "",
-    movie: "",
-
+    theater: null,
+    movie: null,
   });
 
+  const [theaters, setTheaters] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [errors, setErrors] = useState({});
+  const [apiError, setApiError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [showIdToDelete, setShowIdToDelete] = useState("");
+
+  const token = localStorage.getItem("auth");
+
+  useEffect(() => {
+    const fetchTheaters = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/theater/all", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setTheaters(response.data);
+      } catch (error) {
+        console.error("Error fetching theaters:", error);
+        setApiError("Failed to fetch theaters. Please try again later.");
+      }
+    };
+
+    const fetchMovies = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/movies/all", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        setMovies(response.data);
+        console.log(response);
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+        setApiError("Failed to fetch movies. Please try again later.");
+      }
+    };
+
+    fetchTheaters();
+    fetchMovies();
+  }, [token]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setShowDetails({
-      ...showDetails,
-      [name]: value,
-    });
+
+    if (name === "theater" || name === "movie") {
+      setShowDetails({
+        ...showDetails,
+        [name]: { id: value },
+      });
+    } else {
+      setShowDetails({
+        ...showDetails,
+        [name]: value,
+      });
+    }
   };
 
   const validateForm = () => {
-    const { time, date, seat, theater, movie } = showDetails;
+    const { time, date, theater, movie } = showDetails;
     const newErrors = {};
 
     if (!time) newErrors.time = "Time is required";
     if (!date) newErrors.date = "Date is required";
-    if (!theater) newErrors.theater = "Theater name is required";
-    if (!movie) newErrors.movie = "Movie name is required";
+    if (!theater) newErrors.theater = "Theater selection is required";
+    if (!movie) newErrors.movie = "Movie selection is required";
 
     setErrors(newErrors);
 
@@ -92,104 +141,194 @@ useEffect(() => {
       console.log("error" + error);
     }
     if (validateForm()) {
-      
-      console.log("Show Details:", showDetails);
-      console.log("Show Details:", showDetails.movie);
-       console.log("Show Details:", showDetails.movie);
-      
-      // setShowDetails({
-      //   time: "",
-      //   date: "",
-      //   theater: "",
-      //   movie: "",
-      // });
-      setErrors({});
-     
+      setApiError("");
+      setSuccessMessage("");
+
+      const payload = {
+        time: showDetails.time,
+        date: showDetails.date,
+        theater: { id: showDetails.theater.id },
+        movie: { id: showDetails.movie.id },
+      };
+
+      try {
+        const response = await axios.post(
+          `http://localhost:8080/show/save/${showDetails.theater.id}/${showDetails.movie.id}`,
+          payload,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        console.log("API response:", response.data);
+
+        setShowDetails({
+          time: "",
+          date: "",
+          theater: null,
+          movie: null,
+        });
+        setErrors({});
+        setSuccessMessage("Show added successfully!");
+      } catch (error) {
+        console.error("Error saving the show:", error);
+
+        if (error.response) {
+          setApiError(
+            `Failed to save the show: ${
+              error.response.data.message || "Server Error"
+            }`
+          );
+        } else if (error.request) {
+          setApiError("No response from the server. Please try again later.");
+        } else {
+          setApiError("An unexpected error occurred. Please try again.");
+        }
+      }
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!showIdToDelete) {
+      setApiError("Please enter a valid show ID to delete.");
+      return;
+    }
+
+    try {
+      const response = await axios.delete(
+        `http://localhost:8080/show/delete/${showIdToDelete}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log("Delete response:", response.data);
+      setSuccessMessage("Show deleted successfully!");
+      setShowIdToDelete(""); // Clear the show ID input after deletion
+    } catch (error) {
+      console.error("Error deleting the show:", error);
+      if (error.response) {
+        setApiError(
+          `Failed to delete the show: ${
+            error.response.data.message || "Server Error"
+          }`
+        );
+      } else if (error.request) {
+        setApiError("No response from the server. Please try again later.");
+      } else {
+        setApiError("An unexpected error occurred. Please try again.");
+      }
     }
   };
 console.log(showDetails)
   return (
-    <section className="add-show-main">
-    <div className="add-shows-container">
-      <h2>Add New Show</h2>
-      <form onSubmit={handleSubmit} className="add-show-form">
-        <div className="form-group">
-          <label>Time</label>
-          <input
-            type="time"
-            name="time"
-            value={showDetails?.time}
-            onChange={handleChange}
-            className={errors.time ? "error" : ""}
-          />
-          {errors.time && <p className="error-message">{errors.time}</p>}
-        </div>
+    <section
+      className="add-show-main"
+      onClick={(e) => {
+        e.stopPropagation(), setAddShowPanel(false);
+      }}>
+      <div
+        className="add-shows-container"
+        onClick={(e) => {
+          e.stopPropagation(), setAddShowPanel(true);
+        }}>
+        <h2>Add New Show</h2>
+        <form onSubmit={handleSubmit} className="add-show-form">
+          <div className="form-group">
+            <label>Time</label>
+            <input
+              type="time"
+              name="time"
+              value={showDetails.time}
+              onChange={handleChange}
+              className={errors.time ? "error" : ""}
+              required
+            />
+            {errors.time && <p className="error-message">{errors.time}</p>}
+          </div>
 
-        <div className="form-group">
-          <label>Date</label>
-          <input
-            type="date"
-            name="date"
-            value={showDetails.date}
-            onChange={handleChange}
-            className={errors.date ? "error" : ""}
-          />
-          {errors.date && <p className="error-message">{errors.date}</p>}
-        </div>
+          <div className="form-group">
+            <label>Date</label>
+            <input
+              type="date"
+              name="date"
+              value={showDetails.date}
+              onChange={handleChange}
+              className={errors.date ? "error" : ""}
+              required
+            />
+            {errors.date && <p className="error-message">{errors.date}</p>}
+          </div>
 
+          <div className="form-group">
+            <label>Theater</label>
+            <select
+              name="theater"
+              value={showDetails.theater ? showDetails.theater.id : ""}
+              onChange={handleChange}
+              className={errors.theater ? "error" : ""}
+              required>
+              <option value="">Select Theater</option>
+              {theaters.map((theater) => (
+                <option key={theater.id} value={theater.id}>
+                  {theater.name}
+                </option>
+              ))}
+            </select>
+            {errors.theater && (
+              <p className="error-message">{errors.theater}</p>
+            )}
+          </div>
 
-        <div className="form-group">
-          <label>Theater</label>
+          <div className="form-group">
+            <label>Movie</label>
+            <select
+              name="movie"
+              value={showDetails.movie ? showDetails.movie.id : ""}
+              onChange={handleChange}
+              className={errors.movie ? "error" : ""}
+              required>
+              <option value="">Select Movie</option>
+              {movies.map((movie) => (
+                <option key={movie.id} value={movie.id}>
+                  {movie.moviename}
+                </option>
+              ))}
+            </select>
+            {errors.movie && <p className="error-message">{errors.movie}</p>}
+          </div>
+
+          <button type="submit" className="submit-button">
+            Add Show
+          </button>
+
+          {apiError && <p className="error-message">{apiError}</p>}
+          {successMessage && (
+            <p className="success-message">{successMessage}</p>
+          )}
+        </form>
+        <div className="delete-show">
+          <h2>Delete Show</h2>
           <input
             type="text"
-            name="theater"
-            value={showDetails.theater}
-            onChange={handleChange}
-            className={errors.theater ? "error" : ""}
+            placeholder="Enter Show ID"
+            value={showIdToDelete}
+            onChange={(e) => setShowIdToDelete(e.target.value)}
           />
-          {errors.theater && <p className="error-message">{errors.theater}</p>}
-          </div>
-          <div className="form-group">
-  <label>Theater</label>
-  <select
-    name="theater"
-    value={showDetails.theater}
-    onChange={handleChange}
-    className={errors.theater ? "error" : ""}
-  >
-   <option value="">Select a theater</option>
-    {theaters.map((theater) => (
-      <option key={theater.id} value={theater.name}>
-        {theater.name}
-      </option> 
-    ))}
-  </select>
-  {errors.theater && <p className="error-message">{errors.theater}</p>}
-</div>
-
-        <div className="form-group">
-  <label>Movie</label>
-  <select
-    name="movie"
-    value={showDetails.movie}
-    onChange={handleChange}
-    className={errors.movie ? "error" : ""}
-  >
-    <option value="">Select a movie</option>
-    {movies.map((movie) => (
-      <option key={movie.id} value={movie}>
-        {movie.moviename}
-      </option>
-    ))}
-  </select>
-  {errors.movie && <p className="error-message">{errors.movie}</p>}
-</div>
-
-        <button type="submit" className="submit-button">
-          Add Show
-        </button>
-      </form>
-    </div>
+          <button onClick={handleDelete} className="delete-button">
+            Delete Show
+          </button>
+          {apiError && <p className="error-message">{apiError}</p>}
+          {successMessage && (
+            <p className="success-message">{successMessage}</p>
+          )}
+        </div>
+      </div>
     </section>
   );
 };

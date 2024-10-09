@@ -1,17 +1,37 @@
 import React, { useContext } from 'react';
 import { globalVar } from './../globalContext/GlobalContext';
+import toast from 'react-hot-toast';
+import axios from 'axios';
 
 const UpdateNotify = () => {
-  let { updateNotify,setupdateNotify} = useContext(globalVar);
+  let { updateNotify,setupdateNotify,updateData,setUpdateData,updateCount,setUpdateCount} = useContext(globalVar);
 
   const handleCancel = () => {
     setupdateNotify(false); 
   };
 
-  const handleUpdate = () => {
-    console.log('Notification updated');
+  const handleUpdate =async () => {
+    console.log(updateData);
     setupdateNotify(false); 
-//    Api dalni h to update in the database 
+    try {
+      const response = await axios.put(`http://localhost:8080/${updateData?.comp}/update`, {
+        id: updateData?.data?.id,
+        name: updateData?.data?.name,
+        address: updateData.data?.address,
+      }, {
+        headers: {
+            ContentType: "application/json",
+          Authorization: `Bearer ${localStorage.getItem('auth')}`
+        } 
+      });
+      console.log('Theatre updated successfully:', response.data);
+      // Optionally reset form fields after successful submission
+      toast.success(`${updateData.comp} is updated`)
+      setUpdateCount(1)
+      return { id: '', name: '', address: '' }
+    } catch (error) {
+      console.error('Error updating theatre:', error);
+    }
   };
 
   return (
@@ -29,7 +49,7 @@ const UpdateNotify = () => {
               Cancel
             </button>
             <button className="btn-updatenotify update-confirm-btn-updatenotify" onClick={handleUpdate}>
-              Update Notification
+              Update
             </button>
           </div>
         </div>
