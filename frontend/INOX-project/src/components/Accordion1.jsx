@@ -7,8 +7,9 @@ import { useNavigate } from "react-router-dom";
 
 const Accordion1 = ({ data }) => {
   console.log(data);
-  let navigate=useNavigate();
-  let { setUpdateShowPanel, setDeleteData ,setIsModalOpen,inoxLoginType} = useContext(globalVar);
+  let navigate = useNavigate();
+  let { setUpdateShowPanel, setDeleteData, setIsModalOpen, inoxLoginType } =
+    useContext(globalVar);
   const [isOpen, setIsOpen] = useState(false);
   // let [data, setData] = useState({});
 
@@ -25,17 +26,15 @@ const Accordion1 = ({ data }) => {
     });
   };
 
-  let handleBooking=(ele)=>{
-    navigate("/selectseats", {state:ele})
-  }
+  let handleBooking = (ele) => {
+    navigate("/selectseats", { state: ele });
+  };
   return (
     <section className="show-timings-container">
       <div className="accordion-header" onClick={toggleAccordion}>
         <div className="inoxhead">
           <h2 className="inoxh2">{data.name}</h2>
-          <p className="inoxp">
-          {data.address}
-          </p>
+          <p className="inoxp">{data.address}</p>
         </div>
         <div className="accordionicons">
           <p>20.1km away</p>
@@ -59,13 +58,21 @@ const Accordion1 = ({ data }) => {
             {/* <p>2h 50m • Hindi, Telugu • Action</p> */}
 
             <div className="timings-row">
-              {data?.showTimes?.map((ele)=>{
-             return  <div className="time-box" onClick={()=>{handleBooking(ele)}}>{ele.time}</div>
-              
+              {data?.showTimes?.map((ele) => {
+                return (
+                  <div
+                    className="time-box"
+                    onClick={() => {
+                      handleBooking(ele);
+                    }}
+                  >
+                    {ele.time}
+                  </div>
+                );
               })}
             </div>
-             
-             {/* {inoxLoginType=== "ADMIN" &&  <div className="button-container">
+
+            {/* {inoxLoginType=== "ADMIN" &&  <div className="button-container">
               <button
                 className="delete-show-button"
                 onClick={() => {
@@ -74,7 +81,6 @@ const Accordion1 = ({ data }) => {
                 Delete Show
               </button>
             </div>} */}
-           
           </div>
         </div>
       )}
