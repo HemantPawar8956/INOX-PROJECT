@@ -5,6 +5,7 @@ import ShowTimings from './Showtimings';
 
 const Payment = () => {
   const { state } = useLocation(); 
+  console.log(state)
   const { movieName, theatreName, showTiming, seatInfo, GrandTotal } = state;
 
   let [currentDate, setCurrentDate] = useState(new Date());
@@ -26,7 +27,7 @@ const Payment = () => {
             <p>Theatre Name{theatreName}</p>
           </div>
           <div className="pays2">
-            <h1>Seat Info : {seatInfo}</h1> 
+            <h1>Seat Info : {}</h1> 
           </div>
         </div>
 
@@ -56,7 +57,7 @@ const Payment = () => {
         </div>
 
         <div className="pay6">
-          <p>Pay Rs {parseFloat(GrandTotal) + 70.80 + 60 + 10.80 + 2.00}</p>
+          <p>Pay Rs {parseFloat(GrandTotal) + 70.80 + 60 }</p>
         </div>
       </div>
     </section>

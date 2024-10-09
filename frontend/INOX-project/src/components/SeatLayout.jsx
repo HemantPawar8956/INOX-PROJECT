@@ -1,69 +1,49 @@
 import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SeatLayout = () => {
+  let navigate=useNavigate();
+  let { state } = useLocation(); // 'state' is passed as props, containing seat array with different prices
+   console.log(state)
   let seatSeq = "A";
   let [selectedSeats, setSelectedSeats] = useState([]);
-  let [showPayment, setShowPayment] = useState(false); 
-  let data = [
-    { seatNo: "A1", price: 200, boooked: true },
-    { seatNo: "A2", price: 200, boooked: true },
-    { seatNo: "A3", price: 200, boooked: false },
-    { seatNo: "A4", price: 200, boooked: false },
-    { seatNo: "A5", price: 200, boooked: false },
-    { seatNo: "A6", price: 200, boooked: false },
-    { seatNo: "A7", price: 200, boooked: false },
-    { seatNo: "A8", price: 200, boooked: true },
-    { seatNo: "A9", price: 200, boooked: false },
-    { seatNo: "A10", price: 200, boooked: true },
-    { seatNo: "A11", price: 200, boooked: true },
-    { seatNo: "A12", price: 200, boooked: false },
-    { seatNo: "A13", price: 200, boooked: false },
-    { seatNo: "A14", price: 200, boooked: false },
-    { seatNo: "A15", price: 200, boooked: true },
-    { seatNo: "A16", price: 200, boooked: false },
-    { seatNo: "A17", price: 200, boooked: false },
-    { seatNo: "A18", price: 200, boooked: false },
-    { seatNo: "B1", price: 200, boooked: false },
-    { seatNo: "B2", price: 200, boooked: false },
-    { seatNo: "B3", price: 200, boooked: false },
-    { seatNo: "B4", price: 200, boooked: false },
-    { seatNo: "B5", price: 200, boooked: false },
-    { seatNo: "B6", price: 200, boooked: false },
-    { seatNo: "B7", price: 200, boooked: false },
-    { seatNo: "B8", price: 200, boooked: false },
-    { seatNo: "B9", price: 200, boooked: false },
-    { seatNo: "B10", price: 200, boooked: false },
-    { seatNo: "B11", price: 200, boooked: false },
-    { seatNo: "B12", price: 200, boooked: false },
-    { seatNo: "B13", price: 200, boooked: false },
-    { seatNo: "B14", price: 200, boooked: false },
-    { seatNo: "B15", price: 200, boooked: false },
-    { seatNo: "B16", price: 200, boooked: false },
-    { seatNo: "B17", price: 200, boooked: false },
-    { seatNo: "B18", price: 200, boooked: false },
-  ];
-  let spaces = [1, 2, 3];
+  let [showPayment, setShowPayment] = useState(false);
 
-  let SeatStatus = (e, ele) => {
-    if (!ele.boooked && !selectedSeats.includes(ele.seatNo)) {
+  let spaces = [1, 2, 3];
+  
+ let bookedTicket=()=>{
+    navigate("/payment", {state:{
+      movieName:"",
+      theaterName:"",
+      showTime:"",
+      seatInfo:selectedSeats,
+      GrandTotal:subtotal
+    }})
+ }
+
+  // Function to handle seat selection and deselection
+  let SeatStatus = (e, seat) => {
+    if (!seat.booked && !selectedSeats.includes(seat)) {
       e.target.style.backgroundColor = "#003688";
       e.target.style.color = "white";
-      setSelectedSeats((prevSeats) => [...prevSeats, ele.seatNo]);
-      setShowPayment(true); 
-    } else if (selectedSeats.includes(ele.seatNo)) {
+      setSelectedSeats((prevSeats) => [...prevSeats, seat]); // Add full seat object to selectedSeats
+      setShowPayment(true);
+    } else if (selectedSeats.includes(seat)) {
       e.target.style.backgroundColor = "lightgray";
       e.target.style.color = "black";
-      setSelectedSeats((prevSeats) => prevSeats.filter((seat) => seat !== ele.seatNo));
+      setSelectedSeats((prevSeats) =>
+        prevSeats.filter((selectedSeat) => selectedSeat.seatNumber !== seat.seatNumber) // Remove the seat
+      );
 
       if (selectedSeats.length === 1) {
-        setShowPayment(false);
+        setShowPayment(false); // Hide payment section if no seats are selected
       }
     }
   };
 
-  const seatPrice = 200;
-  const subtotal = selectedSeats.length * seatPrice;
-  const grandTotal = subtotal;
+  // Calculate subtotal by summing the price of all selected seats
+  const subtotal = selectedSeats.reduce((total, seat) => total + seat.price, 0);
+  const grandTotal = subtotal; // In case you want to apply additional fees/taxes, modify grandTotal accordingly
 
   return (
     <section className="main1">
@@ -77,7 +57,6 @@ const SeatLayout = () => {
             <span className="SeatLayoutNavEle">PAYMENT</span>
           </div>
         </nav>
-
 
         <section className="seat">
           <div className="seat-content">
@@ -98,12 +77,13 @@ const SeatLayout = () => {
               </span>
             </div>
           </div>
+
           <section className="car1">
-            {data.map((ele, index) => {
+            {state?.seat?.map((seat, index) => {
               return (
                 <>
-                  {ele.seatNo.slice(0, 1) !== seatSeq &&
-                    ((seatSeq = ele.seatNo.slice(0, 1)),
+                  {seat.seatNumber?.slice(0, 1) !== seatSeq &&
+                    ((seatSeq = seat.seatNumber.slice(0, 1)),
                     (
                       <>
                         <br key={index} />
@@ -112,16 +92,17 @@ const SeatLayout = () => {
                     ))}
 
                   <span
-                    className={`seats ${ele.boooked ? "bookedSeat" : ""}`}
-                    disabled={ele.boooked}
+                    className={`seats ${seat.booked ? "bookedSeat" : ""}`}
+                    disabled={seat.booked}
                     onClick={(e) => {
-                      SeatStatus(e, ele);
+                      SeatStatus(e, seat); // Pass the full seat object
                     }}
                     key={index + 2}>
-                    {ele.seatNo}
+                    {seat.seatNumber}
                   </span>
-                  {(ele.seatNo.slice(1) == 4 || ele.seatNo.slice(1) == 14) &&
-                    spaces.map((ele, i) => (
+                  {(seat.seatNumber.slice(1) == 4 ||
+                    seat.seatNumber.slice(1) == 14) &&
+                    spaces.map((space, i) => (
                       <span className="space" key={i + 1}>
                         space
                       </span>
@@ -140,7 +121,7 @@ const SeatLayout = () => {
           </div>
           <div className="image-pic2">
             <div>SEAT INFO</div>
-            <div>{selectedSeats.join(", ")}</div>
+            <div>{selectedSeats.map(seat => seat.seatNumber).join(", ")}</div>
             <div className="r1">R1</div>
           </div>
           <div className="image-pic3">
@@ -148,7 +129,9 @@ const SeatLayout = () => {
               <h1>Tickets</h1>
             </div>
             <div>
-              <h1>{selectedSeats.length} x {seatPrice}</h1>
+              <h1>
+                {selectedSeats.length} x ₹{selectedSeats.map(seat => seat.price).join(", ")}
+              </h1>
             </div>
           </div>
           <div className="image-pic4">
@@ -171,7 +154,7 @@ const SeatLayout = () => {
               <h1>Grand Total: ₹{grandTotal}</h1>
             </div>
             <div>
-              <button className="button-grand">Proceed</button>
+              <button className="button-grand" onClick={bookedTicket}>Proceed</button>
             </div>
           </div>
         </section>

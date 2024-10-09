@@ -31,18 +31,16 @@ const Corousel2 = () => {
       comp: "movies",
       data: ele,
     });
-
-    setUpdatemoviePanel(!updatemoviePanel);
-    setupdateNotify(true);
+     
+    setUpdatemoviePanel(true);
+      
   };
 
-  let deleteMovie = () => {
+  let deleteMovie = (ele) => {
     setDeleteData({
       comp: "movies",
       data: ele,
     });
-
-    setUpdatemoviePanel(!updatemoviePanel);
     setIsModalOpen(true);
   };
 

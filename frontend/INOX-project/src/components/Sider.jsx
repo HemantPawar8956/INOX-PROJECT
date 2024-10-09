@@ -168,7 +168,7 @@ const Sider = () => {
                 </div>
                 <div className="cityLines">
                   <p></p>
-                  <h4>Other Cities </h4>
+                  <h4>Other Cities</h4>
                   <p></p>
                 </div>
                 <ul>

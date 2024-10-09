@@ -43,9 +43,10 @@ const UpdateTheatre = () => {
   // Handle form submission to update the theatre details
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("data")
     setupdateNotify(true);
     setUpdateTheater(false);
-    //  setTheatre(data);
+    console.log(theatre)
     setUpdateData({ comp: "theater", data: theatre });
   };
 

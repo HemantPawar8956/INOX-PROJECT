@@ -36,6 +36,7 @@ const Addtheatre = () => {
       console.log("Theater added successfully:", response.data);
       toast.success("Theater Added Successfully")
       setUpdateCount(1)
+      setAddTheatrePanel(false);
       // Optionally clear form fields after successful submission
       setTheatre({ name: "", address: "" });
       

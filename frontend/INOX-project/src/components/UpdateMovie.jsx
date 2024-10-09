@@ -21,25 +21,24 @@ const UpdateMovie = () => {
     movieLanguage: " ",
     movieImage: " ",
   });
-
+ console.log("updateData",updateData)
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUpdateMovie({ ...updateMovie, [name]: value });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setupdateNotify(true);
     setUpdatemoviePanel(false);
-    //  setTheatre(data);
-    setUpdateData({ comp: "theater", data: theatre });
+    console.log(updateMovie)
+    setUpdateData({ comp: "movies", data: updateMovie });
   };
   useEffect(() => {
     const fetchMovie = async () => {
       let token = localStorage.getItem("auth");
       try {
         const response = await axios.get(
-          `http://localhost:8080/movies/find/${updateData?.id}`,
+          `http://localhost:8080/movies/find/${updateData?.data?.id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`, // Include token in the headers
@@ -55,8 +54,8 @@ const UpdateMovie = () => {
     fetchMovie();
   }, []);
   return (
-    <div className="update-movie">
-      <form className="update-movie__form" onSubmit={handleSubmit}>
+    <div className="update-movie" onClick={(e)=>{e.stopPropagation(),setUpdatemoviePanel(false)}}>
+      <form className="update-movie__form" onSubmit={handleSubmit} onClick={(e)=>{e.stopPropagation(),setUpdatemoviePanel(true)}}>
         <label className="update-movie__label">Movie ID:</label>
         <input
           type="text"
@@ -85,7 +84,7 @@ const UpdateMovie = () => {
 
         <label className="update-movie__label">Duration:</label>
         <input
-          type="text"
+          type="time"
           className="update-movie__input"
           name="duration"
           value={updateMovie.duration}
