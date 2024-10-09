@@ -2,6 +2,8 @@ package com.velocitai.movie_booking.service.imp;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,8 +16,11 @@ import com.velocitai.movie_booking.dao.MovieRepository;
 import com.velocitai.movie_booking.dao.SeatRepository;
 import com.velocitai.movie_booking.dao.ShowRepository;
 import com.velocitai.movie_booking.dao.TheaterRepository;
+import com.velocitai.movie_booking.model.Seat;
 import com.velocitai.movie_booking.model.Show;
+import com.velocitai.movie_booking.model.Theater;
 import com.velocitai.movie_booking.service.ShowService;
+import com.velocitai.movie_booking.util.SeatType;
 
 @Service
 public class ShowServiceImp implements ShowService {
@@ -33,15 +38,57 @@ public class ShowServiceImp implements ShowService {
 	TheaterRepository theaterRepository;
 	
 	
+//	@Override
+//	public ResponseEntity<Show> saveShow(Show show) {
+//		 
+//			  show.setDate(LocalDate.now());
+//		        show.setTime(LocalTime.now());
+//		        Show savedShow = showRepository.save(show);
+//
+//		       return ResponseEntity.ok(savedShow);
+//	}
+	
 	
 	@Override
-	public ResponseEntity<Show> saveShow(Show show) {
-		 
-			  show.setDate(LocalDate.now());
-		        show.setTime(LocalTime.now());
-		        Show savedShow = showRepository.save(show);
-
-		       return ResponseEntity.ok(savedShow);
+	public ResponseEntity<Show> saveShow(Show show, long theaterId, long movieId) {
+   Theater theater=theaterRepository.findById(theaterId).get();
+		show.setTheater(theater);
+		show.setMovie(movieRepository.findById(movieId).get());
+		List<Seat> seats = new ArrayList<Seat>();
+		char c = 'A';
+		for (char i = c; i <= 'E'; i++) {
+			for (int j = 1; j <= 18; j++) {
+				if (i > 'B') {
+					Seat seat = new Seat();
+					seat.setSeatNumber(i + "" + j);
+					seat.setPrice(200);
+					seat.setType(SeatType.REGULAR);
+					seat.setBooked(false);
+					seats.add(seat);
+				} else {
+					Seat seat = new Seat();
+					seat.setSeatNumber(i + "" + j);
+					seat.setPrice(400);
+					seat.setType(SeatType.VIP);
+					seat.setBooked(false);
+					seats.add(seat);
+				}
+			}
+		}
+        
+		show.setSeat(seats);
+		seatRepository.saveAll(seats);
+		Show savedShow = showRepository.save(show);
+		if(theater.getShowTimes()!=null) {
+			theater.getShowTimes().add(show);
+		}
+		
+		else{
+			theater.setShowTimes(Arrays.asList(show));
+			
+		}
+       
+		return ResponseEntity.ok(savedShow);
 	}
 
 	@Override

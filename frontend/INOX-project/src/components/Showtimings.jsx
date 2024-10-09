@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Accordion from "./Accordion1";
 import Accordion1 from "./Accordion1";
 import Accordion2 from "./Accordion1";
@@ -10,9 +10,11 @@ import axios from "axios";
 import { globalVar } from "../globalContext/GlobalContext";
 
 const ShowTimings = () => {
-  let { inoxLoginType, addthatrePanel, setAddTheatrePanel } =
+  let { inoxLoginType,addShowPanel, setAddShowPanel  } =
     useContext(globalVar);
 
+
+     let [allTheater,setAllTheater]=useState([])
   const dates = [
     { day: "Sep 30", label: "Today" },
     { day: "Oct 01", label: "Tomorrow" },
@@ -27,7 +29,7 @@ const ShowTimings = () => {
     let fetchData = async () => {
       try {
         let response = await axios.get(
-          `http://localhost:8080/movies/allmovie/{theatername}`,
+          `http://localhost:8080/theater/all`,
           {
             headers: {
               ContentType: "application/json",
@@ -35,7 +37,7 @@ const ShowTimings = () => {
             },
           }
         );
-
+        setAllTheater(response.data)
         console.log(response.data);
       } catch (error) {
         console.error("Error fetching data", error);
@@ -52,7 +54,7 @@ const ShowTimings = () => {
           <button
             className="addshowbtn"
             onClick={(e) => {
-              e.stopPropagation(), setAddTheatrePanel(true);
+              e.stopPropagation(), setAddShowPanel(true);
             }}>
             Add Show
           </button>
@@ -120,7 +122,10 @@ const ShowTimings = () => {
         </div>
       </div>
       <section className="accor">
-        <Accordion1 data="theaterData Pass Here" />
+        {allTheater.map((data)=>{
+  return <Accordion1 data={data} />
+        })}
+      
 
       </section>
     </section>

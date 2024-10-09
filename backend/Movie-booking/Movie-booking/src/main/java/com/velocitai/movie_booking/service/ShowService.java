@@ -32,7 +32,9 @@ public interface ShowService {
 	public ResponseEntity<Show> saveShow(long movieId, long theaterId, Show show);
    public 	ResponseEntity<Show> UpdateShow( Show show);
 
-    public  ResponseEntity<Show> saveShow(Show show);
+//    public  ResponseEntity<Show> saveShow(Show show);
+
+	 ResponseEntity<Show> saveShow(Show show, long theaterId, long movieId);
 
 
 }

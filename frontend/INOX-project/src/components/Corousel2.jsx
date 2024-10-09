@@ -12,6 +12,28 @@ const Corousel2 = () => {
     setInoxLoginType,
   } = useContext(globalVar);
 
+  let handleBooking = (ele) => {
+    navigate("/showtimings", { state: ele });
+  };
+
+  let UpdateMovie = (ele) => {
+    setUpdateData({
+      comp: "movies",
+      data: ele,
+    });
+     
+    setUpdatemoviePanel(true);
+      
+  };
+
+  let deleteMovie = (ele) => {
+    setDeleteData({
+      comp: "movies",
+      data: ele,
+    });
+    setIsModalOpen(true);
+  };
+
   useEffect(() => {
     let token = localStorage.getItem("auth");
     console.log(token);
@@ -32,18 +54,7 @@ const Corousel2 = () => {
     fetchMovies();
   }, []);
 
-  const deleteMovie = async (ele) => {
-    console.log(ele)
-    const response = await axios.delete(`http://localhost:8080/movies/delete/${ele.id}`,
-      {
-        headers: {
-          Authorization:`Bearer ${localStorage.getItem("auth")}`
-        }
-      }
 
-    )
-    console.log(response)
-  }
   return (
     <section className="corousel2">
       <div className="heading">

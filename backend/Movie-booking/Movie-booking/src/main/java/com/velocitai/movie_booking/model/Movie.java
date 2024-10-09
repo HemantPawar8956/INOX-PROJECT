@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,7 +38,7 @@ public class Movie {
 	@Column(name="movie_image")
 	private String movieImage;
 	
-
+@JsonIgnore
 	@OneToMany(mappedBy = "movie") // Indicates the 'movie' field in the Show class
 	private List<Show> shows; 
 	

@@ -29,7 +29,7 @@ public interface TheaterRepository extends JpaRepository<Theater, Long>{
 //    List<Theater> searchByAddress(@Param("address") String address);
     
 //    @Query("SELECT t FROM Theater t JOIN t.showTime s WHERE s.movie.moviename = :movieName")
-	@Query("SELECT t FROM Theater t JOIN FETCH t.showTime s JOIN FETCH s.movie m WHERE LOWER(m.moviename) LIKE LOWER(CONCAT('%', :movieName, '%'))")
+	@Query("SELECT t FROM Theater t JOIN FETCH t.showTimes s JOIN FETCH s.movie m WHERE LOWER(m.moviename) LIKE LOWER(CONCAT('%', :movieName, '%'))")
     List<Theater> findByShow_MovieName(@Param("movieName") String movieName);
 
 

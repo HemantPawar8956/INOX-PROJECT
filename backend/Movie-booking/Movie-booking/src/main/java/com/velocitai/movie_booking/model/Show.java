@@ -6,7 +6,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -45,7 +47,7 @@ public class Show {
 		@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 		private Theater theater;
 		@JsonIgnore
-		@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+		@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 		private Movie movie;
 	
 		

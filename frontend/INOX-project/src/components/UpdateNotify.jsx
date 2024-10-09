@@ -14,11 +14,7 @@ const UpdateNotify = () => {
     console.log(updateData);
     setupdateNotify(false); 
     try {
-      const response = await axios.put(`http://localhost:8080/${updateData?.comp}/update`, {
-        id: updateData?.data?.id,
-        name: updateData?.data?.name,
-        address: updateData.data?.address,
-      }, {
+      const response = await axios.put(`http://localhost:8080/${updateData?.comp}/update`, updateData?.data, {
         headers: {
             ContentType: "application/json",
           Authorization: `Bearer ${localStorage.getItem('auth')}`

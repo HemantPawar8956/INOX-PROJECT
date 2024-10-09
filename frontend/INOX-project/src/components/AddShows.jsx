@@ -3,20 +3,20 @@ import axios from "axios";
 import { globalVar } from "../globalContext/GlobalContext";
 
 const AddShows = () => {
-  let { setAddShowPanel } = useContext(globalVar);
+  let{setAddShowPanel}=useContext(globalVar)
   const [showDetails, setShowDetails] = useState({
     time: "",
     date: "",
     theater: null,
-    movie: null,
+    movie: null,   
   });
 
-  const [theaters, setTheaters] = useState([]);
-  const [movies, setMovies] = useState([]);
+  const [theaters, setTheaters] = useState([]); 
+  const [movies, setMovies] = useState([]);    
   const [errors, setErrors] = useState({});
-  const [apiError, setApiError] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const [showIdToDelete, setShowIdToDelete] = useState("");
+  const [apiError, setApiError] = useState("");     
+  const [successMessage, setSuccessMessage] = useState(""); 
+  const [showIdToDelete, setShowIdToDelete] = useState(""); 
 
   const token = localStorage.getItem("auth");
 
@@ -25,7 +25,7 @@ const AddShows = () => {
       try {
         const response = await axios.get("http://localhost:8080/theater/all", {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`, 
           },
         });
         setTheaters(response.data);
@@ -39,12 +39,12 @@ const AddShows = () => {
       try {
         const response = await axios.get("http://localhost:8080/movies/all", {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization:` Bearer ${token}`,
           },
         });
-
+        
         setMovies(response.data);
-        console.log(response);
+        console.log(response)
       } catch (error) {
         console.error("Error fetching movies:", error);
         setApiError("Failed to fetch movies. Please try again later.");
@@ -61,7 +61,7 @@ const AddShows = () => {
     if (name === "theater" || name === "movie") {
       setShowDetails({
         ...showDetails,
-        [name]: { id: value },
+        [name]: { id: value }, 
       });
     } else {
       setShowDetails({
@@ -147,21 +147,17 @@ useEffect(() => {
       const payload = {
         time: showDetails.time,
         date: showDetails.date,
-        theater: { id: showDetails.theater.id },
-        movie: { id: showDetails.movie.id },
+        theater: { id: showDetails.theater.id }, 
+        movie: { id: showDetails.movie.id },       
       };
 
       try {
-        const response = await axios.post(
-          `http://localhost:8080/show/save/${showDetails.theater.id}/${showDetails.movie.id}`,
-          payload,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await axios.post(`http://localhost:8080/show/save/${showDetails.theater.id}/${showDetails.movie.id}`, payload, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization:` Bearer ${token}`, 
+          },
+        });
 
         console.log("API response:", response.data);
 
@@ -178,9 +174,7 @@ useEffect(() => {
 
         if (error.response) {
           setApiError(
-            `Failed to save the show: ${
-              error.response.data.message || "Server Error"
-            }`
+            `Failed to save the show: ${error.response.data.message || "Server Error"}`
           );
         } else if (error.request) {
           setApiError("No response from the server. Please try again later.");
@@ -198,14 +192,11 @@ useEffect(() => {
     }
 
     try {
-      const response = await axios.delete(
-        `http://localhost:8080/show/delete/${showIdToDelete}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.delete(`http://localhost:8080/show/delete/${showIdToDelete}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       console.log("Delete response:", response.data);
       setSuccessMessage("Show deleted successfully!");
@@ -213,11 +204,7 @@ useEffect(() => {
     } catch (error) {
       console.error("Error deleting the show:", error);
       if (error.response) {
-        setApiError(
-          `Failed to delete the show: ${
-            error.response.data.message || "Server Error"
-          }`
-        );
+        setApiError(`Failed to delete the show: ${error.response.data.message || "Server Error"}`);
       } else if (error.request) {
         setApiError("No response from the server. Please try again later.");
       } else {
@@ -227,16 +214,8 @@ useEffect(() => {
   };
 console.log(showDetails)
   return (
-    <section
-      className="add-show-main"
-      onClick={(e) => {
-        e.stopPropagation(), setAddShowPanel(false);
-      }}>
-      <div
-        className="add-shows-container"
-        onClick={(e) => {
-          e.stopPropagation(), setAddShowPanel(true);
-        }}>
+    <section className="add-show-main" onClick={(e)=>{e.stopPropagation(),setAddShowPanel(false)}}>
+      <div className="add-shows-container" onClick={(e)=>{e.stopPropagation(),setAddShowPanel(true)}}>
         <h2>Add New Show</h2>
         <form onSubmit={handleSubmit} className="add-show-form">
           <div className="form-group">
@@ -272,7 +251,8 @@ console.log(showDetails)
               value={showDetails.theater ? showDetails.theater.id : ""}
               onChange={handleChange}
               className={errors.theater ? "error" : ""}
-              required>
+              required
+            >
               <option value="">Select Theater</option>
               {theaters.map((theater) => (
                 <option key={theater.id} value={theater.id}>
@@ -280,9 +260,7 @@ console.log(showDetails)
                 </option>
               ))}
             </select>
-            {errors.theater && (
-              <p className="error-message">{errors.theater}</p>
-            )}
+            {errors.theater && <p className="error-message">{errors.theater}</p>}
           </div>
 
           <div className="form-group">
@@ -292,7 +270,8 @@ console.log(showDetails)
               value={showDetails.movie ? showDetails.movie.id : ""}
               onChange={handleChange}
               className={errors.movie ? "error" : ""}
-              required>
+              required
+            >
               <option value="">Select Movie</option>
               {movies.map((movie) => (
                 <option key={movie.id} value={movie.id}>
@@ -308,9 +287,7 @@ console.log(showDetails)
           </button>
 
           {apiError && <p className="error-message">{apiError}</p>}
-          {successMessage && (
-            <p className="success-message">{successMessage}</p>
-          )}
+          {successMessage && <p className="success-message">{successMessage}</p>}
         </form>
         <div className="delete-show">
           <h2>Delete Show</h2>
@@ -324,9 +301,7 @@ console.log(showDetails)
             Delete Show
           </button>
           {apiError && <p className="error-message">{apiError}</p>}
-          {successMessage && (
-            <p className="success-message">{successMessage}</p>
-          )}
+          {successMessage && <p className="success-message">{successMessage}</p>}
         </div>
       </div>
     </section>

@@ -1726,15 +1726,15 @@ p {
   }
 }
 
-/* seebi 
+/* seebi */
 .main1 {
   height: 100vh;
   width: 100%;
   display: flex;
 }
-/* .main1 .main {
-  /* width: 70%; */
-/* }  */
+.main1 .main {
+  width: 100%;
+ } 
 
 .main1 .main .navseat .nav2 {
   display: flex;
@@ -1866,5 +1866,934 @@ p {
   border-radius: 5px;
 }
 
-/* Kanupriya */
-/* Navbar */
+/* Parent section styling */
+.carpayment {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for h1 in .carpayment (Booking Summary) */
+.carpayment .image-pic h1 {
+  font-size: 24px;
+  text-align: center;
+  color: #003688;
+  margin-bottom: 20px;
+}
+
+/* Seat information section */
+.carpayment .image-pic2 {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+/* Styling text inside .image-pic2 */
+.carpayment .image-pic2 div {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Row indicator styling */
+.carpayment .image-pic2 .r1 {
+  font-weight: bold;
+  font-size: 16px;
+  color: #003688;
+}
+
+/* Tickets section */
+.carpayment .image-pic3 h1 {
+  font-size: 20px;
+  color: #333;
+}
+
+/* Payment details section */
+.carpayment .image-pic4 h1 {
+  font-size: 22px;
+  color: #003688;
+  margin-bottom: 10px;
+}
+
+/* Subtotal styling */
+.carpayment .image-pic4 h1:nth-child(2) {
+  font-size: 18px;
+  color: #666;
+}
+
+/* Taxes and fees dropdown */
+.carpayment .image-pic4 .t1 {
+  font-size: 16px;
+  padding: 5px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+/* Grand total section */
+.carpayment .image-pic5 h1 {
+  font-size: 22px;
+  color: #003688;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Proceed button styling */
+.carpayment .image-pic5 .button-grand {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #003688;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.carpayment .image-pic5 .button-grand:hover {
+  background-color: #002f5a;
+}
+
+
+.cinema-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.cinema-list .cinema-container {
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.cinema-list .search-bar {
+  position: sticky;
+  top:70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  padding: 20px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  min-width: 100%; 
+  z-index: 5;
+}
+
+.cinema-list .search-input {
+  display: flex;
+  max-width: 30%; 
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  background-color: #f9f9f9;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.cinema-list .search-input:focus {
+  border-color: #4a90e2;
+}
+.cinema-list .cinema-item {
+  display:flex ;
+  justify-content: space-between;
+  align-content:end;
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.cinema-list .cinema-item:hover {
+  transform: scale(1.02);
+}
+
+.cinema-list .cinema-name {
+  font-size: 1.5em;
+  color: #333;
+  padding:10px;
+}
+
+.cinema-list .cinema-address {
+  font-size: 1.2em;
+  color: #666;
+}
+
+.cinema-list .cinema-movie-items{
+  position: relative;
+  left:190px;
+  min-width:30%;
+  overflow-x: auto;
+}
+.cinema-list .cinema-movie-items h2{
+  font-size: 19px;
+  font-weight: 350;
+}
+.cinema-list .movie-list {
+  width: 64%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto !important;
+}
+.cinema-list .movie-item img {
+  min-width: 90px;
+  height: 22vh;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+
+}
+.cinema-list .movie-item img:hover {
+  transform: scale(1.05);
+}
+
+.cinema-list .addtheater{
+  background-color:#0443a1 ;
+  color:white;
+  padding:10px;
+  border-radius:5px;
+}
+
+.cinema-list .addtheater:hover{
+  
+  background-color:#0443a1d0 ;
+}
+
+.cinema-item .buttons-update-delete{
+  display: flex;
+  gap:10px;
+  position: relative;
+  top:10px;
+  text-align: center;
+}
+
+.buttons-update-delete .addupdate,.adddelete{
+  background-color:#0443a1d0 ;
+  color:white;
+  padding:5px ;
+  border-radius:8px;
+  text-align: center;
+}
+
+/* Deletion model -- kanupriya  */
+
+.modal-backdrop-deletenotify {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-container-deletenotify {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-title-deletenotify {
+  padding:10px 10px;
+  font-size: 22px;
+}
+
+
+.modal-message-deletenotify {
+  font-size: 16px;
+  color:rgb(59, 58, 58);
+}
+
+.modal-actions-deletenotify {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-deletenotify {
+  padding: 10px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+}
+
+.cancel-btn-deletenotify {
+  background-color: #032b6d;
+  color: #f9f9f9;
+}
+
+.delete-btn-deletenotify {
+  background-color: #e40d06;
+  color: white;
+}
+
+
+/* Confirmation Updation -- kanupriya  */
+
+.update-modal-backdrop-updatenotify {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.update-modal-container-updatenotify {
+  background-color: white;
+  padding: 20px ;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.update-modal-title-updatenotify {
+  font-size: 22px;
+  padding:10px 10px;
+}
+
+.update-modal-message-updatenotify {
+  font-size: 16px;
+  color:rgb(66, 65, 65);
+}
+
+.update-modal-actions-updatenotify {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-updatenotify {
+  padding: 10px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+}
+
+.update-cancel-btn-updatenotify {
+  background-color: #021d77;
+  color: #efefef;
+}
+
+.update-confirm-btn-updatenotify {
+  background-color: #5cb85c;
+  color: white;
+}
+
+/* lubna -- add shows  */
+.add-show-main{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.753); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.add-shows-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.add-shows-container .add-show-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-shows-container .form-group {
+  margin-bottom: 15px;
+}
+
+.add-shows-container .form-group label {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.add-shows-container .form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-shows-container .error {
+  border-color: red;
+}
+
+.add-shows-container .error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.add-shows-container .submit-button {
+  background-color: #0033ff;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-shows-container .submit-button:hover {
+  background-color: #0056b3;
+}
+
+.update-shows-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.update-shows-container .update-show-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.update-shows-container .form-group {
+  margin-bottom: 15px;
+}
+
+.update-shows-container .form-group label {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.update-shows-container .form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.update-shows-container .error {
+  border-color: red;
+}
+
+.update-shows-container .error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.update-shows-container .submit-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.update-shows-container .submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* accordion and showtimings css by seema */
+.show-sec {
+  background-color: #f8f9fa;
+}
+.show-sec .show {
+  align-items: center; 
+  background-color: #c6d4e9;
+}
+.show .showh2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-right: 68%;
+}
+
+.show-sec .show-timings-container1 {
+  width: 100%;
+  height: 80px;
+  border: 1px solid #cacaca;
+  position: relative;
+  background-color: white;
+}
+
+.show-sec .show-timings-dates {
+  width: 500px;
+  height: 75px;
+  /* border: 1px solid ; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10%;
+  
+}
+
+.show-timings-dates .date-item{
+  border: 1px solid whitesmoke;
+  height: 75px;
+  padding: 9px;
+  cursor: pointer; 
+}
+
+.show-timings-dates .date-item:hover{
+  background-color: #c6d4e9;
+}
+
+.show-timings-dates .date-item .dateshow {
+  display: block;
+}
+
+
+.accordion-content .timings-row .time-box {
+  padding: 15px 35px;
+  border: 1px solid green;
+  margin: 10px;
+  color: green;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+
+.accordion-content .timings-row {
+  display: flex;
+  flex-wrap: wrap;
+  /* width: 80%; */
+}
+
+.status-options .accor{
+  /* border: 1px solid; */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; 
+}
+
+.show-timings-container .accordion-header {
+  width: 80%;
+    border-radius: 10px;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #cacaca;
+  background-color: white;
+  margin:0px auto;
+  box-shadow: 0px 2px 3px gray;
+}
+
+.show-sec .status-options {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.status-options .show-timings-search-status{
+  width: 80%;
+  height: 80px;
+  border: 1px solid #cacaca;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 3px 5px gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 10px;
+  }
+
+
+
+.show-timings-search-status .search-bar {
+  position: relative;
+  width: 50%;
+  /* max-width: 400px; */
+  height: 50px;
+  margin: 0 auto;
+  /* border: 1px solid; */
+}
+
+.show-timings-search-status .search-bar .search-input {
+  width: 400px;
+  height: 40px;
+  /* border: 1px solid ; */
+  border-radius: 5px;
+  font-size: 16px;
+  padding-left: 35px;
+}
+.show-timings-search-status .search-bar .search-input:focus{
+  outline: none; 
+  border-color: #007BFF; 
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+}
+
+.search-bar .ciSearch {
+  position: absolute;
+  left: 10px; 
+  top: 40%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  pointer-events: none; 
+  /* border: 1px solid; */
+}
+
+.status-options .optionitems{ 
+  width: 50%;
+  height: 60px;
+  /* border: 1px solid; */
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  /* margin-left: 350px; */
+}
+
+.optionitems .available{
+width: 400px;
+height: 35px;
+/* border: 1px solid; */
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+
+.optionitems .available .color1 .colorg{
+  width: 10px;
+  height: 10px;
+ /*  border: 1px solid; */
+  background-color: green;
+}
+
+.optionitems .available .color1 .colory{
+  width: 10px;
+  height: 10px;
+ /*  border: 1px solid; */
+  background-color: yellow;
+}
+
+.optionitems .available .color1 .colorb{
+  width: 10px;
+  height: 10px;
+ /*  border: 1px solid; */
+  background-color: brown;
+}
+
+.optionitems .available .color1 .colorgray{
+  width: 10px;
+  height: 10px;
+ /*  border: 1px solid; */
+  background-color: gray;
+}
+
+.optionitems .available .color1{
+  width: 100px;
+  height: 30px;
+  /* border: 1px solid; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  /* margin-top: 10px; */
+}
+
+.status-options .status-item1{
+  width: 200px;
+  height: 30px;
+  /* border: 1px solid; */
+  display: flex;
+  gap: 10px;
+}
+
+.status-item1 .reacticons{
+width: 120px;
+height: 30px;
+/* border: 1px solid; */
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 5px;
+
+}
+
+.show-timings-container .downaccordion .accordion-content {
+  width: 80%;
+    border: 1px solid;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+.downaccordion .accordion-content p{
+  font-weight: bold;
+  color: black;
+}
+
+.show-timings-container .accordion-header .accordionicons{
+  width: 300px;
+  height: 50px;
+  /* border: 1px solid; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.show-timings-container .accordion-header .accordionicons p{
+  font-weight: bold;
+  color: black;
+}
+
+.accordion-header .inoxh2{
+  font-weight: bold;
+}
+
+.show-timings-container .accordion-header .inoxhead{
+  width: 800px;
+  height: 60px;
+  /* border: 1px solid; */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.show-timings-container .accordion-header .inoxhead .inoxp{
+margin-left:-0px ;
+}
+
+.show .addshowbtn {
+  background-color: #003688 !important;
+    color: white;
+    border: none;
+    padding: 10px 23px;
+    text-align: center;
+    /* text-decoration: none; */
+    display: inline-block;
+    font-size: 16px;
+    margin-left: -110px ;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.show .addshowbtn:hover {
+  background-color: #034ebe !important;
+}
+
+.show-timings-container .downaccordion{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.show-timings-container .button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px; 
+}
+
+.show-timings-container .button-container .update-show-button,
+.delete-show-button {
+  background-color: #003688 !important;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+}
+
+.update-show-button:hover,
+.delete-show-button:hover {
+  background-color: #034ebe !important; 
+}
+
+
+/* Mantasha update movie */
+
+.update-movie {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.772) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 10;
+  
+
+}
+
+.update-movie__form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 35%;
+  padding: 20px;
+  /* height: 90%; */
+  border-radius: 10px;
+}
+
+.update-movie__label {
+  /* margin-bottom: 8px; */
+  font-weight: bold;
+}
+
+.update-movie__input {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.update-movie__button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+/* Payment Page */
+/* Styling for the main payment section */
+.paymentPage .paymentmain {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Payment section 1 styling (Movie details, theatre, date) */
+.paymentPage .paymentmain .pay1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.paymentPage .paymentmain .pay1 .pays1 h1 {
+  font-size: 22px;
+  color: #003688;
+}
+
+.paymentPage .paymentmain .pay1 .pays1 p {
+  font-size: 16px;
+  color: #666;
+}
+
+.paymentPage .paymentmain .pay1 .date {
+  font-size: 14px;
+  color: #888;
+}
+
+/* Styling for Seat Info */
+.paymentPage .paymentmain .pay1 .pays2 h1 {
+  font-size: 20px;
+  color: #003688;
+}
+
+/* Payment section 2 styling (fees and totals) */
+.paymentPage .paymentmain .pay2 {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.paymentPage .paymentmain .pay2 .pays3 p,
+.paymentPage .paymentmain .pay2 .pays4 p {
+  font-size: 16px;
+  color: #333;
+}
+
+.paymentPage .paymentmain .pay2 .pays3 .greys {
+  color: #888;
+}
+
+/* Styling for the totals in pay2 */
+.paymentPage .paymentmain .pay2 .pays4 {
+  text-align: right;
+}
+
+.paymentPage .paymentmain .pay2 .pays4 p {
+  font-weight: bold;
+  color: #003688;
+}
+
+/* Payment section 3 styling (Promocodes and offers) */
+.paymentPage .paymentmain .pay3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.paymentPage .paymentmain .pay3 .pays5 p {
+  font-size: 16px;
+  color: #003688;
+}
+
+.paymentPage .paymentmain .pay3 .pays6 .gift {
+  font-size: 24px;
+  color: #ff6347; /* Gift icon color */
+  background-color: #fff;
+  padding: 5px;
+  border: 2px solid #ff6347;
+  border-radius: 50%;
+}
+
+/* Final total payment section */
+.paymentPage .paymentmain .pay6 {
+  text-align: center;
+  padding: 20px;
+  background-color: #003688;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.paymentPage .paymentmain .pay6 p {
+  margin: 0;
+}

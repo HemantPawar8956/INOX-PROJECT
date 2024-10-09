@@ -43,12 +43,12 @@ public class ShowController {
 	   ShowServiceImp showServiceImp;
 	   
 	   
-	   @PostMapping("/save")
-	   public ResponseEntity<Show> saveShow(@RequestBody Show show) {
-		   
-		   return showServiceImp.saveShow(show);
-				   
-	   }
+	   @PostMapping("/save/{theaterId}/{movieId}")
+		public ResponseEntity<Show> saveShow(@RequestBody Show show,@PathVariable long theaterId,@PathVariable long movieId ) {
+			
+			return showServiceImp.saveShow(show,theaterId,movieId);
+
+		}
 	   
 	   
 	   @DeleteMapping("/delete/{id}")
