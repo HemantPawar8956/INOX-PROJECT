@@ -13,6 +13,7 @@ const UpdateTheatre = () => {
     setTheaterId,
     updateTheaterIdData,
     setUpdateData,
+    updateCount
   } = useContext(globalVar);
   const [theatre, setTheatre] = useState({
     id: "",

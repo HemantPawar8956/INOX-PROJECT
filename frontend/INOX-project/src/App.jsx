@@ -11,6 +11,7 @@ const App = () => {
   
   <GlobalContext>
       <RouterProvider router={routingVar} />
+      
     </GlobalContext> 
     /* <Accordion1/> */
    /*  <ShowTimings/> */

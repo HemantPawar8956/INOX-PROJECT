@@ -25,7 +25,7 @@ let {isModalOpen, setIsModalOpen,deleteData,setDeleteData,deleteCount,setDeleteC
       console.log('Theater Deleted successfully:', response.data);
       // Optionally reset form fields after successful submission
       toast.success(`${deleteData.comp} is deleted`)
-      setDeleteCount(1)
+      setDeleteCount(deleteCount+1)
       return { id: '', name: '', address: '' }
     } catch (error) {
       console.error('Error Deleting theater:', error);

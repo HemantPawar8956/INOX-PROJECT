@@ -20,6 +20,7 @@ export const GlobalContext = ({ children }) => {
   let [UpdateTheater, setUpdateTheater] = useState(false);
   let [addShowPanel, setAddShowPanel] = useState(false);
   let [updateShowPanel, setUpdateShowPanel] = useState(false);
+  let [paymentSuccessfullPanel, setPaymentSuccessfullPanel] = useState(false);
   let [updateData, setUpdateData] = useState({
     comp: "",
     data: "",
@@ -36,16 +37,13 @@ export const GlobalContext = ({ children }) => {
   let [selectedCity, setSelectedCity] = useState(null);
 
   let auth = localStorage.getItem("auth");
-  console.log(auth);
   const decodedToken = auth && jwtDecode(auth);
-  console.log(decodedToken);
   let [inoxLoginType, setInoxLoginType] = useState(
     decodedToken?.role || "USER"
   );
   //   const decodedToken = jwt_decode(auth.token);
 
   let [loginType, setLoginType] = useState("USER");
-  console.log(loginType);
 
   let loginTypes = [
     {
@@ -108,7 +106,8 @@ export const GlobalContext = ({ children }) => {
         setAddShowPanel,
         updateShowPanel,
         setUpdateShowPanel,
-        updatemoviePanel,setUpdatemoviePanel
+        updatemoviePanel,setUpdatemoviePanel,
+        paymentSuccessfullPanel, setPaymentSuccessfullPanel
       }}>
       {children}
     </Provider>

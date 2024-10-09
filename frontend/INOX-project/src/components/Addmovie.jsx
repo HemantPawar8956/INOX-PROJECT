@@ -4,7 +4,7 @@ import { globalVar } from "../globalContext/GlobalContext";
 import toast from "react-hot-toast";
 
 const Addmovie = () => {
-  let { moviePanel, setMoviePanel} = useContext(globalVar);
+  let { moviePanel, setMoviePanel,updateCount,setUpdateCount} = useContext(globalVar);
   const [formData, setFormData] = useState({
     moviename: "",
     genre: "",
@@ -40,6 +40,7 @@ const Addmovie = () => {
 
       toast.success("movie added successfully");
       setShowModal(false);
+      setUpdateCount(updateCount+1)
       setMoviePanel(!moviePanel);
 
     } catch (error) {
@@ -166,16 +167,7 @@ const Addmovie = () => {
         </div>
       )}
 
-      {formData.movieImage && (
-        <div>
-          <h3>Image Preview:</h3>
-          <img
-            src={formData.movieImage}
-            alt="Movie"
-            style={{ width: "300px", height: "auto" }}
-          />
-        </div>
-      )}
+
     </div>
   );
 };

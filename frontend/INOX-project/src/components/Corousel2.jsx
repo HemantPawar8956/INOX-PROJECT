@@ -12,6 +12,12 @@ const Corousel2 = () => {
     setMoviePanel,
     inoxLoginType,
     setInoxLoginType,
+    setDeleteData,
+    setUpdateData,
+    updateCount,
+    deleteCount,
+    setIsModalOpen,
+    setUpdatemoviePanel
   } = useContext(globalVar);
 
   let handleBooking = (ele) => {
@@ -39,7 +45,6 @@ const Corousel2 = () => {
 
   useEffect(() => {
     let token = localStorage.getItem("auth");
-    console.log(token);
 
     const fetchMovies = async () => {
       try {
@@ -55,7 +60,7 @@ const Corousel2 = () => {
       }
     };
     fetchMovies();
-  }, []);
+  }, [updateCount,deleteCount]);
 
 
   return (
@@ -122,8 +127,8 @@ const Corousel2 = () => {
                 <button onClick={()=>{handleBooking(ele)}}>Book Tickets</button>
               ) : inoxLoginType === "ADMIN" ? (
                 <div className="admin-btn">
-                  <button>Update</button>
-                  <button>Delete</button>
+                  <button onClick={()=>{UpdateMovie(ele)}}>Update</button>
+                  <button onClick={()=>{deleteMovie(ele)}}>Delete</button>
                 </div>
               ) : null}
             </div>

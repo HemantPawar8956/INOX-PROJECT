@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { globalVar } from "../globalContext/GlobalContext";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const UpdateMovie = () => {
   let {
@@ -11,6 +11,8 @@ const UpdateMovie = () => {
     setUpdatemoviePanel,
     updateNotify,
     setupdateNotify,
+    updateCount,
+    setUpdateCount
   } = useContext(globalVar);
 
   let [updateMovie, setUpdateMovie] = useState({
@@ -46,6 +48,7 @@ const UpdateMovie = () => {
           }
         );
         setUpdateMovie(response.data);
+        setUpdateCount(updateCount+1)
         console.log("Movie updated:", response.data);
       } catch (error) {
         console.error("There was an error updating the movie!", error);
@@ -55,6 +58,7 @@ const UpdateMovie = () => {
   }, []);
   return (
     <div className="update-movie" onClick={(e)=>{e.stopPropagation(),setUpdatemoviePanel(false)}}>
+      
       <form className="update-movie__form" onSubmit={handleSubmit} onClick={(e)=>{e.stopPropagation(),setUpdatemoviePanel(true)}}>
         <label className="update-movie__label">Movie ID:</label>
         <input

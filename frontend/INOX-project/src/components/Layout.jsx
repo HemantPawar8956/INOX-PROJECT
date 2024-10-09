@@ -18,6 +18,7 @@ import AddShows from "./AddShows";
 import UpdateShows from "./UpdatedShows";
 import UpdateMovie from "./UpdateMovie";
 
+
 const Layout = () => {
   let {
     siderVisible,
@@ -41,7 +42,8 @@ const Layout = () => {
     addShowPanel,
     updateShowPanel,
     setUpdateShowPanel,
-    updatemoviePanel
+    updatemoviePanel,
+   
   } = useContext(globalVar);
 
   return (
@@ -60,6 +62,7 @@ const Layout = () => {
       {updatemoviePanel && <UpdateMovie/>}
       {loginPanel && <LoginPage />}
       {signupPanel && <SignUp />}
+      
 
       <Navbar />
       <Outlet />
