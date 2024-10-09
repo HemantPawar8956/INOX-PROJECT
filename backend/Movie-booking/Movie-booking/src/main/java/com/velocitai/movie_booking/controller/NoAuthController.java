@@ -77,4 +77,9 @@ public class NoAuthController {
 	     return movieService.findMoviesByTheaterId(theaterId);
 	    
 	}
+	// findTheaterByMovieName
+		@GetMapping("/cinemas/{movieName}")
+		public ResponseEntity<List<Theater>> findTheaterByMovieName(@PathVariable String movieName) {
+			return theaterService.findTheaterByMovieName(movieName);
+		}
 }

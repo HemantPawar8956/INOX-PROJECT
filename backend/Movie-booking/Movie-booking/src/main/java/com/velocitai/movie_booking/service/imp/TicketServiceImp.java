@@ -1,10 +1,12 @@
 package com.velocitai.movie_booking.service.imp;
 
-import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.velocitai.movie_booking.dao.SeatRepository;
@@ -26,32 +28,21 @@ public class TicketServiceImp implements TicketService {
 	UserRepository userRepository;
 
 	
-	public ResponseEntity<Ticket> saveTicket(Ticket ticket, boolean paymentStatus) {
-	    if (!paymentStatus) {
-	        return ResponseEntity.badRequest().body(null);
-	    }
+	public ResponseEntity<Ticket> saveTicket(Ticket ticket) {
+	   
 
-	    User managedUser = userRepository.findById(ticket.getUser().getId())
-	        .orElseThrow(() -> new RuntimeException("User not found"));
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-	    ticket.setUser(managedUser);
+        User currentUser = (User) authentication.getPrincipal();
 
-	    List<Seat> managedSeats = new ArrayList<>();
-	    for (Seat seat : ticket.getSeats()) {
-	        Seat managedSeat = seatRepository.findById(seat.getId())
-	            .orElseThrow(() -> new RuntimeException("Seat not found"));
-	        
-	        // Check if the seat is already booked
-	        if (managedSeat.isBooked()) {
-	            return ResponseEntity.status(HttpStatus.CONFLICT)
-	                .body(null); // Return conflict if the seat is already booked
-	        }
-	        
-	        managedSeat.setBooked(true); // Mark the seat as booked
-	        managedSeats.add(managedSeat);
-	    }
+	    ticket.setUser(currentUser);
 
-	    ticket.setSeats(managedSeats);
+	   List<Seat> seatInfo = ticket.getSeatInfo();
+	   for(Seat seat:seatInfo) {
+		   seat.setBooked(true);
+		   
+	   }
+	    seatRepository.saveAll(seatInfo);
 	    Ticket savedTicket = ticketRepository.save(ticket);
 	    
 	    return ResponseEntity.ok(savedTicket);

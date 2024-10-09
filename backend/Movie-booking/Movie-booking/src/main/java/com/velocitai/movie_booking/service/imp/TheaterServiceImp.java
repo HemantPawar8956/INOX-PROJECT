@@ -75,6 +75,7 @@ public class TheaterServiceImp implements TheaterService {
 	@Override
 	public ResponseEntity<List<Theater>> findAllTheater() {
 		List<Theater> theaters = theaterRepository.findAll();
+		System.out.println(theaters);
 		return new ResponseEntity<>(theaters, HttpStatus.OK);
 	}
 }

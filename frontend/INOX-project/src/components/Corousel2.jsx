@@ -1,9 +1,11 @@
  import React, { useContext, useEffect, useState } from "react";
 import { globalVar } from "../globalContext/GlobalContext";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Corousel2 = () => {
   const [movies, setMovies] = useState([]);
+   const navigate = useNavigate();
   const {
     loginType,
     moviePanel,
@@ -33,6 +35,7 @@ const Corousel2 = () => {
     });
     setIsModalOpen(true);
   };
+  
 
   useEffect(() => {
     let token = localStorage.getItem("auth");
@@ -116,7 +119,7 @@ const Corousel2 = () => {
               <p>Genre: {ele.genre}</p>
 
               {inoxLoginType === "USER" ? (
-                <button>Book Tickets</button>
+                <button onClick={()=>{handleBooking(ele)}}>Book Tickets</button>
               ) : inoxLoginType === "ADMIN" ? (
                 <div className="admin-btn">
                   <button>Update</button>

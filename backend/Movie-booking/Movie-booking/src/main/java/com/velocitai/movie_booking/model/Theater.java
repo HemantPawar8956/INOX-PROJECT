@@ -34,10 +34,6 @@ public class Theater {
 	private String name;
 	@Column(name = "theater_address")
 	private String address;
-	
-	
-	
-	
 	@OneToMany(mappedBy = "theater") // Indicates the 'theater' field in the Show class
 	private List<Show> showTimes;
 

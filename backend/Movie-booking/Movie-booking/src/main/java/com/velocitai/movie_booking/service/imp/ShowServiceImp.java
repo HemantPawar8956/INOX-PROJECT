@@ -27,17 +27,16 @@ public class ShowServiceImp implements ShowService {
 
 	@Autowired
 	ShowRepository showRepository;
-	
+
 	@Autowired
 	SeatRepository seatRepository;
-	
+
 	@Autowired
 	MovieRepository movieRepository;
-	
+
 	@Autowired
 	TheaterRepository theaterRepository;
-	
-	
+
 //	@Override
 //	public ResponseEntity<Show> saveShow(Show show) {
 //		 
@@ -47,13 +46,13 @@ public class ShowServiceImp implements ShowService {
 //
 //		       return ResponseEntity.ok(savedShow);
 //	}
-	
-	
+
 	@Override
 	public ResponseEntity<Show> saveShow(Show show, long theaterId, long movieId) {
-   Theater theater=theaterRepository.findById(theaterId).get();
+		Theater theater = theaterRepository.findById(theaterId).get();
 		show.setTheater(theater);
 		show.setMovie(movieRepository.findById(movieId).get());
+		
 		List<Seat> seats = new ArrayList<Seat>();
 		char c = 'A';
 		for (char i = c; i <= 'E'; i++) {
@@ -64,6 +63,7 @@ public class ShowServiceImp implements ShowService {
 					seat.setPrice(200);
 					seat.setType(SeatType.REGULAR);
 					seat.setBooked(false);
+					
 					seats.add(seat);
 				} else {
 					Seat seat = new Seat();
@@ -71,69 +71,70 @@ public class ShowServiceImp implements ShowService {
 					seat.setPrice(400);
 					seat.setType(SeatType.VIP);
 					seat.setBooked(false);
+					
 					seats.add(seat);
 				}
 			}
 		}
-        
+
 		show.setSeat(seats);
 		seatRepository.saveAll(seats);
 		Show savedShow = showRepository.save(show);
-		if(theater.getShowTimes()!=null) {
-			theater.getShowTimes().add(show);
-		}
+		// Using synchronized block to avoid ConcurrentModificationException
 		
-		else{
-			theater.setShowTimes(Arrays.asList(show));
-			
-		}
-       
+		    if (theater.getShowTimes() != null) {
+		        theater.getShowTimes().add(show);
+		    } else {
+		        theater.setShowTimes(Arrays.asList(show));
+		    }
+		
+
 		return ResponseEntity.ok(savedShow);
 	}
 
 	@Override
 	public ResponseEntity<Show> findShowById(long id) {
-		
-		Optional<Show> showOptional=showRepository.findById(id);
-		
-		 if (showOptional.isPresent()) {
+
+		Optional<Show> showOptional = showRepository.findById(id);
+
+		if (showOptional.isPresent()) {
 			return ResponseEntity.ok(showOptional.get());
 		} else {
-			  return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 	}
 
 	@Override
-	public ResponseEntity<Show> UpdateShow( Show show) {        
-	 Optional<Show> existingshowOptional=showRepository.findById(show.getId()) ;
-		     if (existingshowOptional.isPresent()) {
-		    	  Show existingShow=existingshowOptional.get();
-		    	    existingShow.setDate(show.getDate());
-		    	    existingShow.setTime(show.getTime());
-		    	    existingShow.setMovie(show.getMovie());
-		    	    existingShow.setSeat(show.getSeat());
-		    	    existingShow.setTheater(show.getTheater());
-		    	 Show updateShow=showRepository.save(show);
-		    	 return ResponseEntity.ok(updateShow);
-			} else {
-                  
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-			}	
+	public ResponseEntity<Show> UpdateShow(Show show) {
+		Optional<Show> existingshowOptional = showRepository.findById(show.getId());
+		if (existingshowOptional.isPresent()) {
+			Show existingShow = existingshowOptional.get();
+			existingShow.setDate(show.getDate());
+			existingShow.setTime(show.getTime());
+			existingShow.setMovie(show.getMovie());
+			existingShow.setSeat(show.getSeat());
+			existingShow.setTheater(show.getTheater());
+			Show updateShow = showRepository.save(show);
+			return ResponseEntity.ok(updateShow);
+		} else {
+
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
 	}
 
 	@Override
 	public ResponseEntity<?> deleteShow(Long id) {
-		
-		 Optional<Show> show = showRepository.findById(id);
-		    
-		    if (show.isPresent()) {
-		       
-		        showRepository.deleteById(id);
-		        return ResponseEntity.ok("Show deleted successfully.");
-		    } else {
-		        
-		        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Show not found.");
-		    }
+
+		Optional<Show> show = showRepository.findById(id);
+
+		if (show.isPresent()) {
+
+			showRepository.deleteById(id);
+			return ResponseEntity.ok("Show deleted successfully.");
+		} else {
+
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Show not found.");
+		}
 	}
 
 	@Override
@@ -150,30 +151,27 @@ public class ShowServiceImp implements ShowService {
 
 	@Override
 	public ResponseEntity<List<Show>> findShowByLocation(String location) {
-		
+
 		return null;
 	}
 
 	@Override
 	public ResponseEntity<List<Show>> findShowByDate(LocalDate date) {
-	    List<Show> shows = showRepository.findByDate(date);
-	    if (shows.isEmpty()) {
-	        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-	    }
-	    return new ResponseEntity<>(shows, HttpStatus.OK);
+		List<Show> shows = showRepository.findByDate(date);
+		if (shows.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<>(shows, HttpStatus.OK);
 	}
 
-
-
-
 	@Override
-    public ResponseEntity<List<Show>> findShowByTheater(long theaterId) {
-        List<Show> shows = showRepository.findByTheaterId(theaterId);
-        if (shows.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(shows, HttpStatus.OK);
-    }
+	public ResponseEntity<List<Show>> findShowByTheater(long theaterId) {
+		List<Show> shows = showRepository.findByTheaterId(theaterId);
+		if (shows.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<>(shows, HttpStatus.OK);
+	}
 
 	@Override
 	public ResponseEntity<Show> saveShow(long movieId, long theaterId, Show show) {

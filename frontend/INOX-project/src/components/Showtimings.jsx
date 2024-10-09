@@ -8,13 +8,14 @@ import { RiWheelchairFill } from "react-icons/ri";
 import { CiSearch } from "react-icons/ci";
 import axios from "axios";
 import { globalVar } from "../globalContext/GlobalContext";
+import { useLocation } from "react-router-dom";
 
 const ShowTimings = () => {
-  let { inoxLoginType,addShowPanel, setAddShowPanel  } =
-    useContext(globalVar);
+  let { state } = useLocation();
+  console.log(state);
+  let { inoxLoginType, addShowPanel, setAddShowPanel } = useContext(globalVar);
 
-
-     let [allTheater,setAllTheater]=useState([])
+  let [allTheater, setAllTheater] = useState([]);
   const dates = [
     { day: "Sep 30", label: "Today" },
     { day: "Oct 01", label: "Tomorrow" },
@@ -29,15 +30,11 @@ const ShowTimings = () => {
     let fetchData = async () => {
       try {
         let response = await axios.get(
-          `http://localhost:8080/theater/all`,
-          {
-            headers: {
-              ContentType: "application/json",
-              Authorization: `Bearer ${localStorage.getItem("auth")}`,
-            },
-          }
+          state != null
+            ? `http://localhost:8080/open/cinemas/${state.moviename}`
+            : `http://localhost:8080/open/cinemas/alls`
         );
-        setAllTheater(response.data)
+        setAllTheater(response.data);
         console.log(response.data);
       } catch (error) {
         console.error("Error fetching data", error);
@@ -55,7 +52,8 @@ const ShowTimings = () => {
             className="addshowbtn"
             onClick={(e) => {
               e.stopPropagation(), setAddShowPanel(true);
-            }}>
+            }}
+          >
             Add Show
           </button>
         )}
@@ -122,11 +120,9 @@ const ShowTimings = () => {
         </div>
       </div>
       <section className="accor">
-        {allTheater.map((data)=>{
-  return <Accordion1 data={data} />
+        {allTheater.map((data) => {
+          return <Accordion1 data={data} />;
         })}
-      
-
       </section>
     </section>
   );

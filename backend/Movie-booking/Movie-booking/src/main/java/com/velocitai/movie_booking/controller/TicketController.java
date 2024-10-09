@@ -23,8 +23,8 @@ public class TicketController {
 	TicketService ticketService;
 	
 	@PostMapping("/save")
-    public ResponseEntity<Ticket> saveTicket(@RequestBody Ticket ticket, @RequestParam boolean paymentStatus) {
-        return ticketService.saveTicket(ticket, paymentStatus);
+    public ResponseEntity<Ticket> saveTicket(@RequestBody Ticket ticket) {
+        return ticketService.saveTicket(ticket);
     }
 
 	@DeleteMapping("/deleteTicket/{id}")
