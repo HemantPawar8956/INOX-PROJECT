@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { globalVar } from "../globalContext/GlobalContext";
+import toast from "react-hot-toast";
 
 const Addmovie = () => {
-  let { moviePanel, setMoviePanel } = useContext(globalVar);
+  let { moviePanel, setMoviePanel} = useContext(globalVar);
   const [formData, setFormData] = useState({
     moviename: "",
     genre: "",
@@ -12,7 +13,7 @@ const Addmovie = () => {
     movieImage: "",
   });
 
-  console.log(formData.duration);
+  // console.log(formData.duration);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -32,13 +33,15 @@ const Addmovie = () => {
         formData,
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("auth")}`, // Use application/json for sending data
+            Authorization: `Bearer ${localStorage.getItem("auth")}`, 
           },
         }
       );
 
-      alert("Movie details saved successfully!");
+      toast.success("movie added successfully");
       setShowModal(false);
+      setMoviePanel(!moviePanel);
+
     } catch (error) {
       console.error("Error saving movie details:", error);
     }

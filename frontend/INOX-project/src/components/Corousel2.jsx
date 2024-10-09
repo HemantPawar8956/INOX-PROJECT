@@ -12,10 +12,38 @@ const Corousel2 = () => {
     setMoviePanel,
     inoxLoginType,
     setInoxLoginType,
+    updatemoviePanel,
+    setUpdatemoviePanel,
+    setUpdateData,
+    setDeleteData,
+    setupdateNotify,
+    setIsModalOpen,
+    updateCount,
+    deleteCount,
   } = useContext(globalVar);
 
   let handleBooking = (ele) => {
     navigate("/showtimings", { state: ele });
+  };
+
+  let UpdateMovie = (ele) => {
+    setUpdateData({
+      comp: "movies",
+      data: ele,
+    });
+
+    setUpdatemoviePanel(!updatemoviePanel);
+    setupdateNotify(true);
+  };
+
+  let deleteMovie = () => {
+    setDeleteData({
+      comp: "movies",
+      data: ele,
+    });
+
+    setUpdatemoviePanel(!updatemoviePanel);
+    setIsModalOpen(true);
   };
 
   useEffect(() => {
@@ -24,11 +52,9 @@ const Corousel2 = () => {
 
     const fetchMovies = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/movies/all", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.get(
+          "http://localhost:8080/open/movies/alls"
+        );
         console.log(response.data);
         setMovies(response.data);
       } catch (error) {
@@ -36,7 +62,7 @@ const Corousel2 = () => {
       }
     };
     fetchMovies();
-  }, []);
+  }, [deleteCount, updateCount]);
 
   return (
     <section className="corousel2">
@@ -88,8 +114,7 @@ const Corousel2 = () => {
         </div>
       </div>
 
-      {
-        movies.length > 0 &&
+      {movies.length > 0 &&
         movies.map((ele, i) => (
           <div className="cards2" key={i}>
             <div className="card-info">
@@ -108,8 +133,18 @@ const Corousel2 = () => {
                 </button>
               ) : inoxLoginType === "ADMIN" ? (
                 <div className="admin-btn">
-                  <button>Update</button>
-                  <button>Delete</button>
+                  <button
+                    onClick={() => {
+                      UpdateMovie(ele);
+                    }}>
+                    Update
+                  </button>
+                  <button
+                    onClick={() => {
+                      deleteMovie(ele);
+                    }}>
+                    Delete
+                  </button>
                 </div>
               ) : null}
             </div>

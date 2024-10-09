@@ -90,10 +90,10 @@ public class MovieServiceImp implements MovieService {
 	}
 
 	@Override
-	public ResponseEntity<?> deleteMovie(Movie movie) {
-		Optional<Movie> optionalMovie = movieRepository.findById(movie.getId());
+	public ResponseEntity<?> deleteMovie(long id) {
+		Optional<Movie> optionalMovie = movieRepository.findById(id);
 		if (optionalMovie.isPresent()) {
-			movieRepository.delete(movie);
+			movieRepository.delete(optionalMovie.get());
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 		} else {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Movie not found");

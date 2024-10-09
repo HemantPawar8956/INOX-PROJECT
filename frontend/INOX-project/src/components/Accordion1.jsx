@@ -6,7 +6,7 @@ import { globalVar } from "../globalContext/GlobalContext";
 
 const Accordion1 = ({ data }) => {
   console.log(data);
-  let { setUpdateShowPanel } = useContext(globalVar);
+  let { setUpdateShowPanel, setDeleteData ,setIsModalOpen} = useContext(globalVar);
   const [isOpen, setIsOpen] = useState(false);
   // let [data, setData] = useState({});
 
@@ -14,11 +14,14 @@ const Accordion1 = ({ data }) => {
     setIsOpen(!isOpen);
   };
 
-  let handleUpdateShow = (data) => {
+  let handleDeleteShow = (data) => {
     console.log(data);
-    setUpdateShowPanel(true);
+    setIsModalOpen(true);
+    setDeleteData({
+      comp: "",
+      data: data,
+    });
   };
-
   return (
     <section className="show-timings-container">
       <div className="accordion-header" onClick={toggleAccordion}>
@@ -62,13 +65,12 @@ const Accordion1 = ({ data }) => {
 
             <div className="button-container">
               <button
-                className="update-show-button"
-                onClick={(e) => {
-                  handleUpdateShow(data);
+                className="delete-show-button"
+                onClick={() => {
+                  handleDeleteShow(data);
                 }}>
-                Update Show
+                Delete Show
               </button>
-              <button className="delete-show-button">Delete Show</button>
             </div>
           </div>
         </div>

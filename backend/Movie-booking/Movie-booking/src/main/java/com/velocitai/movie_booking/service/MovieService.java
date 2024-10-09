@@ -20,7 +20,7 @@ public interface MovieService {
 
 	public ResponseEntity<Movie> UpdateMovie(Movie movie);
 
-	public ResponseEntity<?> deleteMovie(Movie movie);
+	public ResponseEntity<?> deleteMovie(long id);
 
 	public ResponseEntity<List<Movie>> findAllMovie();
 

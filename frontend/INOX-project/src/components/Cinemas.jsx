@@ -89,7 +89,7 @@ const Cinemas = () => {
       <div className="cinema-cards-display">
         {alltheateres?.map((data) => {
           return (
-            <div className="cinema-item" key={data.name}>
+            <div className="cinema-item" key={data.id}>
               <div>
                 <h2 className="cinema-name">{data.name}</h2>
                 <p className="cinema-address">{data.address}</p>

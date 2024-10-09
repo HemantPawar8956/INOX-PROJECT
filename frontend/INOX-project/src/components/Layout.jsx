@@ -16,6 +16,7 @@ import DeleteNotify from "./DeleteNotify";
 import UpdateNotify from "./UpdateNotify";
 import AddShows from "./AddShows";
 import UpdateShows from "./UpdatedShows";
+import UpdateMovie from "./UpdateMovie";
 
 const Layout = () => {
   let {
@@ -40,6 +41,7 @@ const Layout = () => {
     addShowPanel,
     updateShowPanel,
     setUpdateShowPanel,
+    updatemoviePanel
   } = useContext(globalVar);
 
   return (
@@ -55,6 +57,7 @@ const Layout = () => {
       {moviePanel && <Addmovie />}
       {addShowPanel && <AddShows />}
       {updateShowPanel && <UpdateShows />}
+      {updatemoviePanel && <UpdateMovie/>}
       {loginPanel && <LoginPage />}
       {signupPanel && <SignUp />}
 

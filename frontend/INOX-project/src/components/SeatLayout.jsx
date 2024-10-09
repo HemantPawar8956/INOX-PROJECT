@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
 
 const SeatLayout = () => {
-  let { state } = useLocation();
-  console.log(state);
   let seatSeq = "A";
   let [selectedSeats, setSelectedSeats] = useState([]);
-  let [showPayment, setShowPayment] = useState(false);
+  let [showPayment, setShowPayment] = useState(false); 
   let data = [
     { seatNo: "A1", price: 200, boooked: true },
     { seatNo: "A2", price: 200, boooked: true },
@@ -52,13 +49,11 @@ const SeatLayout = () => {
       e.target.style.backgroundColor = "#003688";
       e.target.style.color = "white";
       setSelectedSeats((prevSeats) => [...prevSeats, ele.seatNo]);
-      setShowPayment(true);
+      setShowPayment(true); 
     } else if (selectedSeats.includes(ele.seatNo)) {
       e.target.style.backgroundColor = "lightgray";
       e.target.style.color = "black";
-      setSelectedSeats((prevSeats) =>
-        prevSeats.filter((seat) => seat !== ele.seatNo)
-      );
+      setSelectedSeats((prevSeats) => prevSeats.filter((seat) => seat !== ele.seatNo));
 
       if (selectedSeats.length === 1) {
         setShowPayment(false);
@@ -83,26 +78,6 @@ const SeatLayout = () => {
           </div>
         </nav>
 
-        <div className="nav3">
-          <select name="" id="" className="dateDropDown">
-            <option value="">07 oct, Monday</option>
-            <option value="">08 oct, Tuesday</option>
-          </select>
-          <div className="hindi">
-            <div className="hindi1">
-              Hindi
-              <div>03:40 PM</div>
-            </div>
-            <div className="hindi1">
-              Hindi
-              <div>03:40 PM</div>
-            </div>
-            <div className="hindi1">
-              Hindi
-              <div>03:40 PM</div>
-            </div>
-          </div>
-        </div>
 
         <section className="seat">
           <div className="seat-content">
@@ -173,9 +148,7 @@ const SeatLayout = () => {
               <h1>Tickets</h1>
             </div>
             <div>
-              <h1>
-                {selectedSeats.length} x {seatPrice}
-              </h1>
+              <h1>{selectedSeats.length} x {seatPrice}</h1>
             </div>
           </div>
           <div className="image-pic4">
