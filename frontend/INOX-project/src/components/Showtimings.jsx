@@ -32,16 +32,13 @@ const ShowTimings = () => {
     let fetchData = async () => {
       try {
         let response = await axios.get(
-          `http://localhost:8080/theater/all`,
-          {
-            headers: {
-              ContentType: "application/json",
-              Authorization: `Bearer ${localStorage.getItem("auth")}`,
-            },
-          }
+          state != null
+            ? `http://localhost:8080/open/cinemas/${state.moviename}`
+            : `http://localhost:8080/open/cinemas/alls`
         );
         console.log(response.data)
         setAllTheater(response.data)
+
       } catch (error) {
         console.error("Error fetching data", error);
       }
@@ -58,7 +55,8 @@ const ShowTimings = () => {
             className="addshowbtn"
             onClick={(e) => {
               e.stopPropagation(), setAddShowPanel(true);
-            }}>
+            }}
+          >
             Add Show
           </button>
         )}
@@ -128,9 +126,8 @@ const ShowTimings = () => {
         {allTheater.map((data,i)=>{
           console.log(allTheater)
         return <Accordion1 data={data} key={i}/>
-        })}
-      
 
+        })}
       </section>
     </section>
   );

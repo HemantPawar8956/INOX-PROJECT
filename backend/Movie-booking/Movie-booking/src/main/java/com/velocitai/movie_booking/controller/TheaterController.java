@@ -23,7 +23,7 @@ import com.velocitai.movie_booking.service.TheaterService;
 
 @RestController
 @RequestMapping("/theater")
-@CrossOrigin
+
 public class TheaterController {
 	@Autowired
 	private TheaterService theaterService;
@@ -60,11 +60,7 @@ public class TheaterController {
 		return theaterService.findAllTheater();
 	}
 
-	// findTheaterByMovieName
-	@GetMapping("/movie/{movieName}")
-	public ResponseEntity<List<Theater>> findTheaterByMovieName(@PathVariable String movieName) {
-		return theaterService.findTheaterByMovieName(movieName);
-	}
+	
 
 	// findTheaterByLocation
 	@GetMapping("/location/{location}")

@@ -35,25 +35,22 @@ public class MovieServiceImp implements MovieService {
 	@Autowired
 	ShowRepository showRepository;
 
-	
-	
 	@Override
 	public ResponseEntity<Movie> saveMovie(Movie movie) {
-		
-		 try {
-		        // Save the movie object to the database
-		        Movie savedMovie = movieRepository.save(movie);
 
-		        // Return the saved movie with a status of CREATED
-		        return ResponseEntity.status(HttpStatus.CREATED).body(savedMovie);
-		    } catch (Exception e) {
-		        // Log the error (optional)
-		        e.printStackTrace();
+		try {
+			// Save the movie object to the database
+			Movie savedMovie = movieRepository.save(movie);
 
-		        // Return an error response with status INTERNAL_SERVER_ERROR
-		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-		    }
-		
+			// Return the saved movie with a status of CREATED
+			return ResponseEntity.status(HttpStatus.CREATED).body(savedMovie);
+		} catch (Exception e) {
+			// Log the error (optional)
+			e.printStackTrace();
+
+			// Return an error response with status INTERNAL_SERVER_ERROR
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		}
 
 	}
 
@@ -89,17 +86,7 @@ public class MovieServiceImp implements MovieService {
 		return ResponseEntity.ok(updatedMovie);
 	}
 
-	@Override
-	public ResponseEntity<?> deleteMovie(long id) {
-		Optional<Movie> optionalMovie = movieRepository.findById(id);
-		if (optionalMovie.isPresent()) {
-			movieRepository.delete(optionalMovie.get());
-			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-		} else {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Movie not found");
-		}
-
-	}
+	
 
 	@Override
 	public ResponseEntity<List<Movie>> findAllMovie() {
@@ -121,28 +108,27 @@ public class MovieServiceImp implements MovieService {
 		 * showRepository.findById(theaters.get(0).getId());
 		 * System.out.println(s.get().getMovie().getMoviename());
 		 */
-	    List<Movie> movieList = new ArrayList<>();
+		List<Movie> movieList = new ArrayList<>();
 
-	    if (!theaters.isEmpty())
-	    {
-	        for (Theater theater : theaters) {
-	            List<Show> shows = showRepository.findByTheater(theater);
-	            if (!shows.isEmpty()) {
-	                for (Show show : shows) {
-	                    Movie movies = show.getMovie();
-	                    if (!movieList.contains(movies)) {
-	                        movieList.add(movies);
-	                    }
-	                }
-	            } else {
-	                System.out.println("No shows found for Theater ID " + theater.getId());
-	            }
-	        }
-	    } else {
-	          return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-	    }
+		if (!theaters.isEmpty()) {
+			for (Theater theater : theaters) {
+				List<Show> shows = showRepository.findByTheater(theater);
+				if (!shows.isEmpty()) {
+					for (Show show : shows) {
+						Movie movies = show.getMovie();
+						if (!movieList.contains(movies)) {
+							movieList.add(movies);
+						}
+					}
+				} else {
+					System.out.println("No shows found for Theater ID " + theater.getId());
+				}
+			}
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
 
-	return ResponseEntity.ok(movieList);
+		return ResponseEntity.ok(movieList);
 
 	}
 
@@ -159,14 +145,26 @@ public class MovieServiceImp implements MovieService {
 	}
 
 	@Override
+	public ResponseEntity<?> deleteMovie(long id) {
+		Movie movie = findMovieById(id).getBody();
+		if (movie != null) {
+			if (movie.getShows() != null) {
+				showRepository.deleteAll(movie.getShows());
+			}
+			movieRepository.delete(movie);
+		}
+		return ResponseEntity.ok("message");
+	}
+
 	public ResponseEntity<?> findMoviesByTheaterId(long theaterId) {
 		Optional<Theater> optional = theaterRepository.findById(theaterId);
+
 		if(optional.isPresent()) {
 		Theater theater=	optional.get();
 		List<String> list= theater.getShowTimes().stream().map(x-> x.getMovie().getMovieImage()).toList();
 		return ResponseEntity.status(HttpStatus.OK).body(list);
 		}
-	
+
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 	}
 

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import com.velocitai.movie_booking.util.SeatType;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -37,7 +38,7 @@ public class Seat {
 	private boolean booked;
 	@Enumerated(EnumType.STRING)
 	private SeatType type;
-	@ManyToOne
+	@ManyToOne(cascade =  CascadeType.ALL)
 	private Show show;
 	
 }

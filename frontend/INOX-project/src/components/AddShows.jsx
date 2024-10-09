@@ -84,10 +84,62 @@ const AddShows = () => {
 
     return Object.keys(newErrors).length === 0;
   };
+useEffect(() => {
+  const fetchTheaters = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/theater/all',showDetails,
+        {
+          headers: {
+            Authorization:`Bearer ${localStorage.getItem("auth")}`
+          }
+        }
+      ); // Replace with your API endpoint
+      // const data = await response.json();
+      setTheaters(response.data); // Assuming data is an array of theaters
+    } catch (error) {
+      console.error("Error fetching theaters:", error);
+    }
+  };
+  fetchTheaters();
+}, []);
+  
+  useEffect(() => {
+    const fetchMovies = async () => {
+    
+    try {
+      const response = await axios.get('http://localhost:8080/movies/all',
+        {
+          headers: {
+            Authorization:`Bearer ${localStorage.getItem("auth")}`
+          }
+        }
+      ); // Replace with your API endpoint
+      setMovies(response.data); // Assuming response.data is an array of movies
+    } catch (error) {
+      console.error("Error fetching movies:", error);
+    }
+  };
+  fetchMovies();
+  }, []);
+  
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    try {
+      console.log(localStorage.getItem("auth"))
+      const response = await axios.post("http://localhost:8080/show/save",
+        {
+          headers: {
+            Authorization:`Bearer ${localStorage.getItem("auth")}`
+          }
+        }
+      );
+      console.log(response)
+    }
+    catch (error) {
+      console.log("error" + error);
+    }
     if (validateForm()) {
       setApiError("");
       setSuccessMessage("");
@@ -160,7 +212,7 @@ const AddShows = () => {
       }
     }
   };
-
+console.log(showDetails)
   return (
     <section className="add-show-main" onClick={(e)=>{e.stopPropagation(),setAddShowPanel(false)}}>
       <div className="add-shows-container" onClick={(e)=>{e.stopPropagation(),setAddShowPanel(true)}}>

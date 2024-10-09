@@ -11,8 +11,6 @@ import com.velocitai.movie_booking.model.User;
 
 @Service
 public interface MovieService {
-	
-	
 
 	public ResponseEntity<Movie> saveMovie(Movie movie);
 
@@ -25,14 +23,11 @@ public interface MovieService {
 	public ResponseEntity<List<Movie>> findAllMovie();
 
 	public ResponseEntity<List<Movie>> findMoviesByLocation(String location);
-	
-	public ResponseEntity<?> saveMovieImage(Movie user,MultipartFile file);
-	
+
+	public ResponseEntity<?> saveMovieImage(Movie user, MultipartFile file);
+
 	public ResponseEntity<?> getMovieImage(long id);
 
-	public ResponseEntity<?>	findMoviesByTheaterId(long theaterId);
-	
-
-	
+	public ResponseEntity<?> findMoviesByTheaterId(long theaterId);
 
 }

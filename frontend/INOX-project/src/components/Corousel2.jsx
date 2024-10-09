@@ -1,25 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+ import React, { useContext, useEffect, useState } from "react";
 import { globalVar } from "../globalContext/GlobalContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Corousel2 = () => {
-  let navigate = useNavigate();
   const [movies, setMovies] = useState([]);
+   const navigate = useNavigate();
   const {
     loginType,
     moviePanel,
     setMoviePanel,
     inoxLoginType,
     setInoxLoginType,
-    updatemoviePanel,
-    setUpdatemoviePanel,
-    setUpdateData,
-    setDeleteData,
-    setupdateNotify,
-    setIsModalOpen,
-    updateCount,
-    deleteCount,
   } = useContext(globalVar);
 
   let handleBooking = (ele) => {
@@ -43,15 +35,18 @@ const Corousel2 = () => {
     });
     setIsModalOpen(true);
   };
+  
 
   useEffect(() => {
     let token = localStorage.getItem("auth");
 
     const fetchMovies = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8080/open/movies/alls"
-        );
+        const response = await axios.get("http://localhost:8080/movies/all", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         console.log(response.data);
         setMovies(response.data);
       } catch (error) {
@@ -59,7 +54,8 @@ const Corousel2 = () => {
       }
     };
     fetchMovies();
-  }, [deleteCount, updateCount]);
+  }, []);
+
 
   return (
     <section className="corousel2">
@@ -122,26 +118,11 @@ const Corousel2 = () => {
               <p>Genre: {ele.genre}</p>
 
               {inoxLoginType === "USER" ? (
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation(), handleBooking(ele);
-                  }}>
-                  Book Tickets
-                </button>
+                <button onClick={()=>{handleBooking(ele)}}>Book Tickets</button>
               ) : inoxLoginType === "ADMIN" ? (
                 <div className="admin-btn">
-                  <button
-                    onClick={() => {
-                      UpdateMovie(ele);
-                    }}>
-                    Update
-                  </button>
-                  <button
-                    onClick={() => {
-                      deleteMovie(ele);
-                    }}>
-                    Delete
-                  </button>
+                  <button>Update</button>
+                  <button>Delete</button>
                 </div>
               ) : null}
             </div>
