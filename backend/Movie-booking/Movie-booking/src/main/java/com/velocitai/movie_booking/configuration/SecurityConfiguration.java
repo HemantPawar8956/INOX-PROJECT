@@ -20,6 +20,8 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
 
 @Configuration
@@ -42,7 +44,7 @@ public class SecurityConfiguration {
         http.cors().and().csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/auth/**","/open/**")
+                .requestMatchers("/auth/**","/open/**","/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/swagger-resources/**", "/webjars/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -79,17 +81,22 @@ public class SecurityConfiguration {
 		localhost.setDescription("Development environment");
 
 		Contact contact = new Contact();
-		contact.setEmail("email@domain.in");
-		contact.setName("Application Name");
+		contact.setEmail("info@domain.in");
+		contact.setName("Movie-Booking");
 		contact.setUrl("https://domain name");
 
 		License mitLicense = new License().name("MIT License").url("https://choosealicense.com/licenses/mit/");
 
-		Info info = new Info().title("ApplicationName RESTful Web Service documentation").version("1.0").contact(contact)
+		Info info = new Info().title("Movie-Booking RESTful Web Service documentation").version("1.0").contact(contact)
 				.description("This API exposes endpoints to manage Application.")
 				.termsOfService("https://domainname/terms").license(mitLicense);
 
-		return new OpenAPI().info(info).servers(List.of(localhost));
+		return new OpenAPI().info(info).servers(List.of(localhost)) .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
+	            .components(new io.swagger.v3.oas.models.Components()
+	                    .addSecuritySchemes("bearerAuth", new SecurityScheme()
+	                        .type(SecurityScheme.Type.HTTP)
+	                        .scheme("bearer")
+	                        .bearerFormat("JWT")));
 	}
    
 }

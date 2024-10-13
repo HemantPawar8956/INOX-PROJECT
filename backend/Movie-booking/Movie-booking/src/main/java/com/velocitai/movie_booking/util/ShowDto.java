@@ -7,23 +7,31 @@ import java.util.List;
 import com.velocitai.movie_booking.model.Seat;
 import com.velocitai.movie_booking.model.Show;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class ShowDto  {
+@Schema(description = "Data Transfer Object for Show")
+public class ShowDto {
 
-	 private Long id;
-	    private LocalTime time;  // Show time
-	    private LocalDate date;  // Date of the show
-	    private List<Seat> seats;  // List of seats (optional)
+    @Schema(description = "Unique identifier of the show", example = "1")
+    private Long id;
 
-	    // Constructor that takes a Show entity and maps fields
-	    public ShowDto(Show show) {
-	        this.id = show.getId();
-	        this.time = show.getTime();
-	        this.date = show.getDate();
-	        this.seats = show.getSeat();
-	    }
+    @Schema(description = "Time of the show", example = "14:30:00", required = true)
+    private LocalTime time;
+
+    @Schema(description = "Date of the show", example = "2024-10-13", required = true)
+    private LocalDate date;
+
+    @Schema(description = "List of seats associated with the show")
+    private List<Seat> seats;
+
+    public ShowDto(Show show) {
+        this.id = show.getId();
+        this.time = show.getTime();
+        this.date = show.getDate();
+        this.seats = show.getSeat();
+    }
 }
