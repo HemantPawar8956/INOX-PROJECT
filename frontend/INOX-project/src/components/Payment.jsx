@@ -2,39 +2,68 @@ import React, { useContext, useEffect, useState } from "react";
 import { IoGiftSharp } from "react-icons/io5";
 import { useLocation } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-import ShowTimings from './Showtimings';
 import { globalVar } from "../globalContext/GlobalContext";
-import PaymentSuccess from './PaymentSuccess';
+import PaymentSuccess from "./PaymentSuccess";
+import axios from "axios";
 
 const Payment = () => {
   let auth = localStorage.getItem("auth");
   const decodedToken = auth && jwtDecode(auth);
-  let userDetails=decodedToken.sub
-  let {setPaymentSuccessfullPanel,paymentSuccessfullPanel}=useContext(globalVar)
-  const { state } = useLocation(); 
-  const { movieName, theatreName, showTiming, seatInfo, GrandTotal } = state;
+  let userDetails = decodedToken?.sub;
+  let { setPaymentSuccessfullPanel, paymentSuccessfullPanel } =
+    useContext(globalVar);
+  const { state } = useLocation();
+  const { movieName, theaterName, showTime, seatInfo, grandTotal } = state;
 
-  let [currentDate, setCurrentDate] = useState(new Date());
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentDate(new Date());
-    }, 1000);
-    return () => clearInterval(timer); 
-  }, []);
+  const handlePaymentSuccess = () => {
+    const ticketData = {
+      movieName,
+      theatreName: theaterName,
+      showTiming: showTime, // Ensure this includes a valid Show object
+      seatInfo, // Ensure this includes the list of seats
+      grandTotal,
+    };
+    console.log(ticketData);
+    console.log(state);
+    axios
+      .post("http://localhost:8080/ticket/save", ticketData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("auth")}`,
+        },
+      })
+      .then((response) => {
+        console.log("Ticket created successfully:", response.data);
+        setPaymentSuccessfullPanel(true); // Show success panel
+      })
+      .catch((error) => {
+        console.error("Error creating ticket:", error);
+      });
+  };
 
   return (
     <section className="paymentPage">
-     { paymentSuccessfullPanel && <PaymentSuccess  ticket={{movieName, theatreName, showTiming, seatInfo, GrandTotal,userDetails}}/>}
+      {paymentSuccessfullPanel && (
+        <PaymentSuccess
+          ticket={{
+            movieName,
+            theatreName: theaterName,
+            showTiming: `${showTime}`,
+            seatInfo,
+            grandTotal,
+            userDetails,
+          }}
+        />
+      )}
       <div className="paymentmain">
         <div className="pay1">
           <div className="pays1">
-          <p className="date">{currentDate.toLocaleString()}</p>
-            <h1>Movie Name : {movieName}</h1>
-            <p>Theatre Name{theatreName}</p>
+            <h1>Movie Name: {movieName}</h1>
+            <p>Theatre Name: {theaterName}</p>
           </div>
           <div className="pays2">
-            <h1>Seat Info : {}</h1> 
+            <h1>
+              Seat Info: {seatInfo.map((seat) => seat.seatNumber).join(", ")}
+            </h1>
           </div>
         </div>
 
@@ -42,17 +71,17 @@ const Payment = () => {
           <div className="pays3">
             <p>Sub-total</p>
             <p className="greys">Internet Handling fees</p>
-            <p>Show Timing : {showTiming}</p>
+            <p>Show Timing: {showTiming}</p>
             <p>Integrated GST(IGST) @ 18%</p>
           </div>
           <div className="pays4">
-            <p>Rs {GrandTotal}</p> 
-            <p className="greys">Rs 70.80</p> 
-            <p>Rs 60.00</p> 
-          
+            <p>Rs {grandTotal}</p>
+            <p className="greys">Rs 70.80</p>
+            <p>Rs 60.00</p>
           </div>
         </div>
- <div className="pay3">
+
+        <div className="pay3">
           <div className="pays5">
             <p>Unlock Offers or Promocodes</p>
           </div>
@@ -63,8 +92,8 @@ const Payment = () => {
           </div>
         </div>
 
-        <div className="pay6" onClick={(e)=>{setPaymentSuccessfullPanel(true)}}>
-          <p onClick={(e)=>{setPaymentSuccessfullPanel(true)}}>Pay Rs {parseFloat(GrandTotal) + 70.80 + 60 }</p>
+        <div className="pay6" onClick={handlePaymentSuccess}>
+          <p>Pay Rs {parseFloat(grandTotal) + 70.8 + 60}</p>
         </div>
       </div>
     </section>

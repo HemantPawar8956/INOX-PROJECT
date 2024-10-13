@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.velocitai.movie_booking.model.Theater;
+import com.velocitai.movie_booking.util.City;
 @Repository
 public interface TheaterRepository extends JpaRepository<Theater, Long>{
 	
@@ -31,6 +32,8 @@ public interface TheaterRepository extends JpaRepository<Theater, Long>{
 //    @Query("SELECT t FROM Theater t JOIN t.showTime s WHERE s.movie.moviename = :movieName")
 	@Query("SELECT t FROM Theater t JOIN FETCH t.showTimes s JOIN FETCH s.movie m WHERE LOWER(m.moviename) LIKE LOWER(CONCAT('%', :moviename, '%'))")
     List<Theater> findByShow_MovieName( String moviename);
+
+	List<Theater> findByCity(City city);
 
 
 }

@@ -5,20 +5,20 @@ import { toast } from "react-toastify";
 import { Toaster } from "react-hot-toast";
 
 const AddShows = () => {
-  let{setAddShowPanel,updateCount,setUpdateCount}=useContext(globalVar)
+  let { setAddShowPanel, updateCount, setUpdateCount } = useContext(globalVar);
   const [showDetails, setShowDetails] = useState({
     time: "",
     date: "",
     theater: null,
-    movie: null,   
+    movie: null,
   });
 
-  const [theaters, setTheaters] = useState([]); 
-  const [movies, setMovies] = useState([]);    
+  const [theaters, setTheaters] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [errors, setErrors] = useState({});
-  const [apiError, setApiError] = useState("");     
-  const [successMessage, setSuccessMessage] = useState(""); 
-  const [showIdToDelete, setShowIdToDelete] = useState(""); 
+  const [apiError, setApiError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [showIdToDelete, setShowIdToDelete] = useState("");
 
   const token = localStorage.getItem("auth");
 
@@ -27,7 +27,7 @@ const AddShows = () => {
       try {
         const response = await axios.get("http://localhost:8080/theater/all", {
           headers: {
-            Authorization: `Bearer ${token}`, 
+            Authorization: `Bearer ${token}`,
           },
         });
         setTheaters(response.data);
@@ -38,15 +38,16 @@ const AddShows = () => {
     };
 
     const fetchMovies = async () => {
+      console.log(token);
       try {
         const response = await axios.get("http://localhost:8080/movies/all", {
           headers: {
-            Authorization:` Bearer ${token}`,
+            Authorization: ` Bearer ${token}`,
           },
         });
-        
+
         setMovies(response.data);
-        console.log(response)
+        console.log(response);
       } catch (error) {
         console.error("Error fetching movies:", error);
         setApiError("Failed to fetch movies. Please try again later.");
@@ -63,7 +64,7 @@ const AddShows = () => {
     if (name === "theater" || name === "movie") {
       setShowDetails({
         ...showDetails,
-        [name]: { id: value }, 
+        [name]: { id: value },
       });
     } else {
       setShowDetails({
@@ -86,45 +87,42 @@ const AddShows = () => {
 
     return Object.keys(newErrors).length === 0;
   };
-useEffect(() => {
-  const fetchTheaters = async () => {
-    try {
-      const response = await axios.get('http://localhost:8080/theater/all',showDetails,
-        {
-          headers: {
-            Authorization:`Bearer ${localStorage.getItem("auth")}`
+  useEffect(() => {
+    const fetchTheaters = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/theater/all",
+          showDetails,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("auth")}`,
+            },
           }
-        }
-      ); // Replace with your API endpoint
-      // const data = await response.json();
-      setTheaters(response.data); // Assuming data is an array of theaters
-    } catch (error) {
-      console.error("Error fetching theaters:", error);
-    }
-  };
-  fetchTheaters();
-}, []);
-  
+        ); // Replace with your API endpoint
+        // const data = await response.json();
+        setTheaters(response.data); // Assuming data is an array of theaters
+      } catch (error) {
+        console.error("Error fetching theaters:", error);
+      }
+    };
+    fetchTheaters();
+  }, []);
+
   useEffect(() => {
     const fetchMovies = async () => {
-    
-    try {
-      const response = await axios.get('http://localhost:8080/movies/all',
-        {
+      try {
+        const response = await axios.get("http://localhost:8080/movies/all", {
           headers: {
-            Authorization:`Bearer ${localStorage.getItem("auth")}`
-          }
-        }
-      ); // Replace with your API endpoint
-      setMovies(response.data); // Assuming response.data is an array of movies
-    } catch (error) {
-      console.error("Error fetching movies:", error);
-    }
-  };
-  fetchMovies();
+            Authorization: `Bearer ${localStorage.getItem("auth")}`,
+          },
+        }); // Replace with your API endpoint
+        setMovies(response.data); // Assuming response.data is an array of movies
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      }
+    };
+    fetchMovies();
   }, []);
-  
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -149,21 +147,25 @@ useEffect(() => {
       const payload = {
         time: showDetails.time,
         date: showDetails.date,
-        theater: { id: showDetails.theater.id }, 
-        movie: { id: showDetails.movie.id },       
+        theater: { id: showDetails.theater.id },
+        movie: { id: showDetails.movie.id },
       };
 
       try {
-        const response = await axios.post(`http://localhost:8080/show/save/${showDetails.theater.id}/${showDetails.movie.id}`, payload, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization:` Bearer ${token}`, 
-          },
-        });
+        const response = await axios.post(
+          `http://localhost:8080/show/save/${showDetails.theater.id}/${showDetails.movie.id}`,
+          payload,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: ` Bearer ${token}`,
+            },
+          }
+        );
 
         console.log("API response:", response.data);
         toast.success("Show Added Successfully");
-        setUpdateCount(updateCount+1)
+        setUpdateCount(updateCount + 1);
         setShowDetails({
           time: "",
           date: "",
@@ -178,7 +180,9 @@ useEffect(() => {
 
         if (error.response) {
           setApiError(
-            `Failed to save the show: ${error.response.data.message || "Server Error"}`
+            `Failed to save the show: ${
+              error.response.data.message || "Server Error"
+            }`
           );
         } else if (error.request) {
           setApiError("No response from the server. Please try again later.");
@@ -196,11 +200,14 @@ useEffect(() => {
     }
 
     try {
-      const response = await axios.delete(`http://localhost:8080/show/delete/${showIdToDelete}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.delete(
+        `http://localhost:8080/show/delete/${showIdToDelete}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       console.log("Delete response:", response.data);
       setSuccessMessage("Show deleted successfully!");
@@ -208,7 +215,11 @@ useEffect(() => {
     } catch (error) {
       console.error("Error deleting the show:", error);
       if (error.response) {
-        setApiError(`Failed to delete the show: ${error.response.data.message || "Server Error"}`);
+        setApiError(
+          `Failed to delete the show: ${
+            error.response.data.message || "Server Error"
+          }`
+        );
       } else if (error.request) {
         setApiError("No response from the server. Please try again later.");
       } else {
@@ -217,9 +228,19 @@ useEffect(() => {
     }
   };
   return (
-    <section className="add-show-main" onClick={(e)=>{e.stopPropagation(),setAddShowPanel(false)}}>
-      <Toaster/>
-      <div className="add-shows-container" onClick={(e)=>{e.stopPropagation(),setAddShowPanel(true)}}>
+    <section
+      className="add-show-main"
+      onClick={(e) => {
+        e.stopPropagation(), setAddShowPanel(false);
+      }}
+    >
+      <Toaster />
+      <div
+        className="add-shows-container"
+        onClick={(e) => {
+          e.stopPropagation(), setAddShowPanel(true);
+        }}
+      >
         <h2>Add New Show</h2>
         <form onSubmit={handleSubmit} className="add-show-form">
           <div className="form-group">
@@ -264,7 +285,9 @@ useEffect(() => {
                 </option>
               ))}
             </select>
-            {errors.theater && <p className="error-message">{errors.theater}</p>}
+            {errors.theater && (
+              <p className="error-message">{errors.theater}</p>
+            )}
           </div>
 
           <div className="form-group">
@@ -291,7 +314,9 @@ useEffect(() => {
           </button>
 
           {apiError && <p className="error-message">{apiError}</p>}
-          {successMessage && <p className="success-message">{successMessage}</p>}
+          {successMessage && (
+            <p className="success-message">{successMessage}</p>
+          )}
         </form>
         {/* <div className="delete-show">
           <h2>Delete Show</h2>
@@ -307,7 +332,7 @@ useEffect(() => {
           {apiError && <p className="error-message">{apiError}</p>}
           {successMessage && <p className="success-message">{successMessage}</p>}
         </div> */}
-      </div> 
+      </div>
     </section>
   );
 };

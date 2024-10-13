@@ -11,12 +11,11 @@ import { globalVar } from "../globalContext/GlobalContext";
 import { useLocation } from "react-router-dom";
 
 const ShowTimings = () => {
-  let { inoxLoginType,addShowPanel, setAddShowPanel  } =
-    useContext(globalVar);
-   
-    let {state}=useLocation();
-    
-     let [allTheater,setAllTheater]=useState([])
+  let { inoxLoginType, addShowPanel, setAddShowPanel } = useContext(globalVar);
+
+  let { state } = useLocation();
+
+  let [allTheater, setAllTheater] = useState([]);
   const dates = [
     { day: "Sep 30", label: "Today" },
     { day: "Oct 01", label: "Tomorrow" },
@@ -28,7 +27,7 @@ const ShowTimings = () => {
   ];
 
   useEffect(() => {
-    console.log("useEffect")
+    console.log("useEffect");
     let fetchData = async () => {
       try {
         let response = await axios.get(
@@ -36,9 +35,8 @@ const ShowTimings = () => {
             ? `http://localhost:8080/open/cinemas/${state.moviename}`
             : `http://localhost:8080/open/cinemas/alls`
         );
-        console.log(response.data)
-        setAllTheater(response.data)
-
+        console.log(response.data);
+        setAllTheater(response.data);
       } catch (error) {
         console.error("Error fetching data", error);
       }
@@ -123,11 +121,10 @@ const ShowTimings = () => {
         </div>
       </div>
       <section className="accor">
-        {allTheater.map((data,i)=>{
-          console.log(allTheater)
-        return <Accordion1 data={data} key={i}/>
-
-        })}
+        {state?.cinema ||
+          allTheater.map((data, i) => {
+            return <Accordion1 data={data} key={i} filterData={state} />;
+          })}
       </section>
     </section>
   );

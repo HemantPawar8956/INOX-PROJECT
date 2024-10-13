@@ -3,6 +3,7 @@ package com.velocitai.movie_booking.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,6 @@ import com.velocitai.movie_booking.service.TicketService;
 public class TicketController {
 	
 	@Autowired
-	
 	TicketService ticketService;
 	
 	@PostMapping("/save")
@@ -30,6 +30,11 @@ public class TicketController {
 	@DeleteMapping("/deleteTicket/{id}")
     public ResponseEntity<?> deleteTicket(@PathVariable Long id) {
         return ticketService.deleteTicket(id);
+    }
+	
+	@GetMapping("/all")
+    public ResponseEntity<?> findAllTicket() {
+        return ticketService.findAllTickets();
     }
 
 }

@@ -2,24 +2,26 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const SeatLayout = () => {
-  let navigate=useNavigate();
+  let navigate = useNavigate();
   let { state } = useLocation(); // 'state' is passed as props, containing seat array with different prices
-   console.log(state)
+  console.log(state);
   let seatSeq = "A";
   let [selectedSeats, setSelectedSeats] = useState([]);
   let [showPayment, setShowPayment] = useState(false);
 
   let spaces = [1, 2, 3];
-  
- let bookedTicket=()=>{
-    navigate("/payment", {state:{
-      movieName:"",
-      theaterName:"",
-      showTime:"",
-      seatInfo:selectedSeats,
-      GrandTotal:subtotal
-    }})
- }
+
+  let bookedTicket = () => {
+    navigate("/payment", {
+      state: {
+        movieName: state?.movieName,
+        theaterName: state?.theaterName,
+        showTime: state?.ele?.time,
+        seatInfo: selectedSeats,
+        grandTotal: subtotal,
+      },
+    });
+  };
 
   // Function to handle seat selection and deselection
   let SeatStatus = (e, seat) => {
@@ -31,8 +33,11 @@ const SeatLayout = () => {
     } else if (selectedSeats.includes(seat)) {
       e.target.style.backgroundColor = "lightgray";
       e.target.style.color = "black";
-      setSelectedSeats((prevSeats) =>
-        prevSeats.filter((selectedSeat) => selectedSeat.seatNumber !== seat.seatNumber) // Remove the seat
+      setSelectedSeats(
+        (prevSeats) =>
+          prevSeats.filter(
+            (selectedSeat) => selectedSeat.seatNumber !== seat.seatNumber
+          ) // Remove the seat
       );
 
       if (selectedSeats.length === 1) {
@@ -79,7 +84,7 @@ const SeatLayout = () => {
           </div>
 
           <section className="car1">
-            {state?.seat?.map((seat, index) => {
+            {state?.ele?.seat?.map((seat, index) => {
               return (
                 <>
                   {seat.seatNumber?.slice(0, 1) !== seatSeq &&
@@ -97,7 +102,8 @@ const SeatLayout = () => {
                     onClick={(e) => {
                       SeatStatus(e, seat); // Pass the full seat object
                     }}
-                    key={index + 2}>
+                    key={index + 2}
+                  >
                     {seat.seatNumber}
                   </span>
                   {(seat.seatNumber.slice(1) == 4 ||
@@ -121,7 +127,7 @@ const SeatLayout = () => {
           </div>
           <div className="image-pic2">
             <div>SEAT INFO</div>
-            <div>{selectedSeats.map(seat => seat.seatNumber).join(", ")}</div>
+            <div>{selectedSeats.map((seat) => seat.seatNumber).join(", ")}</div>
             <div className="r1">R1</div>
           </div>
           <div className="image-pic3">
@@ -130,7 +136,8 @@ const SeatLayout = () => {
             </div>
             <div>
               <h1>
-                {selectedSeats.length} x ₹{selectedSeats.map(seat => seat.price).join(", ")}
+                {selectedSeats.length} x ₹
+                {selectedSeats.map((seat) => seat.price).join(", ")}
               </h1>
             </div>
           </div>
@@ -154,7 +161,9 @@ const SeatLayout = () => {
               <h1>Grand Total: ₹{grandTotal}</h1>
             </div>
             <div>
-              <button className="button-grand" onClick={bookedTicket}>Proceed</button>
+              <button className="button-grand" onClick={bookedTicket}>
+                Proceed
+              </button>
             </div>
           </div>
         </section>

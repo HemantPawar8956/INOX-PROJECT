@@ -12,4 +12,6 @@ public interface TicketService {
 
 	public ResponseEntity<?> deleteTicket(Long id);
 
+	public ResponseEntity<?> findAllTickets();
+
 }

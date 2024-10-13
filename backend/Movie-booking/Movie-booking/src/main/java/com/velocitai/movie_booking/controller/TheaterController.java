@@ -30,7 +30,7 @@ public class TheaterController {
 
 	// Get theaters by address
 	@GetMapping("/gettheaters/{address}")
-	public ResponseEntity<List<Theater>> searchByAddress(@PathVariable String address) {
+	public ResponseEntity<?> searchByAddress(@PathVariable String address) {
 		return theaterService.findTheaterByLocation(address);
 	}
 
@@ -56,7 +56,7 @@ public class TheaterController {
 
 	// findAllTheaters
 	@GetMapping("/all")
-	public ResponseEntity<List<Theater>> getAllTheaters() {
+	public ResponseEntity<?> getAllTheaters() {
 		return theaterService.findAllTheater();
 	}
 
@@ -64,7 +64,7 @@ public class TheaterController {
 
 	// findTheaterByLocation
 	@GetMapping("/location/{location}")
-	public ResponseEntity<List<Theater>> findTheaterByLocation(@PathVariable String location) {
+	public ResponseEntity<?> findTheaterByLocation(@PathVariable String location) {
 		return theaterService.findTheaterByLocation(location);
 	}
 }

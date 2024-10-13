@@ -29,7 +29,7 @@ public class Seat {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seat_gen")
 	@SequenceGenerator(name = "seat_gen",initialValue = 1000,allocationSize = 1)
 	@Column(name = "seat_id")
-	private long id;
+	private Long id;
 
 	@Column(name = "seat_no")
 	private String seatNumber;

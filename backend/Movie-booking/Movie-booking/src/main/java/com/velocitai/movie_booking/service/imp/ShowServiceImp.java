@@ -16,6 +16,7 @@ import com.velocitai.movie_booking.dao.MovieRepository;
 import com.velocitai.movie_booking.dao.SeatRepository;
 import com.velocitai.movie_booking.dao.ShowRepository;
 import com.velocitai.movie_booking.dao.TheaterRepository;
+import com.velocitai.movie_booking.model.Movie;
 import com.velocitai.movie_booking.model.Seat;
 import com.velocitai.movie_booking.model.Show;
 import com.velocitai.movie_booking.model.Theater;
@@ -49,9 +50,10 @@ public class ShowServiceImp implements ShowService {
 
 	@Override
 	public ResponseEntity<Show> saveShow(Show show, long theaterId, long movieId) {
-		Theater theater = theaterRepository.findById(theaterId).get();
+		Theater theater = theaterRepository.findById(theaterId).orElseThrow();
+		Movie movie = movieRepository.findById(movieId).orElseThrow();
 		show.setTheater(theater);
-		show.setMovie(movieRepository.findById(movieId).get());
+		show.setMovie(movie);
 		
 		List<Seat> seats = new ArrayList<Seat>();
 		char c = 'A';
@@ -87,6 +89,15 @@ public class ShowServiceImp implements ShowService {
 		    } else {
 		        theater.setShowTimes(Arrays.asList(show));
 		    }
+		    if (theater.getMovies() != null) {
+		        theater.getShowTimes().add(show);
+		        theater.getMovies().add(movie);
+		    } else {
+		        theater.setShowTimes(Arrays.asList(show));
+		        theater.setMovies(Arrays.asList(movie));
+		    }
+		    
+			theaterRepository.save(theater);
 		
 
 		return ResponseEntity.ok(savedShow);

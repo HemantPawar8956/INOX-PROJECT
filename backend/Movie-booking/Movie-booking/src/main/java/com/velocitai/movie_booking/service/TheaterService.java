@@ -17,11 +17,11 @@ public interface TheaterService {
 
 	public ResponseEntity<?> deleteTheater(long id);
 
-	public ResponseEntity<List<Theater>> findAllTheater();
+	public ResponseEntity<?> findAllTheater();
 
-	public ResponseEntity<List<Theater>> findTheaterByMovieName(String movieName);
+	public ResponseEntity<?> findTheaterByMovieName(String movieName);
 	
-	public ResponseEntity<List<Theater>> findTheaterByLocation(String location);
+	public ResponseEntity<?> findTheaterByLocation(String location);
 
 	
 

@@ -61,7 +61,7 @@ public class NoAuthController {
 
 	// findAllTheaters
 	@GetMapping("/cinemas/alls")
-	public ResponseEntity<List<Theater>> getAllTheaters() {
+	public ResponseEntity<?> getAllTheaters() {
 		return theaterService.findAllTheater();
 	}
 
@@ -79,7 +79,7 @@ public class NoAuthController {
 	}
 	// findTheaterByMovieName
 		@GetMapping("/cinemas/{movieName}")
-		public ResponseEntity<List<Theater>> findTheaterByMovieName(@PathVariable String movieName) {
+		public ResponseEntity<?> findTheaterByMovieName(@PathVariable String movieName) {
 			return theaterService.findTheaterByMovieName(movieName);
 		}
 }

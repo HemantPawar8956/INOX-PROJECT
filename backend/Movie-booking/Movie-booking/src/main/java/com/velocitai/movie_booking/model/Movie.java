@@ -4,19 +4,17 @@ import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,11 +33,11 @@ public class Movie {
 	private String movieLanguage;
 	private LocalTime duration;
 	private String genre;
-	@Column(name="movie_image")
+	@Column(name = "movie_image")
 	private String movieImage;
-	
-@JsonIgnore
-	@OneToMany(mappedBy = "movie") // Indicates the 'movie' field in the Show class
-	private List<Show> shows; 
-	
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "movie", fetch = FetchType.LAZY) // Indicates the 'movie' field in the Show class
+	private List<Show> shows;
+
 }

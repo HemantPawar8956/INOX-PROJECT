@@ -65,11 +65,7 @@ export let routingVar = createBrowserRouter([
   },
   {
     path: "/selectseats",
-    element: (
-      <ProtectedRoute>
-        <SeatLayout />
-      </ProtectedRoute>
-    ),
+    element: <SeatLayout />,
   },
   {
     path: "/addshows",

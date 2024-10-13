@@ -2,6 +2,7 @@ package com.velocitai.movie_booking.model;
 
 import java.util.List;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.stereotype.Component;
 
 import jakarta.persistence.CascadeType;
@@ -25,11 +26,12 @@ public class Ticket {
 	@Column(name = "ticket_id")
 	private String id;
 	@Column(name = "ticket_totalprice")
-	private double GrandTotal;
+	private double grandTotal;
 	private String movieName;
 	private String theatreName;
-	@OneToOne
-	private Show showTiming;
+	@CreationTimestamp
+	private String bookingTime;
+	private String showTiming;
 	@ManyToOne
 	private User user;
 	@OneToMany(cascade = CascadeType.ALL)

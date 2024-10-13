@@ -23,8 +23,13 @@ import { RiAdvertisementFill } from "react-icons/ri";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { globalVar } from "../globalContext/GlobalContext";
 import { BiCard } from "react-icons/bi";
+import { jwtDecode } from "jwt-decode";
 
 const Navbar = () => {
+  let auth = localStorage.getItem("auth");
+  const decodedToken = auth && jwtDecode(auth);
+  const [isLoginPanelOpen, setIsLoginPanelOpen] = useState(false);
+  const [isLogoutVisible, setIsLogoutVisible] = useState(false);
   let [dropdownVisible, setDropdownVisible] = useState(false);
   let {
     siderVisible,
@@ -53,18 +58,19 @@ const Navbar = () => {
       <nav className="nav">
         <ul>
           <li>
-          
             <NavLink
               to="/"
-              className={({ isActive }) => (isActive ? "active" : "")}>
-                <FaHome className="icon" />
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              <FaHome className="icon" />
               <span> Home</span>
             </NavLink>
           </li>
           <li>
             <NavLink
               to="/showtimings"
-              className={({ isActive }) => (isActive ? "active" : "")}>
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
               <FaStar className="icon" /> Showtimings
             </NavLink>
           </li>
@@ -74,7 +80,8 @@ const Navbar = () => {
               <>
                 <NavLink
                   to="/cinemas"
-                  className={({ isActive }) => (isActive ? "active" : "")}>
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
                   <BiCard className="icon" /> Cinemas
                 </NavLink>
               </>
@@ -88,28 +95,25 @@ const Navbar = () => {
             {inoxLoginType == "ADMIN" ? (
               <>
                 <NavLink to="allbookings">
-                  <AiFillFund className="icon" /> <span>All Bookings</span>
+                  <AiFillFund className="icon" /> <span>All&nbsp;Tickets</span>
                 </NavLink>
               </>
             ) : (
               <>
-              
-                <AiFillFund className="icon" /> InvestorSection                  
-              
+                <AiFillFund className="icon" /> InvestorSection
               </>
             )}
           </li>
           <li>
-            
-              <FaUser className="icon" /> Passport
-           
+            <FaUser className="icon" /> Passport
           </li>
           <li>
             <div className="dropdown">
               <button
                 className="dropdownbtn"
                 onMouseOver={Dropdown}
-                onMouseLeave={Dropdown}>
+                onMouseLeave={Dropdown}
+              >
                 <FaBars /> More <FaChevronDown />
               </button>
               {dropdownVisible && (
@@ -117,7 +121,8 @@ const Navbar = () => {
                   onMouseOver={() => {
                     setDropdownVisible(true);
                   }}
-                  onMouseLeave={Dropdown}>
+                  onMouseLeave={Dropdown}
+                >
                   <div className="dropDown">
                     <p className="content">
                       <FaGift />
@@ -157,14 +162,41 @@ const Navbar = () => {
             <FaChevronDown />
           </button>
         </div>
-        <button
-          className="login"
-          onClick={() => {
-            setLoginPanel(!loginPanel);
-          }}>
-          <FaUserCircle />
-          Login
-        </button>
+        {!decodedToken ? (
+          <button
+            className="login"
+            onClick={() => {
+              setLoginPanel(true);
+            }}
+          >
+            <FaUserCircle />
+            Login
+          </button>
+        ) : (
+          <div className="login">
+            <span
+              className="username"
+              onClick={() => setIsLogoutVisible(!isLogoutVisible)}
+            >
+              {decodedToken?.sub}
+            </span>
+            <div
+              className={`logout ${isLogoutVisible ? "show" : ""}`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  localStorage.removeItem("auth");
+                  setInoxLoginType("USER");
+                  setIsLogoutVisible(!isLogoutVisible);
+                }}
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );

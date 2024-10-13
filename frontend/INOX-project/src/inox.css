@@ -113,6 +113,31 @@
   border-radius: 10px;
   background-color: rgba(163, 201, 227, 0.427);
 }
+
+.logout {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.2s ease, transform 0.3s ease;
+  position: absolute;
+  top: 60%;
+  right: 0;
+  border-radius: 10px;
+  background-color: rgb(61, 110, 236) !important;
+  font-size: 30px;
+color: white;
+
+}
+
+.logout.show {
+  opacity: 1;
+  width: 200px;
+  transform: scale(0.50);
+}
+
+.logout.show:hover {
+  background-color: rgb(24, 33, 127) !important;
+  color: white;
+}
 .dropdownbtn {
   border-radius: 15px;
   display: flex;
@@ -1212,6 +1237,7 @@ p {
   color: green;
   font-weight: 600;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .accordion-content {
@@ -2866,3 +2892,113 @@ margin-left:-0px ;
   }
 }
 
+/* anvith Container for the entire page */
+.ticket-list-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+/* Title style */
+.ticket-list-container h1 {
+  text-align: center;
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Table style */
+.ticket-list-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table header styling */
+.ticket-list-container thead {
+  background-color: #4CAF50;
+  color: white;
+  text-align: left;
+}
+
+.ticket-list-container thead th {
+  padding: 10px;
+  font-size: 1.1em;
+  text-transform: uppercase;
+}
+
+/* Table row styling */
+.ticket-list-container tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.ticket-list-container tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+  /* Alternating row colors */
+}
+
+.ticket-list-container tbody td {
+  padding: 10px;
+  color: #555;
+}
+
+/* Seat Info styling to make the seat numbers stand out */
+.ticket-list-container .seat-info {
+  background-color: #f7f7f7;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+/* User info */
+.ticket-list-container .user-info {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+  .ticket-list-container table,
+  .ticket-list-container thead,
+  .ticket-list-container tbody,
+  .ticket-list-container th,
+  .ticket-list-container td,
+  .ticket-list-container tr {
+    display: block;
+  }
+
+  /* Table headers for mobile view */
+  .ticket-list-container thead {
+    display: none;
+  }
+
+  /* Each table row becomes a block */
+  .ticket-list-container tbody tr {
+    margin-bottom: 15px;
+    border: none;
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Add labels for each data cell */
+  .ticket-list-container tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+  }
+
+  .ticket-list-container tbody td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #333;
+  }
+}

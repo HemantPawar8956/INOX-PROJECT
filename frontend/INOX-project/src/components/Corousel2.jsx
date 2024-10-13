@@ -1,11 +1,11 @@
- import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { globalVar } from "../globalContext/GlobalContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Corousel2 = () => {
   const [movies, setMovies] = useState([]);
-   const navigate = useNavigate();
+  const navigate = useNavigate();
   const {
     loginType,
     moviePanel,
@@ -17,7 +17,7 @@ const Corousel2 = () => {
     updateCount,
     deleteCount,
     setIsModalOpen,
-    setUpdatemoviePanel
+    setUpdatemoviePanel,
   } = useContext(globalVar);
 
   let handleBooking = (ele) => {
@@ -29,9 +29,8 @@ const Corousel2 = () => {
       comp: "movies",
       data: ele,
     });
-     
+
     setUpdatemoviePanel(true);
-      
   };
 
   let deleteMovie = (ele) => {
@@ -41,18 +40,15 @@ const Corousel2 = () => {
     });
     setIsModalOpen(true);
   };
-  
 
   useEffect(() => {
     let token = localStorage.getItem("auth");
 
     const fetchMovies = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/movies/all", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.get(
+          "http://localhost:8080/open/movies/alls"
+        );
         console.log(response.data);
         setMovies(response.data);
       } catch (error) {
@@ -60,8 +56,7 @@ const Corousel2 = () => {
       }
     };
     fetchMovies();
-  }, [updateCount,deleteCount]);
-
+  }, [updateCount, deleteCount]);
 
   return (
     <section className="corousel2">
@@ -75,7 +70,8 @@ const Corousel2 = () => {
             className="new-btn"
             onClick={() => {
               setMoviePanel(!moviePanel);
-            }}>
+            }}
+          >
             <button>Add New Movies</button>
           </div>
         )}
@@ -124,11 +120,29 @@ const Corousel2 = () => {
               <p>Genre: {ele.genre}</p>
 
               {inoxLoginType === "USER" ? (
-                <button onClick={()=>{handleBooking(ele)}}>Book Tickets</button>
+                <button
+                  onClick={() => {
+                    handleBooking(ele);
+                  }}
+                >
+                  Book Tickets
+                </button>
               ) : inoxLoginType === "ADMIN" ? (
                 <div className="admin-btn">
-                  <button onClick={()=>{UpdateMovie(ele)}}>Update</button>
-                  <button onClick={()=>{deleteMovie(ele)}}>Delete</button>
+                  <button
+                    onClick={() => {
+                      UpdateMovie(ele);
+                    }}
+                  >
+                    Update
+                  </button>
+                  <button
+                    onClick={() => {
+                      deleteMovie(ele);
+                    }}
+                  >
+                    Delete
+                  </button>
                 </div>
               ) : null}
             </div>
