@@ -100,7 +100,9 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <AiFillFund className="icon" /> InvestorSection
+                <NavLink to="allbookings">
+                  <AiFillFund className="icon" /> <span>All&nbsp;Tickets</span>
+                </NavLink>
               </>
             )}
           </li>
