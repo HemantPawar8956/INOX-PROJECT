@@ -4,7 +4,8 @@ import { globalVar } from "../globalContext/GlobalContext";
 import toast from "react-hot-toast";
 
 const Addmovie = () => {
-  let { moviePanel, setMoviePanel,updateCount,setUpdateCount} = useContext(globalVar);
+  let { moviePanel, setMoviePanel, updateCount, setUpdateCount } =
+    useContext(globalVar);
   const [formData, setFormData] = useState({
     moviename: "",
     genre: "",
@@ -33,17 +34,17 @@ const Addmovie = () => {
         formData,
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("auth")}`, 
+            Authorization: `Bearer ${localStorage.getItem("auth")}`,
           },
         }
       );
 
       toast.success("movie added successfully");
       setShowModal(false);
-      setUpdateCount(updateCount+1)
+      setUpdateCount(updateCount + 1);
       setMoviePanel(!moviePanel);
-
     } catch (error) {
+      toast.error("Something went wrong");
       console.error("Error saving movie details:", error);
     }
   };
@@ -53,14 +54,16 @@ const Addmovie = () => {
       className="main-body"
       onClick={(e) => {
         e.stopPropagation(), setMoviePanel(false);
-      }}>
+      }}
+    >
       <section className="center-section">
         <div className="form-container">
           <h2>Movie Details</h2>
           <form
             onClick={(e) => {
               e.stopPropagation(), setMoviePanel(true);
-            }}>
+            }}
+          >
             <div className="form-group">
               <label htmlFor="movieName">Movie Name:</label>
               <input
@@ -139,7 +142,8 @@ const Addmovie = () => {
           className="modal"
           onClick={(e) => {
             e.stopPropagation(), setShowModal(false);
-          }}>
+          }}
+        >
           <div className="modal-content">
             <h3>Confirm Movie Details</h3>
             <p>
@@ -166,8 +170,6 @@ const Addmovie = () => {
           </div>
         </div>
       )}
-
-
     </div>
   );
 };

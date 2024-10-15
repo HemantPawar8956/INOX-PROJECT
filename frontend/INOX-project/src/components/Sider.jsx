@@ -90,7 +90,8 @@ const Sider = () => {
         onClick={(e) => {
           e.stopPropagation();
           setSiderVisible(true);
-        }}>
+        }}
+      >
         <div>
           <button className="btn" onClick={handleClose}>
             <ImCross />
@@ -99,7 +100,7 @@ const Sider = () => {
 
         {selectedCity ? (
           <div className="selectedCityImage">
-            <h3>{selectedCity.name}</h3>
+            <h3 className="cityName">{selectedCity.name}</h3>
             <img
               src={selectedCity.image ? selectedCity.image : defaultimage}
               alt={selectedCity.name}
@@ -143,7 +144,8 @@ const Sider = () => {
                               });
                             }
                             setSEarchedCity("");
-                          }}>
+                          }}
+                        >
                           {cityName}
                         </div>
                       );
@@ -160,7 +162,9 @@ const Sider = () => {
                       <div
                         key={index}
                         className="city-tile"
-                        onClick={() => handleCitySelect(city)}>
+                        onClick={() => handleCitySelect(city)}
+                      >
+                        <h3 className="cityName">{city.name}</h3>
                         <img src={city.image} alt={city.name} />
                       </div>
                     ))}
@@ -185,7 +189,8 @@ const Sider = () => {
                         } else {
                           handleCitySelect({ name: city, image: defaultimage });
                         }
-                      }}>
+                      }}
+                    >
                       {city}
                     </li>
                   ))}

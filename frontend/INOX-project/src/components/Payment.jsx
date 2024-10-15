@@ -71,7 +71,7 @@ const Payment = () => {
           <div className="pays3">
             <p>Sub-total</p>
             <p className="greys">Internet Handling fees</p>
-            <p>Show Timing: {showTiming}</p>
+            <p>Show Timing: {showTime}</p>
             <p>Integrated GST(IGST) @ 18%</p>
           </div>
           <div className="pays4">

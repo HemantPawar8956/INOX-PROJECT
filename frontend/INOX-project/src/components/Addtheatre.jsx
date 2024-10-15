@@ -5,7 +5,8 @@ import toast from "react-hot-toast";
 
 const Addtheatre = () => {
   // Create state for theatre name and address
-  let { addthatrePanel, setAddTheatrePanel,updateCount,setUpdateCount } = useContext(globalVar);
+  let { addthatrePanel, setAddTheatrePanel, updateCount, setUpdateCount } =
+    useContext(globalVar);
   const [theatre, setTheatre] = useState({
     name: "",
     address: "",
@@ -34,13 +35,13 @@ const Addtheatre = () => {
         }
       );
       console.log("Theater added successfully:", response.data);
-      toast.success("Theater Added Successfully")
-      setUpdateCount(updateCount+1)
+      toast.success("Theater Added Successfully");
+      setUpdateCount(updateCount + 1);
       setAddTheatrePanel(false);
       // Optionally clear form fields after successful submission
       setTheatre({ name: "", address: "" });
-      
     } catch (error) {
+      toast.error("Something went wrong");
       console.error("Error adding theatre:", error);
     }
   };
@@ -55,12 +56,14 @@ const Addtheatre = () => {
       className="theatre-main-container"
       onClick={(e) => {
         e.stopPropagation(), setAddTheatrePanel(false);
-      }}>
+      }}
+    >
       <section
         className="theatre-form-section"
         onClick={(e) => {
           e.stopPropagation(), setAddTheatrePanel(true);
-        }}>
+        }}
+      >
         <div className="theatre-form-container">
           <h2>Theatre Details</h2>
           <form onSubmit={handleSubmit}>
@@ -97,7 +100,8 @@ const Addtheatre = () => {
               <button
                 type="button"
                 className="theatre-delete-btn"
-                onClick={handleReset}>
+                onClick={handleReset}
+              >
                 Reset
               </button>
             </div>

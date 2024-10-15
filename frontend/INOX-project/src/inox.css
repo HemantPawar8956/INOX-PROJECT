@@ -47,6 +47,8 @@
 }
 .nav ul li:has(.active) {
   padding: 0px !important;
+  /* border-radius: 5px; */
+  background-color: white !important;
 }
 .nav ul li:last-child {
   padding: 0px !important;
@@ -171,6 +173,7 @@ color: white;
 }
 .dropDown .content:hover {
   background-color: rgba(0, 0, 0, 0.05);
+  cursor: no-drop;
 }
 
 .dropDown .content:hover {
@@ -183,12 +186,15 @@ color: white;
   background-color: #003688 !important;
   color: white !important;
   padding: 5px 15px !important;
-  border-radius: 47px;
+  border-radius: 30px;
 }
 
 .dropDown {
   position: fixed;
   background-color: rgb(224, 222, 222);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* second nav  */
@@ -1095,15 +1101,17 @@ p {
   position: relative;
 }
 .show-timings-dates {
-  width: 50%;
+  width: 50% !important;
   display: flex;
+  align-items: center;
   position: absolute;
-  left: 100px;
+  /* left: 100px; */
 }
 .date-item {
-  margin: 15px;
+  /* margin: 15px; */
   width: 30%;
-  height: 80px;
+  /* height: 80px; */
+  /* border: 1px solid !important; */
 }
 .date-item h3 {
   font-weight: bold;
@@ -1228,6 +1236,7 @@ p {
 .timings-row {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   width: 80%;
 }
 .time-box {
@@ -1352,10 +1361,22 @@ p {
   transition: transform 0.3s ease;
   text-align: center;
   margin-bottom: 10px;
+  position: relative;
+}
+.city-tile .cityName{
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  color: white;
+  visibility: hidden;
 }
 
 .selectLocation .horizontalBar .static-horizontal .city-grid .city-tile:hover {
   transform: scale(1.04);
+
+}
+.city-tile:hover .cityName{
+   visibility: visible;
 }
 
 .selectLocation
@@ -1768,6 +1789,7 @@ p {
   padding: 10px;
   background-color: #003566;
   color: white;
+  visibility: hidden;
 }
 
 .main1 .main .navseat .nav2 .SeatLayoutNavEle {
@@ -1846,7 +1868,13 @@ p {
 .main1 .main .seat .seat-content .seat-legend .small1 .occupiedSeat {
   background-color: red;
 }
-
+.main1 .main .seat .car1{
+  width: 67%;
+  margin: 0 auto;
+}
+.main1 .main .seat .showPayment{
+  width: 100% !important;
+}
 .main1 .main .seat .car1 .seats {
   display: inline-block;
   width: 30px;
@@ -1858,10 +1886,12 @@ p {
   text-align: center;
   line-height: 30px;
   cursor: pointer;
+  background-color: rgb(12, 134, 12);
+  color: white;
 }
 
 .main1 .main .seat .car1 .seats.bookedSeat {
-  background-color: gray !important;
+  background-color: rgb(255, 38, 38) !important;
   cursor: not-allowed;
   color: white;
 }
@@ -2385,14 +2415,16 @@ p {
 }
 
 .show-timings-dates .date-item{
-  border: 1px solid whitesmoke;
-  height: 75px;
+  border-right: 1px solid whitesmoke;
+  /* height: 75px; */
   padding: 9px;
-  cursor: pointer; 
+  cursor: no-drop; 
 }
 
 .show-timings-dates .date-item:hover{
-  background-color: #c6d4e9;
+  background-color: #e1e2e4;
+  box-shadow: 0px 0px 2px gray;
+  border-radius: 5px;
 }
 
 .show-timings-dates .date-item .dateshow {
@@ -2422,7 +2454,14 @@ p {
   flex-direction: column;
   gap: 15px; 
 }
-
+.dataNotFound{
+  width: 100%;
+  color: red;
+  margin: 0 auto;
+  background-color: white;
+  text-align: center;
+  font-size: 18px;
+}
 .show-timings-container .accordion-header {
   width: 80%;
     border-radius: 10px;
@@ -2573,9 +2612,13 @@ gap: 5px;
 
 .show-timings-container .downaccordion .accordion-content {
   width: 80%;
-    border: 1px solid;
+    /* border: 1px solid; */
+    box-shadow: 0px 2px 5px gray;
+    padding: 10px;
     display: flex;
     flex-wrap: wrap;
+    border-radius: 10px;
+    margin-bottom: 2px;
     /* justify-content: center; */
     flex-direction: column;
     align-items: center;
@@ -2641,6 +2684,7 @@ margin-left:-0px ;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
 }
 
 

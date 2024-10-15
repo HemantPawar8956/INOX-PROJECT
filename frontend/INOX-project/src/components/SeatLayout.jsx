@@ -31,8 +31,8 @@ const SeatLayout = () => {
       setSelectedSeats((prevSeats) => [...prevSeats, seat]); // Add full seat object to selectedSeats
       setShowPayment(true);
     } else if (selectedSeats.includes(seat)) {
-      e.target.style.backgroundColor = "lightgray";
-      e.target.style.color = "black";
+      e.target.style.backgroundColor = "rgb(12, 134, 12)";
+      e.target.style.color = "white";
       setSelectedSeats(
         (prevSeats) =>
           prevSeats.filter(
@@ -83,7 +83,7 @@ const SeatLayout = () => {
             </div>
           </div>
 
-          <section className="car1">
+          <section className={`car1 ${showPayment ? "showPayment" : ""}`}>
             {state?.ele?.seat?.map((seat, index) => {
               return (
                 <>

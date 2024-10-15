@@ -176,6 +176,7 @@ const AddShows = () => {
         setErrors({});
         // setSuccessMessage("Show added successfully!");
       } catch (error) {
+        toast.error("Something went wrong");
         console.error("Error saving the show:", error);
 
         if (error.response) {

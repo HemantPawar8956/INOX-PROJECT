@@ -33,9 +33,7 @@ const QuickBookNav = () => {
 
   const handleMovieData = async () => {
     try {
-      
-      let { data } = await axios.get("http://localhost:8080/open/movies/alls"
-      );
+      let { data } = await axios.get("http://localhost:8080/open/movies/alls");
       setFetchedMovieData(data); // Fetch and set movie data
     } catch {
       console.log("Movie data not found");
@@ -44,8 +42,7 @@ const QuickBookNav = () => {
 
   const handleCinemaData = async () => {
     try {
-      let { data } = await axios.get("http://localhost:8080/open/cinemas/alls"
-      );
+      let { data } = await axios.get("http://localhost:8080/open/cinemas/alls");
 
       setFetchedCinemaData(data); // Fetch and set cinema data
     } catch {
@@ -57,11 +54,16 @@ const QuickBookNav = () => {
     setData({ ...data, date: selectedDate });
   };
 
-
-
   useEffect(() => {
-   handleCinemaData();
-   handleMovieData();
+    handleCinemaData();
+    handleMovieData();
+    setData({
+      Show: change,
+      movie: "",
+      cinema: "",
+      date: null,
+      timing: "10:00",
+    });
   }, [change]);
 
   return (
@@ -78,13 +80,16 @@ const QuickBookNav = () => {
           <select
             name={change === "Movie" ? "movie" : "cinema"}
             value={change === "Movie" ? movie : cinema}
-            onChange={handleChange}>
+            onChange={handleChange}
+          >
             <option value="">{`Select ${change}`}</option>
-            {(change === "Movie" ? fetchedMovieData : fetchedCinemaData).map((item, index) => (
-              <option key={index} value={item.moviename}>
-                {item.moviename || item.name}
-              </option>
-            ))}
+            {(change === "Movie" ? fetchedMovieData : fetchedCinemaData).map(
+              (item, index) => (
+                <option key={index} value={item.moviename}>
+                  {item.moviename || item.name}
+                </option>
+              )
+            )}
           </select>
         </div>
 
@@ -106,12 +111,16 @@ const QuickBookNav = () => {
             value={change === "Movie" ? cinema : movie}
             onChange={handleChange}
           >
-            <option value="">{`Select ${change === "Movie" ? "Cinema" : "Movie"}`}</option>
-            {(change === "Movie" ? fetchedCinemaData : fetchedMovieData).map((item, index) => (
-              <option key={index} value={item.name}>
-                {item.name || item.moviename}
-              </option>
-            ))}
+            <option value="">{`Select ${
+              change === "Movie" ? "Cinema" : "Movie"
+            }`}</option>
+            {(change === "Movie" ? fetchedCinemaData : fetchedMovieData).map(
+              (item, index) => (
+                <option key={index} value={item.name}>
+                  {item.name || item.moviename}
+                </option>
+              )
+            )}
           </select>
         </div>
 
@@ -120,7 +129,6 @@ const QuickBookNav = () => {
             type="time"
             name="timing"
             value={timing}
-            
             onChange={(e) => setData({ ...data, timing: e.target.value })}
           >
             <option value="8:00 AM">8:00 AM</option>

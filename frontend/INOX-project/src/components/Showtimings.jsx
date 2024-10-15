@@ -16,6 +16,7 @@ const ShowTimings = () => {
   let { state } = useLocation();
 
   let [allTheater, setAllTheater] = useState([]);
+  let [searchedTheater, setSearchedTheater] = useState();
   const dates = [
     { day: "Sep 30", label: "Today" },
     { day: "Oct 01", label: "Tomorrow" },
@@ -25,17 +26,26 @@ const ShowTimings = () => {
     { day: "Oct 05", label: "Sat" },
     { day: "Oct 06", label: "Sun" },
   ];
+  let filteredTheater = allTheater.find((data) => data?.name == state?.cinema);
+  let searchTheater = (e) => {
+    let { value, name } = e.target;
+    setSearchedTheater(
+      allTheater.filter(
+        (theater) => theater?.name?.includes(value) && theater.movies.length > 0
+      )
+    );
+  };
 
   useEffect(() => {
-    console.log("useEffect");
     let fetchData = async () => {
       try {
         let response = await axios.get(
           state != null
-            ? `http://localhost:8080/open/cinemas/${state.moviename}`
+            ? `http://localhost:8080/open/cinemas/${
+                state?.moviename || state?.movie
+              }`
             : `http://localhost:8080/open/cinemas/alls`
         );
-        console.log(response.data);
         setAllTheater(response.data);
       } catch (error) {
         console.error("Error fetching data", error);
@@ -43,7 +53,6 @@ const ShowTimings = () => {
     };
     fetchData();
   }, []);
-
   return (
     <section className="show-sec">
       <div className="show">
@@ -83,6 +92,7 @@ const ShowTimings = () => {
               type="text"
               placeholder="Search for cinema"
               className="search-input"
+              onChange={searchTheater}
             />
           </div>
           <section className="optionitems">
@@ -121,10 +131,21 @@ const ShowTimings = () => {
         </div>
       </div>
       <section className="accor">
-        {state?.cinema ||
-          allTheater.map((data, i) => {
-            return <Accordion1 data={data} key={i} filterData={state} />;
-          })}
+        {allTheater.length < 1 ? (
+          <section className="dataNotFound">Data Not Found </section>
+        ) : (
+          <>
+            {state?.cinema != null ? (
+              <Accordion1 data={filteredTheater} filterData={state} />
+            ) : (
+              (searchedTheater || allTheater)
+                .filter((theater) => theater.movies.length > 0)
+                .map((data, i) => {
+                  return <Accordion1 data={data} key={i} filterData={state} />;
+                })
+            )}
+          </>
+        )}
       </section>
     </section>
   );

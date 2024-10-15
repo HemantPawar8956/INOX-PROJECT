@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { globalVar } from "../globalContext/GlobalContext";
 import toast from "react-hot-toast";
 const SignUp = () => {
-  
   let navigate = useNavigate();
   let { loginPanel, setLoginPanel, signupPanel, setSignupPanel } =
     useContext(globalVar);
@@ -43,6 +42,7 @@ const SignUp = () => {
         setLoginPanel(true);
       }, 1500);
     } catch (error) {
+      toast.error("Something went wrong");
       console.error("There was an error creating the user!", error);
     }
   };
@@ -52,13 +52,15 @@ const SignUp = () => {
       className="signMain"
       onClick={(e) => {
         e.stopPropagation(), setSignupPanel(false);
-      }}>
+      }}
+    >
       <form
         className="signup-form"
         onSubmit={handleSubmit}
         onClick={(e) => {
           e.stopPropagation(), setSignupPanel(true);
-        }}>
+        }}
+      >
         <h2 className="form-title">SIGNUP PAGE</h2>
         <div className="form-group">
           <label className="form-label">Name :</label>

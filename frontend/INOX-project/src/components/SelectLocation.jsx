@@ -91,7 +91,8 @@ const SelectLocation = () => {
         onClick={(ele) => {
           ele.stopPropagation();
           setLocation(true);
-        }}>
+        }}
+      >
         <div>
           <button className="btn" onClick={handleClose}>
             <ImCross />
@@ -142,7 +143,8 @@ const SelectLocation = () => {
                               });
                             }
                             setSelectedCity("");
-                          }}>
+                          }}
+                        >
                           {cityName}
                         </div>
                       );
@@ -156,12 +158,14 @@ const SelectLocation = () => {
                   <div
                     key={index}
                     className="city-tile"
-                    onClick={() => handleCitySelectHorizontal(city)}>
+                    onClick={() => handleCitySelectHorizontal(city)}
+                  >
                     <img
                       src={city.image}
                       alt={city.name}
                       className="locationImage"
                     />
+                    <h3 className="cityName">{city.name}</h3>
                   </div>
                 ))}
               </div>
@@ -176,7 +180,8 @@ const SelectLocation = () => {
                           name: city,
                           image: defaultimage,
                         })
-                      }>
+                      }
+                    >
                       {city}
                     </li>
                   ))}

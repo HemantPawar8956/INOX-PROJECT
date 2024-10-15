@@ -55,6 +55,7 @@ const LoginPage = () => {
       console.log(decode);
       setInoxLoginType(decode.role);
     } catch (error) {
+      toast.error("Something went wrong");
       console.error("There was an error authenticating the user!", error);
     }
   };
@@ -70,14 +71,16 @@ const LoginPage = () => {
       onClick={(e) => {
         e.stopPropagation();
         setLoginPanel(!loginPanel);
-      }}>
+      }}
+    >
       <section className="headlogin">
         <div className="mainadminbtn">
           {loginTypes?.map((ele) => (
             <button
               key={ele.loginVal}
               onClick={(e) => (e.stopPropagation(), setLoginType(ele.loginVal))}
-              className="adminbtns">
+              className="adminbtns"
+            >
               {ele.loginName}
             </button>
           ))}
@@ -88,7 +91,8 @@ const LoginPage = () => {
           onClick={(e) => {
             e.stopPropagation();
             setLoginPanel(true);
-          }}>
+          }}
+        >
           <h1 className="login-title">Login as {loginType}</h1>
           <div className="form-group">
             <label>Email:</label>
